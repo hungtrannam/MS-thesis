@@ -1,0 +1,158 @@
+
+\setlist[description]{font=\normalfont\itshape}
+
+%%%%%%%%%%% Định dạng cho header của bảng %%%%%%%%%%%
+\renewcommand\theadfont{\bfseries}
+\fvset{
+	tabsize=4,					% Định tabsize 
+	frame=single,				% Khung
+}
+
+
+\captionsetup[table]{position=top}
+\captionsetup{
+	format=plain,
+	labelsep=period,
+	labelfont=bf,
+	font=small,
+}
+
+%%%%%%%%%%% Cài đặt header và footer cho toàn bộ luận văn %%%%%%%%%%%
+\pagestyle{fancy}
+%... then configure it.
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+
+%%%%%%%%%%% Tạo không gian cho tóm tắt nội dung %%%%%%%%%%%
+\makeatletter
+\newenvironment{abstractV}{
+  \titlepage
+  \null\vfil
+  \small
+  \@beginparpenalty\@lowpenalty
+  \begin{center}
+			{\fontsize{14}{0pt}\selectfont\textbf{TÓM TẮT NỘI DUNG} \par}
+                \medskip
+			{\large\bfseries \nametitle \par}% Thesis title
+			{\normalsize \student \par}% Author name
+			\bigskip
+	\@endparpenalty\@M
+  \end{center}}
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+
+
+%%%%%%%%%%% Tạo không gian cho tóm tắt nội dung %%%%%%%%%%%
+\makeatletter
+\newenvironment{abstractE}{
+	\titlepage
+	\null\vfil
+	\small
+	\@beginparpenalty\@lowpenalty
+	\begin{center}
+		{\fontsize{14}{0pt}\selectfont\textbf{ABSTRACT} \par}
+		\medskip
+		{\large\bfseries \Englishnametitle \par}% Thesis title
+		{\normalsize Hung Tran-Nam \par}% Author name
+		\bigskip
+		\@endparpenalty\@M
+\end{center}}
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+%%%%%%%%%%% Tạo không gian cho lời cảm ơn %%%%%%%%%%%
+\makeatletter
+\newenvironment{acknowledgments}{
+	\titlepage
+	\small
+	\begin{center}
+	  {\fontsize{14}{0pt}\selectfont\bfseries LỜI CẢM ƠN \vspace{30pt}\vspace{\z@}}
+	\end{center}
+	\quotation
+  }{}
+\makeatother
+
+
+
+
+%%%%%%%%%%% Lệnh cài đặt môi trường định lý %%%%%%%%%%%
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\slshape}
+\theoremseparator {.} 
+\renewtheorem{theorem}{\hspace*{0.5cm}Định lý} [chapter]
+\newcommand{\dly}[1]{\begin{theorem}#1\end{theorem}}
+
+%%%%%%%%%%% Lệnh cài đặt môi trường tính chất %%%%%%%%%%%
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\slshape}
+\theoremseparator {.} 
+\renewtheorem{proposition}{\hspace*{0.5cm}Tính chất} [chapter]
+\newcommand{\tch}[1]{\begin{proposition}#1\end{proposition}}
+
+%%%%%%%%%%% Lệnh cài đặt môi trường định nghĩa %%%%%%%%%%%
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\normalfont} 
+\theoremseparator {.}         
+\renewtheorem{definition}{\hspace*{0.5cm}Định nghĩa}[chapter] 
+\newcommand{\dng}[1]{\begin{definition}#1\end{definition}}
+
+%%%%%%%%%%% Lệnh cài đặt môi trường ví dụ %%%%%%%%%%%
+\theoremstyle{nonumberplain} 
+\theoremheaderfont{\bfseries\slshape}
+\theorembodyfont{\normalfont}
+\renewtheorem{example}{\hspace*{0.5cm}Ví dụ}
+\newcommand{\vdu}[1]{\begin{example}#1\end{example}}
+
+%%%%%%%%%%% Lệnh cài đặt môi trường chứng minh %%%%%%%%%%%
+\theoremstyle{nonumberplain} 
+\theoremheaderfont{\bfseries\slshape\small}
+\theorembodyfont{\small}
+\theoremsymbol{\ensuremath{_\square}}
+\renewtheorem{proof}{\hspace*{0.5cm}Chứng minh}
+\newcommand{\chm}[1]{\begin{proof}#1\end{proof}}
+
+\theoremstyle{nonumberplain} 
+\theoremheaderfont{\bfseries\slshape}
+\theorembodyfont{\normalfont}
+\renewtheorem{remark}{\hspace*{0.5cm}Nhận xét}
+\newcommand{\chy}[1]{\begin{remark}#1\end{remark}}
+
+%%%%%%%%%%% Lệnh cài đặt môi trường bổ đề %%%%%%%%%%%
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\slshape}
+\theoremseparator {.} 
+\renewtheorem{lemma}{\hspace*{0.5cm}Bổ đề} [chapter]
+\newcommand{\bode}[1]{\begin{lemma}#1\end{lemma}}
+
+
+
+
+
+
+
+%%%%%%%%%%% Định dạng các mục và tiểu mục %%%%%%%%%%%
+\titleformat{\chapter}[display]
+{\fontsize{14}{0pt}\selectfont\bfseries\centering}{CHƯƠNG \thechapter}{0pt}{}
+\titleformat{\section}
+{\fontsize{13}{0pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\fontsize{13}{0pt}\selectfont\bfseries\slshape}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\fontsize{13}{0pt}\selectfont\slshape}{\thesubsection}{1em}{}
+
+\AtBeginDocument{\renewcommand{\contentsname}{MỤC LỤC}}
+\AtBeginDocument{\renewcommand{\bibname}{TÀI LIỆU THAM KHẢO}}
+\AtBeginDocument{\renewcommand{\listfigurename}{DANH SÁCH HÌNH VẼ}}
+\AtBeginDocument{\renewcommand{\listtablename}{DANH SÁCH BẢNG}}
+\AtBeginDocument{\renewcommand{\appendixname}{PHỤ LỤC}}
+\AtBeginDocument{\renewcommand{\listalgorithmname}{DANH SÁCH GIẢI THUẬT}}
+
