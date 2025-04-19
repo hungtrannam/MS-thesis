@@ -1,9 +1,235 @@
-\documentclass[a4paper,oneside]{book}
+\documentclass[a4paper,oneside]{book} % Tài liệu dạng sách, in một mặt trên giấy A4
 
-\input{Settings/Packages}
-\input{Settings/Setting}
+% ====== GÓI CƠ BẢN ======
+\usepackage[utf8]{vietnam} % Hỗ trợ gõ và hiển thị tiếng Việt
+\usepackage[numbers,sort&compress]{natbib} % Gói trích dẫn tài liệu: số, sắp xếp, rút gọn
 
+\usepackage[fontsize=13pt]{scrextend} % Cài đặt kích thước font 13pt
 
+% ====== CÀI ĐẶT LỀ TRANG ======
+\usepackage[top=3cm,bottom=2cm,right=2cm,left=2cm,headheight=50pt]{geometry} % Cài đặt lề văn bản và chiều cao phần đầu trang
+
+% ====== GÓI DANH SÁCH ======
+\usepackage{enumerate} % Tạo danh sách đánh số
+\usepackage{enumitem} % Tuỳ chỉnh kiểu danh sách
+
+% ====== CHÈN HÌNH ẢNH ======
+\usepackage{graphicx} % Gói chèn ảnh
+\graphicspath{{Figs/}} % Đặt thư mục chứa hình ảnh
+
+% ====== QUẢN LÝ FILE & TRANG TRẮNG ======
+\usepackage{subfiles} % Cho phép chia nội dung thành các file con
+\usepackage{emptypage} % Không in header/footer trên trang trắng
+
+% ====== BẢNG BIỂU & LANDSCAPE ======
+\usepackage{tabularx} % Bảng tự dãn chiều rộng
+\usepackage{pdflscape} % Cho phép xoay trang (landscape)
+\usepackage{url} % Hiển thị URL
+\usepackage{longtable} % Tạo bảng dài nhiều trang
+\usepackage{makecell} % Định dạng ô trong bảng
+\usepackage{float} % Cho phép cố định vị trí ảnh (H)
+
+% ====== TOÁN HỌC ======
+\usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts,mathptmx} % Các gói công thức Toán
+
+% ====== MÀU SẮC ======
+\usepackage{xcolor} % Tùy chỉnh màu sắc
+\definecolor{CTUcyan}{rgb}{0, 0.69, 0.941} % Màu cyan trường ĐHCT
+\definecolor{CTUblue}{rgb}{0.122, 0.361, 0.667} % Màu xanh dương trường ĐHCT
+
+% ====== HÌNH ẢNH CON (SUBFIGURE) ======
+\usepackage{subcaption} % Chèn nhiều hình con với chú thích riêng
+\usepackage[format=plain,indent=\parindent,labelfont={sc,small},textfont={rm,small,stretch=1.15}]{caption} % Tùy chỉnh chú thích hình
+
+\captionsetup[algorithm]{labelsep=colon} % Cài đặt caption cho thuật toán
+
+% ====== BẢNG ĐẸP & NÂNG CAO ======
+\usepackage{booktabs} % Bảng kẻ đẹp
+\usepackage{multirow} % Gộp nhiều hàng trong bảng
+
+% ====== GIẢI THUẬT ======
+%\usepackage{algorithm2e} % Cũ, không dùng
+\usepackage{algorithm} % Môi trường giải thuật
+%\usepackage[noend]{algpseudocode} % Không dùng
+\usepackage{algpseudocode} % Viết giả mã thuật toán
+
+% ====== HYPERLINK ======
+\usepackage[hidelinks,unicode,pdfusetitle]{hyperref} % Tạo liên kết nhưng không đổi màu
+\hypersetup{
+	colorlinks=true,
+	citecolor=black,
+	linkcolor=black,
+	filecolor=black,      
+	urlcolor=black,
+} % Cấu hình màu liên kết cho in ấn
+
+% ====== DÒNG VĂN BẢN ======
+\linespread{1.2} % Giãn dòng
+\setlength{\parskip}{\baselineskip} % Khoảng cách giữa các đoạn
+\usepackage[skip=10pt plus1pt, indent=1cm]{parskip} % Tùy chỉnh cách đoạn và thụt đầu dòng
+
+% ====== TỪ VIẾT TẮT & THUẬT NGỮ ======
+\usepackage[abbreviations,symbols,nogroupskip]{glossaries-extra} % Tạo danh sách thuật ngữ
+\usepackage{glossary-mcols} % Hiển thị glossary nhiều cột
+\renewcommand{\glsmcols}{2} % Số cột glossary
+\setglossarystyle{mcolindex} % Kiểu glossary
+
+% ====== PHỤ LỤC ======
+\usepackage[standard,thmmarks]{ntheorem} % Định lý, bổ đề,...
+\usepackage[toc,page,title]{appendix} % Phụ lục có mục lục
+
+% ====== HIỂN THỊ CODE ======
+\usepackage{listings} % Hiển thị mã nguồn
+\lstset{
+	frame=tb,
+	language=Matlab,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily\color{black!50}},
+	numbers=none,
+	numberstyle=\tiny\color{black!50},
+	keywordstyle={\color{black}},
+	commentstyle={\normalfont\color{black!40}},
+	stringstyle={\it\ttfamily\color{black!40}},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
+
+% ====== VẼ HÌNH ======
+\usepackage{tikz} % Vẽ hình bằng TikZ
+\usepackage{tkz-fct} % Vẽ đồ thị hàm số
+\usetikzlibrary{shapes.misc} % Thư viện bổ sung
+
+% ====== TRÌNH BÀY ======
+\usepackage{fancyhdr} % Header/Footer
+\usepackage{fancyvrb} % Chèn đoạn mã
+\usepackage{lineno} % Đánh số dòng
+\usepackage{titlesec} % Định dạng tiêu đề chương/mục
+\usepackage{indentfirst} % Thụt đầu dòng đoạn đầu
+\usepackage{rotating} % Xoay bảng
+
+\setlist[description]{font=\normalfont\itshape} % Kiểu danh sách mô tả
+
+% ====== ĐỊNH DẠNG HEADER CHO BẢNG ======
+\renewcommand\theadfont{\bfseries} % In đậm header bảng
+\fvset{tabsize=4, frame=single} % Cấu hình hiển thị code
+
+% ====== CAPTION ======
+\captionsetup[table]{position=top}
+\captionsetup{
+	format=plain,
+	labelsep=period,
+	labelfont=bf,
+	font=small,
+}
+
+% ====== HEADER/FOOTER TOÀN TÀI LIỆU ======
+\pagestyle{fancy}
+\fancyhead{} % Xóa header mặc định
+\fancyfoot{} % Xóa footer mặc định
+\fancyfoot[C]{\thepage} % Hiện số trang ở giữa chân trang
+\renewcommand{\headrulewidth}{0pt} % Không có gạch dưới header
+
+% ====== TẠO MÔI TRƯỜNG: TÓM TẮT TIẾNG VIỆT ======
+\makeatletter
+\newenvironment{abstractV}{
+	\titlepage
+	\null\vfil
+	\small
+	\@beginparpenalty\@lowpenalty
+	\begin{center}
+		{\fontsize{14}{0pt}\selectfont\textbf{TÓM TẮT NỘI DUNG} \par}
+		\medskip
+		{\large\bfseries \nametitle \par}
+		{\normalsize \student \par}
+		\bigskip
+		\@endparpenalty\@M
+\end{center}}
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+% ====== TẠO MÔI TRƯỜNG: ABSTRACT (ENGLISH) ======
+\makeatletter
+\newenvironment{abstractE}{
+	\titlepage
+	\null\vfil
+	\small
+	\@beginparpenalty\@lowpenalty
+	\begin{center}
+		{\fontsize{14}{0pt}\selectfont\textbf{ABSTRACT} \par}
+		\medskip
+		{\large\bfseries \Englishnametitle \par}
+		{\normalsize Hung Tran-Nam \par}
+		\bigskip
+		\@endparpenalty\@M
+\end{center}}
+{\par\vfil\null\endtitlepage}
+\makeatother
+
+% ====== TẠO MÔI TRƯỜNG: LỜI CẢM ƠN ======
+\makeatletter
+\newenvironment{acknowledgments}{
+	\titlepage
+	\small
+	\begin{center}
+		{\fontsize{14}{0pt}\selectfont\bfseries LỜI CẢM ƠN \vspace{30pt}\vspace{\z@}}
+	\end{center}
+	\quotation
+}{}
+\makeatother
+
+% ====== CÁC MÔI TRƯỜNG TOÁN HỌC ======
+% Định lý, Tính chất, Định nghĩa, Ví dụ, Chứng minh, Nhận xét, Bổ đề
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}
+\theorembodyfont{\slshape}
+\theoremseparator{.} 
+\renewtheorem{theorem}{\hspace*{0.5cm}Định lý}[chapter]
+\renewtheorem{proposition}{\hspace*{0.5cm}Tính chất}[chapter]
+\renewtheorem{lemma}{\hspace*{0.5cm}Bổ đề}[chapter]
+\newcommand{\dly}[1]{\begin{theorem}#1\end{theorem}}
+\newcommand{\tch}[1]{\begin{proposition}#1\end{proposition}}
+\newcommand{\bode}[1]{\begin{lemma}#1\end{lemma}}
+
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\normalfont}
+\renewtheorem{definition}{\hspace*{0.5cm}Định nghĩa}[chapter]
+\newcommand{\dng}[1]{\begin{definition}#1\end{definition}}
+
+\theoremstyle{nonumberplain}
+\renewtheorem{example}{\hspace*{0.5cm}Ví dụ}
+\newcommand{\vdu}[1]{\begin{example}#1\end{example}}
+
+\theoremheaderfont{\bfseries\slshape\small}
+\theorembodyfont{\small}
+\theoremsymbol{\ensuremath{_\square}}
+\renewtheorem{proof}{\hspace*{0.5cm}Chứng minh}
+\newcommand{\chm}[1]{\begin{proof}#1\end{proof}}
+
+\theoremheaderfont{\bfseries\slshape}
+\theorembodyfont{\normalfont}
+\renewtheorem{remark}{\hspace*{0.5cm}Nhận xét}
+\newcommand{\chy}[1]{\begin{remark}#1\end{remark}}
+
+% ====== TIÊU ĐỀ CHƯƠNG/MỤC ======
+\titleformat{\chapter}[display]{\fontsize{14}{0pt}\selectfont\bfseries\centering}{CHƯƠNG \thechapter}{0pt}{}
+\titleformat{\section}{\fontsize{13}{0pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\fontsize{13}{0pt}\selectfont\bfseries\slshape}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\fontsize{13}{0pt}\selectfont\slshape}{\thesubsection}{1em}{}
+
+% ====== VIỆT HÓA CÁC MỤC DANH MỤC ======
+\AtBeginDocument{\renewcommand{\contentsname}{MỤC LỤC}}
+\AtBeginDocument{\renewcommand{\bibname}{TÀI LIỆU THAM KHẢO}}
+\AtBeginDocument{\renewcommand{\listfigurename}{DANH SÁCH HÌNH VẼ}}
+\AtBeginDocument{\renewcommand{\listtablename}{DANH SÁCH BẢNG}}
+\AtBeginDocument{\renewcommand{\appendixname}{PHỤ LỤC}}
+\AtBeginDocument{\renewcommand{\listalgorithmname}{DANH SÁCH GIẢI THUẬT}}
+
+% ====== THÔNG TIN LUẬN VĂN ======
 \newcommand{\university}{TRƯỜNG ĐẠI HỌC CẦN THƠ}
 \newcommand{\school}{Khoa Khoa học Tự nhiên}
 \newcommand{\nametitle}{Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu ảnh}
@@ -14,29 +240,25 @@
 \newcommand{\major}{Lý~thuyết Xác~suất và Thống~kê Toán~học}
 \newcommand{\city}{Cần Thơ}
 
-
-%%%%%%%%%%%% Bắt đầu tài liệu %%%%%%%%%%%%
+%%%%%%%%%%%% BẮT ĐẦU TÀI LIỆU %%%%%%%%%%%%
 \begin{document}
-
-%%%%%%%%%%%% Bìa trong và bìa ngoài %%%%%%%%%%%%
-\input{Info/biaA}
-\input{Info/biaB}
-\input{Info/Info}
-
-\pagenumbering{roman}
-
-
-
-%%%%%%%%%%%% Mục lục %%%%%%%%%%%%
-\tableofcontents
-\listoffigures
-\listoftables
-\listofalgorithms
-
-
-%%%%%%%%%%%% Nội dung chính %%%%%%%%%%%%
-\clearpage
-\pagenumbering{arabic}	
+	
+	% ====== BÌA NGOÀI, BÌA TRONG VÀ THÔNG TIN ======
+	\input{Info/biaA} % Bìa ngoài
+	\input{Info/biaB} % Bìa trong
+	\input{Info/Info} % Thông tin luận văn
+	
+	\pagenumbering{roman} % Đánh số trang La Mã
+	
+	% ====== DANH MỤC NỘI DUNG ======
+	\tableofcontents % Mục lục
+	\listoffigures % Danh sách hình
+	\listoftables % Danh sách bảng
+	\listofalgorithms % Danh sách giải thuật
+	
+	% ====== NỘI DUNG CHÍNH ======
+	\clearpage
+	\pagenumbering{arabic} % Đánh số trang 1, 2, 3,...
 
 \chapter*{PHẦN MỞ ĐẦU}\label{chapter_intro}
 \addcontentsline{toc}{chapter}{\numberline{PHẦN MỞ ĐẦU}}%
@@ -49,7 +271,7 @@
 
 Nhận dạng thống kê gồm có hai bài toán chính: nhận dạng được giám sát và không được giám sát \citep{Bishop:DeepLearning24,theodoridis2006pattern}. Nhận dạng không được giám sát là việc chia dữ liệu thành các chùm sao cho các phần tử trong cùng một chùm có sự tương tự nhiều hơn so với các phần tử bên ngoài chùm đó \citep{bezdek1984fcm,macqueen1967some}. Do đó nhận dạng không được giám sát còn được gọi là bài toán phân tích chùm. Phân tích chùm là cơ sở của việc lưu trữ, trích xuất và xử lý dữ liệu lớn nên được rất nhiều nhà thống kê và công nghệ thông tin quan tâm.  Nhận dạng được giám sát là việc xếp một phần tử vào một nhóm trong các nhóm đã biết một cách thích hợp \cite{Bishop:DeepLearning24,webb2003statistical}. Do đó, nhận dạng được giám sát còn được gọi là bài toán phân loại. Phân loại đã và đang được áp dụng trong nhiều lĩnh vực khác nhau. Chẳng hạn, trong y tế hoạt động chẩn đoán bệnh của các bác sĩ xem một người có bệnh hay không có bệnh B, loại nào trong bệnh B thực chất là thực hiện bài toán phân loại. Trong lĩnh vực xã hội và an ninh, việc nhận dạng khuôn mặt, chữ ký, dấu vân tay,\ldots cũng chính là thực hiện bài toán phân loại.
 
-Dữ liệu cho nhận dạng thống kê có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất (hàm mật độ xác suất). Nhận dạng thống kê cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu rất nhiều \citep{zha2023data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu này đã được đề xuất và phát triển. Khi dữ liệu lớn và phức tạp như hình ảnh, mỗi đối tượng cần được xem như một phân phối \citep{nguyen2024new}, do đó nhận dạng thống kê cho hàm mật độ xác suất được đề xuất. 
+Dữ liệu cho nhận dạng thống kê có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất. Nhận dạng thống kê cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu rất nhiều \citep{zha2023data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu này đã được đề xuất và phát triển. Khi dữ liệu lớn và phức tạp như hình ảnh, mỗi đối tượng cần được xem như một phân phối \citep{nguyen2024new}, do đó nhận dạng thống kê cho hàm mật độ xác suất được đề xuất. 
 
 \newpage
 Xét về số lượng phần tử trong các nhóm, dữ liệu có thể được gọi là mất cân bằng và không mất cân bằng. Khi số lượng phần tử của các nhóm không có sự chênh lệch nhiều thì nó được gọi là không mất cân bằng. Trong nhận dạng dữ liệu của thực tế, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng.  Đó là kiểu dữ liệu mà một nhóm hoặc một số ít nhóm có số lượng phần tử quá nhỏ so với các nhóm còn lại \citep{hu2024gat}. Khi một mô hình nhận dạng phải đối mặt với chênh lệch lớn về số lượng mẫu, nó dễ dàng bị thiên lệch về lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các mẫu của lớp thiểu số \citep{nguyen2009learning}. Chẳng hạn, trong tầm soát  ung thư, ca bị bệnh có thể ít hơn 1000 lần so với trường hợp không bị bệnh \citep{tang2008svms}. Khi đó các thuật toán nhận dạng  truyền thống sẽ không phát huy hiệu quả vì nó có xu hướng thiên vị lớp đa số mà bỏ qua lớp thiểu số. Trong trường hợp này, độ chính xác của các lớp thiểu số là quan trọng hơn \citep{hu2024gat} bởi vì  việc tầm soát sai bệnh nhân ung thư thành khỏe mạnh gây ra tổn thất tính mạng lớn hơn nhiều so với sai lầm ngược lại. 
@@ -236,8 +458,7 @@ $$\theta_{G_i} = \arg\min_{f({\bm\mu}\,,\Sigma)}\sum_{j=1}^n\mu_{ij}D(f({\bm\mu}
 
 \section{Độ đo đánh giá sự tương tự của các hàm mật độ xác suất}
 
-Phần này giới thiệu một số loại khoảng cách đối với hai đối tượng hàm mật độ bao
-gồm: khoảng cách hai hàm mật độ, một hàm mật độ với một chùm hàm và giữa hai chùm hàm mật độ bất kỳ.
+Khoảng cách là độ đo xa-gần các vật thể. Ở đây, khái niệm {\it khoảng cách} bao hàm cả {\it độ đo phân biệt}. Phần này giới thiệu một số loại khoảng cách đối với hai đối tượng hàm mật độ bao gồm: khoảng cách hai hàm mật độ, một hàm mật độ với một chùm hàm và giữa hai chùm hàm mật độ bất kỳ.
 
 \subsection{Sự tương tự của hai hàm mật độ xác suất}
 
@@ -251,7 +472,11 @@ Cho $f\,,g$ là hai hàm mật độ Radon-Nikodym tương ứng với độ đo
 	
 	} 
 
-Theo định nghĩa \ref{D}, khoảng cách giữa hai hàm mật độ thỏa mãn các tiên đề không âm và xác định của mê-tríc. Tuy nhiên, khoảng cách này nói chung không đối xứng và không nhất thiết thỏa mãn bất đẳng thức tam giác như các loại khoảng cách rời rạc. Trong lý thuyết thống kê và thông tin, một mê-tríc được xem là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}. Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách giữa hai hàm mật độ xác suất.
+Theo Định nghĩa \ref{D}, khoảng cách giữa hai hàm mật độ thỏa mãn các tiên đề của mê-tríc. Trong lý thuyết thống kê và thông tin, một mê-tríc được gọi là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}.  Các khoảng cách của hai hàm mật độ xác suất được thành lập theo hai các tiếp cận: véc-tơ và xác suất. Cách tiếp cận véc-tơ xem xét các mức giá trị là điểm trong không gian Euclide, nên chúng cũng có thể tính toán dựa vào các khoảng cách hình học thông thường. Ngoài ra, cách tiếp cận xác suất t
+
+
+
+Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo tương tự giữa hai hàm mật độ xác suất.
 
 \begin{table}[H]
     \caption{Bảng tổng kết các loại khoảng cách giữa hai hàm mật độ xác suất}\label{tab1:KC_PDF}
@@ -410,7 +635,9 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 
 
 
-Nhận dạng không được giám sát sử dụng dữ liệu không được gắn nhãn trong khi huấn luyện, trong đó mục tiêu của tác vụ là phân định sự tương tự giữa các mẫu từ dữ liệu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}. Tương tự, phân tích chùm các hàm mật độ xác suất là bài toán phân tích chùm cho đối tượng các hàm mật độ xác suất \cite{nguyen2024new,nguyentrang2017fuzzy}. Giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $\mathbf{x}_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(\mathbf{x})$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm $i=1\,,2\,,\ldots\,,c$ thỏa mãn ba ràng buộc
+Nhận dạng không được giám sát sử dụng dữ liệu không được gắn nhãn trong khi huấn luyện, trong đó mục tiêu của phương pháp này là phân định sự tương tự giữa các mẫu từ dữ liệu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}. Tương tự, phân tích chùm các hàm mật độ xác suất là bài toán phân tích chùm cho đối tượng các hàm mật độ xác suất \cite{nguyen2024new,nguyentrang2017fuzzy}. 
+
+Giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $\mathbf{x}_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(\mathbf{x})$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm $i=1\,,2\,,\ldots\,,c$ thỏa mãn ba ràng buộc
 \begin{enumerate}
 	\item Hợp tất cả các chùm $\bigcup_i c_i$ bằng $\mathcal{F}$,
 	\item Giao của mỗi chùm là tập khác rỗng, $c_i\cap c_j =\emptyset$, với mỗi $i\ne j$,
@@ -436,7 +663,7 @@ Thuật toán phân chùm dựa vào trọng tâm đề xuất hàm mục tiêu 
 
 \subsection{Phân tích chùm không mờ}	
 
-Phân tích chùm không mờ (hay phân tích chùm cứng) yêu cầu một phần tử chỉ thuộc duy nhất một chùm cố định. Nhiều thuật toán đã phát triển thích hợp cho đa dạng dữ liệu khác nhau. Tuy nhiên, tiểu mục này chỉ trình bày $k$-means và phân tích chùm tự cập nhật là các thuật toán đã được sử dụng tích cực cho dữ liệu hàm mật độ xác suất.
+Phân tích chùm không mờ (hay phân chùm cứng) yêu cầu một phần tử chỉ thuộc duy nhất một chùm cố định. Nhiều thuật toán đã phát triển thích hợp cho đa dạng dữ liệu khác nhau. Tuy nhiên, tiểu mục này chỉ trình bày $k$-means và phân tích chùm tự cập nhật là các thuật toán đã được sử dụng tích cực cho dữ liệu hàm mật độ xác suất.
 
 \subsubsection{a.\quad Phân tích chùm $k$-means}
 
@@ -671,7 +898,7 @@ So sánh về mặt phức tạp thời gian và phức tạp dung lượng, $k$
 
 \section{Phân loại cho hàm mật độ xác suất}
 
-Phương pháp phân loại đã phát triển sơ khai từ thế kỷ XVIII đến nay với mục tiêu tìm kiếm siêu phẳng phân tách được các lớp với sai lầm tối tiểu. Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron learning \cite{rosenblatt1961principles}. Những phương pháp này sơ khởi nhưng cũng rất nổi tiếng và vẫn được áp dụng phát triển cho đến hiện nay. Đây cũng chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
+Phương pháp phân loại đã phát triển với mục tiêu tìm kiếm siêu phẳng phân tách được các lớp quan tâm với sai lầm tối tiểu. Các quy luật đánh giá người này có bệnh B hay không dựa vào những dữ liệu cho trước chính là kết quả của bài toán phân loại. Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron learning \cite{rosenblatt1961principles}. Những phương pháp này là kinh điển và đã được áp dụng phát triển cho đến hiện nay. Đây cũng chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
 
 Phương pháp phân loại cho hàm mật độ xác suất là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. 
 
@@ -710,11 +937,11 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 \section{Giới thiệu}
 \subsection{Giới thiệu bài toán phân tích chùm cho dữ liệu mất cân bằng}
 
-Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triển rất mạnh và nhanh chóng bởi dữ liệu thu thập mang tính mất cân bằng tự nhiên. Dữ liệu mất cân bằng nói chung tồn đọng hai vấn đề: Kích thước chùm mất cân bằng và số lượng phần tử trong chùm mất cân bằng. 
+Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triển rất mạnh và nhanh chóng. Dữ liệu mất cân bằng nói chung tồn tại hai đối tượng: Kích thước chùm và số lượng phần tử trong chùm. Kích thước chùm mất cân bằng xảy ra khi 
 
-Ở dữ liệu rời rạc, thuật toán phân tích chùm mất cân bằng đã được giải quyết rất tốt.
+Ở dữ liệu rời rạc, thuật toán phân tích chùm mất cân bằng đã được giải quyết rất tốt. 
 
-Tuy nhiên, các thuật toán này thuộc về phân tích chùm phân vùng, thường giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng tạo ra độ lệch trọng tâm đáng kể đối với các chùm có kích thước nhỏ \cite{yu2024suppressed}. 
+Tuy nhiên, các thuật toán này thường giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng tạo ra độ lệch trọng tâm đáng kể đối với các chùm có kích thước nhỏ \cite{yu2024suppressed}. 
 
 
 
@@ -738,8 +965,8 @@ Tuy nhiên, các thuật toán này thuộc về phân tích chùm phân vùng, 
 \subsection{Một số khái niệm liên quan}
 \subsection{Tham số đánh giá thuật toán phân tích chùm}
 
-Đánh giá phân tích chùm cho biết độ hiệu quả thực thi của thuật toán bao gồm độ chính xác và độ phù hợp với thực tế. Mục đính của việc đánh giá là mang lại góc nhìn cụ thể về kết quả của từng thuật toán và giữa các thuật toán với nhau. Việc giá kết quả phân tích chùm 
-diễn ra trong hai trường hợp: bên trong và bên ngoài. Tiêu chí đánh giá ngoài cung cấp độ chính xác giữa nhãn thực tế và nhãn kết quả của phân tích chùm trong các ví dụ mô phỏng. Nhưng trong thực tế, ta không có thông tin chính xác của nhãn nên phải đánh giá nội bộ. Đánh giá nội bộ cung cấp độ phù hợp của các chùm trong dữ liệu chưa được gán nhãn.
+Đánh giá phân tích chùm cho biết độ hiệu quả thực thi của thuật toán bao gồm độ chính xác và độ phù hợp với thực tế. Mục đính của việc đánh giá là mang lại góc nhìn cụ thể về kết quả của từng thuật toán và giữa các thuật toán với nhau. Đánh giá kết quả phân tích chùm 
+diễn ra trong hai trường hợp: đánh giá bên trong và bên ngoài. Tiêu chí đánh giá ngoài cung cấp độ chính xác giữa nhãn thực tế và nhãn kết quả của phân tích chùm trong các ví dụ mô phỏng. Nhưng trong thực tế, ta không có thông tin chính xác của nhãn nên phải đánh giá nội bộ. Đánh giá nội bộ cung cấp độ phù hợp của các chùm trong dữ liệu chưa được gán nhãn.
 
 \subsubsection{a.\quad Đánh giá bên trong}
 
