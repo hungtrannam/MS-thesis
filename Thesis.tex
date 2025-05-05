@@ -273,7 +273,7 @@ Nhận dạng thống kê gồm có hai bài toán chính: nhận dạng đượ
 Dữ liệu cho nhận dạng thống kê có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất. Nhận dạng thống kê cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu rất nhiều \citep{zha2023data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu này đã được đề xuất và phát triển. Khi dữ liệu lớn và phức tạp như hình ảnh, mỗi đối tượng cần được xem như một phân phối \citep{nguyen2024new}, do đó nhận dạng thống kê cho hàm mật độ xác suất được đề xuất. 
 
 \newpage
-Xét về số lượng phần tử trong các nhóm, dữ liệu có thể được gọi là mất cân bằng và không mất cân bằng. Khi số lượng phần tử của các nhóm không có sự chênh lệch nhiều thì nó được gọi là không mất cân bằng. Trong nhận dạng dữ liệu của thực tế, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng.  Đó là kiểu dữ liệu mà một nhóm hoặc một số ít nhóm có số lượng phần tử quá nhỏ so với các nhóm còn lại \citep{hu2024gat}. Khi một mô hình nhận dạng phải đối mặt với chênh lệch lớn về số lượng mẫu, nó dễ dàng bị thiên lệch về lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các mẫu của lớp thiểu số \citep{nguyen2009learning}. Chẳng hạn, trong tầm soát  ung thư, ca bị bệnh có thể ít hơn 1000 lần so với trường hợp không bị bệnh \citep{tang2008svms}. Khi đó các thuật toán nhận dạng  truyền thống sẽ không phát huy hiệu quả vì nó có xu hướng thiên vị lớp đa số mà bỏ qua lớp thiểu số. Trong trường hợp này, độ chính xác của các lớp thiểu số là quan trọng hơn \citep{hu2024gat} bởi vì  việc tầm soát sai bệnh nhân ung thư thành khỏe mạnh gây ra tổn thất tính mạng lớn hơn nhiều so với sai lầm ngược lại. 
+Xét về số lượng phần tử trong các nhóm, dữ liệu có thể được gọi là mất cân bằng và không mất cân bằng. Khi số lượng phần tử của các nhóm không có sự chênh lệch nhiều thì nó được gọi là không mất cân bằng. Trong nhận dạng dữ liệu của thực tế, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng.  Đó là kiểu dữ liệu mà một nhóm hoặc một số ít nhóm có số lượng phần tử quá nhỏ so với các nhóm còn lại \citep{hu2024gat}. Khi một mô hình nhận dạng phải đối mặt với chênh lệch lớn về số lượng mẫu, nó dễ dàng bị thiên lệch về lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các mẫu của lớp thiểu số \citep{nguyen2009learning}. Chẳng hạn, trong tầm soát  ung thư, ca bị bệnh có thể ít hơn 1000 lần so với trường hợp không bị bệnh \citep{tang2008svms}. Khi đó các thuật toán nhận dạng  truyền thống sẽ không phát huy hiệu quả vì nó có xu hướng thiên vị lớp đa số mà bỏ qua lớp thiểu số. Trong trường hợp này, độ chính xác của các lớp thiểu số là quan trọng hơn \citep{hu2024gat} bởi vì  việc tầm soát sai người mắc ung thư là khỏe mạnh gây ra tổn thất tính mạng lớn hơn nhiều so với sai lầm ngược lại. 
 
 Theo sự hiểu biết của chúng tôi, nhận dạng thống kê cho dữ liệu mất cân bằng với các phần tử rời rạc đã được quan tâm trong những năm gần đây. Tuy nhiên với dữ liệu hàm mật độ xác suất hầu như chưa được xem xét. Từ sự phân tích trên, đề tài {\bf ``Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu ảnh''} được chọn làm luận văn tốt nghiệp. 
 
@@ -589,7 +589,7 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 			\bf Tương tự & \bf                             $\Delta(\mathcal{F})$                             \\ \midrule
             Affinity của Matusita \cite{matusita1967notion} & $\int_{\Omega}\left(\prod_{j=1}^nf_j(x)\right)^{1/n}\mathrm{\,d}x$\\
             Affinity của Toussaint \cite{toussaint1972some} & $\int_{\Omega}\left(\prod_{j=1}^nf_j(x)\right)^{\alpha_j}\mathrm{\,d}x$\\
-			Độ rộng chùm \citep{Tai2010} & $\int_\Omega f_{\max}\mathrm{\,d}x -1$\\
+			Độ rộng chùm \citep{Tai2010} & $\int_\Omega f_{\max}(x)\mathrm{\,d}x -1$\\
 			Hệ số tương tự chùm \cite{vovan2018similar}& $\frac{k}{k-1}\left(1-\frac{1}{k}\int_{\Omega}f_{\max}(x)\mathrm{\,d}x\right)$\\
 			\bottomrule
 		\end{tabular*}
@@ -634,7 +634,7 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 
 
 
-Nhận dạng không được giám sát sử dụng dữ liệu không được gắn nhãn trong khi huấn luyện, trong đó mục tiêu của phương pháp này là phân định sự tương tự giữa các mẫu từ dữ liệu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}. Tương tự, phân tích chùm các hàm mật độ xác suất là bài toán phân tích chùm cho đối tượng các hàm mật độ xác suất \cite{nguyen2024new,nguyentrang2017fuzzy}. 
+Phân tích chùm là một nhánh của nhận dạng không được giám sát, trong đó nó có nhiệm vụ phân định sự tương tự giữa các mẫu trong dữ liệu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}. Bài toán sắp xếp các  mặt hàng trong siêu thị theo một trật tự chính là bài toán phân tích chùm, hay trong các báo cáo định tính cần nhóm/tổng hợp các ý kiến khách hàng. Phân tích chùm đặc biệt quan trọng để giải thích, khai thác tri thức từ dữ liệu. Ta cũng có phân tích chùm các hàm mật độ xác suất là bài toán phân tích chùm cho đối tượng các hàm mật độ xác suất \cite{nguyen2024new,nguyentrang2017fuzzy}. 
 
 Giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $\mathbf{x}_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(\mathbf{x})$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm $i=1\,,2\,,\ldots\,,c$ thỏa mãn ba ràng buộc
 \begin{enumerate}
@@ -881,7 +881,7 @@ So sánh về mặt phức tạp thời gian và phức tạp dung lượng, $k$
 
 
 
-\chy{Phân tích chùm phân vùng dựa vào trọng tâm nói chung là đơn giản. Tuy nhiên, nó cũng có một số điểm chưa tối ưu. Đầu tiên, họ thuật toán này phải tiên quyết cung cấp $k$ chùm mà điều này, đôi khi, ta sẽ không có tri thức về nó, dẫn đến khó khăn trong không gian có số chiều lớn. Ngoài ra, họ thuật toán này dựa trên tối ưu lồi nên không thích hợp để khám phá loại dữ liệu có nhiều hình dáng khác nhau. Cuối cùng, sự nhạy cảm với dữ liệu có bất thường như nhiễu, các ngoại lệ, dữ liệu có chồng chéo hay mất cân bằng đều tác động tiêu cực đến thuật toán, bao gồm việc rơi vào cực tiểu địa phương và cho kết quả không ổn định.}
+\chy{Phân tích chùm phân vùng dựa vào trọng tâm nói chung là đơn giản. Tuy nhiên, nó cũng có một số điểm chưa tối ưu. Đầu tiên, họ thuật toán này phải tiên quyết cung cấp $k$ chùm. Đôi khi, ta không có tri thức về số lượng chùm, dẫn đến khó khăn khi không gian có số chiều lớn. Ngoài ra, họ thuật toán này dựa trên tối ưu lồi nên không thích hợp để khám phá loại dữ liệu có nhiều hình dáng khác nhau. Cuối cùng, sự nhạy cảm với dữ liệu có bất thường như nhiễu, các ngoại lệ, dữ liệu có chồng chéo hay mất cân bằng đều tác động tiêu cực đến thuật toán, bao gồm việc rơi vào cực tiểu địa phương và cho kết quả không ổn định.}
 
 
 
@@ -897,7 +897,7 @@ So sánh về mặt phức tạp thời gian và phức tạp dung lượng, $k$
 
 \section{Phân loại cho hàm mật độ xác suất}
 
-Phương pháp phân loại đã phát triển với mục tiêu thành lập mô hình (hay quy tắc) có chức năng phân tách được các lớp quan tâm với sai lầm tối tiểu. Các quy luật đánh giá người này có bệnh B hay không dựa vào những dữ liệu cho trước chính là kết quả của bài toán phân loại. Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, Cây quyết định, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron learning \cite{rosenblatt1961principles}. Những phương pháp này là kinh điển và đã được áp dụng phát triển cho đến hiện nay. Những phương pháp này chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
+Phương pháp phân loại là một nhánh của nhận dạng có giám sát, phát triển với mục tiêu thành lập mô hình (hay quy tắc) có chức năng phân tách được các lớp quan tâm với sai lầm tối tiểu. Các quy luật đánh giá người này có bệnh B hay không dựa vào những dữ liệu cho trước chính là kết quả của bài toán phân loại. Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, Cây quyết định, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron learning \cite{rosenblatt1961principles}. Những phương pháp này là kinh điển và đã được áp dụng phát triển cho đến hiện nay. Những phương pháp này chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
 
 Phương pháp phân loại cho hàm mật độ xác suất là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. 
 
