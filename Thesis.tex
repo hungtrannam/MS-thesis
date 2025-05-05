@@ -397,7 +397,7 @@ $$\int_{\bm x\in \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=1 \text{ và } \int_{x \in\
 
 \section{Một số hàm mật độ thông dụng}
 
-Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể được nghiên cứu bởi các nhà khoa học thực nghiệm mà vẫn thỏa mãn các Tính chất~\ref{tc1}. Một số hàm mật độ quan trọng được trình bày qua các định nghĩa sau.
+Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể được nghiên cứu bởi các nhà khoa học thực nghiệm mà vẫn thỏa mãn các Tính chất~\ref{tc1}. Hàm mật độ Gauss, rất quan trọng trong thống kê, được trình bày qua định nghĩa sau.
 
 
 
@@ -429,7 +429,7 @@ Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể 
 		\label{fig:c1gaussian}
 	\end{figure}
 
-Nhìn Hình~\ref{fig:c1gaussian}, ta thấy hàm Gauss có đường cong đối xứng. Đặc trưng kỳ vọng $\bm\mu$ chính là cực trị tuyệt đối thể hiện vị trí của hàm mật độ, đặc trưng phương sai $\bm\Sigma$ thể hiện độ phân tán hay  của hàm. Thông thường, dữ liệu rời rạc thường được biến đổi thành dữ liệu hàm mật độ qua biểu diễn của hàm mật độ Gauss hoặc nhân-Gauss.
+Hình~\ref{fig:c1gaussian} cho thấy hàm Gauss có dáng điệu hình cong đối xứng. Đặc trưng kỳ vọng $\bm\mu$ chính là cực trị tuyệt đối thể hiện vị trí của hàm mật độ, đặc trưng phương sai $\bm\Sigma$ thể hiện độ phân tán hay độ cao của hàm. Thông thường, dữ liệu rời rạc thường được biến đổi thành dữ liệu hàm mật độ qua biểu diễn của hàm mật độ Gauss hoặc nhân-Gauss.
 
 
 
@@ -450,7 +450,7 @@ $$\int_{\Omega}\theta_i(x)\mathrm{\,d}x=\int_{\Omega}\frac{\sum_{j=1}^n\mu_{ij}\
 Ta cũng mở rộng được cho hàm mật độ đại diện chùm đến không gian $d$-chiều tương tự cho véc-tơ ngẫu nhiên $\bm X$. Ngoài ra, \cite{nguyen2023globally,nguyen2023balance} đề xuất hàm mật độ đại diện Gauss như là một phiên bản đơn giản hóa hàm mật độ kết hợp \eqref{daidien}. Hàm mật độ đại diện Gauss có dạng phân phối chuẩn $\mathcal{N}({\bm\mu}\,,\Sigma)$ sao cho tổng khoảng cách giữa chúng đến các hàm mật độ khác là nhỏ nhất, tức là
 $$\theta_{G_i} = \arg\min_{f({\bm\mu}\,,\Sigma)}\sum_{j=1}^n\mu_{ij}D(f({\bm\mu}\,,\Sigma)\,,f_j).$$
 
-
+Hình \ref{} minh họa cụ thể hai cách biểu diễn hàm mật độ đại diện trong cùng một chùm hàm mật độ $\mathcal{F}$ bằng đường thẳng in đậm. Dễ thấy sự khác biệt,c hàm mật độ đại diện tập trung vào vị trí của nó trong không gian, còn hàm mật độ đại diện Gauss chuyển dịch chùm hàm mật độ thành một đại diện chuẩn đơn giản hơn. 
 
 
 
@@ -662,7 +662,7 @@ Thuật toán phân chùm dựa vào trọng tâm đề xuất hàm mục tiêu 
 
 \subsection{Phân tích chùm không mờ}	
 
-Phân tích chùm không mờ (hay phân chùm cứng) yêu cầu một phần tử chỉ thuộc duy nhất một chùm cố định. Nhiều thuật toán đã phát triển thích hợp cho đa dạng dữ liệu khác nhau. Tuy nhiên, tiểu mục này chỉ trình bày $k$-means và phân tích chùm tự cập nhật là các thuật toán đã được sử dụng tích cực cho dữ liệu hàm mật độ xác suất.
+Phân tích chùm không mờ (hay phân chùm cứng) yêu cầu một phần tử chỉ thuộc duy nhất một chùm cố định. Tiểu mục này trình bày $k$-means và phân tích chùm tự cập nhật là các thuật toán đã được sử dụng tích cực cho dữ liệu hàm mật độ xác suất.
 
 \subsubsection{a.\quad Phân tích chùm $k$-means}
 
@@ -936,9 +936,9 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 \section{Giới thiệu}
 \subsection{Giới thiệu bài toán phân tích chùm cho dữ liệu mất cân bằng}
 
-Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triển rất mạnh và nhanh chóng. Dữ liệu mất cân bằng nói chung tồn tại hai đối tượng: Kích thước chùm và số lượng phần tử trong chùm. Kích thước chùm mất cân bằng xảy ra khi 
+Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triển để giải quyết nhu cầu thực tế. Cụ thể, bài toán gán nhãn một hình ảnh kích thước các ngôi sao là có sự mất cân bằng, hay phân đoạn chuỗi tín hiệu có nhiễu cũng có tính chất mất cân bằng. Việc giải quyết bằng phân tích chùm là bước tiền xử lý quan trọng cho các khám phá tiếp theo. Tựu trung lại, dữ liệu mất cân bằng tồn tại hai tình trạng: Kích thước chùm và số lượng phần tử trong chùm mất cân bằng. Kích thước chùm mất cân bằng xảy ra khi 
 
-Ở dữ liệu rời rạc, thuật toán phân tích chùm mất cân bằng đã được giải quyết rất tốt. 
+Các bài toán này đòi hỏi nhiều kỹ thuật phân tích chùm rất cao. Ở dữ liệu rời rạc, thuật toán phân tích chùm mất cân bằng đã được giải quyết rất tốt. 
 
 Tuy nhiên, các thuật toán này thường giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng tạo ra độ lệch trọng tâm đáng kể đối với các chùm có kích thước nhỏ \cite{yu2024suppressed}. 
 
