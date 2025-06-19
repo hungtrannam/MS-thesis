@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.11}
+
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{amsmath,amssymb,bm,mathtools,amsfonts,mathptmx}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=10cm, height=6cm,
+			enlargelimits=upper,
+			samples=200,
+			domain=-4:4,
+			smooth,
+			ymax=0.5,
+			title={(a) Hàm mật độ Skew-Normal một chiều},
+			title style={at={(0.5,-0.15)}, anchor=north},
+			axis lines=left,
+			xlabel={$x$},
+			ylabel={$f(x)$}
+			]
+			% Tham số skew-normal
+			\pgfmathsetmacro{\alpha}{4}
+			
+			% Hàm mật độ skew-normal xấp xỉ
+			\addplot[black!70, thick] 
+			{2/(sqrt(2*pi)) * exp(-x^2/2) * (1 / (1 + exp(-1.702 * \alpha * x)))};
+			
+			% Vị trí trung tâm
+			\node[circle, inner sep=1pt, fill=black, label={[xshift=-4pt, yshift=2pt]right:$\xi$}] 
+			at (axis cs:0,0.4) {};
+		\end{axis}
+	\end{tikzpicture}
+	
+\end{document}

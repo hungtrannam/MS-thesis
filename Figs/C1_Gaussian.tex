@@ -5,17 +5,15 @@
 
 \usepackage[utf8]{vietnam}
 \usepackage{xcolor}
-%\usepackage{helvet}
-%\renewcommand{\familydefault}{\sfdefault}
 \usepackage{times}
 \usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts, mathptmx}						
-%\definecolor{CTUblue}{rgb}{0.121568627450, 0.3607843137254902, 0.6627450980392157}
-%\definecolor{CTUcyan}{rgb}{0, 0.6862745098039216, 0.9372549019607843}
 
 \begin{document}
 	
 	\begin{tikzpicture}[scale = .75]
-		\begin{groupplot}[group style={group size=2 by 1, horizontal sep=1.5cm}]
+		\begin{groupplot}[
+			group style={group size=2 by 1, horizontal sep=1.5cm}
+			]
 			% First subplot (1D Gaussian)
 			\nextgroupplot[
 			anchor=south west,
@@ -23,9 +21,10 @@
 			every axis plot post/.append style={
 				mark=none, domain=-4:4, samples=50, smooth
 			},
-			width=0.45\linewidth, % Adjust the width to fit within standalone
-			height=0.45\linewidth, % Adjust the height as necessary
-			title={(a) Hàm mật độ Gauss một chiều}
+			width=0.45\linewidth,
+			height=0.45\linewidth,
+			title={(a) Hàm mật độ Gauss một chiều},
+			title style={at={(0.5,-0.15)}, anchor=north}, % đặt tiêu đề phía dưới
 			]
 			\addplot[color=black!45, line width=1.5pt] {1/(sqrt(2*pi))*exp(-((x)^2)/(2))};
 			\node[circle,inner sep=1pt,fill=black!90,pin=350:$\mu$] at (axis cs:0,.4) {};  
@@ -38,9 +37,10 @@
 			samples= 50,
 			samples y=50,
 			colorbar,
-			width=0.45\linewidth, % Adjust the width
-			height=0.45\linewidth, % Adjust the height
-			title={(b) Hàm mật độ Gauss hai chiều}
+			width=0.45\linewidth,
+			height=0.45\linewidth,
+			title={(b) Hàm mật độ Gauss hai chiều},
+			title style={at={(0.5,-0.15)}, anchor=north}, % đặt tiêu đề phía dưới
 			]
 			\def\centerx{2}
 			\def\centery{-1}
