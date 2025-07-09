@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.11}
+
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts, mathptmx}						
+
+\begin{document}
+	
+	
+	\begin{tikzpicture}
+		
+		% (a) Value matrix
+		\fill[black!10] (0,0) rectangle (2,4); % value matrix
+		\node [rotate=90] at (1,2) {{Giá trị hàm mật độ}};
+		\node[rotate=90] at (-0.3,2) {{Hàm mật độ}};
+		\node at (1,-0.5) {(a)};
+		\node at (1,4.3) {{Đối tượng}};
+		
+		% separator line
+		
+		% (b) Proximity matrix
+		\fill[black!10] (3,0) rectangle (7,4); % proximity matrix
+		\node at (5,2) {{Khoảng cách}};
+		\node[rotate=90] at (2.7,2) {{Đối tượng}};
+		\node at (5,4.3) {{Đối tượng}};
+		\node at (5,-0.5) {(b) };
+		
+	\end{tikzpicture}
+	
+\end{document}

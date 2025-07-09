@@ -73,6 +73,10 @@
 \renewcommand{\glsmcols}{2} % Số cột glossary
 \setglossarystyle{mcolindex} % Kiểu glossary
 
+% ====== INDEX ======
+\usepackage{imakeidx}
+\makeindex
+
 % ====== PHỤ LỤC ======
 \usepackage[standard,thmmarks]{ntheorem} % Định lý, bổ đề,...
 \usepackage[toc,page,title]{appendix} % Phụ lục có mục lục
@@ -227,6 +231,7 @@
 \AtBeginDocument{\renewcommand{\listtablename}{DANH SÁCH BẢNG}}
 \AtBeginDocument{\renewcommand{\appendixname}{PHỤ LỤC}}
 \AtBeginDocument{\renewcommand{\listalgorithmname}{DANH SÁCH GIẢI THUẬT}}
+\AtBeginDocument{\renewcommand{\indexname}{CHỈ MỤC}}
 
 % ====== THÔNG TIN LUẬN VĂN ======
 \newcommand{\university}{TRƯỜNG ĐẠI HỌC CẦN THƠ}
@@ -327,7 +332,12 @@ Theo sự hiểu biết của chúng tôi, nhận dạng thống kê cho dữ li
  \addcontentsline{toc}{chapter}{\textbf{PHẦN NỘI DUNG}}
 
 	\chapter{KIẾN THỨC CHUẨN BỊ}\label{chapter_1}
+	
+	
 \section{Hàm mật độ xác suất}
+
+
+Hàm mật độ xác suất được xem như là đối tượng nghiên cứu của các nhà thống kê từ những năm 2010. Trong phần này, một vài các lý thuyết cơ sở được tổng hợp nhằm chuẩn bị cho nội dung tiếp theo.
 
 \dng{[Biến ngẫu nhiên] Một biến ngẫu nhiên $X$ trong không gian xác suất $(\Omega\,,\mathcal{E}\,,\mathbb{P})$ là một hàm Borel đo được từ $\Omega$ đến $\mathbb{R}$, tức là $X\,:\,(\Omega\,,\mathcal{E})\to(\mathbb{R}\,,\mathcal{B}(\mathbb{R}))$.
 
@@ -363,7 +373,7 @@ Không mất tính tổng quát, ta giả sử các hàm mật độ được đ
 	\end{array}\right.
 \end{align*}
 
-Trong luận văn này, chúng tôi tập trung khảo sát tính chất của hàm mật độ ($\mu$ là độ đo Lebesgue) liên tục tuyệt đối của biến ngẫu nhiên $X$.
+Trong luận văn này, chúng tôi tập trung khảo sát tính chất của hàm mật độ ($\mu$ là độ đo Lebesgue) liên tục tuyệt đối của biến ngẫu nhiên $X$. 
 
 
 
@@ -377,7 +387,7 @@ Trong luận văn này, chúng tôi tập trung khảo sát tính chất của h
 
 
 \chy{
-Các giá trị hàm mật độ xác suất có thể lớn hơn $1$ những phải thỏa mãn Tính chất \ref{tc1}. Xác suất tại điểm $x=x_0$ bất kỳ không được khảo sát trong hàm mật độ liên tục tuyệt đối mà một tập Borel thực như Tính chất \ref{tc1}.(3), tức là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục.
+Các giá trị của mật độ xác suất thì có thể tùy ý, nhưng phải thỏa mãn Tính chất \ref{tc1}. Tương tự, xác suất tại điểm $x=x_0$ bất kỳ không được khảo sát trong hàm mật độ liên tục tuyệt đối mà một tập Borel thực như Tính chất \ref{tc1}.(3), nghĩa là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục.
 }
 
 \dng{[Dữ liệu hàm mật độ $1$-chiều]
@@ -390,14 +400,14 @@ Dữ liệu hàm mật độ $d$-chiều là một bộ đối tượng không c
 $$\int_{\bm x\in \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=1 \text{ và } \int_{x \in\mathbb{R}\setminus \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=0. $$
 }
 
-\chy{Dữ liệu hàm mật độ xác suất có cấu trúc phức tạp và tốn nhiều thời gian thu thập. Hầu hết các dữ liệu hàm mật độ ta có thể bắt gặp đều là dữ liệu mô phỏng chùm hàm mật độ như \cite{nguyen2023globally,vo2024supervised}. Trong thực tế, dữ liệu hàm mật độ $1$-chiều cụ thể khám phá cơ cấu phân bố loài, là dữ liệu Cá hồi vây vàng (\textit{Yellowfin tuna}) của \cite{minami2024regression} biểu diễn phân bố chiều dài của cá qua các ô tọa độ vùng biển Thái Bình Dương từ 2003 đến 2007. Ngoài ra, dữ liệu hàm mật độ $2$-chiều chỉ xuất hiện khi ứng dụng trong phân tích chùm tương quan điểm số của sinh viên các khoa/viện thuộc trường Đại học Cần Thơ. Đặc biệt, dữ liệu hàm mật độ còn được thành lập dựa trên dữ liệu hình ảnh trích xuất màu sắc nhưng vẫn rất hạn chế trong nghiên cứu.}
+\chy{Dữ liệu hàm mật độ xác suất có cấu trúc phức tạp và tốn nhiều thời gian thu thập. Hầu hết các dữ liệu hàm mật độ ta có thể bắt gặp đều là dữ liệu mô phỏng chùm hàm mật độ như \cite{nguyen2023globally,vo2024supervised}. Trong thực tế, dữ liệu hàm mật độ $1$-chiều cụ thể khám phá cơ cấu phân bố loài, là dữ liệu Cá hồi vây vàng (\textit{Yellowfin tuna}) của \cite{minami2024regression} biểu diễn phân bố chiều dài của cá qua các ô tọa độ vùng biển Thái Bình Dương từ 2003 đến 2007. Ngoài ra, dữ liệu hàm mật độ $2$-chiều chỉ xuất hiện khi ứng dụng trong phân tích chùm tương quan điểm số của sinh viên các khoa/viện thuộc trường Đại học Cần Thơ. Đặc biệt, dữ liệu hàm mật độ còn được thành lập dựa trên dữ liệu hình ảnh trích xuất màu sắc nhưng vẫn rất hạn chế trong ứng dụng.}
 
 
-Để minh họa, luận văn này tập trung chủ yếu vào dữ liệu các hàm mật độ mô phỏng định nghĩa trên toàn không gian mẫu $I=\mathbb{R}$ hoặc $\bm R=\mathbb{R}^d$, và ký hiệu xuyên suốt là $\mathcal{F}=\{f_1(x)\,,\ldots\,,f_n(x)\}$. 
+Để minh họa, luận văn này tập trung chủ yếu vào dữ liệu các hàm mật độ mô phỏng định nghĩa trên toàn không gian mẫu $I=\mathbb{R}$ hoặc $\bm R=\mathbb{R}^d$, và ký hiệu xuyên suốt là $\mathcal{F}=\{f_1(x)\,,\ldots\,,f_n(x)\}$. Về mặt nguyên tắc,  dữ liệu hàm mật độ này có thể là rời rạc hoặc liên tục. Để đơn giản hóa, chúng tôi giả định các đối tượng là độc lập và cùng phân phối, và các dữ liệu hàm mật độ $f_i$ là liên tục.
 
 \section{Một số hàm mật độ thông dụng}
 
-Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể được nghiên cứu bởi các nhà khoa học thực nghiệm mà vẫn thỏa mãn các Tính chất~\ref{tc1}. Hàm mật độ Gauss, rất quan trọng trong thống kê, được trình bày qua định nghĩa sau.
+Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể được nghiên cứu bởi các nhà khoa học thực nghiệm thỏa mãn các Tính chất~\ref{tc1}. Hàm mật độ Gauss, rất quan trọng trong thống kê, được trình bày qua định nghĩa sau.
 
 
 
@@ -415,7 +425,6 @@ Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể 
 	
 	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của hàm mật độ xác suất Gauss là 
 	}
-	
 	
 	\begin{figure}[th]
 		\centering
@@ -621,28 +630,22 @@ Trong khoa học máy tính, các khoảng cách hàm mật độ phải đượ
 
 
 
-\subsection{Nhân tử L'Arange}
-
-\subsection{Điều kiện Karush–Kuhn–Tucker}
-
-
-
-\subsection{Định lý hội tụ toàn cục Zangwill}
-
-\begin{definition}[Hàm độ dốc] Hàm $g\,:\, D_f\to \mathbb{R}$ là hàm độ dốc của $(A\,,S)$ khi
-\begin{itemize}
-    \item $g$ liên tục trên miền $D_f$
-    \item 
-\end{itemize}
-
-\end{definition}
-
-
-
-
-\begin{theorem}[Định lý Zangwill]
-    
-\end{theorem}
+%\subsection{Nhân tử L'Arange}
+%
+%\subsection{Điều kiện Karush–Kuhn–Tucker}
+%
+%
+%
+%\subsection{Định lý hội tụ toàn cục Zangwill}
+%
+%
+%
+%
+%
+%
+%\begin{theorem}[Định lý Zangwill]
+%    
+%\end{theorem}
 
 
 
@@ -653,16 +656,16 @@ Trong khoa học máy tính, các khoảng cách hàm mật độ phải đượ
 
 
 
-Phân tích chùm là một nhánh của nhận dạng không được giám sát. Nó có nhiệm vụ phân định sự tương tự giữa các mẫu trong dữ liệu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}. Ví dụ như khi ta cần sắp xếp các  mặt hàng trong siêu thị chính là ta đang giải quyết bài toán phân tích chùm, hay trong các báo cáo định tính cần nhóm/tổng hợp các ý kiến khách hàng theo các chủ đề khác nhau, bản chất ta cũng phải giải quyết bằng phân tích chùm. Các thuật toán này thích hợp để giải thích, khai thác tri thức từ dữ liệu. Ta cũng có phân tích chùm các hàm mật độ xác suất là bài toán phân tích chùm cho đối tượng các hàm mật độ xác suất \cite{nguyen2024new,nguyentrang2017fuzzy}. 
+Phân tích chùm là một nhánh của nhận dạng không được giám sát. Nó có nhiệm vụ khám phá sự tương tự giữa các mẫu trong dữ liệu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}. Ví dụ như khi ta cần phân đoạn một đối tượng trong nội dung hình ảnh, hay trong các báo cáo định tính cần nhóm/tổng hợp ý kiến, quan điểm theo các chủ đề khác nhau, bản chất ta phải giải quyết bằng phân tích chùm. Các thuật toán này thích hợp để khám phá các cấu trúc và mối quan hệ có ý nghĩa giữa các mẫu trong dữ liệu, tạo điều kiện thuận lợi cho nhiều ứng dụng và phân tích sâu hơn. Ta cũng có phân tích chùm các hàm mật độ xác suất là bài toán phân tích chùm cho đối tượng các hàm mật độ xác suất \cite{nguyen2024new,nguyentrang2017fuzzy}. 
 
-Giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $\mathbf{x}_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(\mathbf{x})$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm $i=1\,,2\,,\ldots\,,c$ thỏa mãn ba ràng buộc
+Giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $\mathbf{x}_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(\mathbf{x})$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm nguyên, với $i=1\,,2\,,\ldots\,,c$ thỏa mãn ba ràng buộc
 \begin{enumerate}
 	\item Hợp tất cả các chùm $\bigcup_i c_i$ bằng $\mathcal{F}$,
 	\item Giao của mỗi chùm là rỗng, $c_i\cap c_j =\emptyset$, với mỗi $i\ne j$,
 	\item Lực lượng của mỗi chùm là khác rỗng, $|c_i|\ne \emptyset$.
 \end{enumerate}
 
-Ràng buộc 1 đảm bảo tất cả các mẫu phải được phân tách thành các chùm, trong đó, mỗi chùm phải chứa ít nhất một phần tử (Ràng buộc 3) và không có mẫu nào được xếp vào cùng một chùm (Ràng buộc 2).
+Phép gán này được mô tả bằng một ánh xạ many-to-one, hay còn gọi là \textit{bộ mã hóa} (encoding) $i=c(j)$, trong đó đối tượng thứ $j$ được gán vào cụm thứ $i$. Ràng buộc 1 đảm bảo tất cả các mẫu phải được phân tách thành các chùm, trong đó, mỗi chùm phải chứa ít nhất một phần tử (Ràng buộc 3) và không có mẫu nào được xếp vào cùng một chùm (Ràng buộc 2). 
 
 Thuật toán phân chùm dựa vào trọng tâm đề xuất hàm mục tiêu khác nhau, nhưng tư tưởng chung là sự phân bổ tối tiểu khoảng cách phần tử trong chùm trong khi vẫn giữ tối đa khoảng cách phần tử giữa các chùm. Tác vụ này được chia thành hai loại theo lý thuyết mờ \cite{bezdek2013pattern} là phân chùm không mờ (như $k$-mean \cite{nguyen2024new}) và phân chùm mờ (như Fuzzy $c$-means \cite{nguyentrang2017fuzzy,vovan2019cluster}).
 
@@ -684,11 +687,11 @@ Phân tích chùm không mờ (hay phân chùm cứng) yêu cầu một phần t
 
 \subsubsection{a.\quad Phân tích chùm $k$-means}
 
-$k$-means nguyên bản được đề cập bởi J. Macqueen \cite{macqueen1967some} cho dữ liệu rời rạc nhưng mãi đến \cite{Tai2010,nguyen2024new}, nó được mở rộng cho hàm mật độ với dáng vấp của bán giám sát hiện đại. Xét $k$-means là bài toán tối tiểu đơn mục tiêu là tổng các bình phương trong chùm nhằm tìm kiếm các $\theta_i$, ta có
+Thuật toán $k$-means nguyên bản được đề cập bởi J. Macqueen \cite{macqueen1967some} cho dữ liệu rời rạc nhưng mãi đến \cite{Tai2010,nguyen2024new}, nó được mở rộng cho hàm mật độ với dáng vấp của bán giám sát hiện đại. Xét $k$-means là bài toán tối tiểu đơn mục tiêu là tổng các bình phương trong chùm nhằm tìm kiếm các $\theta_i$, ta có
 \begin{align}\tag{$k$-means}\label{Jk}
 	\text{Minimize}\,&:\, J(\mathbf{U}\,,\Theta\,|\, \mathcal{F}\,,c) = \sum_{i=1}^{c}\sum_{f_j\in c_i}\mu_{ij}\mathrm{d}^2(\theta_i\,,{f}_j),
 \end{align}
-trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $j$ thỏa $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại.
+trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $j$ thỏa $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại. $\mathrm{d}^2(\theta_i\,,{f}_j)$ là khoảng cách giữa hàm mật độ trọng tâm đến các đối tượng $f_j$ còn lại trong dữ liệu.
 
 \bode{[Thành lập hàm mật độ đại diện]
 \begin{align}\label{daidien_KM}
@@ -711,18 +714,19 @@ $$\sum_{f_j\in c_i}\mu_{ij}\int_{\Omega}2(\theta_i(x) - f_j(x))\mathrm{\,d}x=0\L
 Tóm lại, mật độ đại diện tối ưu để cực tiểu hàm mục tiêu là hàm mật độ trọng tâm~\eqref{daidien} các hàm mật độ trong các chùm. 
 }
 
+\chy{Vì mỗi hàm mật độ trọng tâm~\eqref{daidien} được đại diện bằng trung bình có trọng số của từng cụm, nên có thể kết quả trọng tâm này không đồng nhất với bất kỳ đối tượng nào trong mẫu. Thay vào đó, mật độ trọng tâm này mô tả một giả định nằm bất kỳ làm nguyên mẫu để các hàm mật độ các so sánh \cite{watson2023philosophy}.
 Hơn nữa, vì ma trận phân vùng \eqref{} của $k$-means là phân vùng cứng nên ta có thể rút gọn hàm mật độ đại diện \eqref{daidien_KM} thành
 \begin{align}\label{daidien_KM2}
     \theta_i = \frac{1}{|c_i|}\sum_{f_j\in c_i}f_j
 \end{align}
-
+}
 
 
 
 
 \begin{algorithm}[H]
     \caption{Giải thuật phân tích chùm $k$-means (KCF)}
-    \label{alg1}
+    \label{kmeans}
     \begin{algorithmic}[1] % The number tells where the line numbering should start
         \Procedure{KCF}{$c\,,\varepsilon$}\Comment{Cho trước số chùm $c$}
             \State $t\gets0$
@@ -730,8 +734,8 @@ Hơn nữa, vì ma trận phân vùng \eqref{} của $k$-means là phân vùng c
             \While{$\Vert J^{(t+1)} - J^{(t)} \Vert<\varepsilon$}
                 \State $t \gets t+1$
                 \State Cập nhật ${\bm\mu}^{(t+1)}$ bằng Công thức \eqref{}
-                \State Cập nhật $\Theta^{(t+1)}$ bằng Công thức \eqref{}
-            \EndWhile\label{euclidendwhile}
+                \State Cập nhật $\Theta^{(t+1)}$ bằng Công thức \eqref{daidien_KM2}
+            \EndWhile
             \State \textbf{return} ${\bm\mu}$ và $\Theta$.\Comment{Ma trận phân vùng và hàm mật độ đại diện}
         \EndProcedure
     \end{algorithmic}
@@ -750,6 +754,10 @@ Hơn nữa, vì ma trận phân vùng \eqref{} của $k$-means là phân vùng c
 
 
 
+
+
+
+\subsubsection{b.\quad Phân tích chùm thứ bậc}
 
 
 
@@ -878,27 +886,18 @@ So sánh về mặt phức tạp thời gian và phức tạp dung lượng, $k$
 
 
 
-\chy{Phân tích chùm phân vùng dựa vào trọng tâm nói chung là đơn giản. Tuy nhiên, nó cũng có một số điểm chưa tối ưu. Đầu tiên, họ thuật toán này phải tiên quyết cung cấp $k$ chùm. Đôi khi, ta không có tri thức về số lượng $k$, dẫn đến khó khăn khi phân chùm các mẫu có số chiều lớn. Ngoài ra, họ thuật toán này dựa trên tối ưu lồi nên không thích hợp để khám phá loại dữ liệu có hình dáng khác nhau. Cuối cùng, khi dữ liệu có các bất thường như nhiễu, các ngoại lệ, dữ liệu có chồng chéo hay mất cân bằng đều tác động tiêu cực đến thuật toán, bao gồm việc rơi vào cực tiểu địa phương và cho kết quả không ổn định.}
-
-
-
-
-
-
-
-
-
-
-
+\chy{Phân tích chùm phân vùng dựa vào trọng tâm nói chung là đơn giản. Tuy nhiên, nó cũng có một số điểm chưa tối ưu bao gồm tính tối ưu của siêu tham số, chất lượng dữ liệu, độ mờ đục của mô hình và cơ hội sử dụng (sai). Đầu tiên, họ thuật toán này không cung cấp $c$ chùm tối ưu. Đôi khi, ta không có tri thức về số lượng $c$, dẫn đến khó khăn khi phân chùm các mẫu có số chiều lớn dẫn đến \textit{quá khớp} \index{quá khớp (overfitting)}. Theo Goutte \textit{et al.}``\emph{khi số lượng chùm không phản ánh trong dữ liệu, kết quả cuối cùng cơ bản là vô nghĩa}'' \cite{goutte1999clustering}. Ngoài ra, thuật toán $k$-means dựa trên tối ưu lồi nên không thích hợp để khám phá loại dữ liệu có hình dáng khác nhau. Cuối cùng, sự tiềm ẩn của dữ liệu có các bất thường như nhiễu, các ngoại lệ, dữ liệu có chồng chéo hay mất cân bằng đều tác động tiêu cực đến thuật toán. Bất kỳ tuyên bố về tính khách quan đều phụ thuộc vào các đầu vào do người dùng cung cấp và được trung gian bởi các đầu ra do người dùng diễn giải \cite{leonelli2019data,watson2023philosophy}.}
 
 
 \section{Phân loại cho hàm mật độ xác suất}
 
-Phương pháp phân loại là một nhánh của nhận dạng có giám sát, phát triển với mục tiêu thành lập mô hình (hay quy tắc) có chức năng phân tách được các lớp quan tâm với sai lầm tối tiểu. Các quy luật đánh giá người này có bệnh B hay không dựa vào những dữ liệu cho trước chính là kết quả của bài toán phân loại. Hay phân biệt được hữu hạn các biểu cảm khuôn mặt dựa vào hình ảnh cũng phải thực hiện bài toán phân loại. Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, Cây quyết định, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron \cite{rosenblatt1961principles}. Những phương pháp này là kinh điển và đã được áp dụng phát triển cho đến hiện nay. Nó cũng chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
+Phương pháp phân loại là một nhánh của nhận dạng có giám sát, phát triển với mục tiêu thành lập mô hình (hay quy tắc) có chức năng phân tách được các lớp quan tâm với sai lầm tối tiểu. Các quy luật đánh giá có bệnh B hay không dựa vào những dữ liệu cho trước chính là thực hiện bài toán phân loại. Hay phân biệt được hữu hạn các biểu cảm khuôn mặt dựa vào hình ảnh cũng phải thực hiện bài toán phân loại. Đầu ra của mô hình phân loại là ước tính hoặc dự đoán hữu hạn các nhãn cho trước, không bao gồm phép đo \cite{Fillmore-Patrick_2025}. 
+
+Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, Cây quyết định, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron \cite{rosenblatt1961principles}. Những phương pháp này là kinh điển và đã được áp dụng phát triển cho đến hiện nay. Nó cũng chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
 
 Phương pháp phân loại cho hàm mật độ xác suất là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. 
 
-\subsection{Vấn đề tìm xác suất tiên nghiệm}
+\subsection{Vấn đề tìm xác suất tiên nghiệm}biến
 
 
 
@@ -1081,12 +1080,15 @@ Trí tuệ nhân tạo là trọng tâm, là mũi đột phá chính của phát
 
 
 %%%%%%%%%%%% Tài liệu tham khảo %%%%%%%%%%%%
+\addcontentsline{toc}{chapter}{\numberline{TÀI LIỆU THAM KHẢO}}%
 \bibliographystyle{ieeetr}
 %\bibliographystyle{apacite}
 
 {\fontsize{11}{15pt}\selectfont
 \bibliography{Tailieu}
 }
+
+
 
 
 %\clearpage
@@ -1115,8 +1117,8 @@ Trí tuệ nhân tạo là trọng tâm, là mũi đột phá chính của phát
 
 
 
-
-
+\addcontentsline{toc}{chapter}{\numberline{CHỈ MỤC}}%
+\printindex
 
 
 
