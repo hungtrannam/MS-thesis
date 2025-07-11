@@ -1,0 +1,176 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.11}
+
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts, mathptmx}						
+
+
+\begin{document}
+	
+	\newcommand{\drawclusterfoci}{
+		% Define a, b
+		\def\a{0.6}
+		\def\b{0.45}
+		% Compute c = sqrt(a^2 - b^2)
+		\pgfmathsetmacro{\c}{sqrt(\a*\a - \b*\b)}         
+		\pgfmathsetmacro{\ccos}{\c * cos(60)}            
+		\pgfmathsetmacro{\csin}{\c * sin(60)}            
+		
+		% Draw ellipses
+		\fill[gray!20, rotate around={\c*60:(-1,1)}] (-1,1) ellipse ({\b} and {\a});
+		\fill[gray!20, rotate around={-\c*60:(1,1)}] (1,1) ellipse ({\b} and {\a});
+		\fill[gray!20] (0,-1) ellipse ({\b} and {\a});
+		
+		% Left cluster foci (rotated +60°)
+		\coordinate (L1) at ({-1 + \ccos}, {1 - \csin});  % focus 1
+		\coordinate (L2) at ({-1 - \ccos}, {1 + \csin});  % focus 2
+		
+		% Right cluster foci (rotated -60°)
+		\coordinate (R1) at ({1 + \ccos}, {1 + \csin});   % focus 1
+		\coordinate (R2) at ({1 - \ccos}, {1 - \csin});   % focus 2
+		
+		% Bottom cluster foci (vertical)
+		\coordinate (B1) at (0, {-1 - \c});               % focus 1
+		\coordinate (B2) at (0, {-1 + \c});               % focus 2
+		
+		% Draw foci points
+		\fill[black!70] (L1) circle (3pt);
+		\fill[black!70] (L2) circle (3pt);
+		\fill[black!70] (R1) circle (3pt);
+		\fill[black!70] (R2) circle (3pt);
+		\fill[black!70] (B1) circle (3pt);
+		\fill[black!70] (B2) circle (3pt);
+		
+		% Define centroids
+		\coordinate (C1) at (-1,1);
+		\coordinate (C2) at (1,1);
+		\coordinate (C3) at (0,-1);
+	}
+	
+	
+	
+		% ---------- CENTROID LINKAGE ----------
+	\begin{tikzpicture}[scale=1.5]
+		\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+	\drawclusterfoci
+	\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L1) -- (R2);
+	\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L1) -- (B2);
+	\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (R2) -- (B2);
+	\node[align=left] at (0,-2.2) {
+	\Large	\textbf{\textsf{Liên kết đơn}} \\
+	\Large	Khoảng cách ngắn nhất
+	};
+\end{tikzpicture}
+	
+	\hspace{.5cm}
+	
+	% ---------- COMPLETE (MAX) LINKAGE ----------
+	\begin{tikzpicture}[scale=1.5]
+		\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L2) -- (R1);
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L2) -- (B1);
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (R1) -- (B1);
+		\node[align=left] at (0,-2.2) {
+		\Large		\textbf{\textsf{Liên kết đủ}} \\
+		\Large	Khoảng cách dài nhất
+		};
+	\end{tikzpicture}
+	
+	\hspace{.5cm}
+	
+		% ---------- CENTROID LINKAGE ----------
+	\begin{tikzpicture}[scale=1.5]
+		\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (C1) -- (C2) -- (C3) -- cycle;
+		\node[align=left] at (0,-2.2) {
+			\Large	\textbf{\textsf{Liên kết tâm (UPGMC)}} \\
+			\Large	Khoảng cách giữa trọng tâm
+		};
+	\end{tikzpicture}
+	
+	\hspace{.5cm}
+	
+	% ---------- AVERAGE LINKAGE ----------
+	\begin{tikzpicture}[scale=1.5]
+				\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\foreach \pL in {L1,L2}
+		\foreach \pR in {R1,R2}
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (\pL) -- (\pR);
+		\foreach \pL in {L1,L2}
+		\foreach \pB in {B1,B2}
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (\pL) -- (\pB);
+		\foreach \pR in {R1,R2}
+		\foreach \pB in {B1,B2}
+		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (\pR) -- (\pB);
+		\node[align=left] at (0,-2.2) {
+		\Large		\textbf{\textsf{Liên kết trung bình (UPGMA)}} \\
+		\Large	Khoảng cách trung bình
+		};
+	\end{tikzpicture}
+	
+	\hspace{.5cm}
+	
+	
+		\newcommand{\drawclusterfocii}{
+		% Define a, b
+		\def\a{0.6}
+		\def\b{0.45}
+		% Compute c = sqrt(a^2 - b^2)
+		\pgfmathsetmacro{\c}{sqrt(\a*\a - \b*\b)}         
+		\pgfmathsetmacro{\ccos}{\c * cos(60)}            
+		\pgfmathsetmacro{\csin}{\c * sin(60)}            
+		
+		% Draw ellipses
+
+		\fill[gray!20, rotate around={-\c*60:(1,1)}] (1,1) ellipse ({\b} and {\a});
+		\fill[gray!20] (0,-1) ellipse ({\b} and {\a});
+		
+		
+		% Right cluster foci (rotated -60°)
+		\coordinate (R1) at ({1 + \ccos}, {1 + \csin});   % focus 1
+		\coordinate (R2) at ({1 - \ccos}, {1 - \csin});   % focus 2
+		
+		% Bottom cluster foci (vertical)
+		\coordinate (B1) at (0, {-1 - \c});               % focus 1
+		\coordinate (B2) at (0, {-1 + \c});               % focus 2
+		
+		% Draw foci points
+		\fill[black!70] (R1) circle (3pt);
+		\fill[black!70] (R2) circle (3pt);
+		\fill[black!70] (B1) circle (3pt);
+		\fill[black!70] (B2) circle (3pt);
+		
+		% Define centroids
+		\coordinate (C2) at (1,1);
+		\coordinate (C3) at (0,-1);
+	}
+	
+	% ---------- WARD'S METHOD ----------
+	\begin{tikzpicture}[scale=1.5]
+				\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfocii
+		% Định nghĩa centroid tổng (ở giữa)
+		\coordinate (C) at (0,0);
+		    \filldraw[black] (C) +(-3pt,-3pt) rectangle +(3pt,3pt);
+		
+		
+		% Nối từ tất cả các điểm đến centroid tổng
+		\foreach \p in {R1,R2,B1,B2} {
+			\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (\p) -- (C);
+		}
+		
+		\node[align=left] at (0,-2.2) {
+			\Large	\textbf{\textsf{Liên kết Ward}}\\ 
+};
+	\end{tikzpicture}
+	
+	
+	
+\end{document}
