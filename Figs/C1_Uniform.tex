@@ -1,11 +1,14 @@
 \documentclass{standalone}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usepackage{pgfplots} 
 \usepgfplotslibrary{groupplots}
 \usepackage{pgfplotstable}
 \usepgfplotslibrary{fillbetween}
-\usepackage{pgfplots}
+
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts, mathptmx}			
 \usetikzlibrary{patterns}
 \usetikzlibrary{positioning}
 
@@ -32,7 +35,7 @@
 		
 		
 		\begin{groupplot}[
-			group style={group size=4 by 1, horizontal sep=1cm},
+			group style={group size=4 by 1, horizontal sep=.5cm},
 			width=4cm, height=4cm,
 			axis equal image,
 			axis lines=box,
@@ -45,24 +48,24 @@
 			
 			% (a) same independent
 			\nextgroupplot[title={\scriptsize (a)}]
-			\addplot+[mark=none,draw=black,line width=1pt]
+			\addplot+[mark=none,draw=black!60,line width=1pt]
 			coordinates {(2,0) (2,\heightA) (3,\heightA) (3,0)};
-			\addplot+[mark=none,draw=black,line width=1pt,opacity=0.7, fill=black!45]
+			\addplot+[mark=none,draw=black!60,line width=1pt,opacity=0.7, fill=black!45]
 			coordinates {(5,0) (5,\heightA) (6,\heightA) (6,0)};
 			
 			
 			% (b) uneven independent
 			\nextgroupplot[title={\scriptsize(b)}]
-			\addplot+[mark=none,draw=black,line width=1pt]
+			\addplot+[mark=none,draw=black!60,line width=1pt]
 			coordinates {(1,0) (1,\heightBleft) (3,\heightBleft) (3,0)};
-			\addplot+[mark=none,draw=black,line width=1pt,opacity=0.7, fill=black!45]
+			\addplot+[mark=none,draw=black!60,line width=1pt,opacity=0.7, fill=black!40]
 			coordinates {(5,0) (5,\heightBright) (6,\heightBright) (6,0)};
 			
 						% (d) p ⊂ q
 			\nextgroupplot[title={\scriptsize(c)}]
-			\addplot+[mark=none,draw=black,line width=1pt]
+			\addplot+[mark=none,draw=black!60,line width=1pt]
 			coordinates {(1,0) (1,\heightA) (2,\heightA) (2,0)};
-			\addplot+[mark=none,draw=black,line width=1pt,opacity=0.7, fill=black!45]
+			\addplot+[mark=none,draw=black!60,line width=1pt,opacity=0.7, fill=black!40]
 			coordinates {(7,0) (7,\heightA) (8,\heightA) (8,0)};
 			
 			
@@ -70,7 +73,7 @@
 			\nextgroupplot[title={\scriptsize(d)}]
 			\addplot+[mark=none,draw=black,line width=1pt]
 			coordinates {(3,0) (3,\heightC) (5,\heightC) (5,0)};
-			\addplot+[mark=none,draw=black,line width=1pt,opacity=0.7, fill=black!45]
+			\addplot+[mark=none,draw=black,line width=1pt,opacity=0.7, fill=black!40]
 			coordinates {(4,0) (4,\heightC) (6,\heightC) (6,0)};
 			
 

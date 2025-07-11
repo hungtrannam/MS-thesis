@@ -1,0 +1,43 @@
+\documentclass[margin=3mm]{standalone}
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts, mathptmx}			
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, quotes}
+
+\begin{document}
+	\begin{tikzpicture}[
+		node distance = 22mm and 44mm,
+		box/.style = {draw, minimum size=3em, align=center, rounded corners},
+		every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt},
+		every edge quotes/.append style = {font=\footnotesize, fill=white, 
+			anchor=center, align=center, sloped},
+		]
+		
+		% Draw background rectangle
+		\fill[white] (-1.5,-4) rectangle (8, 1); % Adjust these coordinates as needed
+		
+		% Define main nodes
+		\scoped[nodes=box, fill=white]
+		{
+			\node (C1) [fill=gray!20,text=black] {Chương 1. Kiến thức\\chuẩn bị};
+			\node (C2) [right=of C1] {Nhận dạng \\hàm mật độ};
+			\node (C3) [below=of C1, fill=gray!20,text=black] {Chương 2. Nhận dạng\\mất cân bằng};
+			\node (add) [below=of C2, fill=gray!20,text=black] {Chương 3. Nhận dạng\\ hình ảnh};
+		}
+		
+		% Connect main nodes with edges
+		\path 
+		(C1) edge ["Định nghĩa \& Khái niệm"] (C2) 
+		(C2) edge ["Cải tiến\\thuật toán"] (C3)
+		(C2) edge ["So sánh"] (add)
+		(C3) edge ["Áp dụng"] (add);
+		
+	\end{tikzpicture}
+\end{document}
