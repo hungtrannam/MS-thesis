@@ -1,0 +1,60 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\def\p{2}
+
+\begin{document}
+	
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=10cm, height=6.5cm,
+			xlabel={$D_{1j}$},
+			ylabel={$\mu_{1j}$},
+			xmin=-0.02, xmax=2.02,
+			ymin=-0.02, ymax=1.02,
+			domain=0.001:1.999,
+			samples=300,
+			ytick={0,0.5,1},
+			tick label style={font=\small},
+			label style={font=\small},
+			legend style={anchor=north east, font=\scriptsize}
+			]
+			
+			% y = 0.5 reference line
+			\addplot [black!45, thin, domain=-0.02:2.02] {0.5};
+			
+			% m = 1.1
+			\addplot[color=black!45, line width=1pt, dotted]
+			{ (x^\p)^(-1/(1.1 -1)) / ( (x^\p)^(-1/(1.1 -1)) + ((2 - x)^\p)^(-1/(1.1 -1)) ) };
+			\addlegendentry{$m=1{,}1$}
+			
+			% m = 1.5
+			\addplot[color=black!45, line width=1pt, dashed]
+			{ (x^\p)^(-1/(1.5 -1)) / ( (x^\p)^(-1/(1.5 -1)) + ((2 - x)^\p)^(-1/(1.5 -1)) ) };
+			\addlegendentry{$m=1{,}5$}
+			
+			% m = 2
+			\addplot[color=black!55, line width=1.5pt]
+			{ (x^\p)^(-1/(2 -1)) / ( (x^\p)^(-1/(2 -1)) + ((2 - x)^\p)^(-1/(2 -1)) ) };
+			\addlegendentry{$m=2{,}0$}
+			
+			% m = 3
+			\addplot[color=black!45, line width=1pt, dashdotted]
+			{ (x^\p)^(-1/(3 -1)) / ( (x^\p)^(-1/(3 -1)) + ((2 - x)^\p)^(-1/(3 -1)) ) };
+			\addlegendentry{$m=3{,}0$}
+			
+			% m = 5
+			\addplot[color=black!45, line width=1pt, densely dashed]
+			{ (x^\p)^(-1/(5 -1)) / ( (x^\p)^(-1/(5 -1)) + ((2 - x)^\p)^(-1/(5 -1)) ) };
+			\addlegendentry{$m=5{,}0$}
+			
+			% m = 10
+			\addplot[color=black!45, line width=1pt, densely dotted]
+			{ (x^\p)^(-1/(10 -1)) / ( (x^\p)^(-1/(10 -1)) + ((2 - x)^\p)^(-1/(10 -1)) ) };
+			\addlegendentry{$m=10{,}0$}
+			
+		\end{axis}
+	\end{tikzpicture}
+	
+\end{document}
