@@ -721,8 +721,9 @@ Từ đây ta suy ra được điều phải chứng minh
 	\begin{itemize}
 		\item $\mathcal{L}_1(f_1\,,f_2) = \int\vert f_1 - f_2\vert \mathrm{\,d}x = \int \left(1\times \bm 1_{[2\,,3]}(x) + 1\times \bm 1_{[5\,,6]}(x)\right)\mathrm{\,d}x\ = \int_2^31\mathrm{\,d}x + \int_5^61\mathrm{\,d}x=2$,
 		\item  $\mathcal{L}_2(f_1\,,f_2) = \left(\int(f_1 - f_2)^2 \mathrm{\,d}x\right)^{1/2} = \left(\int_2^31^2\mathrm{\,d}x + \int_5^61\mathrm{\,d}x\right)^{1/2}=\sqrt{2}$,
-		\item $D_B(f_1\,,f_2)$ không xác định hữu hạn, tiến ra dương vô cùng (vì $f_1(x)f_2(x) = 0\,,\forall x$),
+		\item $D_B(f_1\,,f_2)$ không xác định hữu hạn, tiến ra dương vô cùng vì $f_1(x)f_2(x) = 0\,,\forall x$,
 		\item $D_H(f_1\,,f_2)  = \left(1-f_1(x)f_2(x)\right)^{1/2} = \sqrt{1-0} = 1$,
+		\item $D_W(f_1\,,f_2) = \vert \mathbb{E}_{f_1} - \mathbb{E}_{f_2}\vert = |5,5-2,5|=3$.
 			\end{itemize}
 	
 	Bảng~\ref{tab:vidusosanh} tổng hợp kết quả các phép đo này trong bốn tình huống. 
@@ -746,7 +747,7 @@ Từ đây ta suy ra được điều phải chứng minh
 	\end{flushleft}
 \end{table}
 
-Trước hết, các khoảng cách $\mathcal{L}_1$ và $\mathcal{L}_2$ trong các trường hợp (a), (b), và (c), mặc dù $f_1(x)$ và $f_2(x)$ nằm xa dần, nhưng các giá trị $\mathcal{L}_1$ và $\mathcal{L}_2$ hầu như không đổi (đều bằng 2 hoặc $\sqrt{2}$). Khoảng cách này nhận biết được khác biệt hình dáng và phân bố, nhưng không nhận biết tốt yếu tố vị trí trong không gian. Hệ số Bhattacharyyavà khoảng cách Hellinger chỉ có giá trị dương trong trường hợp (d), khi có phần chồng lấp giữa $f_1(x)$ và $f_2(x)$. Điều này cho thấy chúng nhạy với mức độ chồng lấp, nhưng không phân biệt được hai hàm độc lập nhau. 
+Trước hết, các khoảng cách $\mathcal{L}_1$ và $\mathcal{L}_2$ trong các trường hợp (a), (b), và (c), mặc dù $f_1(x)$ và $f_2(x)$ nằm xa dần, nhưng các giá trị $\mathcal{L}_1$ và $\mathcal{L}_2$ hầu như không đổi (đều bằng 2 hoặc $\sqrt{2}$). Khoảng cách này nhận biết được khác biệt hình dáng và phân bố, nhưng không nhận biết tốt yếu tố vị trí trong không gian. Hệ số Bhattacharyya và khoảng cách Hellinger chỉ có ý nghĩa trong trường hợp (d), khi có phần chồng lấp giữa $f_1(x)$ và $f_2(x)$. Điều này cho thấy chúng nhạy với mức độ chồng lấp, nhưng không phân biệt được hai hàm độc lập nhau. 
 
 Ngược lại, khoảng cách Wasserstein thể hiện rõ sự nhạy cảm với vị trí hình học, và hình dáng và cả phân bố. Khi hai hàm mật độ cách xa hơn (a) và (c), ta thấy khoảng cách này tăng rất lớn cho thấy hiệu quả so sánh vị trí. Xét (a) và (b), ta thấy khi thay đổi hình dáng hàm mật độ, khoảng cách này cũng có sự khác biệt. Cuối cùng, trường hợp (d) cho thấy khoảng cách cũng nhận biết tốt cho hàm có chồng lấp.
 
@@ -808,10 +809,10 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 
 \section{Xấp xỉ tích phân}
 
-Trong khoa học máy tính, các khoảng cách hàm mật độ phải được tính xấp xỉ vì có chứa tích phân xác định.
+Trong khoa học máy tính, các khoảng cách giữa các hàm mật độ xác suất thường chứa các tích phân xác định, vốn không thể tính chính xác bằng phương pháp thông thường. Do đó, các tích phân này cần xấp xỉ bằng phương pháp số. Luận văn này, chúng tôi chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann. Mặc dù Simpson hoặc Monte-Carlo có thể đạt độ chính xác cao hơn, nhưng chúng đòi hỏi chi phí tính toán và triển khai phức tạp hơn.
 
-
-
+Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
+$$ \int_{\Omega}f(x)\mathrm{\,d}x = \lim_{h\to0}\sum_{i}h^d w_if(x) $$
 
 
 
@@ -885,7 +886,7 @@ Phân tích chùm phân vùng giả sử $\mathcal{S}$ là tập các véc-tơ $
 
 Phép gán này được mô tả bằng một ánh xạ nhiều-đến-một\index{ánh xạ nhiều-đến-một (many-to-one map)}, hay còn gọi là bộ mã hóa\index{bộ mã hóa (encoding)} $c_i=c(f_j)$, trong đó đối tượng $f_j$ gán vào chùm $c_i$ là duy nhất. Cụ thể, ràng buộc 1 đảm bảo tất cả các đối tượng phải được phân tách thành các chùm, trong đó, mỗi chùm phải chứa ít nhất một phần tử (ràng buộc 3) và không có đối tượng nào được xếp vào cùng một chùm (ràng buộc 2). 
 
-Thuật toán $k$-means lần đầu được đề cập bởi J. Macqueen \cite{macqueen1967some} cho dữ liệu rời rạc nhưng mãi đến \cite{Tai2010,nguyen2024new}, nó được mở rộng cho hàm mật độ với ý tưởng giải bài toán bán giám sát. Phân tích chùm $k$-means là bài toán tối tiểu đơn mục tiêu cho tổng các bình phương khoảng cách trong chùm các hàm mật độ, tức là
+Thuật toán $k$-means lần đầu được đề cập bởi J. Macqueen \cite{macqueen1967some} cho dữ liệu rời rạc nhưng mãi đến \cite{Tai2010,nguyen2024new}, nó được mở rộng cho hàm mật độ với ý tưởng giải bài toán bán giám sát. Phân tích chùm KCF là bài toán tối tiểu đơn mục tiêu cho tổng các bình phương khoảng cách trong chùm các hàm mật độ, tức là
 \begin{align}\tag{$k$-means}\label{Jk}
 	\text{Minimise}\,&:\, J(\bm U\,, \Theta\,|\, \mathcal{F}\,,c) = \sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}\mathrm{D}^2(\theta_i\,,{f}_j),
 \end{align}
@@ -903,17 +904,17 @@ trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành vi
 \end{align*}
 
 Để hàm $J$ đạt cực trị, ta cho đạo hàm vừa tính bằng $0$. Tức là,
-$$\sum_{f_j(x)\in c_i}\mu_{ij}\int_{\Omega}2(\theta_i(x) - f_j(x))\mathrm{\,d}x=0\Leftrightarrow \theta_i(x)\sum_{f_j(x)\in c_i}\mu_{ij} = \sum_{f_j(x)\in c_i}\mu_{ij}f_j(x) \Leftrightarrow \theta_i(x) = \frac{\sum_{f_j(x)\in c_i}\mu_{ij}f_j}{\sum_{f_j(x)\in c_i}\mu_{ij}}. $$
+$$\sum_{f_j(x)\in c_i}\mu_{ij}\int_{\Omega}2(\theta_i(x) - f_j(x))\mathrm{\,d}x=0\Leftrightarrow \theta_i(x)\sum_{f_j(x)\in c_i}\mu_{ij} = \sum_{f_j(x)\in c_i}\mu_{ij}f_j(x).$$
 
 
 
-Từ đây ta có điều phải chứng minh. Tóm lại, mật độ đại diện tối ưu để cực tiểu hàm mục tiêu là hàm mật độ trọng tâm~\eqref{daidien} các hàm mật độ trong các chùm. 
+Từ đây suy ra điều phải chứng minh. Tóm lại, mật độ đại diện tối ưu để cực tiểu hàm mục tiêu là hàm mật độ trọng tâm~\eqref{daidien} các hàm mật độ trong các chùm. 
 }
 
 \chy{Vì mỗi hàm mật độ trọng tâm~\eqref{daidien} được đại diện trừu tượng bằng trung bình có trọng số của từng chùm, nên kết quả trọng tâm này có thể không đồng nhất với bất kỳ đối tượng nào trong mẫu. Thay vào đó, mật độ trọng tâm này nằm bất kỳ trong không gian, đóng vai trò như một đối tượng tham chiếu để các hàm mật độ khác so sánh \cite{watson2023philosophy}.
-Hơn nữa, vì ma trận phân vùng \eqref{} của $k$-means là phân vùng cứng nên ta có thể rút gọn hàm mật độ đại diện \eqref{daidien} thành
+Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{j\in c_i}$ nên ta có thể rút gọn hàm mật độ đại diện \eqref{daidien} thành
 \begin{align}\label{daidien_KM2}
-    \theta_i(x) = \frac{1}{|c_i|}\sum_{f_j(x)\in c_i}f_j(x)
+    \theta_i(x) = \frac{1}{\#c_i}\sum_{f_j(x)\in c_i}f_j(x).
 \end{align}
 }
 
@@ -921,7 +922,7 @@ Hơn nữa, vì ma trận phân vùng \eqref{} của $k$-means là phân vùng c
 
 
 \begin{algorithm}[H]
-    \caption{Giải thuật phân tích chùm $k$-means (KCF)}
+    \caption{Giải thuật phân tích chùm KCF}
     \label{kmeans}
     \begin{algorithmic}[1] % The number tells where the line numbering should start
         \Procedure{KCF}{$c\,,\varepsilon$}\Comment{Cho trước số chùm $c$}
@@ -929,7 +930,7 @@ Hơn nữa, vì ma trận phân vùng \eqref{} của $k$-means là phân vùng c
             \State Khởi tạo ${\bm\mu}^{(t)}$ và $\Theta^{(t)}$ ngẫu nhiên
             \While{$\Vert J^{(t+1)} - J^{(t)} \Vert<\varepsilon$}
                 \State $t \gets t+1$
-                \State Cập nhật ${\bm\mu}^{(t+1)}$ bằng Công thức \eqref{}
+                \State Cập nhật ${\bm\mu}^{(t+1)}$ bằng Công thức  $\mu_{ij}= \bm 1_{j\in c_i}$
                 \State Cập nhật $\Theta^{(t+1)}$ bằng Công thức \eqref{daidien_KM2}
             \EndWhile
             \State \textbf{return} ${\bm\mu}$ và $\Theta$.\Comment{Ma trận phân vùng và hàm mật độ đại diện}
@@ -1088,9 +1089,10 @@ So sánh về mặt phức tạp thời gian và phức tạp dung lượng, B�
 		\toprule
 		\bf Thuật toán               & \bf Phức tạp thời gian              & \bf Phức tạp không gian \\ 
 		\midrule
-		Phân chùm $k$-means                    & $\mathcal{O}(n c d i)$              & $\mathcal{O}(n + c d)$    \\
+		Phân chùm KCF                    & $\mathcal{O}(n c d i)$              & $\mathcal{O}(n + c d)$    \\
 		Phân cấp thứ bậc          & $\mathcal{O}(n^2 \log n)$           & $\mathcal{O}(n^2)$        \\
-		Phân chùm fuzzy $c$-means             & $\mathcal{O}(n c d i)$              & $\mathcal{O}(n c)$    \\
+		Phân chùm tự SUP & &\\
+		Phân chùm FCF             & $\mathcal{O}(n c d i)$              & $\mathcal{O}(n c)$    \\
 		\bottomrule
 	\end{tabular*}
 	\begin{flushleft}\footnotesize
@@ -1234,7 +1236,7 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 
 
 %%
-\subsection{Tổng kết chương \ref{chapter_2}}
+\section{Tổng kết chương \ref{chapter_2}}
 
 
 
@@ -1264,7 +1266,8 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 \subsection{Dữ liệu}
 \subsection{Phương pháp thực hiện}
 \subsection{Kết quả thực hiện}
-\subsection{Tổng kết chương \ref{chapter_3}}
+
+\section{Tổng kết chương \ref{chapter_3}}
 
 
 \chapter*{PHẦN KẾT LUẬN}\label{chapter_ketluan}
