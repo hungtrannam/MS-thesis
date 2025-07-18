@@ -25,25 +25,25 @@
 			
 			% ===== Frame 1: min(f,g) =====
 			\nextgroupplot[title={(a)}]
-			\addplot [color=black!45, line width=1.5pt, dashed] {gauss(1,1)};
+			\addplot [color=black!45, line width=1.2pt, dashed] {gauss(1,1)};
 			
-			\addplot[color=black!45, line width=1.5pt]{gauss(4,1)};
+			\addplot[color=black!45, line width=1.2pt, dashdotted]{gauss(4,1)};
 			
 			\addplot [color=black!95, line width=2pt, fill=black!45, opacity=.5]  {min(gauss(1,1), gauss(4,1))};
 			
 			% ===== Frame 2: (f-g)^2 =====
 			\nextgroupplot[title={(b)}]
-			\addplot [color=black!45, line width=1.5pt, dashed] {gauss(1,1)};
+			\addplot [color=black!45, line width=1.2pt, dashed] {gauss(1,1)};
 			
-			\addplot [color=black!45, line width=1.5pt]{gauss(4,1)};
+			\addplot [color=black!45, line width=1.2pt, dashdotted]{gauss(4,1)};
 			
 			\addplot [color=black!95, line width=2pt, fill=black!45, opacity=.5] {(gauss(1,1) - gauss(4,1))^2};
 			
 			% ===== Frame 3: sqrt(f g) =====
 			\nextgroupplot[title={(c)}]
-			\addplot  [color=black!45, line width=1.5pt, dashed] {gauss(1,1)};
+			\addplot  [color=black!45, line width=1.2pt, dashed] {gauss(1,1)};
 			
-			\addplot [color=black!45, line width=1.5pt] {gauss(4,1)};
+			\addplot [color=black!45, line width=1.2pt, dashdotted] {gauss(4,1)};
 			
 			\addplot  [color=black!95, line width=2pt, fill=black!45, opacity=.5]  {sqrt(gauss(1,1) * gauss(4,1))};
 			
