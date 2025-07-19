@@ -623,16 +623,16 @@ Các khoảng cách của hai hàm mật độ xác suất được thành lập
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{Figs/C1_dist.eps}
+    \includegraphics[width=0.5\linewidth]{Figs/C1_dist.pdf}
     \\[-1ex]
     \hfill {\footnotesize \textit{Nguồn: Minh họa của tác giả}}
     \caption{Dãy khoảng cách giữa hai hàm mật độ Gauss $\mathcal{N}(0\,,1)$ và $\mathcal{N}(\mu\,,1)$}
     \label{fig:dayKC}
 \end{figure}
 
-Ở Hình~\ref{fig:dayKC}, chúng tôi ghi nhận giá trị khoảng cách khi duyệt qua từ $f_1\sim\mathcal{N}(0\,,1)$ và $f_2\sim \mathcal{N}(\mu\,,1)$ với $\mu$ chạy từ $-10$ đến $20$. Ta nhận ra khoảng cách $\mathcal{L}_1$ là hàm không trơn tại $\mu = 0$, tức $f_1$ trùng với $f_2$.  Trong khi đó, khoảng cách Hellinger và Overlap thể hiện sự thay đổi mượt mà hơn quanh điểm này, nhờ đặc tính đo lường dựa trên tích phân phần chồng lấp.
+Ở Hình~\ref{fig:dayKC}, chúng tôi ghi nhận giá trị khoảng cách khi duyệt qua từ $f_1\sim\mathcal{N}(0\,,1)$ và $f_2\sim \mathcal{N}(\mu\,,1)$ với $\mu$ chạy từ $-10$ đến $20$. Ta nhận ra khoảng cách $\mathcal{L}_1$ là hàm không trơn tại $\mu = 0$, tức $f_1$ trùng với $f_2$. Đồng thời, ta trực quan tính bị chặn của các loại khoảng cách này đúng với lý thuyết tại Bảng~\ref{tab1:KC_PDF}.
 
-\chy{Ta thấy khi hai hàm mật độ cách nhau quá xa, trường hợp này là $|\mu|\gg0$, tất cả loại khoảng cách  hàm mật độ đều bão hòa và không đo được sự khác biệt. Xét ba hàm mật độ đều $f_1\sim \mathcal U[-3\,,2]\,, f_2\sim \mathcal U[-2\,,-1]$ và $f_3\sim \mathcal U[2\,,3]$. Lúc này, khoảng cách $D(f_1\,,f_3) = D(f_2\,,f_3) = D(f_1\,,f_2) $, chỉ ra hai hàm mật độ về mặt không gian rất xa nhau, nhưng khoảng cách không thể đo xa hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hàm mật độ.
+\chy{Ta thấy khi hai hàm mật độ $f_2$ cách nhau quá xa hàm $f_1$, trường hợp này là $|\mu_2|\gg0$, tất cả loại khoảng cách  hàm mật độ đều bão hòa và không đo được sự khác biệt. Lúc này hai hàm mật độ về mặt không gian rất xa nhau, nhưng khoảng cách không thể đo xa hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hàm mật độ.
 	}
 
 Luận văn này giới thiệu khoảng cách Wasserstein (hay Kantorovich–Rubinstein), là một mê-tríc hỗ trợ tốt cho tính toán khoảng cách các hàm mật độ không chồng lấp \cite{villani2008optimal}. Khoảng cách này được phát triển trong bài toán vận chuyển tối ưu\index{vận chuyển tối ưu (optimal transport)}, nhưng chưa được nghiên cứu trong lĩnh vực phân tích chùm hàm mật độ.
