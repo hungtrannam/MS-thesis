@@ -562,7 +562,7 @@ $$\theta_{G_i}(x) = \arg\min_{f({\bm\mu}\,,\Sigma)}\sum_{j=1}^n\mu_{ij}D(f({\bm\
 	    \begin{flushleft}
 	    	\it\footnotesize Chú thích: Hàm mật độ đại diện thể hiện bằng đường thẳng in đậm cho ba hàm Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$, và (b) dựa vào vị trí tối ưu. Nguồn: Minh họa của tác giả
 	    \end{flushleft}
-	\caption{Minh họa hai hàm mật độ xác suất đại diện một chùm hàm mật độ}
+	\caption{Minh họa hai hàm mật độ xác suất đại diện một chùm hàm mật độ $\mathcal{F}$.}
 	\label{fig:hamdaidien}
 \end{figure}
 
@@ -623,7 +623,7 @@ Các khoảng cách của hai hàm mật độ xác suất được thành lập
 \chy{Ta thấy khi hai hàm mật độ $f_2$ cách nhau quá xa hàm $f_1$, trường hợp này là $|\mu_2|\gg0$, tất cả loại khoảng cách  hàm mật độ đều bão hòa và không đo được sự khác biệt. Lúc này hai hàm mật độ về mặt không gian rất xa nhau, nhưng khoảng cách không thể đo xa hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hàm mật độ.
 	}
 
-Luận văn này giới thiệu khoảng cách Wasserstein (hay Kantorovich–Rubinstein), là một mê-tríc hỗ trợ tốt cho tính toán khoảng cách các hàm mật độ không chồng lấp \cite{villani2008optimal}. Khoảng cách này được phát triển trong bài toán vận chuyển tối ưu\index{vận chuyển tối ưu (optimal transport)}, nhưng chưa được nghiên cứu trong lĩnh vực phân tích chùm hàm mật độ.
+Luận văn này giới thiệu khoảng cách Wasserstein (hay Kantorovich–Rubinstein), là một mê-tríc hỗ trợ tốt cho tính toán khoảng cách các hàm mật độ không chồng lấp \cite{villani2008optimal} thỏa Định nghĩa~\ref{D} và bất đẳng thức tam giác. Khoảng cách này được phát triển trong bài toán vận chuyển tối ưu\index{vận chuyển tối ưu (optimal transport)}, nhưng chưa được nghiên cứu trong lĩnh vực nhận dạng hàm mật độ.
 \dng{[Khoảng cách $p$-Wasserstein]
 Khoảng cách $p$-Wasserstein ($p\ge1$) giữa hai độ đo xác suất $\mu$ và $\nu$ trong không gian $\mathbb{R}^d$ được định nghĩa là $$W_p(\mu, \nu) = \inf_{\substack{X \sim \mu \\ Y \sim \nu}} \left( \mathbb{E} \| X - Y \|^p \right)^{1/p}
 = \left( \inf_{\gamma \in \Gamma(\mu, \nu)} \int_{M \times M} d(x, y)^p \mathrm{\,d}\gamma(x, y) \right)^{1/p},
@@ -641,7 +641,7 @@ Khoảng cách $p$-Wasserstein  đo mức chênh lệch tối ưu giữa hai ph�
 }
 
 \dly{[Khoảng cách $2$-Wasserstein giữa hai hàm mật độ Gauss 1 chiều]
-	Giả sử $f_1(x) \sim \mathcal{N}(\mu_1, \sigma_1^2)$ và $f_2(x) \sim \mathcal{N}(\mu_2, \sigma_2^2)$ là hai phân bố Gauss một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
+	Giả sử hai hàm mật độ $f_1(x) \sim \mathcal{N}(\mu_1, \sigma_1^2)$ và $f_2(x) \sim \mathcal{N}(\mu_2, \sigma_2^2)$ là hai phân bố Gauss một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
 	$
 	D_{W}^2(f_1, f_2) = (\mu_1 - \mu_2)^2 + (\sigma_1 - \sigma_2)^2.
 	$
@@ -671,15 +671,15 @@ Từ đây ta suy ra được điều phải chứng minh.
 Tương tự ta cũng suy ra được phương pháp chứng minh cho các Định lý khoảng cách sau.
 
 \dly{[Khoảng cách $2$-Wasserstein giữa hai hàm mật độ Gauss $d$-chiều]
-	Giả sử $f_1(x) \sim \mathcal{N}(\mu_1, \Sigma_1)$ và $f_2(x) \sim \mathcal{N}(\mu_2, \Sigma_2)$ là hai phân bố Gauss trong $\mathbb{R}^d$. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
-	$
+	Giả sử hai hàm mật độ $f_1(x) \sim \mathcal{N}(\mu_1, \Sigma_1)$ và $f_2(x) \sim \mathcal{N}(\mu_2, \Sigma_2)$ là hai phân bố Gauss trong $\mathbb{R}^d$. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
+	$$
 	D_{W}^2(f_1, f_2) = \|\mu_1 - \mu_2\|_2^2 + \mathrm{Tr}\left(\Sigma_1 + \Sigma_2 - 2(\Sigma_2^{1/2} \Sigma_1 \Sigma_2^{1/2})^{1/2}\right).
-	$
+	$$
 }
 
 
 
-\dly{[Khoảng cách $2$-Wasserstein giữa hai phân phối đều $1$-chiều] Giả sử $f_1(x) \sim \mathcal{U}[a_1, b_1]$ và $f_2(x) \sim \mathcal{U}[a_2, b_2]$ là hai phân phối đều một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
+\dly{[Khoảng cách $2$-Wasserstein giữa hai phân phối đều $1$-chiều] Giả sử hai hàm mật độ  $f_1(x) \sim \mathcal{U}[a_1, b_1]$ và $f_2(x) \sim \mathcal{U}[a_2, b_2]$ là hai phân phối đều một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
 		$
 	D_{W}^2(f_1, f_2) = (\mu_1 - \mu_2)^2 + \frac{1}{12}(l_1-l_2)^2,
 	$
@@ -809,7 +809,7 @@ Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{
 \end{figure}
 
 
-Khi hai ta cần tính khoảng cách từ chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng các loại liên kết trên. Trong thực tế, các liên kết $\Delta$ được biến đổi thành
+Khi hai ta cần tính khoảng cách từ hợp hai chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng các loại liên kết trên. Trong thực tế, các liên kết $\Delta(\cdot\,,\cdot)$ được biến đổi thành
 \begin{align*}
 	\Delta_{\min}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \min\big\{D_{f\in\mathcal{F}, h\in\mathcal{H}}(f,\, h),\, D_{f\in\mathcal{G}, h\in\mathcal{H}}(g,\, h)\big\}, \\
 	\Delta_{\max}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \max\big\{D_{f\in\mathcal{F}, h\in\mathcal{H}}(f,\, h),\, D_{f\in\mathcal{G}, h\in\mathcal{H}}(g,\, h)\big\}, \\
@@ -843,16 +843,14 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 
 \section{Xấp xỉ tích phân}
 
-Trong khoa học máy tính, các khoảng cách giữa các hàm mật độ xác suất thường chứa các tích phân xác định, vốn không thể tính chính xác bằng phương pháp thông thường. Do đó, các tích phân này cần xấp xỉ bằng phương pháp số. Luận văn này, chúng tôi chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann. Mặc dù Simpson hoặc Monte-Carlo có thể đạt độ chính xác cao hơn, nhưng chúng đòi hỏi chi phí tính toán và triển khai phức tạp hơn. Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
+Trong khoa học máy tính, các khoảng cách giữa các hàm mật độ xác suất thường chứa các tích phân xác định, vốn không thể tính chính xác bằng phương pháp thông thường. Do đó, các tích phân này cần xấp xỉ bằng phương pháp số. Luận văn này, chúng tôi chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann nhưng cũng không tốn quá nhiều tài nguyên như Monte Carlo hay Simpsons. Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
 $$ \int_{\Omega}f(x)\mathrm{\,d}x = \lim_{h\to0}\sum_{i}h^d w_if(x). $$
 
 Khi này, giả sử hàm $f\,:\,[a\,,b]\to \mathbb{R}$, chia đoạn $[a\,,b]$ thành $n$, phương pháp hình thang một chiều xấp xỉ tích phân
 	\[
 	\int_a^b f(x)\, dx \approx \frac{h}{2} \left( f(x_0) + 2 \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right),
 	\]
-trong đó $x_i = a + ih$, $i=0,\dots,n$.
-
-
+trong đó $x_i = a + ih$, $i=0,\dots,n$. 
 
 
 
@@ -998,24 +996,12 @@ Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson196
 
 \vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Cho bảy hàm mật độ chuẩn một chiều $\mathcal{F}$ cho bởi Vo-Van, Tai and Pham-Gia, T., \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1\,, i = 1\,,\ldots\,,7$ và các trung bình lần lượt là $\mu_i = \{0,3\,;4,0\,;9,1\,;1,0\,;5,5\,;8,0\,;4,8\}.$ Hãy phân cấp thứ bậc với khoảng cách $D(f_1\,,f_2)=\mathcal{L}_2$ và liên kết $\Delta_{\max}(\mathcal{F}_1\,,\mathcal{F}_2)$ là liên kết đủ.
 
-\textbf{Bài giải.} Đầu tiên, ta tính toán các khoảng cách từng đôi hàm mật độ bất kỳ bằng khoảng cách $\mathcal{L}_2(f_i\,,f_j)$ với $i\,,j = 1\,,\ldots\,,7$, ta nhận được ma trận khoảng cách
-$$\bm D=\begin{bmatrix}
-	 \\
-	0,74 &  \\
-	0,75 & 0,75 &  \\
-	\textbf{0,26} & 0,71 & 0,75 &  \\
-	0,75 & 0,49 & 0,74 & 0,75 &  \\
-	0,75 & 0,74 & 0,38 & 0,75 & 0,67 &  \\
-	0,75 & 0,29 & 0,75 & 0,74 & \textbf{0,26} & 0,72 & 
-\end{bmatrix}.$$
-
-
-	
+\textbf{Bài giải.} Ta có kết quả phân cấp thứ bậc tích tụ bởi Hình~\ref{figs:thubac}. Bài giải chi tiết được phân tích trong Phụ lục B~(tr. \pageref{phulucB}).
 	\begin{figure}[H]
 	     \centering
 	     \begin{subfigure}[b]{.45\textwidth}
 	         \centering
-	         \includegraphics[width=.9\linewidth]{Figs/tree_L2_single.pdf}
+	         \includegraphics[width=.9\linewidth]{Figs/tree_L2_complete.pdf}
 	         \caption{Liên kết đủ}
 	     \end{subfigure}
 	     \begin{subfigure}[b]{.45\textwidth}
@@ -1023,6 +1009,10 @@ $$\bm D=\begin{bmatrix}
 	     	\includegraphics[width=.9\linewidth]{Figs/tree_L2_ward.pdf}
 	     	\caption{Liên kết Ward}
 	     \end{subfigure}
+	     \begin{flushleft}
+	     Nguồn: Tác giả tính toán
+	     \end{flushleft}
+	     \caption{Kết quả phân cấp thứ bậc tích tụ đối với Ví dụ~\ref{VD:thubac}}\label{figs:thubac}
 	\end{figure}
 }
 
@@ -1195,7 +1185,7 @@ So sánh về mặt phức tạp thời gian và phức tạp dung lượng, B�
 
 
 
-\chy{Phân tích chùm phân vùng dựa vào trọng tâm rất đơn giản. Tuy nhiên, nó cũng có một số khuyết điểm bao gồm tính không xác định của các siêu tham số\index{siêu tham số (hyper-parametre)},  chất lượng dữ liệu đầu vào và khả năng giải thích của mô hình. Đầu tiên, họ thuật toán này không cung cấp $c$ chùm tối ưu. Đôi khi, ta không có tri thức về số lượng $c$, dẫn đến khó khăn khi phân chùm các mẫu có số chiều lớn dẫn đến nguy cơ quá khớp\index{quá khớp (overfitting)}. Theo Goutte \textit{et al.}, ``\emph{khi số lượng chùm không phản ánh trong dữ liệu, kết quả cuối cùng cơ bản là vô nghĩa}'' \cite{goutte1999clustering}.  Ngoài ra, do giả định tối ưu lồi, thuật toán dựa trên trọng tâm thường hoạt động hiệu quả nhất với hình dạng gần cầu, và có thể gặp thách thức khi áp dụng cho dữ liệu chứa nhiễu, ngoại lệ\index{điểm ngoại lệ (outliers)}, có chồng lấp giữa các chùm hoặc có sự chênh lệch lớn về kích thước và mật độ. Cuối cùng, hàm mật độ trọng tâm chùm ban đầu cũng ảnh hưởng đến kết quả tối ưu.
+\chy{Phân tích chùm phân vùng dựa vào trọng tâm rất đơn giản. Tuy nhiên, nó cũng có một số khuyết điểm bao gồm tính không xác định của các siêu tham số\index{siêu tham số (hyper-parametre)},  chất lượng dữ liệu đầu vào và khả năng giải thích của mô hình. Đầu tiên, họ thuật toán này không cung cấp $c$ chùm tối ưu. Đôi khi, ta không có tri thức về số lượng $c$, dẫn đến khó khăn khi phân chùm các mẫu có số chiều lớn dẫn đến nguy cơ quá khớp\index{quá khớp (overfitting)}. Theo Goutte \textit{et al.}, ``\emph{khi số lượng chùm không phản ánh trong dữ liệu, kết quả cuối cùng cơ bản là vô nghĩa}'' \cite{goutte1999clustering}.  Ngoài ra, do giả định tối ưu lồi, thuật toán dựa trên trọng tâm thường hoạt động hiệu quả nhất với hình dạng gần cầu, và có thể gặp thách thức khi áp dụng cho dữ liệu chứa nhiễu, ngoại lệ\index{điểm ngoại lệ (outliers)}, có chồng lấp giữa các chùm hoặc có sự chênh lệch lớn về kích thước và mật độ. Cuối cùng, hàm mật độ trọng tâm chùm ban đầu cũng ảnh hưởng đến kết quả tối ưu dù đã có nhiều khuyến nghị như $k$-means$^{++}$\index{$k$-means$^{++}$}, $X$-means\index{$X$-means}. 
 
 Phân tích chùm thứ bậc thì không cần tiên nghiệm số lượng chùm $c$. Tuy nhiên, nó có độ phức tạp cao. Nhất là khi dữ liệu lớn, ta phải tính toán một khối lượng khoảng cách rất lớn. Phân tích chùm tự cập nhật 
 }
@@ -1226,12 +1216,11 @@ Mục tiêu tiếp theo là ước lượng $\beta_0$ và hàm $\beta(x)$. Do $\
 $$
 l_i = \beta_0 + \sum_{m=1}^M \theta_m \underbrace{\int_\Omega \psi_m(x) {\mathcal{F}}_i(x)\, dx}_{=: \phi_{i,m}},
 $$
-trong đó $\phi_{i,m}$ là mô-men của hàm mật độ ${\mathcal{F}}_i(x)$ trên hàm cơ sở $\psi_m(x)$.
-Bài toán ước lượng $\beta(x)$ chuyển thành
+trong đó $\phi_{i,m}$ là mô-men của hàm mật độ ${\mathcal{F}}_i(x)$ trên hàm cơ sở $\psi_m(x)$. Khi đó. bài toán ước lượng $\beta(x)$ chuyển thành
 $$
-\max_{\beta_0, \theta} \sum_{i=1}^n \left[y_i \log \pi_i + (1 - y_i)\log (1 - \pi_i)\right]
+\mathcal{L} = \max_{\beta_0, \theta} \sum_{i=1}^n \left[y_i \log \pi_i + (1 - y_i)\log (1 - \pi_i)\right]
 $$
-
+Ta sử dụng thuật toán độ dốc\index{thuật toán độ dốc (gradient decent method)} để tối ưu hóa hàm mục tiêu $\mathcal{L}$ này.
 \vdu{
 
 }
@@ -1465,8 +1454,128 @@ Các mã Python được sử dụng trong luận văn này được lưu trữ 
 
 
 
-\chapter*{PHỤ LỤC B\\KẾT QUẢ}
+\chapter*{PHỤ LỤC B\\KẾT QUẢ}\label{phulucB}
 \addcontentsline{toc}{chapter}{PHỤ LỤC B}
+
+
+\textbf{Bài giải Ví dụ~\ref{VD:thubac}} Đầu tiên, ta xem thứ tự của $\mu_i$ chính là thứ tự của dữ liệu hàm mật độ $f_i$, tính toán các khoảng cách từng đôi hàm mật độ bất kỳ bằng khoảng cách $\mathcal{L}_2(f_i\,,f_j)$ với $i\,,j = 1\,,\ldots\,,7$, ta nhận được ma trận khoảng cách
+$$
+\bm D^{(t=0)} =
+\begin{array}{c|ccccccc}
+	& f_1     & f_2     & f_3     & f_4     & f_5     & f_6     & f_7     \\
+	\hline
+	f_1 &        &        &        &        &        &        &        \\
+	f_2 & 0{,}74 &        &        &        &        &        &        \\
+	f_3 & 0{,}75 & 0{,}75 &        &        &        &        &        \\
+	f_4 & \mathbf{0{,}26} & 0{,}71 & 0{,}75 &        &        &        &        \\
+	f_5 & 0{,}75 & 0{,}49 & 0{,}74 & 0{,}75 &        &        &        \\
+	f_6 & 0{,}75 & 0{,}74 & 0{,}38 & 0{,}75 & 0{,}67 &        &        \\
+	f_7 & 0{,}75 & 0{,}29 & 0{,}75 & 0{,}74 & \mathbf{0{,}26} & 0{,}72 &       
+\end{array}
+$$
+
+Ta thấy khoảng cách $D(f_1\,,f_4) = D(f_5\,,f_7)  = 0,26$ là khoảng cách nhỏ nhất nên ta chọn một trong hai. Trường hợp này, ta chọn hàm mật độ $f_1$ và $f_4$ xếp vào một chùm $\{f_1\,,f_4\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_1\,,f_4\}$ với các hàm mật độ khác. Ta có
+\begin{align*}
+	\Delta(\{f_1\,,f_4\}\,, f_2)=\max\{D(f_1\,,f_2)\,, D(f_4\,,f_2)\} = \max\{0,74\,;0,71\} = 0,74,\\
+	\Delta(\{f_1\,,f_4\}\,, f_3)=\max\{D(f_1\,,f_3)\,, D(f_4\,,f_3)\} = \max\{0,75\,;0,75\} = 0,75,\\
+	\Delta(\{f_1\,,f_4\}\,, f_5)=\max\{D(f_1\,,f_5)\,, D(f_4\,,f_5)\} = \max\{0,75\,;0,75\} = 0,75,\\
+	\Delta(\{f_1\,,f_4\}\,, f_6)=\max\{D(f_1\,,f_6)\,, D(f_4\,,f_6)\} = \max\{0,75\,;0,75\} = 0,75,\\
+	\Delta(\{f_1\,,f_4\}\,, f_7)=\max\{D(f_1\,,f_7)\,, D(f_4\,,f_7)\} = \max\{0,75\,;0,74\} = 0,75.\\
+\end{align*}
+
+Ta xóa dòng/cột $f_1$ và $f_4$ và thay bằng một dòng/cột mới là $\{f_1\,,f_4\}$, ta được ma trận khoảng cách mới
+\[
+\bm D^{(t=1)} =
+\begin{array}{c|cccccc}
+	& \{f_1\,,f_4\} & f_2   & f_3   & f_5   & f_6   & f_7 \\
+	\hline
+	\{f_1\,,f_4\}  &        &        &        &        &        &        \\
+	f_2     & 0{,}74 &        &        &        &        &        \\
+	f_3     & 0{,}75 & 0{,}75 &        &        &        &        \\
+	f_5     & 0{,}75 & 0{,}49 & 0{,}74 &        &        &        \\
+	f_6     & 0{,}75 & 0{,}74 & 0{,}38 & 0{,}67 &        &        \\
+	f_7     & 0{,}75 & 0{,}29 & 0{,}75 & \mathbf{0{,}26} & 0{,}72 &        
+\end{array}
+\]
+
+
+Tiếp theo, ta thấy $D(f_5\,,f_7) = 0,26$ là cách nhỏ nhất nên ta xếp hai hàm mật độ này thành một chùm mới $\{f_5\,,f_7\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_5\,,f_7\}$ với các hàm mật độ khác. Ta có
+\begin{align*}
+	\Delta(\{f_5\,,f_7\}\,, \{f_1\,,f_4\})&=\max\{D(f_5\,,f_1)\,, D(f_5\,,f_4)\,, D(f_7\,,f_1)\,, D(f_7\,,f_4)\} =0,75,\\
+	\Delta(\{f_5\,,f_7\}\,, f_2)&=\max\{D(f_5\,,f_2)\,, D(f_7\,,f_2)\} = 0,49,\\
+	\Delta(\{f_5\,,f_7\}\,, f_3)&=\max\{D(f_5\,,f_3)\,, D(f_7\,,f_3)\} = 0,75,\\
+	\Delta(\{f_5\,,f_7\}\,, f_6)&=\max\{D(f_5\,,f_6)\,, D(f_7\,,f_6)\} = 0,72.\\
+\end{align*}
+
+Ta xóa dòng/cột $f_5$ và $f_7$ và thay bằng một dòng/cột mới là $\{f_5\,,f_7\}$, ta được ma trận khoảng cách mới
+\[
+\bm D^{(t=2)} =
+\begin{array}{c|ccccc}
+	& \{f_1,f_4\} & f_2   & f_3   & \{f_5,f_7\} & f_6\\
+	\hline
+	\{f_1,f_4\}   &         &        &        &      &  \\
+	f_2           & 0{,}75  &        &        &   &    \\
+	f_3           & 0{,}75  & 0{,}75 &        &    &    \\
+	\{f_5,f_7\}   & 0{,}75  & {0{,}49} & 0{,}75 &     \\
+	f_6 &0,75&0,74&\textbf{0,38}& 0,72\\   
+\end{array}
+\]
+
+Tiếp theo, ta thấy $D(f_3\,,f_6) = 0,38$ là cách nhỏ nhất nên ta xếp hai hàm mật độ này thành một chùm mới $\{f_3\,,f_6\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_3\,,f_6\}$ với các hàm mật độ khác. Ta có
+\begin{align*}
+	\Delta(\{f_3\,,f_6\}\,, \{f_1\,,f_4\})&=\max\{D(f_3\,,f_1)\,, D(f_3\,,f_4)\,, D(f_6\,,f_1)\,, D(f_6\,,f_4)\} =0,75,\\
+	\Delta(\{f_3\,,f_6\}\,, \{f_5\,,f_7\})&=\max\{D(f_3\,,f_5)\,, D(f_3\,,f_7)\,, D(f_6\,,f_5)\,, D(f_6\,,f_7)\} =0,75,\\
+	\Delta(\{f_3\,,f_6\}\,, f_2)&=\max\{D(f_5\,,f_3)\,, D(f_7\,,f_3)\} = 0,75,\\
+\end{align*}
+
+Ta xóa dòng/cột $f_3$ và $f_6$ và thay bằng một dòng/cột mới là $\{f_3\,,f_6\}$, ta được ma trận khoảng cách mới
+\[
+\bm D^{(t=3)} =
+\begin{array}{c|cccc}
+	& \{f_1,f_4\} & f_2   & \{f_5,f_7\} & \{f_3,f_6\} \\
+	\hline
+	\{f_1,f_4\}     &         &        &        &        \\
+	f_2             & 0{,}75  &        &        &        \\
+	\{f_5,f_7\}     & 0{,}75  & \textbf{0{,}49} &       &        \\
+	\{f_3,f_6\}     & 0{,}75  & 0{,}75 & 0{,}75 &        
+\end{array}
+\]
+
+Tiếp theo, ta thấy $D(\{f_5\,,f_7\}\,,f_2) = 0,49$ là cách nhỏ nhất nên ta xếp hàm mật độ $f_2$ này vào chùm $\{f_5\,,f_7\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_2\,,f_5\,,f_7\}$ với các hàm mật độ khác. Ta có
+\begin{align*}
+	\Delta(\{f_2, f_5, f_7\}, \{f_1, f_4\}) &= \max\{ D(f_2\,, \{f_1\,,f_4\}), D(f_5\,, \{f_1\,,f_4\}), D(f_7\,, \{f_1\,,f_4\}) \} = 0{,}75, \\
+	\Delta(\{f_2, f_5, f_7\}, \{f_3, f_6\}) &= \max\{ D(f_2\,, \{f_3\,,f_6\}), D(f_5\,, \{f_3\,,f_6\}), D(f_7\,, \{f_3\,,f_6\}) \} = 0{,}75.
+\end{align*}
+
+Ta xóa dòng/cột $f_2$ và $\{f_5\,,f_7\}$ và thay bằng một dòng/cột mới là $\{f_2\,,f_5\,,f_7\}$, ta được ma trận khoảng cách mới
+\[
+\bm D^{(t=4)} =
+\begin{array}{c|ccc}
+	& \{f_1,f_4\} & \{f_2,f_5,f_7\} & \{f_3,f_6\} \\
+	\hline
+	\{f_1,f_4\}        &         &        &        \\
+	\{f_2,f_5,f_7\}    &0,75 &        &        \\
+	\{f_3,f_6\}        & 0,75  & \textbf{0,75}&        
+\end{array}
+\]
+
+Cuối cùng, ta chọn xếp chùm $\{f_2,f_5,f_7\}$  vào chùm $\{f_3,f_6\}$ dựa vào khoảng cách chính xác nhỏ nhất (4 chữ số thập phân). Vậy ta có chùm $\{f_2\,,f_5\,,f_3\,,f_6\}$. Ta xếp chùm còn lại vào chùm mới này, thuật toán kết thúc với cấu trúc như sau
+
+\begin{verbatim}
+--> root (7 samples): [1, 2, 3, 4, 5, 6, 7]
+|   --> root0 (4 samples): [1, 4, 3, 6]
+|   |   --> root00 (2 samples): [1, 4]
+|   |   |   --> root000 (1 sample): [1]
+|   |   |   --> root001 (1 sample): [4]
+|   |   --> root01 (2 samples): [3, 6]
+|   |   |   --> root010 (1 sample): [3]
+|   |   |   --> root011 (1 sample): [6]
+|   --> root1 (3 samples): [2, 5, 7]
+|       --> root10 (1 sample): [2]
+|       --> root11 (2 samples): [5, 7]
+|       |   --> root110 (1 sample): [5]
+|       |   --> root111 (1 sample): [7]
+\end{verbatim}
 
 %\chapter*{XÁC NHẬN CỦA HỘI ĐỒNG}
 %
