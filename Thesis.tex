@@ -392,6 +392,8 @@ Họ các hàm phân phối $P: \mathbb{R}^d \to [0\,,\infty]$ là liên tục t
 
 }
 
+Đây là khái niệm quan trọng trong luận văn này. Để cụ thể, chúng tôi tập trung khảo sát tính chất của hàm mật độ ($\mu$ là độ đo Lebesgue) liên tục tuyệt đối của biến ngẫu nhiên $X$. Các hàm mật độ cũng được định nghĩa trên tập số thực. Ta có thể tổng quát hóa đối tượng hàm mật độ thành không gian lồi $$\mathcal{F} = \left\{f\,:\,\Omega\to \mathbb{R}^+\Big\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$$
+
 \tch{\label{tc1}\hfil
 \begin{enumerate}
     \item Hàm mật độ xác suất liên tục $f(x)$ là hàm không âm, $f(x)\ge0\,, \forall x\in\Omega$,
@@ -413,8 +415,6 @@ $$
 		\mathrm{Var}(X) = \int_{\Omega} (x - \mathbb{E}(X))^2 f(x) \mathrm{\,d}x.
 $$
 }
-
-Đây là khái niệm quan trọng trong luận văn này. Để cụ thể, chúng tôi tập trung khảo sát tính chất của hàm mật độ ($\mu$ là độ đo Lebesgue) liên tục tuyệt đối của biến ngẫu nhiên $X$. Các hàm mật độ cũng được định nghĩa trên tập số thực. Ta có thể tổng quát hóa đối tượng hàm mật độ thành không gian lồi $$\mathcal{F} = \left\{f\,:\,\Omega\to \mathbb{R}^+\Big\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$$
 
 \dng{[Dữ liệu hàm mật độ $1$-chiều]
 Dữ liệu hàm mật độ là một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,,o_2\,,\ldots\,,o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,,f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,,u_j]$ là khoảng xác định của $o_j$ và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
@@ -609,18 +609,6 @@ Các khoảng cách của hai hàm mật độ xác suất được thành lập
 
 
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=\linewidth]{Figs/C1_khoangcach.pdf}
-%\begin{flushleft}
-%{\footnotesize \textit{Nguồn: Minh họa của tác giả}}
-%\end{flushleft}
-%\caption[Minh họa các khoảng cách phổ biến giữa hai hàm mật độ Gauss]{Minh họa khoảng cách $\mathcal{L}_2$ và một vài Affinity phổ biến giữa hai hàm mật độ  Gauss $\mathcal{N}(1\,,1)$ và $\mathcal{N}(4,1)$}
-%\label{fig:PDF}
-%\end{figure}
-
-
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Figs/C1_dist.pdf}
@@ -785,22 +773,27 @@ Hai hạt nhân cơ bản cho khoảng cách hai hàm mật độ $f_1(x)$ và $
 	K_H(f_1, f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\mathrm{\,d}x.
 	$
 }
+
+Ở đây, việc chuyển đổi từ hàm hạt nhân đến khoảng cách được cho bởi $D = 1-K$ hoặc $D=2(1-K)$.
+
 \subsection{Sự tương tự của nhiều hơn hai hàm mật độ xác suất}
 
 \subsubsection{a.\quad Liên kết chùm hàm mật độ}
 
-Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{G}$ chứa hữu hạn phần tử và $D(f\,,g)$ là khoảng cách giữa hai hàm mật độ, $f\in\mathcal{F}$ và $g\in\mathcal{G}$. Khoảng cách giữa hai chùm hàm mật độ gọi là \emph{liên kết}, là một ánh xạ $\delta\,:\, {\mathcal {P}\!\left( {X}\right) } \times {\mathcal {P}\!\left( {X}\right) } \times \mathcal {M}(X) \to \mathbb {R}_+$, trong đó, $\mathcal{P}(X)$ là tập lũy thừa của $X$.
+Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{G}$ chứa hữu hạn phần tử và $D(f\,,g)$ là khoảng cách giữa hai hàm mật độ, $f\in\mathcal{F}$ và $g\in\mathcal{G}$. Khoảng cách giữa hai chùm hàm mật độ gọi là \emph{liên kết}, là một ánh xạ $\delta\,:\, {\mathcal {P}\!\left( {X}\right) } \times {\mathcal {P}\left( {X}\right) } \times \mathcal {M}(X) \to \mathbb {R}_+$, trong đó, $\mathcal{P}(X)$ là tập lũy thừa của $X$.
 
 \begin{table}[H]
 \caption{Bảng tổng kết các loại liên kết $\Delta$ giữa hai chùm hàm mật độ xác suất}
 	\centering\footnotesize
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}} 
+	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lll@{\extracolsep\fill}} 
 			\toprule
-			\bf Liên kết & \bf                             $\Delta$                             \\ \midrule
-						Liên kết đơn\footnotemark \citep{florek1951liaison}&$\min_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,,g)$\\
-			Liên kết đủ\footnotemark \citep{sorensen1948method} & $\max_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,,g)$\\
-			Liên kết tâm &$D(\theta_{\mathcal{F}}\,,\theta_{\mathcal{G}})$\\
-			Liên kết Ward \cite{ward1963hierarchical} &$\sum_{h\in\mathcal{F}\cup\mathcal{G}}D^2(f\,,\theta_{\mathcal{F}\cup\mathcal{G}}) - \left(\sum_{f\in\mathcal{F}}D^2(f\,,\theta_{\mathcal{F}}) + \sum_{g\in\mathcal{G}}D^2(g\,,\theta_{\mathcal{G}})\right)$\\ \bottomrule
+			\bf Liên kết &\bf Ký hiệu & \bf                             $\Delta$                             \\ \midrule
+			Liên kết đơn\footnotemark[1] \citep{florek1951liaison}&$\Delta_{\min}$&$\min_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,,g)$\\
+			Liên kết đủ\footnotemark[2] \citep{sorensen1948method} &$\Delta_{\max}$& $\max_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,,g)$\\
+			Liên kết tâm &$\Delta_{centroid}$&$D(\theta_{\mathcal{F}}\,,\theta_{\mathcal{G}})$\\
+			Liên kết trung bình&$\Delta_{avg}$ & $\frac{1}{\#\mathcal{F}\#\mathcal{G}}\sum_{f\in\mathcal{F}, g\in\mathcal{G}}D(\mathcal{F}\,,\mathcal{G})$\\
+			Liên kết Ward \cite{ward1963hierarchical}&$\Delta_{Ward}$ &$\Delta_{Ward}(\mathcal{F},\, \mathcal{G}) = \frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}} D^2\big(\theta_{\mathcal{F}},\, \theta_{\mathcal{G}}\big)
+			$\\ \bottomrule
 		\end{tabular*}
 		\\\hfill {\footnotesize \textit{Chú thích: \footnotemark[1]: Khoảng cách lớn nhất; \footnotemark[2]: Khoảng cách bé nhất. Nguồn: Tác giả tổng hợp}}
 \end{table}
@@ -811,9 +804,20 @@ Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{
 	\begin{flushleft}
 	\footnotesize	{\it Chú thích: Các loại liên kết này giữa ba chùm hàm mật độ dựa trên (a) tổng khoảng cách nhỏ nhất, (b) tổng khoảng cách lớn nhất, (c) tổng khoảng cách giữa các hàm mật độ trọng tâm, (d) trung bình cộng tất cả các khoảng cách, (e) khoảng cách tối ưu có tổng bình phương các khoảng cách là lớn nhất. Nguồn: Tác giả vẽ lại từ Gao et al. \cite{gao2023overview}}
 	\end{flushleft}
-	\caption{Các loại liên kết giữa các chùm hàm mật độ xác suất. }
+	\caption{Các loại liên kết giữa các chùm hàm mật độ xác suất.}
 	\label{fig:linkage}
 \end{figure}
+
+
+Khi hai ta cần tính khoảng cách từ chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng các loại liên kết trên. Trong thực tế, các liên kết $\Delta$ được biến đổi thành
+\begin{align*}
+	\Delta_{\min}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \min\big\{D_{f\in\mathcal{F}, h\in\mathcal{H}}(f,\, h),\, D_{f\in\mathcal{G}, h\in\mathcal{H}}(g,\, h)\big\}, \\
+	\Delta_{\max}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \max\big\{D_{f\in\mathcal{F}, h\in\mathcal{H}}(f,\, h),\, D_{f\in\mathcal{G}, h\in\mathcal{H}}(g,\, h)\big\}, \\
+	\Delta_{avg}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \frac{1}{\#(\mathcal{F}\cup\mathcal{G}) \cdot \#\mathcal{H}} \sum_{f \in \mathcal{F} \cup \mathcal{G},\, h \in \mathcal{H}} D(f,\, h), \\
+	\Delta_{centroid}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= D\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big), \\
+	\Delta_{Ward}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \frac{\#(\mathcal{F}\cup\mathcal{G})\cdot \#\mathcal{H}}{(\#\mathcal{F} \cup \#\mathcal{G}) \cup \#\mathcal{H}} D^2\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big).
+\end{align*}
+
 
 \subsubsection{b.\quad Tương tự chùm hàm mật độ}
 
@@ -882,6 +886,7 @@ trong đó $x_i = a + ih$, $i=0,\dots,n$.
 
 
 \newpage
+
 \section{Phân tích chùm cho hàm mật độ xác suất}
 
 
@@ -990,7 +995,19 @@ Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{j\in c_i}$ nên ta có 
 
 Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson1967hierarchical}
 
-\vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Cho bảy hàm mật độ chuẩn một chiều $\mathcal{F}$ cho bởi Vo-Van, Tai and Pham-Gia, T., \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1\,, i = 1\,,\ldots\,,7$ và các trung bình lần lượt là $\mu_i = \{0,3\,;4,0\,;9,1\,;1,0\,;5,5\,;8,0\,;4,8\}.$ Hãy phân cấp thứ bậc với khoảng cách $D(f_1\,,f_2)=\mathcal{L}_2$ và liên kết $\Delta(\mathcal{F}_1\,,\mathcal{F}_2)$ là liên kết đơn.
+
+\vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Cho bảy hàm mật độ chuẩn một chiều $\mathcal{F}$ cho bởi Vo-Van, Tai and Pham-Gia, T., \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1\,, i = 1\,,\ldots\,,7$ và các trung bình lần lượt là $\mu_i = \{0,3\,;4,0\,;9,1\,;1,0\,;5,5\,;8,0\,;4,8\}.$ Hãy phân cấp thứ bậc với khoảng cách $D(f_1\,,f_2)=\mathcal{L}_2$ và liên kết $\Delta_{\max}(\mathcal{F}_1\,,\mathcal{F}_2)$ là liên kết đủ.
+
+\textbf{Bài giải.} Đầu tiên, ta tính toán các khoảng cách từng đôi hàm mật độ bất kỳ bằng khoảng cách $\mathcal{L}_2(f_i\,,f_j)$ với $i\,,j = 1\,,\ldots\,,7$, ta nhận được ma trận khoảng cách
+$$\bm D=\begin{bmatrix}
+	 \\
+	0,74 &  \\
+	0,75 & 0,75 &  \\
+	\textbf{0,26} & 0,71 & 0,75 &  \\
+	0,75 & 0,49 & 0,74 & 0,75 &  \\
+	0,75 & 0,74 & 0,38 & 0,75 & 0,67 &  \\
+	0,75 & 0,29 & 0,75 & 0,74 & \textbf{0,26} & 0,72 & 
+\end{bmatrix}.$$
 
 
 	
@@ -999,7 +1016,7 @@ Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson196
 	     \begin{subfigure}[b]{.45\textwidth}
 	         \centering
 	         \includegraphics[width=.9\linewidth]{Figs/tree_L2_single.pdf}
-	         \caption{Liên kết đơn}
+	         \caption{Liên kết đủ}
 	     \end{subfigure}
 	     \begin{subfigure}[b]{.45\textwidth}
 	     	\centering
@@ -1436,17 +1453,20 @@ Trí tuệ nhân tạo là trọng tâm, là mũi đột phá chính của phát
 %\clearpage
 %\pagenumbering{roman}	
 %\appendix
-%\chapter*{PHỤ LỤC A\\MÃ NGUỒN}
-%\addcontentsline{toc}{chapter}{PHỤ LUC A}
-%
-%%\lstinputlisting[language=Matlab,caption={Thuật toán phân tích chùm mờ (F$C$M)}]{Code/FCM.m}
-%
-%
-%
-%
-%
-%\chapter*{PHỤ LỤC B\\KẾT QUẢ}
-%\addcontentsline{toc}{chapter}{PHỤ LUC B}
+\chapter*{PHỤ LỤC A\\MÃ NGUỒN}
+\addcontentsline{toc}{chapter}{PHỤ LỤC A}
+
+Các mã Python được sử dụng trong luận văn này được lưu trữ tại \url{https://github.com/hungtrannam/probclust}. Chúng tôi chạy trên hệ điều hành Ubuntu 24.04.2 LTS, nhân Linux 6.11.0-19-generic, 11th Gen Intel$\copyright$ Core$^\text{TM}$ i5-11400H$\times$12, bộ nhớ 16.0 GiB.
+
+
+
+
+
+
+
+
+\chapter*{PHỤ LỤC B\\KẾT QUẢ}
+\addcontentsline{toc}{chapter}{PHỤ LỤC B}
 
 %\chapter*{XÁC NHẬN CỦA HỘI ĐỒNG}
 %
