@@ -694,8 +694,8 @@ Tương tự ta cũng suy ra được phương pháp chứng minh cho các Đị
 		\begin{flushleft}
 		% Chú thích giải thích
 		\footnotesize \it Chú thích: Bốn trường hợp mật độ đều với (a) hai hàm rời nhau, cùng chiều rộng; (b) hai hàm rời nhau, khác chiều rộng; (c) hai hàm rời nhau, cách xa nhau; và (d) hai hàm chồng lấp. Ở đây, ô vuông trắng \begin{tikzpicture}
-			\node[draw=black,line width=1pt,opacity=0.7,fill=black!15, minimum size=3mm] () {};\end{tikzpicture} biểu thị hàm mật độ $f_1(x)$ và ô vuông xám  \begin{tikzpicture}
-			\node[draw=black,line width=1pt,opacity=0.7, fill=black!55, minimum size=3mm] () {};\end{tikzpicture}  biểu thị hàm mật độ $f_2(x)$. Nguồn: Minh họa của tác giả.
+			\node[draw=black,line width=1pt,opacity=0.7,fill=black!5, minimum size=3mm] () {};\end{tikzpicture} biểu thị hàm mật độ $f_1(x)$ và ô vuông xám  \begin{tikzpicture}
+			\node[draw=black,line width=1pt,opacity=0.7, fill=black!75, minimum size=3mm] () {};\end{tikzpicture}  biểu thị hàm mật độ $f_2(x)$. Nguồn: Minh họa của tác giả.
 		\end{flushleft}
 		\caption{Các trường hợp trong khoảng cách giữa hai hàm mật độ đều $f_1(x)$ và $f_2(x)$.}\label{fig:daydeu}
 		
@@ -764,17 +764,17 @@ Ta tiếp tục định nghĩa các khái niệm liên quan đến khoảng các
 }
 
 \vdu{
-Hai hạt nhân cơ bản cho khoảng cách hai hàm mật độ $f_1(x)$ và $f_2(x)$ là hạt nhân chuẩn
+Hai hạt nhân cơ bản cho khoảng cách hai hàm mật độ $f_1(x)$ và $f_2(x)$ là hạt nhân chuẩn\index{hàm hạt nhân chuẩn (Gaussian kernel)}
 	$
 	K_G(f_1, f_2) = \exp\left(-\frac{D^2(f_1\,,f_2)}{2\sigma^2}\right),
 	$
-	và {hạt nhân Hellinger} 
+	trong đó, $D$ thuộc họ khoảng cách $\mathcal{L}_p$ để đảm bảo tính mê-tríc, và hạt nhân Bhattacharyya\index{hàm hạt nhân Bhattacharyya (Bhattacharyya kernel)}
 	$
-	K_H(f_1, f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\mathrm{\,d}x.
+	K_B(f_1, f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\mathrm{\,d}x.
 	$
 }
 
-Ở đây, việc chuyển đổi từ hàm hạt nhân đến khoảng cách được cho bởi $D = 1-K$ hoặc $D=2(1-K)$.
+Hàm hạt nhân $K(\cdot\,,\cdot)$ càng gần 1 thì hai hàm mật độ càng giống nhau và ngược lại. Ở đây, việc chuyển đổi từ hàm hạt nhân đến khoảng cách được cho bởi $D = 1-K_G$ khi các hạt nhân chuẩn hóa $[0\,;1]$, hoặc $D=2(1-K_H)$ khi là hạt nhân Bhattacharyya.
 
 \subsection{Sự tương tự của nhiều hơn hai hàm mật độ xác suất}
 
@@ -839,7 +839,7 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
         \hfill {\footnotesize \textit{Nguồn: Tác giả tổng hợp}}
 \end{table}
 
-\chy{Trong Bảng \ref{tab:chumham} trường hợp Affinity của Toussaint có các hệ số $\alpha_1=\alpha_2=\cdots=\alpha_n=\frac{1}{n}$, nó trở thành Affinity của Matusita. Khi Affinity của Matusita có $n=2$ thì nó trở thành hệ số Bhattacharyya \cite{}. Ngoài ra hệ số tượng tự chùm tổng quát hóa độ rộng chùm với $k=2$.}
+\chy{Trong Bảng \ref{tab:chumham} trường hợp Affinity của Toussaint có các hệ số $\alpha_1=\alpha_2=\cdots=\alpha_n=\frac{1}{n}$, nó trở thành Affinity của Matusita. Khi Affinity của Matusita có $n=2$ thì nó trở thành hệ số Bhattacharyya \cite{}. Ngoài ra hệ số tượng tự chùm chuẩn hóa tuyến tính độ rộng chùm.}
 
 \section{Xấp xỉ tích phân}
 
@@ -925,10 +925,13 @@ Thuật toán $k$-means lần đầu được đề cập bởi J. Macqueen \cit
 \begin{align}\tag{$k$-means}\label{Jk}
 	\text{Minimise}\,&:\, J(\bm U\,, \Theta\,|\, \mathcal{F}\,,c) = \sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}\mathrm{D}^2(\theta_i\,,{f}_j),
 \end{align}
-trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{j\in c_i}$. Tức là $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại.  Hàm $\theta_i(x)$ là hàm mật độ trọng tâm của chùm thứ $c_i$. Ký hiệu $\mathrm{D}^2(\theta_i\,,{f}_j)$ là khoảng cách giữa hàm mật độ trọng tâm đến các đối tượng $f_j(x)$ còn lại trong dữ liệu. 
+trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{j\in c_i}$. Tức là $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại.  Hàm $\theta_i(x)$ là hàm mật độ trọng tâm của chùm thứ $c_i$. Ký hiệu $\mathrm{D}^2(\theta_i\,,{f}_j)$ là khoảng cách giữa hàm mật độ trọng tâm $\theta(x)$ đến các đối tượng $f_j(x)$ còn lại trong dữ liệu. 
 
 \bode{[Thành lập hàm mật độ đại diện]
-
+Giả sử $\mathcal{F}$-hàm mật độ được phân thành $c$-chùm qua các mức độ thành viên $\mu_{ij}$, với bình phương khoảng cách $\mathrm{D}^2(\theta_i, f_j)$. Khi đó, hàm mật độ đại diện $\theta_i^\ast(x)$ tối ưu trên mỗi chùm $c_i$ được cho bởi công thức
+\[
+\theta_i^\ast(x) = \frac{\sum_{f_j \in c_i} \mu_{ij} f_j(x)}{\sum_{f_j \in c_i} \mu_{ij}}.
+\]
 }
 
 
@@ -996,7 +999,7 @@ Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson196
 
 \vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Cho bảy hàm mật độ chuẩn một chiều $\mathcal{F}$ cho bởi Vo-Van, Tai and Pham-Gia, T., \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1\,, i = 1\,,\ldots\,,7$ và các trung bình lần lượt là $\mu_i = \{0,3\,;4,0\,;9,1\,;1,0\,;5,5\,;8,0\,;4,8\}.$ Hãy phân cấp thứ bậc với khoảng cách $D(f_1\,,f_2)=\mathcal{L}_2$ và liên kết $\Delta_{\max}(\mathcal{F}_1\,,\mathcal{F}_2)$ là liên kết đủ.
 
-\textbf{Bài giải.} Ta có kết quả phân cấp thứ bậc tích tụ bởi Hình~\ref{figs:thubac}. Bài giải chi tiết được phân tích trong Phụ lục B~(tr. \pageref{phulucB}).
+\textbf{Bài giải.} Ta có kết quả phân cấp thứ bậc tích tụ bởi Hình~\ref{figs:thubac}. Bài giải chi tiết được phân tích trong Phụ lục B~(tr. \pageref{phulucB}).  Quá trình phân cấp được thực hiện với hai phương pháp liên kết đủ liên kết Ward. Nhìn Hình~\ref{figs:thubac}, ta thấy phương pháp liên kết đủ có xu hướng tạo ra các chùm nhỏ, chặt chẽ, và nhạy cảm với nhiễu ở biên. Ngược lại, liên kết Ward cho kết quả các chùm có tính đồng nhất cao hơn về phân bố, làm cây phân cấp cân đối.
 	\begin{figure}[H]
 	     \centering
 	     \begin{subfigure}[b]{.45\textwidth}
@@ -1010,7 +1013,7 @@ Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson196
 	     	\caption{Liên kết Ward}
 	     \end{subfigure}
 	     \begin{flushleft}
-	     Nguồn: Tác giả tính toán
+	     \footnotesize\it Chú thích: Cây phân cấp ở phía trên thể hiện cách sắp xếp và nhóm các hàm mật độ dựa trên liên kết, phần dưới thể hiện ma trận khoảng cách tương ứng với từng hàm mật độ đó. Nguồn: Minh họa của tác giả
 	     \end{flushleft}
 	     \caption{Kết quả phân cấp thứ bậc tích tụ đối với Ví dụ~\ref{VD:thubac}}\label{figs:thubac}
 	\end{figure}
@@ -1212,7 +1215,7 @@ l_i = \log\left(\frac{\pi_i}{1-\pi_i}\right) = \beta_0 + \int _{\Omega} {\mathca
 $$
 
 
-Mục tiêu tiếp theo là ước lượng $\beta_0$ và hàm $\beta(x)$. Do $\beta(x)$ là vô hạn chiều, ta xấp xỉ một tập hàm cơ sở\index{hàm cơ sở (basis functions)} chọn trước để ước lượng, cụ thể là hàm Gauss, wavelet, chuỗi Fourier, đa thức Bernstein và Legendre, hoặc B-spline. Khi đó,
+Mục tiêu tiếp theo là ước lượng $\beta_0$ và hàm $\beta(x)$. Do $\beta(x)$ là vô hạn chiều, ta chiếu hàm này vào một tập hàm cơ sở\index{hàm cơ sở (basis functions)} chọn trước để ước lượng, cụ thể là hàm Gauss, wavelet, chuỗi Fourier, đa thức Bernstein và Legendre, hoặc B-spline. Khi đó,
 $$
 l_i = \beta_0 + \sum_{m=1}^M \theta_m \underbrace{\int_\Omega \psi_m(x) {\mathcal{F}}_i(x)\, dx}_{=: \phi_{i,m}},
 $$
@@ -1222,6 +1225,8 @@ $$
 $$
 Ta sử dụng thuật toán độ dốc\index{thuật toán độ dốc (gradient decent method)} để tối ưu hóa hàm mục tiêu $\mathcal{L}$ này.
 \vdu{
+Giả sử hai lớp hàm mật độ Gauss $\mathcal{F}$ và $\mathcal{G}$ có $\mu_i$ ở hai lớp này lần lượt là
+$\mu_\mathcal{F}=\{1,0;1,5; 2,0; 2,5; 6,0\}$ và $\mu_\mathcal{G}=\{4,5;7,5; 8,5; 8,0; 8,5\}$, có $\sigma_{\mathcal{F}}^2=0,4$ và$\sigma_{\mathcal{G}}^2=0,9$. Hãy phân loại hàm mật độ Gauss mới $\mathcal{N}(3,0;0,9)$ vào một trong hai lớp.
 
 }
 
