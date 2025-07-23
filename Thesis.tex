@@ -203,8 +203,8 @@
 \renewtheorem{definition}{\hspace*{0.5cm}Định nghĩa}[chapter]
 \newcommand{\dng}[1]{\begin{definition}#1\end{definition}}
 
-\theoremstyle{nonumberplain}
-\renewtheorem{example}{\hspace*{0.5cm}Ví dụ}
+\theoremstyle{plain}
+\renewtheorem{example}{\hspace*{0.5cm}Ví dụ}[chapter]
 \newcommand{\vdu}[1]{\begin{example}#1\end{example}}
 
 \theoremheaderfont{\bfseries\slshape\small}
@@ -444,14 +444,73 @@ Trong thực tế, ta làm việc trên hàm mật độ xác suất cụ thể 
 	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất Gauss là $\mathbb{E}(X) = \mu\,, \mathrm{Var}(X) = \sigma^2$.
 }
 
+\bode{[Tổng hai hàm mật độ Gauss]\label{ble:sum-Gauss}
+	Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ và $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)$. Khi đó tổng $S = X_1 + X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
+	$
+	S \sim \mathcal{N}(\mu_1 + \mu_2,\, \sigma_1^2 + \sigma_2^2).
+	$
+}
+
+\bode{[Tích phân của hai hàm mật độ Gauss]\label{ble:tich-Gauss}
+	Cho hai hàm mật độ Gauss $\mathcal{N}(\mu_1\,,\sigma_1^2)$ và $\mathcal{N}(\mu_2\,,\sigma_2^2)$ với kỳ vọng $\mu_1, \mu_2 \in \mathbb{R}$, và phương sai $\sigma_1^2, \sigma_2^2 >0$. Khi đó, tích phân giữa hai hàm mật độ được xác định bởi
+	$$
+	\int_{\Omega} \mathcal{N}(\mu_1\,,\sigma_1^2) \cdot \mathcal{N}(\mu_2\,,\sigma_2^2) \,\mathrm{d}x = \frac{1}{\sqrt{2\pi(\sigma_1^2 + \sigma_2^2)}} \exp\left(-\frac{(\mu_1 - \mu_2)^2}{2(\sigma_1^2 + \sigma_2^2)}\right).
+	$$
+}
+
+\chm{
+	Xét tích phân 
+	\begin{align*}
+		I &= \int_{-\infty}^{\infty} \mathcal{N}(x\,;\,\mu_1\,,\sigma_1^2) \cdot \mathcal{N}(x\,;\,\mu_2\,,\sigma_2^2)\,\mathrm{d}x =\int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{(x - \mu_1)^2}{2\sigma_1^2} - \frac{(x - \mu_2)^2}{2\sigma_2^2}\right)\,\mathrm{d}x\\
+		&= \int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{1}{2} \underbrace{\left(\frac{1}{\sigma_1^2} + \frac{1}{\sigma_2^2} \right)}_{\coloneq1/\sigma^2} x^2 
+		+ \underbrace{\left( \frac{\mu_1}{\sigma_1^2} + \frac{\mu_2}{\sigma_2^2} \right)}_{\coloneq\mu} x - \frac{\mu_1^2}{2\sigma_1^2} - \frac{\mu_2^2}{2\sigma_2^2}
+		\right)\,\mathrm{d}x\\
+		&= \int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{1}{2} \sigma (x - \mu)^2 - \frac{(\mu_1 - \mu_2)^2}{2(\sigma_1^2 + \sigma_2^2)}\right)\,\mathrm{d}x\\
+		&=\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{(\mu_1 - \mu_2)^2}{2(\sigma_1^2 + \sigma_2^2)}\right) \underbrace{\int_{-\infty}^{\infty} \exp\left(-\frac{1}{2\sigma^2} (x - \mu)^2\right) \mathrm{d}x}_{=\sqrt{2\pi \sigma^2}}\\
+		& = \frac{\sqrt{2\pi \sigma^2}}{2\pi \sigma_1 \sigma_2}\exp\left(-\frac{(\mu_1 - \mu_2)^2}{2(\sigma_1^2 + \sigma_2^2)}\right).
+	\end{align*}
+Từ đây, ta suy ra được điều phải chứng minh.
+}
+
+
+
 \dng{[Hàm mật độ Gauss $d$-chiều]
 		Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo mật độ Gauss (chuẩn) với hai tham số ${\bm\mu}$ và $\bm\Sigma$ (trong đó ${\bm\mu}\in\mathbb{R}^d$ và $\bm\Sigma$ thuộc đa tạp của ma trận đối xứng xác định dương) nếu nó có hàm mật độ xác suất là
-		$$ \mathcal{N}(\bm x\,;\,{\bm\mu}\,,{\bm\Sigma}) = \frac{1}{(2\pi)^{d/2}|{\bm\Sigma}|^{1/2}}\exp\left(-\frac{1}{2}(\bm x-{\bm\mu})^\top{\bm\Sigma}^{-1}(\bm x-{\bm\mu})\right),\,\bm x \in \mathbb{R}^d.	 $$
+		$$ \mathcal{N}(\bm x\,;\,{\bm\mu}\,,{\bm\Sigma}) = \frac{1}{(2\pi)^{d/2}|{\bm\Sigma}|^{1/2}}\exp\left(-\frac{1}{2}(\bm x-{\bm\mu})^\intercal{\bm\Sigma}^{-1}(\bm x-{\bm\mu})\right),\,\bm x \in \mathbb{R}^d,	 $$
+		trong đó, $|\bm\Sigma|$ là định thức của ma trận hiệp phương sai.
 	}
 	
+		
 	\dly{[Kỳ vọng và hiệp phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $\bm X$ có hàm mật độ xác suất Gauss là $\mathbb{E}(\bm{X})= \bm{\mu}\,,
 		\mathrm{Cov}(\bm{X}) = \bm{\Sigma}.$
-}
+	}
+	
+	\bode{[Tích phân của hai hàm mật độ Gauss $d$-chiều]\label{ble:tich-Gaussdimension}
+		Cho hai hàm mật độ Gauss $d$-chiều $\mathcal{N}(\bm\mu_1\,,\bm\Sigma_1)$ và $\mathcal{N}(\bm\mu_2\,,\bm\Sigma_2)$ với véc-tơ kỳ vọng $\bm\mu_1, \bm\mu_2 \in \mathbb{R}^d$, và ma trận hiệp phương sai $\bm\Sigma_1, \bm\Sigma_2$ xác định dương. Khi đó, tích phân giữa hai hàm mật độ được xác định bởi
+\begin{align*}
+	\int_{\Omega} \mathcal{N}(\bm\mu_1, \bm\Sigma_1) 
+	\cdot \mathcal{N}(\bm\mu_2, \bm\Sigma_2)\,\mathrm{d}x 
+	&= \frac{1}{(2\pi)^{d/2}|\bm\Sigma_1 + \bm\Sigma_2|^{1/2}} \\
+	&\quad \times \exp\left( 
+	- \frac{1}{2} 
+	(\bm\mu_1 - \bm\mu_2)^\intercal 
+	(\bm\Sigma_1 + \bm\Sigma_2)^{-1} 
+	(\bm\mu_1 - \bm\mu_2) 
+	\right).
+\end{align*}
+	}
+	
+	\bode{[Tổng hai hàm mật độ Gauss $d$-chiều]\label{ble:sum-Gaussdimension}
+		Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\bm\mu_1, \bm\Sigma_1)$ và $X_2 \sim \mathcal{N}(\bm\mu_2, \bm\Sigma_2)$. Khi đó tổng $S = X_1 + X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
+		$
+		S \sim \mathcal{N}(\bm\mu_1 + \bm\mu_2,\, \bm\Sigma_1 + \bm\Sigma_2).
+		$
+	}
+	
+\chy{	Hàm mật độ $h(x)$ của tổng $S=X+Y$ hai biến ngẫu nhiên độc lập là kết quả của tích chập giữa các hàm mật độ tương ứng, tức là $h(x)=f_X(x) * g_Y(x)$.
+	
+	}
+
 	
 	
 	\begin{figure}[th]
@@ -500,7 +559,6 @@ Hàm mật độ Gauss-lệch nhận thêm một tham số thể hiện mức đ
 	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất đều là $\mathbb{E}(X) = \frac{a + b}{2}\,, \mathrm{Var}(X) = \frac{(b - a)^2}{12}$.
 }
 
-
 \dng{[Hàm mật độ đều $d$-chiều]
 	Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo phân phối đều trên hình hộp $[a_1\,, b_1] \times \cdots \times [a_d\,, b_d]$ (với $a_i < b_i$, $a_i\,, b_i \in \mathbb{R}$) nếu nó có hàm mật độ xác suất là
 	$$
@@ -540,9 +598,9 @@ $$\int_{\Omega}\theta_i(x)\mathrm{\,d}x=\int_{\Omega}\frac{\sum_{j=1}^n\mu_{ij}\
 \chm{Ta có
 	\begin{align*}
 		\mathbb{E}_{\theta_i}(X)
-		= \int x\, \theta_i(x)\, \mathrm{d}x &= \int x\, \frac{\sum_{j=1}^n \mu_{ij} f_j(x)}{\sum_{j=1}^n \mu_{ij}}\, \mathrm{d}x = \frac{1}{\sum_{j=1}^n \mu_{ij}} \sum_{j=1}^n \mu_{ij}\underbrace{ \int x\, f_j(x)\, \mathrm{d}x}_{= \mathbb{E}_{f_j}(X)}.
+		= \int_{\Omega} x\, \theta_i(x)\, \mathrm{d}x &= \int _{\Omega}x\, \frac{\sum_{j=1}^n \mu_{ij} f_j(x)}{\sum_{j=1}^n \mu_{ij}}\, \mathrm{d}x = \frac{1}{\sum_{j=1}^n \mu_{ij}} \sum_{j=1}^n \mu_{ij}\underbrace{ \int_{\Omega} x\, f_j(x)\, \mathrm{d}x}_{= \mathbb{E}_{f_j}(X)}.
 	\end{align*}
-	Từ đây ta suy ra được điều phải chứng minh.
+	Từ đây, ta suy ra điều phải chứng minh.
 }
 
 
@@ -565,6 +623,50 @@ $$\theta_{G_i}(x) = \arg\min_{f({\bm\mu}\,,\Sigma)}\sum_{j=1}^n\mu_{ij}D(f({\bm\
 	\caption{Minh họa hai hàm mật độ xác suất đại diện một chùm hàm mật độ $\mathcal{F}$.}
 	\label{fig:hamdaidien}
 \end{figure}
+
+
+
+
+Trong thực tế, ta cần phải ước lượng hàm mật độ xác suất dựa vào dữ liệu rời rạc, luận văn này sử dụng phương pháp ước lượng hàm hạt nhân để chuyển từ bài toán rời rạc sang hàm mật độ xác suất.
+\dng{[Ước lượng hàm mật độ bằng phương pháp hàm hạt nhân]
+	Giả sử ta có một tập dữ liệu rời rạc gồm $n$ quan sát ${\bm{x}_j}$ với $j = 1, \ldots, n$ trong không gian $\mathbb{R}^d$. Mỗi điểm $\bm{x}_j = (x_{1j}, x_{2j}, \ldots, x_{dj})^\intercal$. Hàm mật độ xác suất tại điểm $\bm{x} = (x_1, x_2, \ldots, x_d)^\top$ được ước lượng bằng phương pháp hạt nhân bởi
+	\[
+	\hat{f}(\bm{x}) = \frac{1}{n \prod_{i=1}^d {bw}_i} \sum_{j=1}^{n} \prod_{i=1}^{d} \kappa_i\left( \frac{x_i - x_{ij}}{{bw}_i} \right),
+	\]
+	trong đó $\kappa_i$ là hàm hạt nhân theo chiều $i$ và ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
+}
+
+\chy{Khi tham số trơn $bw$ nhỏ, hàm mật độ ước lượng sẽ kém trơn và có thể dao động mạnh; ngược lại, nếu $bw$ lớn thì hàm trở nên trơn hơn nhưng có thể làm mất chi tiết quan trọng của phân phối gốc. Các nghiên cứu đã chỉ ra rằng việc lựa chọn tham số trơn có ảnh hưởng lớn hơn đáng kể so với việc lựa chọn loại hàm hạt nhân.}
+
+Trong trường hợp đơn giản, có thể chọn cùng một hàm hạt nhân và cùng một tham số trơn cho tất cả các chiều, tức là $\kappa_i \equiv \kappa$ và ${bw}_i = {bw}$ với mọi $i=1,\ldots,d$. Một số hàm hạt nhân phổ biến được liệt kê trong Bảng~\ref{tab:kernel}. Luận văn này khảo sát hàm mật độ ước lượng từ hàm hạt nhân Gauss và Epanechnikov với tham số trơn cố định và được tính bởi công thức của Scott, $bw = 1.06 \times \mathrm{Var}(x_j) \times n^{-1/5}$.
+
+\begin{table}[H]
+	\centering
+	\caption{Một số hàm hạt nhân phổ biến dùng trong ước lượng mật độ hạt nhân}
+	\label{tab:kernel}
+	\centering\footnotesize
+\begin{tabular}{lcc} 
+		\toprule
+		\textbf{Tên hàm} & \textbf{$\kappa(z)$} & \textbf{Miền xác định} \\\midrule
+		Hình chữ nhật &
+		$ (1/2)\bm1_{|z| \leq 1}$ &
+		$[-1, 1]$ \\
+		Tam giác &
+		$ (1 - |z|) \bm1_{|z| \leq 1}$ &
+		$[-1, 1]$ \\
+		Epanechnikov &
+		$ (3/4)(1 - z^2) \bm1_{|z| \leq 1}$ &
+		$[-1, 1]$ \\
+		Gauss &
+		$ \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{z^2}{2}\right)$ &
+		$\mathbb{R}$ \\
+		Logistic &
+		$\frac{\exp(-z)}{1 + \exp(-z)^2}$ &
+		$\mathbb{R}$ \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
 
 
 \section{Độ đo đánh giá sự tương tự của các hàm mật độ xác suất}
@@ -996,6 +1098,18 @@ Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{j\in c_i}$ nên ta có 
 
 Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson1967hierarchical}
 
+\begin{algorithm}
+	\caption{Giải thuật phân cấp thứ bậc tích tụ}\label{alg:HCF}
+	\begin{algorithmic}[1]
+		\State \textbf{Data:} Khoảng cách $D(\cdot\,,\cdot)$ của tất cả $\binom{n}{2} = \frac{n(n-1)}{2}$ các hàm mật độ theo từng cặp. Xem mỗi hàm $f$ như một chùm riêng tự nó.
+		\State \textbf{Result:} Chùm thứ bậc $\mathcal{C}_i$.
+		\For{$i = n, n - 1, \dotsc, 2$}
+		\State (1) Xác định khoảng cách nhỏ nhất;
+		\State (2) Gộp hai chùm này;
+		\State (3) Tính khoảng cách mới giữa các chùm thứ $i - 1$ còn lại.
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
 
 \vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Cho bảy hàm mật độ chuẩn một chiều $\mathcal{F}$ cho bởi Vo-Van, Tai and Pham-Gia, T., \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1\,, i = 1\,,\ldots\,,7$ và các trung bình lần lượt là $\mu_i = \{0,3\,;4,0\,;9,1\,;1,0\,;5,5\,;8,0\,;4,8\}.$ Hãy phân cấp thứ bậc với khoảng cách $D(f_1\,,f_2)=\mathcal{L}_2$ và liên kết $\Delta_{\max}(\mathcal{F}_1\,,\mathcal{F}_2)$ là liên kết đủ.
 
@@ -1032,7 +1146,9 @@ Phân tích chùm mờ được xây dựng lần đầu tiên cho hàm mật đ
 Giả sử $\mathcal{F}$ chưa được gán nhãn, mục tiêu của bài toán là tối tiểu hóa tổng trọng số các giá trị hàm thành viên với siêu tham số $m$ và khoảng cách.
 \begin{align}\tag{FCF}\label{Jf}
 	\text{Minimise}\,&:\, J(\bm U\,,\Theta\,|\, \mathcal{F}\,,c\,,m) = \sum_{i=1}^{c}\sum_{j=1}^{n}\mu_{ij}^m\mathrm{D}^2(\theta_i\,,{f}_j),\\\nonumber
-	\text{s.t}\,&:\, \eqref{c1}\,, \eqref{c2}\,, \eqref{c3}.
+	\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1,\quad \forall j \in {1, \dots, n}, \tag{C1}\label{c1} \\
+	\,&\mu_{ij} \in [0\,;1],\quad \forall i \in {1,\dots,c},, \forall j \in {1,\dots,n}, \tag{C2}\label{c2} \\
+	\,&\sum_{j=1}^{n} \mu_{ij} > 0,\quad \forall i \in {1,\dots,c}. \tag{C3}\label{c3}
 \end{align}
 
 
@@ -1200,6 +1316,16 @@ Tóm lại, kết quả thuật toàn phân tích chùm có mặt của thiên k
 
 Phương pháp phân loại là một nhánh của nhận dạng có giám sát, phát triển với mục tiêu thành lập quy tắc quy nạp có chức năng phân tách được các lớp quan tâm với sai lầm thực nghiệm tối tiểu.  Các quy luật đánh giá có bệnh B hay không dựa vào những dữ liệu cho trước chính là thực hiện bài toán phân loại. Hay phân biệt được hữu hạn các biểu cảm khuôn mặt dựa vào hình ảnh cũng phải thực hiện bài toán phân loại. Đầu ra của mô hình phân loại là ước tính hoặc dự đoán hữu hạn các nhãn cho trước (không đo được) với dữ liệu mới chưa được mô hình hóa \cite{Fillmore-Patrick_2025}. 
 
+Trong bài toán phân loại, ta giả sử tồn tại một không gian đầu vào $\mathcal{F}$ và tập nhãn rời rạc ${Y} = \{1, 2, \dots, C\}$. Cặp dữ liệu $(f, y)$ là biến ngẫu nhiên có phân phối chung $P_{\mathcal{F},Y}$ trên $\mathcal{F} \times {Y}$.  Mục tiêu của bài toán là tìm một ánh xạ phân loại $h : \mathcal{F} \to {Y}$ thuộc không gian giả thuyết $\mathcal{H}$ sao cho tối tiểu hóa giá trị kỳ vọng của hàm mất mát\index{hàm mất mát (loss function)} $\ell : {Y} \times {Y} \to \mathbb{R}_{\ge 0}$, tức là
+$$
+	h^* = \arg\min_{h \in \mathcal{H}} \mathbb{E}{(f,y)\sim P_{\mathcal{F},Y}} \left[\ell(h(f), y)\right].
+$$
+Tuy nhiên, do phân phối thực $P_{\mathcal{F}\,,{Y}}$ là chưa biết, ta cần tiếp cận qua một tập huấn luyện $\mathcal{D}_n = \{(f_1, y_1), \ldots, (f_n, y_n)\} \subset \mathcal{F} \times {Y}$. Vì vậy, ta giải bài toán 
+$$
+\hat{h}_n = \arg\min{h \in \mathcal{H}} \frac{1}{n} \sum_{j=1}^n \ell(h(f_j), y_j).
+$$
+
+
 Bốn thuật toán phân loại dựa vào thống kê là Naive Bayes, Cây quyết định, hồi quy Logistics, phân biệt Fisher \cite{fisher1936use} và Perceptron \cite{rosenblatt1961principles}. Những phương pháp này là kinh điển và đã được áp dụng phát triển cho đến hiện nay. Nó cũng chính là cơ sở để xây dựng và áp dụng cho hàm mật độ xác suất với sự cải tiến, đặc biệt là phương pháp Bayes \cite{huynh2024classifying,vo2024supervised}. 
 
 Phương pháp phân loại cho hàm mật độ xác suất là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. Luận văn này tập trung nghiên cứu phương pháp hồi quy logistics, naive Bayes và máy véc-tơ hỗ trợ\index{máy véc-tơ hỗ trợ (support vector machine)} cho dữ liệu hàm mật độ.
@@ -1208,25 +1334,34 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 \subsection{Hồi quy logistics}
 
 Phương pháp này được tổng quát hóa cho dữ liệu hàm bởi các nghiên cứu của Akturk et al. \cite{akturk2024robust}. Luận văn này cụ thể hóa cho hàm mật độ xác suất. Mô hình hồi quy logistic cho dữ liệu hàm mật độ có dạng
-\begin{align}\label{eq:log} \pi _i = {\mathbb {P}}(Y_i = 1 \vert {\mathcal {F}}(x) = {\mathcal {F}}_i(x)) =  \frac{\exp \left\{ \beta _0 + \int _{\Omega} {\mathcal {F}}(x) \beta (x) \mathrm{\,d}x \right\} }{1 + \exp \left\{ \beta _0 + \int _{\Omega} {\mathcal {F}}(x) \beta (x) \mathrm{\,d}x \right\} }, \end{align}
+\begin{align}\label{eq:log} \pi _i = {\mathbb {P}}(Y_j = 1 \vert {\mathcal {F}}(x) = {\mathcal {F}}_j(x)) =  \frac{\exp \left\{ \beta _0 + \int _{\Omega} {\mathcal {F}}(x) \beta (x) \mathrm{\,d}x \right\} }{1 + \exp \left\{ \beta _0 + \int _{\Omega} {\mathcal {F}}(x) \beta (x) \mathrm{\,d}x \right\} }, \end{align}
 trong đó $\beta_0\in \mathbb{R}$ là hằng số chặn\index{hằng số chặn (intercept)}, và $\beta(x) \in\mathcal{L}_2[\Omega]$ là hàm hệ số\index{hàm hệ số $\beta(x)$ ($\beta$-functional coefficient)} cần ước lượng. Để giải phương trình~\eqref{eq:log}, biến đổi logit được sử dụng
 $$
-l_i = \log\left(\frac{\pi_i}{1-\pi_i}\right) = \beta_0 + \int _{\Omega} {\mathcal {F}}(x) \beta (x) \mathrm{\,d}x.
+l_j = \log\left(\frac{\pi_j}{1-\pi_j}\right) = \beta_0 + \int _{\Omega} {\mathcal {F}}(x) \beta (x) \mathrm{\,d}x.
 $$
 
 
 Mục tiêu tiếp theo là ước lượng $\beta_0$ và hàm $\beta(x)$. Do $\beta(x)$ là vô hạn chiều, ta chiếu hàm này vào một tập hàm cơ sở\index{hàm cơ sở (basis functions)} chọn trước để ước lượng, cụ thể là hàm Gauss, wavelet, chuỗi Fourier, đa thức Bernstein và Legendre, hoặc B-spline. Khi đó,
 $$
-l_i = \beta_0 + \sum_{m=1}^M \theta_m \underbrace{\int_\Omega \psi_m(x) {\mathcal{F}}_i(x)\, dx}_{=: \phi_{i,m}},
+l_j = \beta_0 + \sum_{m=1}^M \theta_m \underbrace{\int_\Omega \psi_m(x) {\mathcal{F}}_i(x)\, dx}_{=: \phi_{j,m}},
 $$
-trong đó $\phi_{i,m}$ là mô-men của hàm mật độ ${\mathcal{F}}_i(x)$ trên hàm cơ sở $\psi_m(x)$. Khi đó. bài toán ước lượng $\beta(x)$ chuyển thành
-$$
-\mathcal{L} = \max_{\beta_0, \theta} \sum_{i=1}^n \left[y_i \log \pi_i + (1 - y_i)\log (1 - \pi_i)\right]
-$$
+trong đó $\phi_{j,m}$ là mô-men của hàm mật độ ${\mathcal{F}}_j(x)$ trên hàm cơ sở $\psi_m(x)$. Khi đó. bài toán ước lượng $\beta(x)$ chuyển thành
+$
+\mathcal{L} = \max_{\beta_0, \theta} \sum_{j=1}^n \left[y_j \log \pi_j + (1 - y_j)\log (1 - \pi_j)\right]
+$. 
 Ta sử dụng thuật toán độ dốc\index{thuật toán độ dốc (gradient decent method)} để tối ưu hóa hàm mục tiêu $\mathcal{L}$ này.
-\vdu{
+\vdu{[Phân loại hàm mật độ bằng hồi quy logistics]\label{VD:log}
 Giả sử hai lớp hàm mật độ Gauss $\mathcal{F}$ và $\mathcal{G}$ có $\mu_i$ ở hai lớp này lần lượt là
-$\mu_\mathcal{F}=\{1,0;1,5; 2,0; 2,5; 6,0\}$ và $\mu_\mathcal{G}=\{4,5;7,5; 8,5; 8,0; 8,5\}$, có $\sigma_{\mathcal{F}}^2=0,4$ và$\sigma_{\mathcal{G}}^2=0,9$. Hãy phân loại hàm mật độ Gauss mới $\mathcal{N}(3,0;0,9)$ vào một trong hai lớp.
+$$\mu_\mathcal{F}=\{1,0;1,5; 2,0; 2,5; 6,0\}\,,  \text{ và }\mu_\mathcal{G}=\{4,5;7,5; 8,5; 8,0; 8,5\},$$ với $\sigma_{\mathcal{F}}^2=0,4$ và $\sigma_{\mathcal{G}}^2=0,9$. Hãy phân loại hàm mật độ Gauss mới $h(x)=\mathcal{N}(3,0;0,9)$ vào một trong hai lớp.
+
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\linewidth]{Figs/C1_beta_log}
+		\caption{Hàm $\beta(x)$ được ước lượng qua $10$ hàm cơ sở Gauss.}
+		\label{fig:beta_log}
+	\end{figure}
+
 
 }
 
@@ -1240,14 +1375,56 @@ $\mu_\mathcal{F}=\{1,0;1,5; 2,0; 2,5; 6,0\}$ và $\mu_\mathcal{G}=\{4,5;7,5; 8,5
 
 \subsection{Phương pháp naive Bayes}
 
+Phương pháp Bayes đã được nhiều nhà thống kê quan tâm cho dữ liệu hàm mật độ xác suất tại \cite{}. Cho không gian $\Omega\subset\mathbb{R}$ các hàm mật độ xác suất liên tục khả tích. Một dữ liệu hàm mật độ có hai lớp $Y=0$ hoặc $1$ và một hàm mới $h(x)$ cần phân loại. Khi đó, xác suất hậu nghiệm Bayes để xếp hàm mật độ $h$ vào một trong hai lớp này là
+$$
+\mathbb{P}(\mathcal{F}\,|\,h) = \frac{\mathbb{P}(\mathcal{F}) f(h \,|\, \mathcal{F})}{\mathbb{P}(\mathcal{F}) f(h \,|\, \mathcal{F}) + \mathbb{P}(\mathcal{G}) f(h \,|\, \mathcal{G})}\,, \text{ và } \mathbb{P}(\mathcal{G}\,|\,h) = 1-\mathbb{P}(\mathcal{F}\,|\,h).
+$$
 
+Mật độ $f(h \,|\, \mathcal{F})$ biểu diễn khả năng quan sát hàm $h(x)$ nếu nó thuộc lớp $\mathcal{F}$. Vì vậy, ta ước lượng mật độ này bằng trung bình likelihood tích phân giữa hàm mật độ $h(x)$ và các hàm mật độ $f_j(x)$ trong lớp $\mathcal{F}$, tức là
+\[
+f(h \,|\, \mathcal{F}) = \frac{1}{n_F} \sum_{i=1}^{n_F} \int_{\Omega} f_j(x) h(x) \mathrm{\,d}x.
+\]
 
+Khi này ta có quy tắc phân loại hàm mật độ $h(x)$, giả sử không có thông tin tiên nghiệm, ta lấy $\mathbb{P}(\mathcal{F}) = \mathbb{P}(\mathcal{G}) = 1/2$, hàm mật độ $h$ được phân loại vào lớp $\mathcal{F}$ nếu $
+f(h\,|\, \mathcal{F}) > f(h \,|\,\mathcal{G})$ và ngược lại. Với nhiều lớp, ta tổng quát $$
+\mathbb{P}(c_k \,|\, h) = \frac{\mathbb{P}(c_k) f(h \,|\, c_k)}{\sum_i \mathbb{P}(c_i) f(h\,|\, c_i)},$$ và phân loại $h$ vào lớp $c_k$ nào có xác suất hậu nghiệm lớn nhất.
 
-
-
-
-
-
+\vdu{[Phân loại hàm mật độ bằng phương pháp Bayes] Trở lại giả thuyết của Ví dụ~\ref{VD:log}, ta cần phân loại hàm mật độ Gauss mới $h(x)=\mathcal{N}(3,0;0,9)$ vào một trong hai lớp.
+	
+	\textbf{Bài giải.} Khi không có thông tin tiên nghiệm, tức là $\mathbb{P}(\mathcal{F}) = \mathbb{P}(\mathcal{G}) = 0.5$. Tiếp theo, ta tính likelihood của $h$ cho từng lớp $\mathcal{F}$ và $\mathcal{G}$. Vì tích hai hàm đều là hàm mật độ Gauss, nên ta có thể tính toán bằng công thức cụ thể từ Bổ đề~\ref{ble:tich-Gauss}, hay
+	$$
+	\int_{\Omega} \mathcal{N}(\mu_h, \sigma_h^2)(x) \cdot \mathcal{N}(\mu_i, \sigma_i^2)(x) \,\mathrm{d}x 
+	= \frac{1}{\sqrt{2\pi(\sigma_h^2 + \sigma_i^2)}} \exp\left(-\frac{(\mu_h - \mu_i)^2}{2(\sigma_h^2 + \sigma_i^2)}\right).
+	$$
+	
+	Xét lớp $\mathcal{F}$, ta có
+	$$
+	\begin{aligned}
+		f(h \,|\, \mathcal{F}) 
+		&= \frac{1}{n_F} \sum_{i=1}^{n_F} \int_{\Omega} f_i(x) h(x) \,\mathrm{d}x = \frac{1}{5} \sum_{i=1}^{5} \frac{1}{\sqrt{2\pi (0,9 + 0,4)}} \exp\left(-\frac{(3,0 - \mu_{\mathcal{F}_i})^2}{2(0,9 + 0,4)}\right) \\
+		&= \frac{1}{5} \cdot 0,350 \cdot \left(
+		e^{- \frac{4,0}{2,6}} + e^{- \frac{2,25}{2,6}} + e^{- \frac{1,0}{2,6}} + e^{- \frac{0,25}{2,6}} + e^{- \frac{9,0}{2,6}}
+		\right) = 0,158
+	\end{aligned}
+	$$
+	Tương tự, xét lớp $\mathcal{G}$, ta cũng có
+	$$
+	\begin{aligned}
+		f(h \,|\, \mathcal{G}) 
+		&= \frac{1}{n_G} \sum_{i=1}^{n_G} \int_{\Omega} f_i(x) h(x) \,\mathrm{d}x 
+		= \frac{1}{5} \sum_{i=1}^{5} \frac{1}{\sqrt{2\pi(0,9 + 0,9)}} \exp\left(-\frac{(3,0 - \mu_{\mathcal{G}_i})^2}{2(0,9 + 0,9)}\right) \\
+		&= \frac{1}{5} \cdot 0,297 \cdot \left(
+		e^{-\frac{2,25}{3,6}} + e^{-\frac{20,25}{3,6}} + e^{-\frac{30,25}{3,6}} + e^{-\frac{25,0}{3,6}} + e^{-\frac{30,25}{3,6}}
+		\right) = 0,032.
+	\end{aligned}
+	$$
+	Từ đây, ta có thể tính xác suất hậu nghiệm Bayes bởi
+	$$
+	\mathbb{P}(\mathcal{F}\,|\, h) = \frac{\mathbb{P}(\mathcal{F}) f(h \,|\, \mathcal{F})}{\mathbb{P}(\mathcal{F}) f(h \,|\, \mathcal{F}) + \mathbb{P}(\mathcal{G}) f(h \,|\, \mathcal{G})} = \frac{0,5 \times 0,158}{0,5 \times 0,158 + 0.5 \times 0,032} = 0,831,
+	$$
+	và $\mathbb{P}(\mathcal{G}\,|\, h)  = 1-0,831 = 0,169$. Vì  $\mathbb{P}(\mathcal{F}\,|\, h)>\mathbb{P}(\mathcal{G}\,|\, h)$ nên hàm mật độ $h(x)$ được phân loại vào lớp $\mathcal{F}$ với xác suất hậu nghiệm $83,1\%$.
+	
+}
 
 
 
