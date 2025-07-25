@@ -1239,7 +1239,6 @@ Kết thúc thuật toán ta nhận được ma trận phân vùng $\bm U_f$ và
 	Ta có kết quả sau khi thực hiện các vòng lặp được giải chi tiết ở Phụ lục (tr. \pageref{phulucB}).
 	
 	
-	
 }
 
 
@@ -1482,6 +1481,19 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 	trong đó, \( S_k = \frac{1}{|c_k|} \sum\limits_{f \in c_k} D(f, \theta_k) \) là độ phân tán trung bình của chùm \(c_k\), \( \theta_k \) là trọng tâm của chùm \(c_k\), \( D(\theta_k, \theta_l) \) là khoảng cách giữa hai trọng tâm \(\theta_k\) và \(\theta_l\) và \(k\) là số chùm.
 	
 \end{description}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{C2_k_best_FCF.pdf}
+	\begin{flushleft}
+		\footnotesize\it
+		Chú thích: Hình ở trên thể hiện chỉ số Silhouette và Dunn vì chúng càng lớn càng tốt. Ngược lại, chỉ số DBI càng nhỏ càng tốt. Ở đây, ta thấy chỉ số Silhouette và DBI đều đề xuất $k$-chùm tối ưu là $k=3$. Trong khi đó, chỉ~số Dunn cho kết quả $k=6$.
+	\end{flushleft}
+	\caption[Một số chỉ số đánh giá và số chùm tối ưu được đề xuất từ phương pháp khuỷu tay]{Một số chỉ số đánh giá và số chùm tối ưu được đề xuất từ phương pháp khuỷu tay với dữ liệu hàm mật độ ở Ví dụ~\ref{VD:thubac}.}
+	\label{fig:c1kbestfcf}
+\end{figure}
+
 
 
 \subsubsection{b.\quad Đánh giá bên ngoài}
