@@ -15,6 +15,8 @@
 % ====== CHÈN HÌNH ẢNH ======
 \usepackage{graphicx} % Gói chèn ảnh
 \graphicspath{{Figs/}} % Đặt thư mục chứa hình ảnh
+\usepackage{pdfpages}
+
 
 % ====== QUẢN LÝ FILE & TRANG TRẮNG ======
 \usepackage{subfiles} % Cho phép chia nội dung thành các file con
@@ -33,8 +35,8 @@
 
 % ====== MÀU SẮC ======
 \usepackage{xcolor} % Tùy chỉnh màu sắc
-\definecolor{CTUcyan}{rgb}{0, 0.69, 0.941} % Màu cyan trường ĐHCT
-\definecolor{CTUblue}{rgb}{0.122, 0.361, 0.667} % Màu xanh dương trường ĐHCT
+%\definecolor{CTUcyan}{rgb}{0, 0.69, 0.941} % Màu cyan trường ĐHCT
+%\definecolor{CTUblue}{rgb}{0.122, 0.361, 0.667} % Màu xanh dương trường ĐHCT
 
 % ====== HÌNH ẢNH CON (SUBFIGURE) ======
 \usepackage{subcaption} % Chèn nhiều hình con với chú thích riêng
@@ -68,10 +70,10 @@
 \usepackage[skip=10pt plus1pt, indent=1cm]{parskip} % Tùy chỉnh cách đoạn và thụt đầu dòng
 
 % ====== TỪ VIẾT TẮT & THUẬT NGỮ ======
-\usepackage[abbreviations,symbols,nogroupskip]{glossaries-extra} % Tạo danh sách thuật ngữ
-\usepackage{glossary-mcols} % Hiển thị glossary nhiều cột
-\renewcommand{\glsmcols}{2} % Số cột glossary
-\setglossarystyle{mcolindex} % Kiểu glossary
+%\usepackage[abbreviations,symbols,nogroupskip]{glossaries-extra} % Tạo danh sách thuật ngữ
+%\usepackage{glossary-mcols} % Hiển thị glossary nhiều cột
+%\renewcommand{\glsmcols}{2} % Số cột glossary
+%\setglossarystyle{mcolindex} % Kiểu glossary
 
 % ====== INDEX ======
 \usepackage{imakeidx}
@@ -85,7 +87,7 @@
 \usepackage{listings} % Hiển thị mã nguồn
 \lstset{
 	frame=tb,
-	language=Matlab,
+	language=python,
 	aboveskip=3mm,
 	belowskip=3mm,
 	showstringspaces=false,
@@ -110,11 +112,11 @@
 \usepackage{fancyhdr} % Header/Footer
 \usepackage{fancyvrb} % Chèn đoạn mã
 \usepackage{lineno} % Đánh số dòng
-\usepackage{titlesec} % Định dạng tiêu đề chương/mục
+\usepackage{titlesec} % Định dạng tiêu đề chương/mục					
 \usepackage{indentfirst} % Thụt đầu dòng đoạn đầu
 \usepackage{rotating} % Xoay bảng
 
-\setlist[description]{font=\normalfont\itshape} % Kiểu danh sách mô tả
+%\setlist[description]{font=\normalfont\itshape} % Kiểu danh sách mô tả
 
 % ====== ĐỊNH DẠNG HEADER CHO BẢNG ======
 \renewcommand\theadfont{\bfseries} % In đậm header bảng
@@ -203,20 +205,23 @@
 \renewtheorem{definition}{\hspace*{0.5cm}Định nghĩa}[chapter]
 \newcommand{\dng}[1]{\begin{definition}#1\end{definition}}
 
-\theoremstyle{plain}
+
 \renewtheorem{example}{\hspace*{0.5cm}Ví dụ}[chapter]
 \newcommand{\vdu}[1]{\begin{example}#1\end{example}}
 
-\theoremheaderfont{\bfseries\slshape\small}
-\theorembodyfont{\small}
-\theoremsymbol{\ensuremath{_\square}}
-\renewtheorem{proof}{\hspace*{0.5cm}Chứng minh}
-\newcommand{\chm}[1]{\begin{proof}#1\end{proof}}
+\theoremstyle{nonumberplain}
 
 \theoremheaderfont{\bfseries\slshape}
 \theorembodyfont{\normalfont}
 \renewtheorem{remark}{\hspace*{0.5cm}Nhận xét}
 \newcommand{\chy}[1]{\begin{remark}#1\end{remark}}
+
+
+\theoremheaderfont{\bfseries\slshape\small}
+\theorembodyfont{\small}
+\theoremsymbol{\ensuremath{_\blacksquare}}
+\renewtheorem{proof}{\hspace*{0.5cm}Chứng minh}
+\newcommand{\chm}[1]{\begin{proof}#1\end{proof}}
 
 % ====== TIÊU ĐỀ CHƯƠNG/MỤC ======
 \titleformat{\chapter}[display]{\fontsize{14}{0pt}\selectfont\bfseries\centering}{CHƯƠNG \thechapter}{0pt}{}
@@ -259,6 +264,7 @@
 	\listoffigures % Danh sách hình
 	\listoftables % Danh sách bảng
 	\listofalgorithms % Danh sách giải thuật
+	\input{Info/kyhieu}
 	
 	% ====== NỘI DUNG CHÍNH ======
 	\clearpage
@@ -353,11 +359,11 @@ $$P(x) = P\{\omega\,:\,X(\omega)\le x\}\,, \forall x \in\mathbb{R}.$$
 
 \tch{Phân phối $P$ thỏa mãn:
 \begin{enumerate}
-    \item $P$ không giảm;
-    \item $\lim_{x\to\infty} P(x)= 1$ và $\lim_{x\to-\infty} P(x)= 0$
-    \item $P$ liên tục phải, tức là $\lim_{x\downarrow y }P(y) = P(x)$
-    \item Nếu  $P(x_-) = \lim_{y\uparrow x} P(y)$ thì $P(x_-) = \mathbb{P}(X < x)$
-    \item $\mathbb{P}(X=x)=P(x)-P(x_-)$
+    \item $P$ không giảm,
+    \item $\lim_{x\to\infty} P(x)= 1$ và $\lim_{x\to-\infty} P(x)= 0$,
+    \item $P$ liên tục phải, tức là $\lim_{x\downarrow y }P(y) = P(x)$,
+    \item Nếu  $P(x_-) = \lim_{y\uparrow x} P(y)$ thì $P(x_-) = \mathbb{P}(X < x)$,
+    \item $\mathbb{P}(X=x)=P(x)-P(x_-)$.
 \end{enumerate}
 }
 
@@ -399,8 +405,8 @@ Họ các hàm phân phối $P: \mathbb{R}^d \to [0\,,\infty]$ là liên tục t
     \item Hàm mật độ xác suất liên tục $f(x)$ là hàm không âm, $f(x)\ge0\,, \forall x\in\Omega$,
     \item Tích phân $f(x)$ trên toàn miền $\Omega$ bằng $1$,
     \item Xác suất trên tập con Borel $A \subseteq \Omega$ được tính bằng tích phân $
-    \mathbb{P}(X \in A) = \int_A f(x) \,\mathrm{d}x.
-    $
+    \mathbb{P}(X \in A) = \int_A f(x) \,\mathrm{d}x
+    $,
     \item Công thức xác suất trong tập Borel thực $$\mathbb{P}(a<x<b) = \mathbb{P}(a<x\le b) = \mathbb{P}(a\le x<b) = \mathbb{P}(a\le x \le b)=\int_a^b f(x)\mathrm{\,d}x.$$
 \end{enumerate}
 }
@@ -629,14 +635,28 @@ $$\theta_{G_i}(x) = \arg\min_{f({\bm\mu}\,,\Sigma)}\sum_{j=1}^n\mu_{ij}D(f({\bm\
 
 Trong thực tế, ta cần phải ước lượng hàm mật độ xác suất dựa vào dữ liệu rời rạc, luận văn này sử dụng phương pháp ước lượng hàm hạt nhân để chuyển từ bài toán rời rạc sang hàm mật độ xác suất.
 \dng{[Ước lượng hàm mật độ bằng phương pháp hàm hạt nhân]
-	Giả sử ta có một tập dữ liệu rời rạc gồm $n$ quan sát ${\bm{x}_j}$ với $j = 1, \ldots, n$ trong không gian $\mathbb{R}^d$. Mỗi điểm $\bm{x}_j = (x_{1j}, x_{2j}, \ldots, x_{dj})^\intercal$. Hàm mật độ xác suất tại điểm $\bm{x} = (x_1, x_2, \ldots, x_d)^\top$ được ước lượng bằng phương pháp hạt nhân bởi
+	Giả sử ta có một tập dữ liệu rời rạc gồm $n$ quan sát ${\bm{x}_j}$ với $j = 1, \ldots, n$ trong không gian $\mathbb{R}^d$. Mỗi điểm $\bm{x}_j = (x_{1j}, x_{2j}, \ldots, x_{dj})^\intercal$. Hàm mật độ xác suất tại điểm $\bm{x} = (x_1, x_2, \ldots, x_d)^\intercal$ được ước lượng bằng phương pháp hạt nhân bởi
 	\[
 	\hat{f}(\bm{x}) = \frac{1}{n \prod_{i=1}^d {bw}_i} \sum_{j=1}^{n} \prod_{i=1}^{d} \kappa_i\left( \frac{x_i - x_{ij}}{{bw}_i} \right),
 	\]
-	trong đó $\kappa_i$ là hàm hạt nhân theo chiều $i$ và ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
+	trong đó $\kappa_i$ là hàm hạt nhân theo chiều $i$ có tính chất $\kappa(\cdot) \ge 0$ và $\int \kappa(z)\mathrm{d}z = 1$, tham số ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
 }
 
 \chy{Khi tham số trơn $bw$ nhỏ, hàm mật độ ước lượng sẽ kém trơn và có thể dao động mạnh; ngược lại, nếu $bw$ lớn thì hàm trở nên trơn hơn nhưng có thể làm mất chi tiết quan trọng của phân phối gốc. Các nghiên cứu đã chỉ ra rằng việc lựa chọn tham số trơn có ảnh hưởng lớn hơn đáng kể so với việc lựa chọn loại hàm hạt nhân.}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{Figs/C1_kde_kernels.pdf}
+	\begin{flushleft}
+		\it\footnotesize
+		Chú thích: Vùng xám là phân phối thực tế $X\sim 0,3\mathcal{N}(0\,;1) + 0,7\mathcal{N}(5\,;1)$, các hàm hạt nhân có ảnh hưởng đến độ mượt và khả năng khớp với hàm mật độ thực tế. Nguồn: Minh họa của tác giả.
+	\end{flushleft}
+	\caption{So sánh các hàm hạt nhân trong ước lượng mật độ xác suất}
+	\label{fig:kde}
+\end{figure}
+
+
 
 Trong trường hợp đơn giản, có thể chọn cùng một hàm hạt nhân và cùng một tham số trơn cho tất cả các chiều, tức là $\kappa_i \equiv \kappa$ và ${bw}_i = {bw}$ với mọi $i=1,\ldots,d$. Một số hàm hạt nhân phổ biến được liệt kê trong Bảng~\ref{tab:kernel}. Luận văn này khảo sát hàm mật độ ước lượng từ hàm hạt nhân Gauss và Epanechnikov với tham số trơn cố định và được tính bởi công thức của Scott, $bw = 1.06 \times \mathrm{Var}(x_j) \times n^{-1/5}$.
 
@@ -650,19 +670,19 @@ Trong trường hợp đơn giản, có thể chọn cùng một hàm hạt nhâ
 		\textbf{Tên hàm} & \textbf{$\kappa(z)$} & \textbf{Miền xác định} \\\midrule
 		Hình chữ nhật &
 		$ (1/2)\bm1_{|z| \leq 1}$ &
-		$[-1, 1]$ \\
+		$[-1\,; 1]$ \\
 		Tam giác &
 		$ (1 - |z|) \bm1_{|z| \leq 1}$ &
-		$[-1, 1]$ \\
+		$[-1\,; 1]$ \\
 		Epanechnikov &
 		$ (3/4)(1 - z^2) \bm1_{|z| \leq 1}$ &
-		$[-1, 1]$ \\
+		$[-1\,; 1]$ \\
 		Gauss &
 		$ \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{z^2}{2}\right)$ &
-		$\mathbb{R}$ \\
+	$(-\infty,\infty)$  \\
 		Logistic &
 		$\frac{\exp(-z)}{1 + \exp(-z)^2}$ &
-		$\mathbb{R}$ \\
+		$(-\infty,\infty)$ \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -809,7 +829,7 @@ Tương tự ta cũng suy ra được phương pháp chứng minh cho các Đị
 		\item  $\mathcal{L}_2(f_1\,,f_2) = \left(\int(f_1 - f_2)^2 \mathrm{\,d}x\right)^{1/2} = \left(\int_2^31^2\mathrm{\,d}x + \int_5^61\mathrm{\,d}x\right)^{1/2}=1,7$,
 		\item $D_B(f_1\,,f_2)$ không xác định hữu hạn, tiến ra dương vô cùng vì $f_1(x)f_2(x) = 0\,,\forall x$,
 		\item $D_H(f_1\,,f_2)  = \left(1-f_1(x)f_2(x)\right)^{1/2} = \sqrt{1-0} = 1,0$,
-		\item $D_W^2(f_1\,,f_2) = 9$, vậy $D_W(f_1\,,f_2) = 3,0$
+		\item $D_W^2(f_1\,,f_2) = 9$, vậy $D_W(f_1\,,f_2) = 3,0$.
 			\end{itemize}
 	
 	Bảng~\ref{tab:vidusosanh} tổng hợp kết quả các phép đo này trong bốn tình huống. 
@@ -894,7 +914,7 @@ Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{
 			Liên kết đủ\footnotemark[2] \citep{sorensen1948method} &$\Delta_{\max}$& $\max_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,,g)$\\
 			Liên kết tâm &$\Delta_{centroid}$&$D(\theta_{\mathcal{F}}\,,\theta_{\mathcal{G}})$\\
 			Liên kết trung bình&$\Delta_{avg}$ & $\frac{1}{\#\mathcal{F}\#\mathcal{G}}\sum_{f\in\mathcal{F}, g\in\mathcal{G}}D(\mathcal{F}\,,\mathcal{G})$\\
-			Liên kết Ward \cite{ward1963hierarchical}&$\Delta_{Ward}$ &$\Delta_{Ward}(\mathcal{F},\, \mathcal{G}) = \frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}} D^2\big(\theta_{\mathcal{F}},\, \theta_{\mathcal{G}}\big)
+			Liên kết Ward \cite{ward1963hierarchical}&$\Delta_{Ward}$ &$\frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}} D^2\big(\theta_{\mathcal{F}},\, \theta_{\mathcal{G}}\big)
 			$\\ \bottomrule
 		\end{tabular*}
 		\\\hfill {\footnotesize \textit{Chú thích: \footnotemark[1]: Khoảng cách lớn nhất; \footnotemark[2]: Khoảng cách bé nhất. Nguồn: Tác giả tổng hợp}}
@@ -911,15 +931,23 @@ Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{
 \end{figure}
 
 
-Khi hai ta cần tính khoảng cách từ hợp hai chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng các loại liên kết trên. Trong thực tế, các liên kết $\Delta(\cdot\,,\cdot)$ được biến đổi thành
+Khi hai ta cần tính khoảng cách từ hợp hai chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng các loại liên kết trên. Trong thực tế, các liên kết $\Delta$ được biến đổi thành
 \begin{align*}
 	\Delta_{\min}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \min\big\{D_{f\in\mathcal{F}, h\in\mathcal{H}}(f,\, h),\, D_{f\in\mathcal{G}, h\in\mathcal{H}}(g,\, h)\big\}, \\
 	\Delta_{\max}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \max\big\{D_{f\in\mathcal{F}, h\in\mathcal{H}}(f,\, h),\, D_{f\in\mathcal{G}, h\in\mathcal{H}}(g,\, h)\big\}, \\
-	\Delta_{avg}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \frac{1}{\#(\mathcal{F}\cup\mathcal{G}) \cdot \#\mathcal{H}} \sum_{f \in \mathcal{F} \cup \mathcal{G},\, h \in \mathcal{H}} D(f,\, h), \\
-	\Delta_{centroid}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= D\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big), \\
-	\Delta_{Ward}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \frac{\#(\mathcal{F}\cup\mathcal{G})\cdot \#\mathcal{H}}{(\#\mathcal{F} \cup \#\mathcal{G}) \cup \#\mathcal{H}} D^2\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big).
+	\Delta_\mathrm{avg}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \frac{1}{\#(\mathcal{F}\cup\mathcal{G}) \cdot \#\mathcal{H}} \sum_{\substack{f \in \mathcal{F} \cup \mathcal{G}\\ h \in \mathcal{H}}} D(f,\, h), \\
+	\Delta_\mathrm{centroid}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= D\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big), \\
+	\Delta_\mathrm{Ward}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= \frac{\#(\mathcal{F}\cup\mathcal{G})\cdot \#\mathcal{H}}{(\#\mathcal{F} \cup \#\mathcal{G}) \cup \#\mathcal{H}} D^2\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big).
 \end{align*}
 
+
+\vdu{[Liên kết các chùm hàm mật độ]\label{VD:dist} Giả sử ta có ba chùm hàm mật độ xác suất Gauss $\mathcal{F}\,,\mathcal{G}$ và $\mathcal{H}$. Tính các liên kết $\Delta(\mathcal{F}\,,\mathcal{G})$ và $\Delta(\mathcal{F}\cup\mathcal{G}\,,\mathcal{H})$ biết khoảng cách giữa hai hàm mật độ là $\mathcal{L}_2$ và\\
+	chùm $\mathcal{F} = \{f_1=\mathcal{N}(0,3\,;1),\, f_2=\mathcal{N}(1\,;1)\}$, \\
+	chùm $\mathcal{G} = \{g_1=\mathcal{N}(4,0\,;1),\, g_2=\mathcal{N}(5,5\,;1),\, g_3=\mathcal{N}(4,8\,;1)\}$, và\\
+	chùm $\mathcal{H} = \{h_1=\mathcal{N}(9,1\,;1),\, h_2=\mathcal{N}(8,0\,;1)\}$.\\
+	}
+	
+	Ví dụ đã được giải chi tiết trong Phụ lục B (tr. \pageref{phulucB}) cụ thể hóa cách tính toán của các liên kết này. 
 
 \subsubsection{b.\quad Tương tự chùm hàm mật độ}
 
@@ -943,7 +971,7 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 
 \chy{Trong Bảng \ref{tab:chumham} trường hợp Affinity của Toussaint có các hệ số $\alpha_1=\alpha_2=\cdots=\alpha_n=\frac{1}{n}$, nó trở thành Affinity của Matusita. Khi Affinity của Matusita có $n=2$ thì nó trở thành hệ số Bhattacharyya \cite{}. Ngoài ra hệ số tượng tự chùm chuẩn hóa tuyến tính độ rộng chùm.}
 
-\section{Xấp xỉ tích phân}
+\section{Phương pháp số xấp xỉ tích phân}
 
 Trong khoa học máy tính, các khoảng cách giữa các hàm mật độ xác suất thường chứa các tích phân xác định, vốn không thể tính chính xác bằng phương pháp thông thường. Do đó, các tích phân này cần xấp xỉ bằng phương pháp số. Luận văn này, chúng tôi chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann nhưng cũng không tốn quá nhiều tài nguyên như Monte Carlo hay Simpsons. Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
 $$ \int_{\Omega}f(x)\mathrm{\,d}x = \lim_{h\to0}\sum_{i}h^d w_if(x). $$
@@ -1025,12 +1053,14 @@ Phép gán này được mô tả bằng một ánh xạ nhiều-đến-một\in
 
 Thuật toán $k$-means lần đầu được đề cập bởi J. Macqueen \cite{macqueen1967some} cho dữ liệu rời rạc nhưng mãi đến \cite{Tai2010,nguyen2024new}, nó được mở rộng cho hàm mật độ với ý tưởng giải bài toán bán giám sát. Phân tích chùm KCF là bài toán tối tiểu đơn mục tiêu cho tổng các bình phương khoảng cách trong chùm các hàm mật độ, tức là
 \begin{align}\tag{$k$-means}\label{Jk}
-	\text{Minimise}\,&:\, J(\bm U\,, \Theta\,|\, \mathcal{F}\,,c) = \sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}\mathrm{D}^2(\theta_i\,,{f}_j),
+	\text{Minimise}\,&:\, J(\bm U\,, \Theta\,|\, \mathcal{F}\,,c) = \sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}{D}^2(\theta_i\,,{f}_j),
 \end{align}
-trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{j\in c_i}$. Tức là $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại.  Hàm $\theta_i(x)$ là hàm mật độ trọng tâm của chùm thứ $c_i$. Ký hiệu $\mathrm{D}^2(\theta_i\,,{f}_j)$ là khoảng cách giữa hàm mật độ trọng tâm $\theta(x)$ đến các đối tượng $f_j(x)$ còn lại trong dữ liệu. 
+trong đó, $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{j\in c_i}$. Tức là $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại.  Hàm $\theta_i(x)$ là hàm mật độ trọng tâm của chùm thứ $c_i$. Ký hiệu $
+{D}^2(\theta_i\,,{f}_j)$ là khoảng cách giữa hàm mật độ trọng tâm $\theta(x)$ đến các đối tượng $f_j(x)$ còn lại trong dữ liệu. 
 
 \bode{[Thành lập hàm mật độ đại diện]
-Giả sử $\mathcal{F}$-hàm mật độ được phân thành $c$-chùm qua các mức độ thành viên $\mu_{ij}$, với bình phương khoảng cách $\mathrm{D}^2(\theta_i, f_j)$. Khi đó, hàm mật độ đại diện $\theta_i^\ast(x)$ tối ưu trên mỗi chùm $c_i$ được cho bởi công thức
+Giả sử $\mathcal{F}$-hàm mật độ được phân thành $c$-chùm qua các mức độ thành viên $\mu_{ij}$, với bình phương khoảng cách $
+{D}^2(\theta_i, f_j)$. Khi đó, hàm mật độ đại diện $\theta_i^\ast(x)$ tối ưu trên mỗi chùm $c_i$ được cho bởi công thức
 \[
 \theta_i^\ast(x) = \frac{\sum_{f_j \in c_i} \mu_{ij} f_j(x)}{\sum_{f_j \in c_i} \mu_{ij}}.
 \]
@@ -1039,7 +1069,8 @@ Giả sử $\mathcal{F}$-hàm mật độ được phân thành $c$-chùm qua c�
 
 \chm{Từ hàm mục tiêu~\ref{Jk}, ta tính các đạo hàm riêng theo $c_i$.
 \begin{align*}
-    \frac{\partial}{\partial \theta_i(x)}J(\mathcal{F}\,,c)= \frac{\partial}{\partial \theta_i}\sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}\mathrm{D}^2(\theta_i\,,{f}_j(x))&=\sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}\frac{\partial}{\partial \theta_i(x)}\int_{\Omega}(\theta_i(x)-f_j(x))^2\mathrm{\,d}x\\
+    \frac{\partial}{\partial \theta_i(x)}J(\mathcal{F}\,,c)= \frac{\partial}{\partial \theta_i}\sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}
+    {D}^2(\theta_i\,,{f}_j(x))&=\sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}\frac{\partial}{\partial \theta_i(x)}\int_{\Omega}(\theta_i(x)-f_j(x))^2\mathrm{\,d}x\\
     &=\sum_{f_j(x)\in c_i}\mu_{ij}\int_{\Omega}2(\theta_i(x) - f_j(x))\mathrm{\,d}x.
 \end{align*}
 
@@ -1099,17 +1130,21 @@ Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{j\in c_i}$ nên ta có 
 Phân cấp thứ bậc giả định tập $\mathcal{P}$ trong \cite{johnson1967hierarchical}
 
 \begin{algorithm}
-	\caption{Giải thuật phân cấp thứ bậc tích tụ}\label{alg:HCF}
+	\caption{Giải thuật phân cụm thứ bậc tích tụ (HCF)}\label{alg:HCF}
 	\begin{algorithmic}[1]
-		\State \textbf{Data:} Khoảng cách $D(\cdot\,,\cdot)$ của tất cả $\binom{n}{2} = \frac{n(n-1)}{2}$ các hàm mật độ theo từng cặp. Xem mỗi hàm $f$ như một chùm riêng tự nó.
-		\State \textbf{Result:} Chùm thứ bậc $\mathcal{C}_i$.
-		\For{$i = n, n - 1, \dotsc, 2$}
-		\State (1) Xác định khoảng cách nhỏ nhất;
-		\State (2) Gộp hai chùm này;
-		\State (3) Tính khoảng cách mới giữa các chùm thứ $i - 1$ còn lại.
-		\EndFor
+		\Procedure{HCF}{}
+		\State Khởi tạo: $P_n = \{ c_1, c_2, \dots, c_N \}$ với $c_j = \{f_j\},\; j = 1,\dots,n$
+		\State $t \gets 1$
+		\While{$n - t > 1$}
+		\State Chọn hai $c_i, c_j \in P_{n-t+1}$ sao cho thỏa tiêu chí cục bộ
+		\State $c_{n+t} \gets c_i \cup c_j$
+		\State $P_{n-t} \gets \left( P_{n-t+1} \cup \{ c_{n+t} \} \right) \setminus \{ c_i, c_j \}$
+		\State $t \gets t + 1$
+		\EndWhile
+		\EndProcedure
 	\end{algorithmic}
 \end{algorithm}
+
 
 \vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Cho bảy hàm mật độ chuẩn một chiều $\mathcal{F}$ cho bởi Vo-Van, Tai and Pham-Gia, T., \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1\,, i = 1\,,\ldots\,,7$ và các trung bình lần lượt là $\mu_i = \{0,3\,;4,0\,;9,1\,;1,0\,;5,5\,;8,0\,;4,8\}.$ Hãy phân cấp thứ bậc với khoảng cách $D(f_1\,,f_2)=\mathcal{L}_2$ và liên kết $\Delta_{\max}(\mathcal{F}_1\,,\mathcal{F}_2)$ là liên kết đủ.
 
@@ -1145,7 +1180,7 @@ Phân tích chùm mờ được xây dựng lần đầu tiên cho hàm mật đ
 
 Giả sử $\mathcal{F}$ chưa được gán nhãn, mục tiêu của bài toán là tối tiểu hóa tổng trọng số các giá trị hàm thành viên với siêu tham số $m$ và khoảng cách.
 \begin{align}\tag{FCF}\label{Jf}
-	\text{Minimise}\,&:\, J(\bm U\,,\Theta\,|\, \mathcal{F}\,,c\,,m) = \sum_{i=1}^{c}\sum_{j=1}^{n}\mu_{ij}^m\mathrm{D}^2(\theta_i\,,{f}_j),\\\nonumber
+	\text{Minimise}\,&:\, J(\bm U\,,\Theta\,|\, \mathcal{F}\,,c\,,m) = \sum_{i=1}^{c}\sum_{j=1}^{n}\mu_{ij}^m{D}^2(\theta_i\,,{f}_j),\\\nonumber
 	\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1,\quad \forall j \in {1, \dots, n}, \tag{C1}\label{c1} \\
 	\,&\mu_{ij} \in [0\,;1],\quad \forall i \in {1,\dots,c},, \forall j \in {1,\dots,n}, \tag{C2}\label{c2} \\
 	\,&\sum_{j=1}^{n} \mu_{ij} > 0,\quad \forall i \in {1,\dots,c}. \tag{C3}\label{c3}
@@ -1199,80 +1234,14 @@ Thuật toán phân chùm mờ FCF được thực hiện qua các bước như 
 
 Kết thúc thuật toán ta nhận được ma trận phân vùng $\bm U_f$ và các trọng tâm chùm $\Theta$. Trong đó, tiêu chuẩn dừng cho FCF là chênh lệch tuyệt đối tối đa giữa các phần tử của ma trận phân vùng ${\bm\mu}^{(t)}$ và ${\bm\mu}^{(t-1)}$ liên tiếp phải thấp hơn ngưỡng dương $\varepsilon$ cho trước. Cuối cùng, ta có thể giải mờ theo quy tắc $c_i = \arg\max_i\mu_{ij}$. Tức là một hàm mật độ $f_j(x)$ được xếp vào chùm $c_i$ khi và chỉ khi nó có mức độ phân vùng tại chùm đó là cao nhất.
 
-\vdu{[Phân chùm mờ hàm Gauss $1$-chiều]\label{VD1} Ta sử dụng lại dãy hàm mật độ trong Ví dụ~\ref{VD:thubac}. Hãy phân tích $\mathcal{F}$ thành ba chùm, biết $m=2$ và khoảng cách là $\mathcal{L}_2$.
-
-\textbf{Bài giải.} Với các thông số ban đầu $c=3$, $\epsilon=10^{-3}$, ta tiến hành thuật toán phân tích chùm mờ. Giả sử hàm mật độ xác suất trọng tâm $\theta_i(x)$ ở ba chùm lần lượt là $\theta_1{(x)} \sim \mathcal{N}(0\,;1)\,, \theta_2{(x)} \sim \mathcal{N}(2\,;1)$ và $\theta_3{(x)} \sim \mathcal{N}(5\,;1)$ và phân vùng ở mỗi hàm $f_j$ vào ba trọng tâm này là đều nhau, tức là $\bm U^{(0)} = 1/3 \times \texttt{ones}(3;7)$.
-
-Tại vòng lặp đầu tiên $t=1$, ta tính khoảng cách $\mathcal{L}_2$ giữa $\theta_i(x)$ đến bảy $f_j(x)$ ta được ma trận $D_{ij}$
-$$
-D_{ij} = 
-\begin{bmatrix}
-	0,11 & 0,74 & 0,75 & 0,35 & 0,75 & 0,75 & 0,75 \\
-	0,54 & 0,60 & 0,75 & 0,35 & 0,73 & 0,75 & 0,68 \\
-	0,75 & 0,35 & 0,75 & 0,74 & 0,19 & 0,71 & 0,08 \\
-\end{bmatrix}$$
-
-Ta tiến hành cập nhật các giá trị phân vùng $\bm U$ bằng công thức~\eqref{pvFCF1} và \eqref{pvFCF2} ta được
-$$
-\bm U^{(1)} = 
-\begin{bmatrix}
-	0.94 & 0.14 & 0.33 & 0.45 & 0.06 & 0.32 & 0.01 \\
-	0.04 & 0.22 & 0.33 & 0.45 & 0.06 & 0.32 & 0.01 \\
-	0.02 & 0.64 & 0.33 & 0.10 & 0.88 & 0.36 & 0.98 \\
-\end{bmatrix}
-$$
-
-
-
-%\begin{figure}[H]
-%    \centering
-%         \centering
-%\includegraphics[width=.6\textwidth]{Figs/C1_VD1_0.eps}
-  %       \caption{Trọng tâm $\theta^{(0)}$ được khởi tạo từ ${\bm\mu}^{(0)}$}
- %   \end{figure}
-
-%\begin{figure}[H]
-%     \centering
-%     \begin{subfigure}[b]{0.31\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{Figs/C1_VD1_1.eps}
-%         \caption{Vòng lặp 1}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.31\textwidth}
-%         \centering
- %        \includegraphics[width=\textwidth]{Figs/C1_VD1_2.eps}
-%         \caption{Vòng lặp 2}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.31\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{Figs/C1_VD1_3.eps}
-%         \caption{Vòng lặp 3}
-%     \end{subfigure}
-%    \begin{subfigure}[b]{0.31\textwidth}
-%        \centering
-%         \includegraphics[width=\textwidth]{Figs/C1_VD1_6.eps}
-%         \caption{Vòng lặp 6}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.31\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{Figs/C1_VD1_7.eps}
-%         \caption{Vòng lặp 7}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.31\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{Figs/C1_VD1_8.eps}
-%         \caption{Vòng lặp 8}
-%     \end{subfigure}
-%        \caption{Sự thay đổi qua các vòng lặp trong thuật toán FCF}
-%        \label{fig:VD1}
-%\end{figure}
-
-
+\vdu{[Phân chùm mờ hàm Gauss $1$-chiều]\label{VD:FCF} Ta sử dụng lại dãy hàm mật độ trong Ví dụ~\ref{VD:thubac}. Hãy phân tích $\mathcal{F}$ thành ba chùm, biết $m=2$ và khoảng cách là $\mathcal{L}_2$.
+	
+	Ta có kết quả sau khi thực hiện các vòng lặp được giải chi tiết ở Phụ lục (tr. \pageref{phulucB}).
+	
+	
+	
 }
+
 
 \chy{
 	So với kết quả phân tích chùm KCF, kết quả của phân tích chùm FCF mang tính tổng quát hơn. Dựa vào giá trị phân vùng $\mu_{ij}$, ta nhận thấy được mức độ tin cậy một hàm mật độ $f_j(x)$ xếp vào chùm $c_i$. Nếu giá trị phân vùng $\mu_{ij}$ tại chùm $c_i$ này lớn, ta có thể chắc chắn vào kết quả phân bổ, ngược lại, nếu giá trị này không cao, ta biết được hàm mật độ này có khả năng thuộc vào một chùm khác hoặc một chùm mới thay vì thuộc vào chùm $c_i$.
@@ -1350,6 +1319,7 @@ $
 \mathcal{L} = \max_{\beta_0, \theta} \sum_{j=1}^n \left[y_j \log \pi_j + (1 - y_j)\log (1 - \pi_j)\right]
 $. 
 Ta sử dụng thuật toán độ dốc\index{thuật toán độ dốc (gradient decent method)} để tối ưu hóa hàm mục tiêu $\mathcal{L}$ này.
+
 \vdu{[Phân loại hàm mật độ bằng hồi quy logistics]\label{VD:log}
 Giả sử hai lớp hàm mật độ Gauss $\mathcal{F}$ và $\mathcal{G}$ có $\mu_i$ ở hai lớp này lần lượt là
 $$\mu_\mathcal{F}=\{1,0;1,5; 2,0; 2,5; 6,0\}\,,  \text{ và }\mu_\mathcal{G}=\{4,5;7,5; 8,5; 8,0; 8,5\},$$ với $\sigma_{\mathcal{F}}^2=0,4$ và $\sigma_{\mathcal{G}}^2=0,9$. Hãy phân loại hàm mật độ Gauss mới $h(x)=\mathcal{N}(3,0;0,9)$ vào một trong hai lớp.
@@ -1382,7 +1352,7 @@ $$
 
 Mật độ $f(h \,|\, \mathcal{F})$ biểu diễn khả năng quan sát hàm $h(x)$ nếu nó thuộc lớp $\mathcal{F}$. Vì vậy, ta ước lượng mật độ này bằng trung bình likelihood tích phân giữa hàm mật độ $h(x)$ và các hàm mật độ $f_j(x)$ trong lớp $\mathcal{F}$, tức là
 \[
-f(h \,|\, \mathcal{F}) = \frac{1}{n_F} \sum_{i=1}^{n_F} \int_{\Omega} f_j(x) h(x) \mathrm{\,d}x.
+f(h \,|\, \mathcal{F}) = \frac{1}{\#\mathcal{F}} \sum_{i=1}^{\#\mathcal{F}} \int_{\Omega} f_j(x) h(x) \mathrm{\,d}x.
 \]
 
 Khi này ta có quy tắc phân loại hàm mật độ $h(x)$, giả sử không có thông tin tiên nghiệm, ta lấy $\mathbb{P}(\mathcal{F}) = \mathbb{P}(\mathcal{G}) = 1/2$, hàm mật độ $h$ được phân loại vào lớp $\mathcal{F}$ nếu $
@@ -1401,7 +1371,7 @@ f(h\,|\, \mathcal{F}) > f(h \,|\,\mathcal{G})$ và ngược lại. Với nhiều
 	$$
 	\begin{aligned}
 		f(h \,|\, \mathcal{F}) 
-		&= \frac{1}{n_F} \sum_{i=1}^{n_F} \int_{\Omega} f_i(x) h(x) \,\mathrm{d}x = \frac{1}{5} \sum_{i=1}^{5} \frac{1}{\sqrt{2\pi (0,9 + 0,4)}} \exp\left(-\frac{(3,0 - \mu_{\mathcal{F}_i})^2}{2(0,9 + 0,4)}\right) \\
+		&= \frac{1}{\#\mathcal{F}} \sum_{i=1}^{\#\mathcal{F}} \int_{\Omega} f_i(x) h(x) \,\mathrm{d}x = \frac{1}{5} \sum_{i=1}^{5} \frac{1}{\sqrt{2\pi (0,9 + 0,4)}} \exp\left(-\frac{(3,0 - \mu_{\mathcal{F}_i})^2}{2(0,9 + 0,4)}\right) \\
 		&= \frac{1}{5} \cdot 0,350 \cdot \left(
 		e^{- \frac{4,0}{2,6}} + e^{- \frac{2,25}{2,6}} + e^{- \frac{1,0}{2,6}} + e^{- \frac{0,25}{2,6}} + e^{- \frac{9,0}{2,6}}
 		\right) = 0,158
@@ -1411,7 +1381,7 @@ f(h\,|\, \mathcal{F}) > f(h \,|\,\mathcal{G})$ và ngược lại. Với nhiều
 	$$
 	\begin{aligned}
 		f(h \,|\, \mathcal{G}) 
-		&= \frac{1}{n_G} \sum_{i=1}^{n_G} \int_{\Omega} f_i(x) h(x) \,\mathrm{d}x 
+		&= \frac{1}{\#\mathcal{G}} \sum_{i=1}^{\#\mathcal{H}} \int_{\Omega} f_i(x) h(x) \,\mathrm{d}x 
 		= \frac{1}{5} \sum_{i=1}^{5} \frac{1}{\sqrt{2\pi(0,9 + 0,9)}} \exp\left(-\frac{(3,0 - \mu_{\mathcal{G}_i})^2}{2(0,9 + 0,9)}\right) \\
 		&= \frac{1}{5} \cdot 0,297 \cdot \left(
 		e^{-\frac{2,25}{3,6}} + e^{-\frac{20,25}{3,6}} + e^{-\frac{30,25}{3,6}} + e^{-\frac{25,0}{3,6}} + e^{-\frac{30,25}{3,6}}
@@ -1480,8 +1450,8 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 
 
 
-
-
+%
+%
 \subsection{Giới thiệu bài toán phân loại cho dữ liệu mất cân bằng}
 \section{Các vấn đề liên quan}
 \subsection{Tham số đánh giá thuật toán phân tích chùm}
@@ -1492,11 +1462,65 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 
 \subsubsection{a.\quad Đánh giá bên trong}
 
+\begin{description}
+	\item[Chỉ số Silhouette] Chỉ số Silhouette đo mức độ phù hợp của một hàm mật độ \(f_j\) với chùm mà nó được gán nhãn, so với chùm gần nhất khác,
+	\begin{equation*}
+		s(f_j) = \frac{b(f_j) - a(f_j)}{\max \{ a(f_j), b(f_j) \}},
+	\end{equation*}
+	trong đó, \( a(f_j) = \frac{1}{|c_k|-1} \sum\limits_{\substack{f \in c_k \\ f \ne f_j}} D(f_j, f) \) là khoảng cách trung bình giữa \(f_j\) và tất cả các hàm mật độ khác trong chùm \(c_k\) chứa nó, và \( b(f_j) = \min\limits_{l \ne k} \frac{1}{|c_l|} \sum\limits_{f \in c_l} D(f_j, f) \) là khoảng cách trung bình giữa \(f_j\) và các hàm mật độ trong chùm gần nhất \(c_l\) với \( l \ne k \).
+	\item[Chỉ số Dunn] Chỉ số Dunn đánh giá mức độ tách biệt giữa các chùm, được định nghĩa bởi
+	\begin{equation*}
+		D = \frac{\displaystyle \min_{k \ne l} \Delta_{\min}(c_k, c_l)}
+		{\displaystyle \max_{m} \Delta(c_m)},
+	\end{equation*}
+	trong đó, \( \Delta_{\min}(c_k, c_l) = \min\limits_{\substack{f \in c_k \\ g \in c_l}} D(f, g) \) là liên kết nhỏ nhất giữa hai chùm \(c_k\) và \(c_l\), và \( \Delta(c_m) = \max\limits_{f, g \in c_m} D(f, g) \) là đường kính lớn nhất của chùm \(c_m\).
+	\item[Chỉ số Davies--Bouldin] Chỉ số Davies--Bouldin đo mức độ tương đồng giữa các chùm, được định nghĩa bởi
+	\begin{equation*}
+		DI = \frac{1}{k} \sum_{k=1}^{K} \max_{l \ne k}
+		\left\{ \frac{S_k + S_l}{D(\theta_k, \theta_l)} \right\},
+	\end{equation*}
+	trong đó, \( S_k = \frac{1}{|c_k|} \sum\limits_{f \in c_k} D(f, \theta_k) \) là độ phân tán trung bình của chùm \(c_k\), \( \theta_k \) là trọng tâm của chùm \(c_k\), \( D(\theta_k, \theta_l) \) là khoảng cách giữa hai trọng tâm \(\theta_k\) và \(\theta_l\) và \(k\) là số chùm.
+	
+\end{description}
+
 
 \subsubsection{b.\quad Đánh giá bên ngoài}
 
+Đánh giá bên ngoài được sử dụng khi có nhãn thực tế \(\mathcal{P} = \{\mathcal{F}_1, \ldots, \mathcal{F}_R\}\) của tập hàm mật độ \(\mathcal{F} = \{f_1, \ldots, f_n\}\) và kết quả phân cụm \(\mathcal{G} = \{\mathcal{G}_1, \ldots, \mathcal{G}_K\}\).  
+Xét các cặp \((f_i, f_j)\), ta định nghĩa:
+\[
+\begin{aligned}
+	a &= \#\{(f_i,f_j)\,|\, f_i,f_j \in \mathcal{F}_r \cap \mathcal{G}_k\}, \\
+	b &= \#\{(f_i,f_j)\,|\, f_i,f_j \in \mathcal{F}_r,\, f_i \in \mathcal{G}_k,\, f_j \in \mathcal{G}_l,\, k \neq l\}, \\
+	c &= \#\{(f_i,f_j)\,|\, f_i,f_j \in \mathcal{G}_k,\, f_i \in \mathcal{F}_r,\, f_j \in \mathcal{F}_s,\, r \neq s\}, \\
+	d &= \#\{(f_i,f_j)\,|\, f_i \in \mathcal{F}_r \cap \mathcal{G}_k,\, f_j \in \mathcal{F}_s \cap \mathcal{G}_l,\, r \neq s,\, k \neq l\}.
+\end{aligned}
+\]
 
- 
+\begin{description}
+	\item[Rand Index] Rand Index đo mức độ tương đồng giữa \(\mathcal{P}\) và \(\mathcal{G}\). Ta có \(RI=1\) nếu phân cụm trùng hoàn toàn với nhãn thực tế, được định nghĩa là
+	$$
+	RI = \frac{a+d}{a+b+c+d},
+	$$
+	
+	
+	\item[Adjusted Rand Index] ARI hiệu chỉnh RI để loại bỏ trùng khớp ngẫu nhiên.
+$$ARI = \frac{RI - \mathbb{E}(RI)}{\max(RI) - \mathbb{E}(RI)},$$
+	
+	\item[Normalized Mutual Information] NMI đo mức độ phụ thuộc giữa hai phân hoạch \(\mathcal{P}\) và \(\mathcal{Q}\),
+	\[
+	NMI = \frac{2 I(\mathcal{P},\mathcal{Q})}{H(\mathcal{P}) + H(\mathcal{Q})},
+	\]
+trong đó, với\( p_i = \frac{\#\mathcal{F}_i}{n},\, p_j = \frac{\#\mathcal{G}_j}{n},\, p_{ij} = \frac{\#(\mathcal{F}_i \cap \mathcal{G}_j)}{n}, \) ta có,\begin{align*}
+		&I(\mathcal{P},\mathcal{Q}) = \sum_{i,j} p_{ij} \log \frac{p_{ij}}{p_i p_j},\\
+		& H(\mathcal{P}) = - \sum_i p_i \log p_i ,
+		 H(\mathcal{Q}) = - \sum_j p_j \log p_j ,
+	\end{align*} 
+
+\end{description}
+
+
+
 
 
 \subsection{Tham số đánh giá thuật toán phân loại}
@@ -1504,6 +1528,41 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 Đối với thuật toán phân loại, ta đánh giá kết quả độ chính xác việc thực thi đến một đối tượng chưa được huấn luyện qua (hay tập kiểm tra). Các dự đoán từ mô hình so với thực tế sẽ được tổng hợp qua ma trận nhầm lẫn.
 
 % Độ chính xác của mô hình khi dữ liệu có sự mất cân bằng lại không thích hợp. Giả sử mô hình nhị phân 
+
+\subsection{Tham số đánh giá thuật toán phân loại}
+
+Đối với thuật toán phân loại, ta đánh giá kết quả dự đoán thông qua độ chính xác của mô hình trên tập dữ liệu chưa được huấn luyện. Kết quả phân loại thường được tóm tắt trong ma trận nhầm lẫn\index{ma trận nhầm lẫn (confusion matrix)}, thể hiện số lượng dự đoán đúng và sai của mô hình. Giả sử ta có một bài toán phân loại nhị phân với hai lớp \(\{\,\text{Positive}\,, \text{Negative}\,\}\). Ma trận nhầm lẫn có dạng
+\[
+\begin{array}{c|cc}
+	\toprule
+	& \text{Dự đoán Positive} & \text{Dự đoán Negative} \\
+	\midrule
+	\text{Thực tế Positive} & \#TP & \#FN \\
+	\text{Thực tế Negative} & \#FP & \#TN \\
+	\bottomrule
+\end{array}
+\]
+
+Từ ma trận nhầm lẫn, ta định nghĩa các chỉ số phổ biến như sau
+
+\begin{table}[H]
+	\centering\footnotesize
+	\caption{Mô tả các chỉ số đánh giá phân loại}
+	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lllc@{\extracolsep\fill}} 
+		\toprule
+		\textbf{Chỉ số} & \textbf{Công thức}                                                                         & \textbf{Ý nghĩa}                             & \textbf{Phạm vi} \\ \midrule
+		Accuracy        & $\dfrac{\#TP + \#TN}{\#TP + \#TN + \#FP + \#FN}$                                            & Tỷ lệ dự đoán đúng trên tổng số mẫu          &     $[0,1]$      \\
+		Precision       & $\dfrac{\#TP}{\#TP + \#FP}$                                                                 & Tỷ lệ mẫu được dự đoán Positive là đúng      &     $[0,1]$      \\
+		TPR (Recall)    & $\dfrac{\#TP}{\#TP + \#FN}$                                                                 & Tỷ lệ nhận diện đúng Positive                &     $[0,1]$      \\
+		F1-score        & $\dfrac{2 \cdot \text{Precision} \cdot \text{Recall}}
+		{\text{Precision} + \text{Recall}}$ & Trung bình điều hoà giữa Precision và Recall &     $[0,1]$      \\
+		FPR             & $\dfrac{\#FP}{\#FP + \#TN}$                                                                 & Tỷ lệ dự đoán sai Negative thành Positive    &     $[0,1]$      \\
+		AUC             & $\displaystyle\int_{0}^{1} \text{TPR}(\text{FPR}) \mathrm{\,d}\text{FPR}$                               & Khả năng phân biệt của mô hình               &     $[0,1]$      \\ \bottomrule
+	\end{tabular*}
+\end{table}
+
+
+
 
 
 
@@ -1580,11 +1639,11 @@ Tuy nhiên, các thuật toán này thường giả định các chùm có cùng
 \chapter*{PHẦN KẾT LUẬN}\label{chapter_ketluan}
 \addcontentsline{toc}{chapter}{PHẦN KẾT LUẬN}
 
-%\begin{itemize}
-	%\item[--] Tổng kết các vấn đề đã thực hiện trong đề cương;
-%	\item[--] Đánh giá những khó khăn, hạn chế của các mô hình về mặt lý thuyết và ứng dụng;
-%	\item[--] Đưa ra những định hướng có thể phát triển trong tương lai
-%\end{itemize}
+\begin{itemize}
+	\item[--] Tổng kết các vấn đề đã thực hiện trong đề cương;
+	\item[--] Đánh giá những khó khăn, hạn chế của các mô hình về mặt lý thuyết và ứng dụng;
+	\item[--] Đưa ra những định hướng có thể phát triển trong tương lai
+\end{itemize}
 
 \section*{1\quad Kết luận}
 
@@ -1627,9 +1686,20 @@ Trí tuệ nhân tạo là trọng tâm, là mũi đột phá chính của phát
 \chapter*{PHỤ LỤC A\\MÃ NGUỒN}
 \addcontentsline{toc}{chapter}{PHỤ LỤC A}
 
-Các mã Python được sử dụng trong luận văn này được lưu trữ tại \url{https://github.com/hungtrannam/probclust}. Chúng tôi chạy trên hệ điều hành Ubuntu 24.04.2 LTS, nhân Linux 6.11.0-19-generic, 11th Gen Intel$\copyright$ Core$^\text{TM}$ i5-11400H$\times$12, bộ nhớ 16.0 GiB.
+Về tài nguyên tính toán, chúng tôi chạy trên hệ điều hành Ubuntu 24.04.2 LTS, nhân Linux 6.11.0-19-generic, 11th Gen Intel$\copyright$ Core$^\text{TM}$ i5-11400H$\times$12, bộ nhớ 16.0 GiB. 
 
+Việc thực thi mã nguồn được sử dụng trong môi trường ảo\index{môi trường ảo (virtual environment)} của Python. Các mã Python được sử dụng trong luận văn này được lưu trữ tại \url{https://github.com/hungtrannam/probclust}. Xin tham khảo tệp \texttt{README.md} trong kho GitHub để biết thêm thông tin chi tiết về cách sử dụng, ví dụ và mở rộng hệ thống. Các thư viện trên được lưu trong tệp \texttt{requirements.txt} và có thể được cài đặt tự động. Đây là danh sách các thư viện Python cần thiết để thực thi toàn bộ mã nguồn trong luận văn. 
 
+{\small
+
+\begin{verbatim}
+numpy==2.2.6 scipy==1.16.0 pandas==2.3.1 optuna==4.4.0 shap==0.48.0 
+scikit-learn==1.7.1 statsmodels==0.14.5 matplotlib==3.10.3 seaborn==0.13.2 
+torch==2.7.1 torchvision==0.22.1 triton==3.3.1 torchmetrics==1.7.4 
+ipykernel==6.29.5 jupyter_client==8.6.3 jupyter_core==5.8.1 tqdm==4.67.1
+einops==0.8.1 numba==0.61.2 joblib==1.5.1 opencv-python
+\end{verbatim}
+}
 
 
 
@@ -1640,7 +1710,56 @@ Các mã Python được sử dụng trong luận văn này được lưu trữ 
 \addcontentsline{toc}{chapter}{PHỤ LỤC B}
 
 
-\textbf{Bài giải Ví dụ~\ref{VD:thubac}} Đầu tiên, ta xem thứ tự của $\mu_i$ chính là thứ tự của dữ liệu hàm mật độ $f_i$, tính toán các khoảng cách từng đôi hàm mật độ bất kỳ bằng khoảng cách $\mathcal{L}_2(f_i\,,f_j)$ với $i\,,j = 1\,,\ldots\,,7$, ta nhận được ma trận khoảng cách
+
+	
+	\paragraph{Bài giải Ví dụ~\ref{VD:dist}.} Vì các phương sai của hàm mật độ Gauss đều bằng 1. Nên ta có thể tính $\mathcal{L}_2$ bằng công thức tổng quát 
+	$
+	\mathcal{L}_2(u\,,v)=\left(2-2\exp\left(-\frac{(\mu_u-\mu_v)^2}{4\sigma^2}\right)\right)^{1/2}.
+	$
+	Sau khi tính toán, ta nhận được ma trận khoảng cách từng đôi một.
+	$$
+	\begin{array}{c|ccccccc}
+		& \left\{f_1\right.     & \left.f_2\right\}     & \left\{g_1\right.     & g_2     & \left.g_3\right\}     & \left\{h_1\right.     & \left.h_2\right\}     \\
+		\hline
+		f_1     &         &         &         &         &         &         &         \\
+		f_2     & 0{,}26  &         &         &         &         &         &         \\
+		g_1     & 0{,}74  & 0{,}71  &         &         &         &         &         \\
+		g_2     & 0{,}75  & 0{,}75  & 0{,}49  &         &         &         &         \\
+		g_3     & 0{,}75  & 0{,}74  & 0{,}29  & 0{,}26  &         &         &         \\
+		h_1     & 0{,}75  & 0{,}75  & 0{,}75  & 0{,}74  & 0{,}75  &         &         \\
+		h_2     & 0{,}75  & 0{,}75  & 0{,}74  & 0{,}67  & 0{,}72  & 0{,}38  &         
+	\end{array}
+	$$
+	Từ đây, ta có thể dễ dàng tính được các liên kết $\Delta(\mathcal{F},\, \mathcal{G}) $ thông qua ma trận này. Ta có,
+	\begin{align*}
+		\Delta_{\min}(\mathcal{F},\, \mathcal{G}) &= \min\big\{
+		\mathcal{L}_2(f_1, g_1),\, \mathcal{L}_2(f_1, g_2),\, \mathcal{L}_2(f_1, g_3),\,
+		\mathcal{L}_2(f_2, g_1),\, \mathcal{L}_2(f_2, g_2),\, \mathcal{L}_2(f_2, g_3)
+		\big\} \\
+		&=\min\{0{,}74;\ 0{,}75;\ 0{,}75;\ 0{,}71;\ 0{,}75;\ 0{,}74\} = {0{,}71},\\
+		\Delta_{\max}(\mathcal{F},\, \mathcal{G}) &= \max\big\{
+		\mathcal{L}_2(f_1, g_1),\, \mathcal{L}_2(f_1, g_2),\, \mathcal{L}_2(f_1, g_3),\,
+		\mathcal{L}_2(f_2, g_1),\, \mathcal{L}_2(f_2, g_2),\, \mathcal{L}_2(f_2, g_3)
+		\big\}\\
+		&	= \max\{0{,}74;\, 0{,}75;\, 0{,}75;\, 0{,}71;\, 0{,}75;\, 0{,}74\} = {0{,}75},\\
+		\Delta_{\text{avg}}(\mathcal{F},\, \mathcal{G}) &= \frac{1}{6} \sum_{\substack{f \in \mathcal{F} \\ g \in \mathcal{G}}} \mathcal{L}_2(f, g) = 
+		0{,}17(0{,}74 + 0{,}75 + 0{,}75 + 0{,}71 + 0{,}75 + 0{,}74) =  {0{,}74},\\
+		\Delta_{\text{centroid}}(\mathcal{F}, \mathcal{G}) &=\mathcal{L}_2(\theta_\mathcal{F}\,,\theta_{\mathcal{G}})= \left(2 - 2 \exp\left(-\frac{(0{,}65 - 4{,}77)^2}{4}\right)\right)^{1/2}
+		= {1{,}41},\\ &\text{ với } \theta_{\mathcal{F}} = (0{,}3 + 1{,}0)/2 = 0{,}65\,, \theta_{\mathcal{G}} =(4{,}0 + 5{,}5 + 4{,}8)/3 = 4{,}77,\\
+		\Delta_{\text{Ward}}(\mathcal{F}, \mathcal{G}) &= \frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}} \cdot \mathcal{L}_2^2(\theta_{\mathcal{F}}, \theta_{\mathcal{G}})
+		= \frac{2 \cdot 3}{2 + 3} \cdot \left(1{,}41\right)^2 = {2{,}39},
+	\end{align*}
+	
+	
+	Tương tự, ta cũng có kết quả cho $\Delta(\mathcal{F}\cup\mathcal{G}\,,\mathcal{H})$ là
+	\begin{align*}
+		\Delta_{\min}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= {0{,}67}\,, \Delta_{\max}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) = {0{,}75}\,,
+		\Delta_{\text{avg}}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) = {0{,}74},\\
+		\Delta_{\text{centroid}}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) &= {1{,}41}\,, \Delta_{\text{Ward}}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H}) = {2{,}86}.\\
+	\end{align*}
+
+
+\paragraph{Bài giải Ví dụ~\ref{VD:thubac}.} Đầu tiên, ta xem thứ tự của $\mu_i$ chính là thứ tự của dữ liệu hàm mật độ $f_i$, tính toán các khoảng cách từng đôi hàm mật độ bất kỳ bằng khoảng cách $\mathcal{L}_2(f_i\,,f_j)$ với $i\,,j = 1\,,\ldots\,,7$, ta nhận được ma trận khoảng cách
 $$
 \bm D^{(t=0)} =
 \begin{array}{c|ccccccc}
@@ -1741,23 +1860,82 @@ Ta xóa dòng/cột $f_2$ và $\{f_5\,,f_7\}$ và thay bằng một dòng/cột 
 \end{array}
 \]
 
-Cuối cùng, ta chọn xếp chùm $\{f_2,f_5,f_7\}$  vào chùm $\{f_3,f_6\}$ dựa vào khoảng cách chính xác nhỏ nhất (4 chữ số thập phân). Vậy ta có chùm $\{f_2\,,f_5\,,f_3\,,f_6\}$. Ta xếp chùm còn lại vào chùm mới này, thuật toán kết thúc với cấu trúc như sau
+Cuối cùng, ta chọn xếp chùm $\{f_2,f_5,f_7\}$  vào chùm $\{f_3,f_6\}$ dựa vào khoảng cách chính xác nhỏ nhất (4 chữ số thập phân). Vậy ta có chùm $\{f_2\,,f_5\,,f_3\,,f_6\}$. Ta xếp chùm còn lại vào chùm mới này, thuật toán kết thúc. 
 
-\begin{verbatim}
---> root (7 samples): [1, 2, 3, 4, 5, 6, 7]
-|   --> root0 (4 samples): [1, 4, 3, 6]
-|   |   --> root00 (2 samples): [1, 4]
-|   |   |   --> root000 (1 sample): [1]
-|   |   |   --> root001 (1 sample): [4]
-|   |   --> root01 (2 samples): [3, 6]
-|   |   |   --> root010 (1 sample): [3]
-|   |   |   --> root011 (1 sample): [6]
-|   --> root1 (3 samples): [2, 5, 7]
-|       --> root10 (1 sample): [2]
-|       --> root11 (2 samples): [5, 7]
-|       |   --> root110 (1 sample): [5]
-|       |   --> root111 (1 sample): [7]
-\end{verbatim}
+
+\includepdf[pages=-]{HCF.pdf}
+
+\paragraph{Bài giải Ví dụ~\ref{VD:FCF}.} Với các thông số ban đầu $c=3$, $\epsilon=10^{-3}$, ta tiến hành thuật toán phân tích chùm mờ. Giả sử hàm mật độ xác suất trọng tâm $\theta_i(x)$ ở ba chùm lần lượt là $\theta_1{(x)} \sim \mathcal{N}(0\,;1)\,, \theta_2{(x)} \sim \mathcal{N}(2\,;1)$ và $\theta_3{(x)} \sim \mathcal{N}(5\,;1)$ và phân vùng ở mỗi hàm $f_j$ vào ba trọng tâm này là đều nhau, tức là $\bm U^{(0)} = 1/3 \times \texttt{ones}(3;7)$.
+
+Tại vòng lặp đầu tiên $t=1$, ta tính khoảng cách $\mathcal{L}_2$ giữa $\theta_i(x)$ đến bảy $f_j(x)$ ta được ma trận $D_{ij}$
+$$
+D_{ij} = 
+\begin{bmatrix}
+	0,11 & 0,74 & 0,75 & 0,35 & 0,75 & 0,75 & 0,75 \\
+	0,54 & 0,60 & 0,75 & 0,35 & 0,73 & 0,75 & 0,68 \\
+	0,75 & 0,35 & 0,75 & 0,74 & 0,19 & 0,71 & 0,08 \\
+\end{bmatrix}$$
+
+Ta tiến hành cập nhật các giá trị phân vùng $\bm U$ bằng công thức~\eqref{pvFCF1} và \eqref{pvFCF2} ta được
+$$
+\bm U^{(1)} = 
+\begin{bmatrix}
+	0.94 & 0.14 & 0.33 & 0.45 & 0.06 & 0.32 & 0.01 \\
+	0.04 & 0.22 & 0.33 & 0.45 & 0.06 & 0.32 & 0.01 \\
+	0.02 & 0.64 & 0.33 & 0.10 & 0.88 & 0.36 & 0.98 \\
+\end{bmatrix}
+$$
+
+
+
+%\begin{figure}[H]
+%    \centering
+%         \centering
+%\includegraphics[width=.6\textwidth]{Figs/C1_VD1_0.eps}
+%       \caption{Trọng tâm $\theta^{(0)}$ được khởi tạo từ ${\bm\mu}^{(0)}$}
+%   \end{figure}
+
+%\begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.31\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{Figs/C1_VD1_1.eps}
+%         \caption{Vòng lặp 1}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.31\textwidth}
+%         \centering
+%        \includegraphics[width=\textwidth]{Figs/C1_VD1_2.eps}
+%         \caption{Vòng lặp 2}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.31\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{Figs/C1_VD1_3.eps}
+%         \caption{Vòng lặp 3}
+%     \end{subfigure}
+%    \begin{subfigure}[b]{0.31\textwidth}
+%        \centering
+%         \includegraphics[width=\textwidth]{Figs/C1_VD1_6.eps}
+%         \caption{Vòng lặp 6}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.31\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{Figs/C1_VD1_7.eps}
+%         \caption{Vòng lặp 7}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.31\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{Figs/C1_VD1_8.eps}
+%         \caption{Vòng lặp 8}
+%     \end{subfigure}
+%        \caption{Sự thay đổi qua các vòng lặp trong thuật toán FCF}
+%        \label{fig:VD1}
+%\end{figure}
+
+
 
 %\chapter*{XÁC NHẬN CỦA HỘI ĐỒNG}
 %

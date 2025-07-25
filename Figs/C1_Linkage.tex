@@ -54,47 +54,46 @@
 	
 	
 		% ---------- CENTROID LINKAGE ----------
-	\begin{tikzpicture}[scale=1.8]
+	\begin{tikzpicture}[scale=1.9]
 		\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
 	\drawclusterfoci
 	\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L1) -- (R2);
 	\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L1) -- (B2);
 	\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (R2) -- (B2);
 	\node[align=left] at (0,-2.2) {
-	\Large {\textsf{(a) Liên kết đơn}} 
+		\huge {\textsf{(a) Liên kết đơn (SLINK)}} 
 	};
 \end{tikzpicture}
 	
-	\hspace{.5cm}
+
 	
 	% ---------- COMPLETE (MAX) LINKAGE ----------
-	\begin{tikzpicture}[scale=1.8]
+	\begin{tikzpicture}[scale=1.9]
 		\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
 		\drawclusterfoci
 		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L2) -- (R1);
 		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (L2) -- (B1);
 		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (R1) -- (B1);
 		\node[align=left] at (0,-2.2) {
-		\Large	{\textsf{(b) Liên kết đủ}}
+		\huge	{\textsf{(b) Liên kết đủ (CLINK)}}
 		};
 	\end{tikzpicture}
 	
-	\hspace{.5cm}
 	
 		% ---------- CENTROID LINKAGE ----------
-	\begin{tikzpicture}[scale=1.8]
+	\begin{tikzpicture}[scale=1.9]
 		\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
 		\drawclusterfoci
 		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (C1) -- (C2) -- (C3) -- cycle;
 		\node[align=left] at (0,-2.2) {
-			\Large	{\textsf{(c) Liên kết tâm (UPGMC)}} 
+				\huge	{\textsf{(c) Liên kết tâm (UPGMC)}} 
 		};
 	\end{tikzpicture}
 	
-	\hspace{.5cm}
+
 	
 	% ---------- AVERAGE LINKAGE ----------
-	\begin{tikzpicture}[scale=1.8]
+	\begin{tikzpicture}[scale=1.9]
 				\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
 		\drawclusterfoci
 		\foreach \pL in {L1,L2}
@@ -107,11 +106,11 @@
 		\foreach \pB in {B1,B2}
 		\draw[black!70, line width=1.5pt,  dash pattern=on 6pt off 4pt] (\pR) -- (\pB);
 		\node[align=left] at (0,-2.2) {
-		\Large	{\textsf{(d) Liên kết trung bình (UPGMA)}}
+			\huge	{\textsf{(d) Liên kết trung bình (UPGMA)}}
 		};
 	\end{tikzpicture}
 	
-	\hspace{.5cm}
+
 	
 	
 		\newcommand{\drawclusterfocii}{
@@ -149,7 +148,7 @@
 	}
 	
 	% ---------- WARD'S METHOD ----------
-	\begin{tikzpicture}[scale=1.8]
+	\begin{tikzpicture}[scale=1.9]
 				\draw[gray!60, line width=0.5pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
 		\drawclusterfocii
 		% Định nghĩa centroid tổng (ở giữa)
@@ -163,7 +162,7 @@
 		}
 		
 		\node[align=left] at (0,-2.2) {
-			\Large	{\textsf{(e) Liên kết Ward}}
+				\huge	{\textsf{(e) Liên kết Ward}}
 };
 	\end{tikzpicture}
 	
