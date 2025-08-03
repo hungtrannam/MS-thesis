@@ -11,8 +11,8 @@
 	
 	\begin{tikzpicture}
 		\begin{axis}[
-			width=10cm, height=6.5cm,
-			xlabel={$D_{1j}$},
+			width=10cm, height=5cm,
+			xlabel={$\bm D_{1j}$},
 			ylabel={$\mu_{1j}$},
 			xmin=-0.02, xmax=2.02,
 			ymin=-0.02, ymax=1.02,
@@ -21,7 +21,12 @@
 			ytick={0,0.5,1},
 			tick label style={font=\small},
 			label style={font=\small},
-			legend style={anchor=north east, font=\scriptsize}
+			legend style={
+				anchor=north east,
+				font=\scriptsize,
+				legend columns=2,  % <-- CHIA 2 CỘT
+				column sep=2pt     % <-- khoảng cách giữa cột
+				}
 			]
 			
 			% y = 0.5 reference line
@@ -38,7 +43,7 @@
 			\addlegendentry{$m=1{,}5$}
 			
 			% m = 2
-			\addplot[color=black!55, line width=1.5pt]
+			\addplot[color=black!75, line width=1.5pt]
 			{ (x^\p)^(-1/(2 -1)) / ( (x^\p)^(-1/(2 -1)) + ((2 - x)^\p)^(-1/(2 -1)) ) };
 			\addlegendentry{$m=2{,}0$}
 			
