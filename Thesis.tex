@@ -197,7 +197,7 @@
 % ====== THÔNG TIN LUẬN VĂN ======
 \newcommand{\university}{ĐẠI HỌC CẦN THƠ}
 \newcommand{\school}{Khoa Khoa học Tự nhiên}
-\newcommand{\nametitle}{Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu hình ảnh}
+\newcommand{\nametitle}{Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu ảnh}
 \newcommand{\MainAdvisor}{PGs. TS. Võ Văn Tài}
 \newcommand{\student}{Trần Nam Hưng}
 \newcommand{\studentid}{M1823002}
@@ -2350,14 +2350,14 @@ Xét các cặp \((f_i\,; f_j)\), ta có các trường hợp
 Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số thực với hai chùm được giả định trước. Vai trò chính của dữ liệu nhân tạo này là đánh giá độ ổn định của thuật toán trong các kịch bản mất cân bằng nghiêm trọng khi $IR$ thay đổi từ $10$ đến $100$. $IR$ càng lớn thì sự chênh lệch giữa chùm $1$ và $2$ càng cao. Hình~\ref{fig:EX1_main} thể hiện rõ tác động của $IR$ lên phân bố dữ liệu. Khi $IR$ tăng ($1:10$, $1:50$, và $1:100$), chùm màu xanh trở nên dày đặc hơn, trong khi chùm màu đỏ giữ nguyên kích thước.
 }
 
-\vdu{[Hàm Gauss-lệch, ba chùm]  Giả sử phân phối lệch-Gauss từ \url{http://azzalini.stat.unipd.it/SN/}. Hàm mật độ của phân phối lệch–Gauss được định nghĩa như sau.
-\begin{align*}
-	f(x \,\vert \, \xi\,; \sigma\,; \lambda)=\frac{2}{\lambda}\phi\left(\frac{x-\xi}{\sigma}\right)\Phi\left(\lambda\frac{x-\xi}{\sigma}\right),
-\end{align*}
-trong đó $\phi(\cdot)$ và $\Phi(\cdot)$ lần lượt là hàm mật độ chuẩn và hàm phân phối tích lũy chuẩn. Tham số $\xi$ là vị trí của kỳ vọng, $\sigma$ là độ lệch chuẩn, và $\lambda$ điều khiển độ lệch (skewness). Trong khung nghiên cứu này, tham số vị trí $\xi_i$ được lấy mẫu từ các phân phối chuẩn $\mathcal{N}(0\,;0.2)$, $\mathcal{N}(2\,;0.2)$ và $\mathcal{N}(-2\,;0.2)$ tương ứng cho chùm, $1$, $2$ và $3$. Các tham số độ lệch-Gauss được đặt là $\sigma_i=[0\,; 10\,; -10]$, trong khi các tham số lệch được xác định là $\lambda_i=[1\,; 2\,; 2]$, nhằm tạo ra sự bất đối xứng giữa các cụm.
-
-
-Trong ví dụ này, luận văn mở rộng Ví dụ \ref{vdu:gauss1} sang ba chùm nhằm tăng độ phức tạp và tạo sự khác biệt lớn hơn. Các hàm mật độ của ba chùm này được minh họa trong Hình~\ref{fig:EX3_main}, với các tỷ lệ $IR$ khác nhau: (a) $1:10:10$, (b) $1:50:50$, và (c) $1:100:100$. 
+%\vdu{[Hàm Gauss-lệch, ba chùm]  Giả sử phân phối lệch-Gauss từ \url{http://azzalini.stat.unipd.it/SN/}. Hàm mật độ của phân phối lệch–Gauss được định nghĩa như sau.
+%\begin{align*}
+%	f(x \,\vert \, \xi\,; \sigma\,; \lambda)=\frac{2}{\lambda}\phi\left(\frac{x-\xi}{\sigma}\right)\Phi\left(\lambda\frac{x-\xi}{\sigma}\right),
+%\end{align*}
+%trong đó $\phi(\cdot)$ và $\Phi(\cdot)$ lần lượt là hàm mật độ chuẩn và hàm phân phối tích lũy chuẩn. Tham số $\xi$ là vị trí của kỳ vọng, $\sigma$ là độ lệch chuẩn, và $\lambda$ điều khiển độ lệch (skewness). Trong khung nghiên cứu này, tham số vị trí $\xi_i$ được lấy mẫu từ các phân phối chuẩn $\mathcal{N}(0\,;0.2)$, $\mathcal{N}(2\,;0.2)$ và $\mathcal{N}(-2\,;0.2)$ tương ứng cho chùm, $1$, $2$ và $3$. Các tham số độ lệch-Gauss được đặt là $\sigma_i=[0\,; 10\,; -10]$, trong khi các tham số lệch được xác định là $\lambda_i=[1\,; 2\,; 2]$, nhằm tạo ra sự bất đối xứng giữa các cụm.
+%
+%
+%Trong ví dụ này, luận văn mở rộng Ví dụ \ref{vdu:gauss1} sang ba chùm nhằm tăng độ phức tạp và tạo sự khác biệt lớn hơn. Các hàm mật độ của ba chùm này được minh họa trong Hình~\ref{fig:EX3_main}, với các tỷ lệ $IR$ khác nhau: (a) $1:10:10$, (b) $1:50:50$, và (c) $1:100:100$. 
 
 
 %\begin{figure}[H]
@@ -2381,7 +2381,7 @@ Trong ví dụ này, luận văn mở rộng Ví dụ \ref{vdu:gauss1} sang ba c
 %	\label{fig:EX3_main}
 %\end{figure}
 
-}
+%}
 
 
 
