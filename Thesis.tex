@@ -787,10 +787,6 @@ $$D(P_1, P_2) = h \left(\mathbb{E}_1 \left(g \left( \frac{f_2}{f_1} \right) \rig
 	} 
 
 
-
-
-
-
 % Các khoảng cách của hai hàm mật độ xác suất được thành lập theo hai các tiếp cận: véc-tơ và xác suất. Cách tiếp cận véc-tơ xem xét các mức giá trị là điểm trong không gian Euclide, nên chúng cũng có thể tính toán dựa vào các khoảng cách hình học thông thường. 
 
 Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo tương tự giữa hai hàm mật độ xác suất theo tiếp cận xác suất.
@@ -803,9 +799,9 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 		$\mathcal{L}_1$ & $\displaystyle\int_{\Omega}|f_1(x) - f_2(x)|\mathrm{\,d}x$ & $|1-u|$ & $u$ & $[0\,;2]$ \\
 		Chernoff & $-\log\left(\displaystyle\int_{\Omega} f_1(x)^s f_2(x)^{1-s}\mathrm{\,d}x\right)$ & $-u^{1-s}$ & $-\log(-u)$ & $[0\,;+\infty)$ \\
 		Matusita & $\left(\displaystyle\int_{\Omega}\left|f_1^{1/r}(x) - f_2^{1/r}(x)\right|^r\mathrm{\,d}x\right)^{1/r}$ & $\left|1-u^{1/r}\right|^{r}$ & $u^{1/r}$ & $[0\,; \sqrt{2}]$ \\
-		bình phương Hellinger & $\frac{1}{2}\displaystyle\int_{\Omega}\left(\sqrt{f_1(x)}-\sqrt{f_2(x)}\right)^2\mathrm{\,d}x$ & $(\sqrt{u}-1)^2$ & $\frac{1}{2}x$ & $[0\,;1]$ \\
+		bình phương Hellinger & $\displaystyle\int_{\Omega}\left(\sqrt{f_1(x)}-\sqrt{f_2(x)}\right)^2\mathrm{\,d}x$ & $(\sqrt{u}-1)^2$ & $u$ & $[0\,;2]$ \\
 		thông tin Kullback&$\displaystyle\int_{\Omega} f_1(x)\log\frac{f_1(x)}{f_2(x)}\mathrm{\,d}x$ & $-\log(u)$ & $u$ & $[0\,;+\infty)$ \\
-		 Jensen-Shannon & $\frac{1}{2}\left(D_{KL}(f_1\,; f_2) + D_{KL}(f_2\,; f_1)\right)$ & $(u-1)\log(u)$ & $\frac{1}{2}u$ & $[0\,;+\infty)$ \\
+		 Jensen-Shannon & $\frac{1}{2}\left(D_{KL}(f_1\,; f_2) + D_{KL}(f_2\,; f_1)\right)$ & $-(u+1)\log(\frac{u+1}{2})+u\log(u)$ & $\frac{1}{2}u$ & $[0\,;+\infty)$ \\
 	Bayes	Error &$1-\displaystyle\int_{\Omega} \min\{\pi f_1(x)\,;\pi(1-f_2(x))\}\mathrm{\,d}x$ &$-\min\{u\,;1-u\}$ & $u+1$ & $[0\,;1]$ \\
 		\bottomrule
 	\end{tabular*}
@@ -814,7 +810,7 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 
 
 
-\chy{Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Trong $\mathcal{L}_p$, chỉ có $\mathcal{L}_1$ là một $f$-phân kỳ và là Matusita với $r=1$. Đáng chú ý, ngoài $\mathcal{L}_1$, cả hai loại khoảng cách Hellinger và Matusita đều thỏa mãn tính chất mê-tríc.
+\chy{Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Tương tự khoảng cách Matusita là tổng quát hóa của bình phương Hellinger khi $r=2$. Trong $\mathcal{L}_p$, chỉ có $\mathcal{L}_1$ là một $f$-phân kỳ và là Matusita với $r=1$. Đáng chú ý, Matusita thỏa mãn tính chất mê-tríc.
 }
 
 Ở Hình~\ref{fig:dayKC}, luận văn này ghi nhận giá trị khoảng cách $f_1\sim\mathcal{N}(0\,;1)$ và $f_2\sim \mathcal{N}(\mu\,;1)$ với $\mu$ trượt từ $-10$ đến $20$.
@@ -1828,148 +1824,251 @@ Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ có
 
 Cho tập các hàm mật độ xác suất $\mathcal{F}=\{f_1\,;f_2\,;\ldots\,;f_n\}$, trong đó mỗi $f_j$ là một hàm mật độ xác suất ($j=1\,;\ldots\,;n$). Cho trước $c$ là số chùm ($i=1\,;\ldots\,;c$). Gọi $\bm U=[\mu_{ij}]\in\mathbb{R}^{n\times c}$ là ma trận phân vùng, và $\Theta=\{\theta_1,\dots,\theta_c\}$ là các trọng tâm chùm. Giả sử tham số mờ $m>1$; và $\delta'>0$ là siêu tham số điều khiển các hàm ở biên của chùm.
 
-Hàm mục tiêu của EM-IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất'' và hiệu chỉnh biên \index{hiệu chỉnh biên (edge modification)} giảm ``hiệu ứng xi-phông''.
+
+
+Hàm mục tiêu của IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất''.
 \begin{align}
-	\tag{EM-IFCF}\label{eq:EMIFCF}
+	\tag{IFCF}\label{eq:IFCF}
 \text{Minimise}\,&:\, J(\bm U\,;\Theta\,|\, \mathcal{F}\,;c\,;m\,;\delta') = 
-	\underbrace{\sum_{j=1}^n \sum_{i=1}^c \frac{1}{\omega_i}\, \mu_{ij}^m \,D^2(f_j\,;\theta_i)}_{IFCF}
-	\;+\;
-\underbrace{	\sum_{j=1}^n \delta_j \sum_{i=1}^c \mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)\, D^*_{ij}}_{EM},\\
+	\underbrace{\sum_{j=1}^n \sum_{i=1}^c \frac{1}{\omega_i}\, \mu_{ij}^m \,D^2(f_j\,;\theta_i)}_{IFCF},\\
 		\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1,\quad \forall j \in {1, \dots, n}, \tag{C1}\label{c1_pro} 
 \end{align}
-trong đó $\omega_i=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ của chùm thứ $i$, với $1\,;\ldots\,c$, thỏa mãn $\sum_{i=1}^c\omega_i=1$ với $\mu^{(t-1)}_{ij}$ là ma trận phân vùng tại vòng lặp thứ $(t-1)$, và $D^*_{ij}$ là chuẩn hóa  $[0\,;1]$ của ma trận khoảng cách ở vòng lặp trước được tính bởi
-\begin{align}
-	D^*_{ij}\;=\;\frac{D^2\left (\theta_i^{(t-1)}\,;f_j\right )}{\sum_{s=1}^c D^2\left (\theta_s^{(t-1)}\,;f_j\right)},	\label{eq:Dstar}
-\end{align}
-và $\delta_j$ là hệ số điều khiển. 
-Khi $\omega_i= \bm 1$ và $\delta'=0$ thì thuật toán trở thành FCF. 
+trong đó $\omega_i=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ của chùm thứ $i$, với $1\,;\ldots\,c$, thỏa mãn $\sum_{i=1}^c\omega_i=1$ với $\mu^{(t-1)}_{ij}$ là ma trận phân vùng tại vòng lặp thứ $(t-1)$.
+Khi $\omega_i= \bm 1$ thì thuật toán trở thành FCF. 
 
 \chy{
-Khi mất cân bằng tăng, đóng góp của chùm lớn hơn vào hàm mục tiêu sẽ lấn át chùm nhỏ hơn. Do đó, thành phần $IFCF$ chia cho $\tfrac{1}{\omega_i}$, với $\omega_i\in(0\,;1)$ sẽ giảm một tỷ lệ kích thước chùm cho cả hai bên. Khi đó, chùm lớn phải chịu tổn thất lớn hơn  để giảm đóng góp hàm mục tiêu mà không làm sai lệch trọng tâm và tính ổn định.
-
-Tuy nhiên, việc chuẩn hoá kích thước chùm không phân biệt được mức độ khó của từng hàm mật độ tại các biên của chùm, nơi khởi phát hiệu ứng xi phong. Do đó, số hạng EM tim kiếm các hàm biên thông qua hệ số $
-\mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)
-$. Nó tiến gần $0$ với biên và lớn hơn khi không phải. Đồng thời, nhân tử $D^{*}_{ij}$ cung cấp hướng phạt làm triệt tiêu xu hướng hút của hiệu ứng xi phông.
-
-}
+	Khi mất cân bằng tăng, đóng góp của chùm lớn hơn vào hàm mục tiêu sẽ lấn át chùm nhỏ hơn. Do đó, thành phần $IFCF$ chia cho $\tfrac{1}{\omega_i}$, với $\omega_i\in(0\,;1)$ sẽ giảm một tỷ lệ kích thước chùm cho cả hai bên. Khi đó, chùm lớn phải chịu tổn thất lớn hơn để giảm đóng góp hàm mục tiêu mà không làm sai lệch trọng tâm và tính ổn định.
+	}
 
 
 
+%
+%Hàm mục tiêu của IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất'' và hiệu chỉnh biên \index{hiệu chỉnh biên (edge modification)} giảm ``hiệu ứng xi-phông''.
+%\begin{align}
+%	\tag{IFCF}\label{eq:EMIFCF}
+%\text{Minimise}\,&:\, J(\bm U\,;\Theta\,|\, \mathcal{F}\,;c\,;m\,;\delta') = 
+%	\underbrace{\sum_{j=1}^n \sum_{i=1}^c \frac{1}{\omega_i}\, \mu_{ij}^m \,D^2(f_j\,;\theta_i)}_{IFCF}
+%	\;+\;
+%\underbrace{	\sum_{j=1}^n \delta_j \sum_{i=1}^c \mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)\, D^*_{ij}}_{EM},\\
+%		\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1,\quad \forall j \in {1, \dots, n}, \tag{C1}\label{c1_pro} 
+%\end{align}
+%trong đó $\omega_i=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ của chùm thứ $i$, với $1\,;\ldots\,c$, thỏa mãn $\sum_{i=1}^c\omega_i=1$ với $\mu^{(t-1)}_{ij}$ là ma trận phân vùng tại vòng lặp thứ $(t-1)$, và $D^*_{ij}$ là chuẩn hóa  $[0\,;1]$ của ma trận khoảng cách ở vòng lặp trước được tính bởi
+%\begin{align}
+%	D^{*^{(t-1)}}(\theta_i\,,f_j)\;=\;\frac{D^2\left (\theta_i^{(t-1)}\,;f_j\right )}{\sum_{s=1}^c D^2\left (\theta_s^{(t-1)}\,;f_j\right)},	\label{eq:Dstar}
+%\end{align}
+%và $\delta_j$ là hệ số điều khiển. 
+%Khi $\omega_i= \bm 1$ và $\delta'=0$ thì thuật toán trở thành FCF. 
+%
+%\chy{
+%Khi mất cân bằng tăng, đóng góp của chùm lớn hơn vào hàm mục tiêu sẽ lấn át chùm nhỏ hơn. Do đó, thành phần $IFCF$ chia cho $\tfrac{1}{\omega_i}$, với $\omega_i\in(0\,;1)$ sẽ giảm một tỷ lệ kích thước chùm cho cả hai bên. Khi đó, chùm lớn phải chịu tổn thất lớn hơn  để giảm đóng góp hàm mục tiêu mà không làm sai lệch trọng tâm và tính ổn định.
+%
+%Tuy nhiên, việc chuẩn hoá kích thước chùm không phân biệt được mức độ khó của từng hàm mật độ tại các biên của chùm, nơi khởi phát hiệu ứng xi phong. Do đó, số hạng EM tim kiếm các hàm biên thông qua hệ số $
+%\mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)
+%$. Nó tiến gần $0$ với biên và lớn hơn khi không phải. Đồng thời, nhân tử $D^{*}_{ij}$ cung cấp hướng phạt làm triệt tiêu xu hướng hút của hiệu ứng xi phông.
+%
+%}
+%
+%
+%
 \subsection{Sự hội tụ của thuật toán}
-
+%
 Trong phần này, một dãy ${\left (\bm\mu^{(t)}\,; \Theta^{(t)} \right )}$ khởi tạo được thành lập. Mục tiêu là chứng minh dãy này có hội tụ hay không \cite{bezdek1980convergence,yu2024suppressed}.  Cho
  $
 F\,:\,\mathbb{R}^{cd} \to \bm{U}_f\,; F(\Theta) = \bm{\mu}\,; \text{và }
-G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta = (\theta_1\,;\theta_2\,; \ldots\,;\theta_c)$ và các hàm mật độ trọng tâm $\theta_i$ tính bởi công thức \eqref{trongtamFCF}. Ta định nghĩa toán tử $T_{EM-IFCF}\,:\,\mathbb{R}^{cd} \times \bm{U}_f\to \mathbb{R}^{cd} \times \bm{U}_f\,; T_{ EM-IFCF} = T_2\circ T_1,$ trong đó ánh xạ  $T_1\,:\,\mathbb{R}^{cd} \times \bm{U}_f \to \mathbb{R}^{cd} \,; T_1(\bm{\mu} \,;\Theta)=G(\bm \mu)$, và $T_2\,:\, \mathbb{R}^{cd} \to \mathbb{R}^{cd}\times\bm{U}_f \,; T_2(\Theta)= (F(\Theta), \Theta)$. Khi này, ta có $T_{ EM-IFCF} = (T_2\circ T_1)\left(F\circ G(\mu)\,;G(\mu)\right)$. Tức là
+G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta = (\theta_1\,;\theta_2\,; \ldots\,;\theta_c)$ và các hàm mật độ trọng tâm $\theta_i$ tính bởi công thức \eqref{trongtamFCF}. Ta định nghĩa toán tử $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm{U}_f\to \mathbb{R}^{cd} \times \bm{U}_f\,; T_{ IFCF} = T_2\circ T_1,$ trong đó ánh xạ  $T_1\,:\,\mathbb{R}^{cd} \times \bm{U}_f \to \mathbb{R}^{cd} \,; T_1(\bm{\mu} \,;\Theta)=G(\bm \mu)$, và $T_2\,:\, \mathbb{R}^{cd} \to \mathbb{R}^{cd}\times\bm{U}_f \,; T_2(\Theta)= (F(\Theta), \Theta)$. Khi này, ta có $T_{ IFCF} = (T_2\circ T_1)\left(F\circ G(\mu)\,;G(\mu)\right)$. Tức là
  \begin{align}\label{TO}
-	T_{EM-IFCF}\,:\,\mathbb{R}^{cd} \times \bm{U}_f\to \mathbb{R}^{cd} \times \bm{U}_f\,; T_{EM-IFCF} = T_2\circ T_1,
+	T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm{U}_f\to \mathbb{R}^{cd} \times \bm{U}_f\,; T_{IFCF} = T_2\circ T_1,
 \end{align}
+%
+%
+%
+%%==================== LEMMA 1: Cập nhật ma trận phân vùng U ====================
 
-
-
-%==================== LEMMA 1: Cập nhật ma trận phân vùng U ====================
 \bode{[Cập nhật ma trận phân vùng $\bm U$]\label{lem1}
-	Với $\Theta$ cố định, bài toán tối ưu hoá $J_{EM\text{-}IFCF}$ theo $\bm U=[\mu_{ij}]$ có nghiệm cực tiểu duy nhất $\bm U^*=F(\Theta)$ dưới các ràng buộc phân hoạch mờ \eqref{c1_pro}. Cụ thể,
+	Với $\Theta$ cố định, bài toán tối ưu hoá $J_{IFCF}$ theo $\bm U=[\mu_{ij}]$ có nghiệm cực tiểu duy nhất $\bm U^*=F(\Theta)$ dưới các ràng buộc phân hoạch mờ \eqref{c1_pro}. Cụ thể,
 	\begin{align}
 		\mu_{ij} \;=\;
 		\frac{
-			\left[\dfrac{(1-\delta' D^{*}_{ij})\,\omega_i}{\,D^2(\theta_i,f_j)\;-\;f_j\,\delta_j\,D^{*}_{ij}\,}\right]^{\frac{1}{m-1}}
+			\left[\frac{\omega_i}{\,D^2(\theta_i,f_j)}\right]^{\frac{1}{m-1}}
 		}{
-			\displaystyle\sum_{s=1}^c
-			\left[\dfrac{(1-\delta' D^{*}_{sj})\,\omega_i}{\,D^2(\theta_s,f_j)\;-\;f_j\,\delta_j\,D^{*}_{sj}\,}\right]^{\frac{1}{m-1}}
+			\sum_{s=1}^c
+			\left[\frac{\omega_s}{\,D^2(\theta_s,f_j)}\right]^{\frac{1}{m-1}}
 		}\,;
-		  1\le i\le c,\;1\le j\le n,
-		\label{eq:emifcf_u_final}
+		1\le i\le c,\;1\le j\le n,
+		\label{eq:ifcf_u_final}
 	\end{align}
-	trong đó $\delta_j=\delta'\lambda_j$, và $D^{*}_{ij}$ được tính theo các trọng tâm ở vòng lặp trước, và $\omega_i>0\,;i=1\,;\ldots\,;c$ là trọng số kích thước chùm.}
+	trong đó $\omega_i=\tfrac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là trọng số kích thước chùm với $\omega_i>0$, $i=1,\dots,c$ và $\sum_i \omega_i=1$. Ngoài ra, nếu tồn tại $i_0$ sao cho $D^2(\theta_{i_0},f_j)=0$ thì nghiệm tối ưu cho cột $j$ là $\mu_{i_0 j}=1$ và $\mu_{s j}=0$ với mọi $s\neq i_0$; nếu có nhiều chỉ số đạt $0$ thì mọi phân phối trên tập đó đều tối ưu.}
 
-\chm{
-	Xét $J_{EM\text{-}IFCF}$ ở bước cập nhật $U$ (giữ $\Theta$ cố định). Phần phụ thuộc vào $U$ có dạng
-	\[
-	J_U(\bm U) \;=\; 
-	\sum_{j=1}^n \sum_{i=1}^c 
-	\frac{1}{\omega_i}\,\mu_{ij}^{\,m}\,D^2(\theta_i,f_j)
-	\;+\;\sum_{j=1}^n \delta_j\,\mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)\,D^{*}_{ij},
-	\]
-	với ràng buộc mờ $
-	\sum_{i=1}^c \mu_{ij}=1$ và $\mu_{ij}\ge\,;\forall\,j=1,\dots,n.$
-	
-	Lập hàm Lagrange $\mathcal{L}$ với các nhân tử $\{\lambda_j\}_{j=1}^n$ cho ràng buộc tổng bằng 1, và $\{\alpha_{ij}\ge0\}$ cho ràng buộc không âm. Ta có
-	\begin{align}\label{eq:L_em}
-	\mathcal{L}(\bm U,\lambda,\alpha)
-	=
-J_{EM-IFCF}(\bm U\,;\Theta) 
-	-\sum_{j=1}^n \lambda_j\Bigl(\sum_{i=1}^c \mu_{ij}-1\Bigr)
-	-\sum_{j=1}^n\sum_{i=1}^c \alpha_{ij}\,\mu_{ij}.
+
+\chm{Do ràng buộc phân hoạch mờ là độc lập theo từng mẫu $j$, và mục tiêu \eqref{eq:IFCF} là tổng theo $j$, bài toán tối ưu hoá theo $\bm U$ tách thành $n$ bài toán độc lập. 
+	Cố định một $j\in\{1,\dots,n\}$, đặt hằng số
+	$
+	\delta_{ij}\coloneq D^2(\theta_i,f_j)/\omega_i.
+	$	
+	Khi này, mục tiêu của bài toán con theo cột $j$ là
+	\begin{align}
+		\min_{\mu_{\cdot j}\in\mathbb R_{>0}^c}\ \ \phi_j(\mu_{\cdot j})\,:\,\sum_{i=1}^c \delta_{ij}\,\mu_{ij}^m
+		\quad\text{s.t.}\quad
+		\sum_{i=1}^c \mu_{ij}=1,\ \mu_{ij}\ge 0.
+		\label{eq:subprob}
 	\end{align}
 	
-	Lấy đạo hàm riêng của \eqref{eq:L_em} theo $\mu_{ij}$ và cho đạo hàm bằng $0$, ta có
+	Với $m>1$, ta nhận được hàm $t\mapsto t^m$ lồi nghiêm ngặt trên $\mathbb R_{>0}$. Khi đó, hàm mục tiêu $\phi_j$ là tổng các hàm lồi nghiêm ngặt theo từng biến. Miền khả thi là một đơn hình đóng và bị chặn, do đó nghiệm tối ưu tồn tại duy nhất. Hơn nữa, ma trận Hessian là xác định dương, với các phần tử trong ma trận
+	$$
+	\frac{\partial^2 \phi_j}{\partial \mu_{ij}^2}=m(m-1)(\delta_{ij})\mu_{ij}^{m-2}>0\,,
+	\frac{\partial^2 \phi_j}{\partial \mu_{ij}\partial \mu_{sj}}=0\ (s\neq i),
+	$$
+	
+	Lập Lagrangian với nhân tử $\lambda_j\in\mathbb R$ cho ràng buộc tổng bằng $1$ và $\alpha_{ij}\ge 0$ cho các ràng buộc không âm, ta có
 	\begin{align}
-		\frac{\partial}{\partial \mu_{ij}}\mathcal{L}(\bm U\,;\lambda\,;\alpha)
+		\mathcal L(\mu_{\cdot j},\lambda_j,\alpha_{\cdot j})
 		&=
-		\frac{1}{\omega_i}\,m\mu_{ij}^{\,m-1} D^2(\theta_i,f_j)
-		+\delta_j\,\Bigl(1-m\mu_{ij}^{\,m-1}\Bigr)\,D^{*}_{ij}
+		J_{IFCF} 
+		-\lambda_j\Bigl(\sum_{i=1}^c \mu_{ij}-1\Bigr)
+		-\sum_{i=1}^c \alpha_{ij}\,\mu_{ij}.
+		\label{eq:L_ifcf}
+	\end{align}
+	Điều kiện dừng bậc nhất là đạo hàm riêng của \eqref{eq:L_ifcf} theo $\mu_{ij}$ bằng $0$.
+	\begin{align}\label{eq:stat-KKT}
+		\frac{\partial}{\partial \mu_{ij}}\mathcal L
+		=
+		m\,\delta_{ij}\,\mu_{ij}^{m-1}
 		-\lambda_j-\alpha_{ij}
-		\;=\;0.
-		\label{eq:stat_raw}
-	\end{align}
-Ta suy ra được
-	\[
-	m\mu_{ij}^{\,m-1}\!\left(\frac{1}{\omega_i} D^2(\theta_i,f_j)-\delta_j D^{*}_{ij}\right)
-	=\lambda_j+\alpha_{ij}-\delta_j D^{*}_{ij}.
-	\]
-	Với nghiệm trong miền khi $D^2>0$, $1-\delta' D^{*}_{ij}>0$, ta có $\mu_{ij}>0$ nên theo KKT–3 ta suy ra $\alpha_{ij}=0$. Khi đó,
+		=0,
+			\end{align}
+	cùng với các điều kiện $
+	\sum_{i=1}^c \mu_{ij}=1$, $
+	\mu_{ij}\ge 0,\ \alpha_{ij}\ge 0$,  và $ 
+	\alpha_{ij}\mu_{ij}=0,\ \forall i.$
+	
+	Giả sử $\delta_{ij}>0$ với mọi $i$, nếu $\mu_{ij}>0$ thì $\alpha_{ij}=0$. Khi đó \eqref{eq:stat-KKT} cho kết quả
 	\begin{align}
-		\mu_{ij}^{\,m-1}
-		=
-		\frac{\lambda_j-\delta_j D^{*}_{ij}}
-		{m\left(\frac{1}{\omega_i} D^2(\theta_i,f_j)-\delta_j D^{*}_{ij}\right)}
-		\Rightarrow
-		\mu_{ij}
-		=
-		\left[
-		\frac{(\lambda_j-\delta_j D^{*}_{ij})\,\omega_i}
-		{m\bigl(D^2(\theta_i,f_j)-\omega_i\,\delta_j D^{*}_{ij}\bigr)}
-		\right]^{\frac{1}{m-1}}.
-		\label{eq:mu_lj_form}
+		\mu_{ij}=\Bigl(\frac{\lambda_j}{m}\Bigr)^{\frac{1}{m-1}}(\delta_{ij})^{-\frac{1}{m-1}}.
+		\label{eq:mu-lambda-c}
 	\end{align}
 	
-	Ngoài ra, $
-	\sum_{i=1}^c \mu_{ij}=1,\;\mu_{ij}\ge0.$ và $
-	\alpha_{ij}\ge 0,\;
-	\alpha_{ij}\,\mu_{ij}=0.$
-	Thế \eqref{eq:mu_lj_form} vào $\sum_{i=1}^c\mu_{ij}=1$ ta được
-	\begin{align}\label{eq:lambda_1}
-	1
-	=
-	\sum_{i=1}^c
-	\left[
-	\frac{(\lambda_j-\delta_j D^{*}_{ij})\,\omega_i}
-	{m\bigl(D^2(\theta_i,f_j)-\omega_i\,\delta_j D^{*}_{ij}\bigr)}
-	\right]^{\frac{1}{m-1}}
-	\!\!.
-	\end{align}
-	Giải phương trình \eqref{eq:lambda_1} theo $\lambda_j$ và đặt $\delta_j=\delta'\lambda_j$, ta được
-	\[
-	\mu_{ij}
-	=
-	\lambda_j^{\frac{1}{m-1}}
-	\left[
-	\frac{(1-\delta' D^{*}_{ij})\,\omega_i}
-	{m\bigl(D^2(\theta_i,f_j)-\omega_i\,\delta_j D^{*}_{ij}\bigr)}
-	\right]^{\frac{1}{m-1}}.
-	\]
-Từ đây khi hệ số $m>1$, triệt tiêu giữa tử và mẫu, dẫn đến \eqref{eq:emifcf_u_final} ta thu được công thức như Bổ đề \ref{lem1}.
-	
-	Với $\Theta$ cố định, $J(\bm U)$ là lồi nghiêm ngặt theo từng cột $\mu_{\cdot j}$ trên miền đơn hình không âm khi các mẫu số dương, ta có $
-	D^2(\theta_i,f_j)-\omega_j\,\delta_j\,D^{*}_{ij}>0
-	\text{ và }
-	1-\delta' D^{*}_{ij}>0.$ Do đó nghiệm KKT là duy nhất và là cực tiểu toàn cục cho bài toán theo $\bm U$. 
-}
+	Áp dụng ràng buộc chuẩn hoá $\sum_{i=1}^c \mu_{ij}=1$ vào \eqref{eq:mu-lambda-c}, ta có
+	\begin{align*}
+		1
+		=\sum_{i=1}^c \Bigl(\frac{\lambda_j}{m}\Bigr)^{\frac{1}{m-1}}(\delta_{ij})^{-\frac{1}{m-1}}
+		=\Bigl(\frac{\lambda_j}{m}\Bigr)^{\frac{1}{m-1}}
+		\sum_{i=1}^c (\delta_{ij})^{-\frac{1}{m-1}},
+	\end{align*}
+	suy ra
+	$$
+	\Bigl(\frac{\lambda_j}{m}\Bigr)^{\frac{1}{m-1}}
+	=\frac{1}{\sum_{s=1}^c (\delta_{sj})^{-\frac{1}{m-1}}}.
+	$$
+	Thế ngược lại vào \eqref{eq:mu-lambda-c}, ta thu được \eqref{eq:ifcf_u_final}.
 
+	Ngược lại, tồn tại $i_0$ sao cho $D^2(\theta_{i_0},f_j)=0$ thì $\delta_{i_0 j}=0$. Tuy nhiên, với mọi $s\neq i_0$, $\delta_{sj}>0$, nên để tối thiểu hoá tổng $\sum_s c_{sj}\mu_{sj}^m$ dưới ràng buộc tổng bằng 1, nghiệm tối ưu là $\mu_{i_0 j}=1$ và $\mu_{s j}=0$ với $s\neq i_0$. Từ đây, ta được điều phải chứng minh.	
+	}
+
+
+
+
+%\bode{[Cập nhật ma trận phân vùng $\bm U$]\label{lem1}
+%	Với $\Theta$ cố định, bài toán tối ưu hoá $J_{IFCF}$ theo $\bm U=[\mu_{ij}]$ có nghiệm cực tiểu duy nhất $\bm U^*=F(\Theta)$ dưới các ràng buộc phân hoạch mờ \eqref{c1_pro}. Cụ thể,
+%	\begin{align}
+%		\mu_{ij} \;=\;
+%		\frac{
+%			\left[\dfrac{(1-\delta' D^{*}_{ij})\,\omega_i}{\,D^2(\theta_i,f_j)\;-\;f_j\,\delta_j\,D^{*}_{ij}\,}\right]^{\frac{1}{m-1}}
+%		}{
+%			\displaystyle\sum_{s=1}^c
+%			\left[\dfrac{(1-\delta' D^{*}_{sj})\,\omega_i}{\,D^2(\theta_s,f_j)\;-\;\omega_i\,\delta_j\,D^{*}_{sj}\,}\right]^{\frac{1}{m-1}}
+%		}\,;
+%		  1\le i\le c,\;1\le j\le n,
+%		\label{eq:emifcf_u_final}
+%	\end{align}
+%	trong đó $\delta_j=\delta'\lambda_j$, và $D^{*}_{ij}$ được tính theo các trọng tâm ở vòng lặp trước, và $\omega_i>0\,;i=1\,;\ldots\,;c$ là trọng số kích thước chùm.}
+%
+%\chm{
+%	Xét $J_{IFCF}$ ở bước cập nhật $U$ (giữ $\Theta$ cố định). Phần phụ thuộc vào $U$ có dạng
+%	\[
+%	J_U(\bm U) \;=\; 
+%	\sum_{j=1}^n \sum_{i=1}^c 
+%	\frac{1}{\omega_i}\,\mu_{ij}^{\,m}\,D^2(\theta_i,f_j)
+%	\;+\;\sum_{j=1}^n \delta_j\,\mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)\,D^{*}_{ij},
+%	\]
+%	với ràng buộc mờ $
+%	\sum_{i=1}^c \mu_{ij}=1$ và $\mu_{ij}\ge\,;\forall\,j=1,\dots,n.$
+%	
+%	Lập hàm Lagrange $\mathcal{L}$ với các nhân tử $\{\lambda_j\}_{j=1}^n$ cho ràng buộc tổng bằng 1, và $\{\alpha_{ij}\ge0\}$ cho ràng buộc không âm. Ta có
+%	\begin{align}\label{eq:L_em}
+%	\mathcal{L}(\bm U,\lambda,\alpha)
+%	=
+%J_{IFCF}(\bm U\,;\Theta) 
+%	-\sum_{j=1}^n \lambda_j\Bigl(\sum_{i=1}^c \mu_{ij}-1\Bigr)
+%	-\sum_{j=1}^n\sum_{i=1}^c \alpha_{ij}\,\mu_{ij}.
+%	\end{align}
+%	
+%	Lấy đạo hàm riêng của \eqref{eq:L_em} theo $\mu_{ij}$ và cho đạo hàm bằng $0$, ta có
+%	\begin{align}
+%		\frac{\partial}{\partial \mu_{ij}}\mathcal{L}(\bm U\,;\lambda\,;\alpha)
+%		&=
+%		\frac{1}{\omega_i}\,m\mu_{ij}^{\,m-1} D^2(\theta_i,f_j)
+%		+\delta_j\,\Bigl(1-m\mu_{ij}^{\,m-1}\Bigr)\,D^{*}_{ij}
+%		-\lambda_j-\alpha_{ij}
+%		\;=\;0.
+%		\label{eq:stat_raw}
+%	\end{align}
+%Ta suy ra được
+%	\[
+%	m\mu_{ij}^{\,m-1}\!\left(\frac{1}{\omega_i} D^2(\theta_i,f_j)-\delta_j D^{*}_{ij}\right)
+%	=\lambda_j+\alpha_{ij}-\delta_j D^{*}_{ij}.
+%	\]
+%	Với nghiệm trong miền khi $D^2>0$, $1-\delta' D^{*}_{ij}>0$, ta có $\mu_{ij}>0$ nên theo KKT–3 ta suy ra $\alpha_{ij}=0$. Khi đó,
+%	\begin{align}
+%		\mu_{ij}^{\,m-1}
+%		=
+%		\frac{\lambda_j-\delta_j D^{*}_{ij}}
+%		{m\left(\frac{1}{\omega_i} D^2(\theta_i,f_j)-\delta_j D^{*}_{ij}\right)}
+%		\Rightarrow
+%		\mu_{ij}
+%		=
+%		\left[
+%		\frac{(\lambda_j-\delta_j D^{*}_{ij})\,\omega_i}
+%		{m\bigl(D^2(\theta_i,f_j)-\omega_i\,\delta_j D^{*}_{ij}\bigr)}
+%		\right]^{\frac{1}{m-1}}.
+%		\label{eq:mu_lj_form}
+%	\end{align}
+%	
+%	Ngoài ra, $
+%	\sum_{i=1}^c \mu_{ij}=1,\;\mu_{ij}\ge0.$ và $
+%	\alpha_{ij}\ge 0,\;
+%	\alpha_{ij}\,\mu_{ij}=0.$
+%	Thế \eqref{eq:mu_lj_form} vào $\sum_{i=1}^c\mu_{ij}=1$ ta được
+%	\begin{align}\label{eq:lambda_1}
+%	1
+%	=
+%	\sum_{i=1}^c
+%	\left[
+%	\frac{(\lambda_j-\delta_j D^{*}_{ij})\,\omega_i}
+%	{m\bigl(D^2(\theta_i,f_j)-\omega_i\,\delta_j D^{*}_{ij}\bigr)}
+%	\right]^{\frac{1}{m-1}}
+%	\!\!.
+%	\end{align}
+%	Giải phương trình \eqref{eq:lambda_1} theo $\lambda_j$ và đặt $\delta_j=\delta'\lambda_j$, ta được
+%	\[
+%	\mu_{ij}
+%	=
+%	\lambda_j^{\frac{1}{m-1}}
+%	\left[
+%	\frac{(1-\delta' D^{*}_{ij})\,\omega_i}
+%	{m\bigl(D^2(\theta_i,f_j)-\omega_i\,\delta_j D^{*}_{ij}\bigr)}
+%	\right]^{\frac{1}{m-1}}.
+%	\]
+%Từ đây khi hệ số $m>1$, triệt tiêu giữa tử và mẫu, dẫn đến \eqref{eq:emifcf_u_final} ta thu được công thức như Bổ đề \ref{lem1}.
+%	
+%	Với $\Theta$ cố định, $J(\bm U)$ là lồi nghiêm ngặt theo từng cột $\mu_{\cdot j}$ trên miền đơn hình không âm khi các mẫu số dương, ta có $
+%	D^2(\theta_i,f_j)-\omega_j\,\delta_j\,D^{*}_{ij}>0
+%	\text{ và }
+%	1-\delta' D^{*}_{ij}>0.$ Do đó nghiệm KKT là duy nhất và là cực tiểu toàn cục cho bài toán theo $\bm U$. 
+%}
+%
 %==================== LEMMA 2: Cập nhật trọng tâm Theta ====================
 \bode{[Cập nhật trọng tâm $\Theta$]\label{lem2}
-	Với $\bm U$ cố định, bài toán tối thiểu hoá $J_{EM\text{-}IFCF}$ theo $\Theta=\{\theta_i\}_{i=1}^c$ là phân tích được theo từng $\theta_i$ và lồi nghiêm ngặt. Nghiệm cực tiểu duy nhất là $\Theta^*=G(\bm U)$, 
+	Với $\bm U$ cố định, bài toán tối thiểu hoá $J_{IFCF}$ theo $\Theta=\{\theta_i\}_{i=1}^c$ là phân tích được theo từng $\theta_i$ và lồi nghiêm ngặt. Tồn tại duy nhất nghiệm cực tiểu $\Theta^*=G(\bm U)$ khi khoảng cách $D^2=\mathcal{L}_2^2$, 
 	\begin{align}
 		\theta_i
 		\;=\;
@@ -1981,103 +2080,123 @@ Từ đây khi hệ số $m>1$, triệt tiêu giữa tử và mẫu, dẫn đế
 }
 
 \chm{
-	Giữ $U$ cố định, lấy đạo hàm $\psi_i=\sum_{i=1}^c \psi_i(\theta_i),$ với các $\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,\|f_j-\theta_i\|^2.$ theo $\theta_i$ đối với hàm mục tiêu \eqref{eq:EMIFCF} ta có
+	Giữ $U$ cố định, lấy đạo hàm $\psi_i=\sum_{i=1}^c \psi_i(\theta_i),$ với các $\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,D^2(\theta_i\,,f_j).$ theo $\theta_i$ đối với hàm mục tiêu \eqref{eq:IFCF} ta có
 	\begin{align}\label{eq:théta}
 	\nabla_{\theta_i}\psi_i(\theta_i)
 	=
-	\frac{2}{\omega_i}\sum_{j=1}^n
-	(\mu_{ij})^{m}\,(\theta_i-f_j)
-	=
-	\frac{2}{\omega_i}\left(\sum_{j=1}^n
-	(\mu_{ij})^{m}
-	\right)\theta_i
-	\;-\;
-	\frac{2}{\omega_i}\sum_{j=1}^n
-	(\mu_{ij})^{m}\,f_j.
+	\frac{1}{\omega_i}\sum_{j=1}^n
+	(\mu_{ij})^{m}(\mu_{ij})^{m}\nabla\theta_iD^2(\theta_i\,,f_j)
 	\end{align}
-	Cho $\nabla_{\theta_i}\psi_i(\theta_i)=\bm 0$, ta được công thức cập nhật  \eqref{eq:theta_update}.
-	Hơn nữa, với chuẩn Ơ-clít, ma trận Hess theo $\theta_i$ là
+	Cho $\nabla_{\theta_i}\psi_i(\theta_i)=\bm 0$, ta được công thức cập nhật  \eqref{eq:theta_update} đối với riêng trường hợp $D^2=\mathcal{L}_2^2(\theta_i\,,f_j)$.
+	Hơn nữa, với khoảng cách $\mathcal{L}_2$, ma trận Hess theo $\theta_i$ là
 	$
 	\nabla^2_{\theta_i}\psi_i(\theta_i)
 	=
 	\frac{2}{\omega_i}\left(\sum_{j=1}^n (\mu_{ij})^{m}\right)\,\bm I_d,
-	$ xác định dương vì $\sum_j (\mu_{ij})^{m}>0$ và $\omega_i>0$. Do đó $\psi_i$ lồi nghiêm ngặt và nghiệm bậc nhất \eqref{eq:théta} là duy nhất, suy ra nghiệm toàn cục duy nhất $\Theta^*=G(\bm U)$.
+	$ xác định dương vì $\sum_j (\mu_{ij})^{m}>0$ và $\omega_i>0$. Do đó $\psi_i$ lồi nghiêm ngặt và nghiệm bậc nhất \eqref{eq:théta} là duy nhất, suy ra nghiệm toàn cục duy nhất $\Theta^*=G(\bm U)$. Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2\,, D^2_H\,, D_{KL}$ hoặc $W_2$, trong khi với các khoảng cách khác bao gồm $\mathcal{L}_2, D_B$ hoặc $D_M$ có thể không duy nhất nghiệm toàn cục.
 }
 
 
 
 
 
+Bảng~\ref{tab:KCTT} trình bày các công thức cập nhật trọng tâm $\theta$ của chùmtheo những khoảng cách khác nhau. 
+
+\begin{table}[H]
+	\centering
+	\scriptsize
+	\caption{Các công thức trọng tâm tương ứng với các loại khoảng cách}\label{tab:KCTT}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}}
+		\toprule
+	\textbf{Công thức khoảng cách} & \textbf{Trọng tâm $\theta$} \\
+		\midrule
+ $\mathcal{L}^2(f,\theta)=\int (f(x)-\theta(x))^2\mathrm{\,d}x$ 
+		& $\displaystyle\theta(x) = \frac{\sum_j u_{ij}^m f_j(x)}{\sum_j u_{ij}^m}$ \\
+$D_H^2(f,\theta)=\tfrac{1}{2}\int \big(\sqrt{f(x)}-\sqrt{\theta(x)}\big)^2 \mathrm{\,d}x$ 
+		& $\displaystyle\theta(x)= \left(\frac{\sum_j u_{ij}^m \sqrt{f_j(x)}}{\sum_j u_{ij}^m}\right)^2$ \\
+ $W_2^2(f,\theta) = \int_0^1 \big(F^{-1}(p)-G^{-1}(p)\big)^2 \mathrm{\,d}p$,
+		& $\displaystyle\theta(x)=\frac{\mathrm{\,d}}{\mathrm{\,d}x}Q_\theta^{-1}\,, Q_\theta(p) = \frac{\sum_j u_{ij}^m Q_{f_j}(p)}{\sum_j u_{ij}^m}$ \\
+		\bottomrule
+	\end{tabular*}
+\end{table}
 
 
 
 
-
-Tuy nhiên, hai bổ đề trên chỉ là điều kiện cần để $(\bm{\mu}^*\,;\Theta^*)$ là một cực tiểu toàn cục của hàm mục tiêu $J_{EMIFCF}$. Từ đây, câu hỏi tiếp theo là liệu dãy $\{T_{EM-IFCF}^{(t)}(\bm{\mu}^{(0)})\}$ có hội tụ về $\bm{\mu}^*$ hay không. Điều kiện đủ cho định lý Zangwill là tính com-pắc của một tập con $\bm{U}_f \times \mathbb{R}^{cd}$
-chứa tất cả các dãy sinh bởi $T_{EM-IFCF}$. 
+%
+%
+%
+%
+%
+%
+%
+%
+%
+Tuy nhiên, hai bổ đề \ref{lem1} và \ref{lem2} chỉ là điều kiện cần để $(\bm{\mu}^*\,;\Theta^*)$ là một cực tiểu toàn cục của hàm mục tiêu $J_{IFCF}$. Từ đây, câu hỏi tiếp theo là liệu dãy $\{T_{IFCF}^{(t)}(\bm{\mu}^{(0)})\}$ có hội tụ về $\bm{\mu}^*$ hay không. Điều kiện đủ cho định lý Zangwill là tính com-pắc của một tập con $\bm{U}_f \times \mathbb{R}^{cd}$
+chứa tất cả các dãy sinh bởi $T_{IFCF}$. 
 
  
  
-Ba định lý này là một phần của chứng minh \eqref{eq:EMIFCF} bằng định lý Zangwill, chứng minh trực tiếp cho kết quả của Định lý~\ref{theo4}.
+Ba định lý này là một phần của chứng minh \eqref{eq:IFCF} bằng định lý Zangwill, chứng minh trực tiếp cho kết quả của Định lý~\ref{theo4}.
 
 \dly{[Ràng buộc com-pắc]\label{theo3}
-	Cho $[\mathrm{conv}(\mathcal{F})]^c$ là tích Descartes bậc $c$ của bao lồi $\mathcal{F}$, và $(\bm{\mu}^{(0)}\,;\Theta^{(0)})$ là điểm bắt đầu của phép lặp với $J_{EM-IFCF}$, với $\bm{\mu}^{(0)}\in\bm{U}_f$ và $\Theta^{(0)} = G(\bm{\mu}^{(0)})$. Khi đó
-	$T^{(0)}_{EM-IFCF}\left(\bm{\mu}^{(0)}\,;\Theta^{(0)}\right)\in \bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c,$
+	Cho $[\mathrm{conv}(\mathcal{F})]^c$ là tích Descartes bậc $c$ của bao lồi $\mathcal{F}$, và $(\bm{\mu}^{(0)}\,;\Theta^{(0)})$ là điểm bắt đầu của phép lặp với $J_{IFCF}$, với $\bm{\mu}^{(0)}\in\bm{U}_f$ và $\Theta^{(0)} = G(\bm{\mu}^{(0)})$. Khi đó
+	$T^{(0)}_{IFCF}\left(\bm{\mu}^{(0)}\,;\Theta^{(0)}\right)\in \bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c,$
 	và $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$ là tập com-pắc trong $\bm{U}_f \times \mathbb{R}^{cd}$. % (sửa từ cn → cd)
 }
 
 \chm{
-	Giả sử $\bm{\mu}^{(0)}\in\bm{U}_f$, khi đó $\Theta^{(0)} = G(\bm{\mu}^{(0)})$ được tính theo \eqref{eq:theta_update}. Khi đó $$\theta^{(0)}_i = \frac{\sum_{j=1}^n\left(\mu^{(0)}_{ij}\right)^mf_j}{\sum_{j=1}^n\left(\mu^{(0)}_{ij}\right)^m}.$$
+	Giả sử $\bm{\mu}^{(0)}\in\bm{U}_f$, khi đó $\Theta^{(0)} = G(\bm{\mu}^{(0)})$ được tính theo \eqref{eq:theta_update}. Khi đó $\theta^{(0)}_i = \frac{\sum_{j=1}^n\left(\mu^{(0)}_{ij}\right)^mf_j}{\sum_{j=1}^n\left(\mu^{(0)}_{ij}\right)^m}.$
 	Đặt $\rho_{ij} = \frac{\left(\mu^{(0)}_{ij}\right)^m}{\sum_{l=1}^n\left(\mu^{(0)}_{il}\right)^m},\; 1\le j\le n$. Theo các ràng buộc \eqref{c1_pro}, ta có $0<\rho_{ij}<1$, $\forall i,j$. Vậy $\forall i$, ta viết lại $\theta^{(0)}_i = \sum_{j=1}^n\rho_{ij}f_j$, với $\sum_{j=1}^n\rho_{ij}=1.$ 
 	
-	Tóm lại $\forall i,\; \theta^{(0)}_i\in \mathrm{conv}(\mathcal{F})$, và do đó $\Theta^{(0)}\in [\mathrm{conv}(\mathcal{F})]^c$. Tiếp tục đệ quy  $\bm{\mu}^{(1)}=F(\bm{\mu}^{(0)})\in \bm{U}_f$, và $\Theta^{(1)}=G(\bm{\mu}^{(1)})\in [\mathrm{conv}(\mathcal{F})]^c$ theo lập luận tương tự. Do đó, mọi dãy lặp của $J_{EM-IFCF}$ đều thuộc về $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$ với mọi $t\ge1$. Mặc dù có thể khởi tạo $\Theta^{(0)}\in\mathbb{R}^{cd}\setminus[\mathrm{conv}(\mathcal{F})]^c$, nhưng khi đó $\bm{\mu}^{(0)} = F(\Theta^{(0)})\in\bm{U}_f$, và từ $t\ge1$ thì $\Theta^{(t)} = G(\bm{\mu}^{(t)}) \in [\mathrm{conv}(\mathcal{F})]^c$. Rõ ràng, $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$ là một tập com-pắc trong $\mathcal{F}$ và dãy lặp hội tụ hữu hạn.
+	Tóm lại $\forall i,\; \theta^{(0)}_i\in \mathrm{conv}(\mathcal{F})$, và do đó $\Theta^{(0)}\in [\mathrm{conv}(\mathcal{F})]^c$. Tiếp tục đệ quy  $\bm{\mu}^{(1)}=F(\bm{\mu}^{(0)})\in \bm{U}_f$, và $\Theta^{(1)}=G(\bm{\mu}^{(1)})\in [\mathrm{conv}(\mathcal{F})]^c$ theo lập luận tương tự. Do đó, mọi dãy lặp của $J_{IFCF}$ đều thuộc về $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$ với mọi $t\ge1$. Mặc dù có thể khởi tạo $\Theta^{(0)}\in\mathbb{R}^{cd}\setminus[\mathrm{conv}(\mathcal{F})]^c$, nhưng khi đó $\bm{\mu}^{(0)} = F(\Theta^{(0)})\in\bm{U}_f$, và từ $t\ge1$ thì $\Theta^{(t)} = G(\bm{\mu}^{(t)}) \in [\mathrm{conv}(\mathcal{F})]^c$. Rõ ràng, $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$ là một tập com-pắc trong $\mathcal{F}$ và dãy lặp hội tụ hữu hạn.
 }
 
 \dly{\label{theo1}
-	Xét $S_{EM-IFCF} = \{(\bm{\mu}^*,\Theta^*)\,:\, J_{EM-IFCF}(\bm{\mu}^*, \Theta^*) < J_{EM-IFCF}(\bm{\mu}, \Theta)\,; \forall (\bm{\mu}, \Theta)\in B^0((\bm{\mu}^*, \Theta^*), r)\}$ là tập nghiệm. Khi đó, $J_{EM-IFCF}$ là hàm giảm của $\{T_{EM-IFCF}\,;S_{EM-IFCF}\}$.
+	Xét $S_{IFCF} = \{(\bm{\mu}^*,\Theta^*)\,:\, J_{IFCF}(\bm{\mu}^*, \Theta^*) < J_{IFCF}(\bm{\mu}, \Theta)\,; \forall (\bm{\mu}, \Theta)\in B^0((\bm{\mu}^*, \Theta^*), r)\}$ là tập nghiệm. Khi đó, $J_{IFCF}$ là hàm giảm của $\{T_{IFCF}\,;S_{IFCF}\}$.
 }
 
 \chm{
-	Đầu tiên, vì các ánh xạ $\{y \mapsto \Vert y\Vert ^2\}$, $\{y \mapsto 1 - y\}$, và $\{y \mapsto y^m\}$ đều liên tục, và $J_{EM-IFCF}$ là tổng các tích của các hàm này. Do đó, $J_{EM-IFCF}$ liên tục trên $\bm{U}\times\mathbb{R}^{cd}$. Tiếp theo, giả sử $(\bm{\mu}\,; \Theta) \notin S_{EM-IFCF}$. Từ \eqref{TO} suy ra 
+	Đầu tiên, vì các ánh xạ $\{y \mapsto D^2_{y}\}$, $\{y \mapsto 1 - y\}$, và $\{y \mapsto y^m\}$ đều liên tục, và $J_{IFCF}$ là tổng các tích của các hàm này. Do đó, $J_{IFCF}$ liên tục trên $\bm{U}\times\mathbb{R}^{cd}$. Tiếp theo, giả sử $(\bm{\mu}\,; \Theta) \notin S_{IFCF}$. Từ \eqref{TO} suy ra 
 	\begin{align*}
 		\begin{array}{lll}
-			J_{EM-IFCF}(T_{EM-IFCF}(\bm{\mu}, \Theta)) & = J_{EM-IFCF}\left(T_2\circ T_1(\bm{\mu}\,;\Theta)\right) &  \\
-			& = J_{EM-IFCF}(F\circ G(\bm{\mu}), G(\bm{\mu}))            & \text{theo Định nghĩa } \ref{TO} \\
-			& < J_{EM-IFCF}(\bm{\mu}\,; G(\bm{\mu}))                    & \text{theo Bổ đề } \ref{lem1}    \\
-			& < J_{EM-IFCF}(\bm{\mu}\,; \Theta)                         & \text{theo Bổ đề } \ref{lem2}
+			J_{IFCF}(T_{IFCF}(\bm{\mu}, \Theta)) & = J_{IFCF}\left(T_2\circ T_1(\bm{\mu}\,;\Theta)\right) &  \\
+			& = J_{IFCF}(F\circ G(\bm{\mu}), G(\bm{\mu}))            & \text{theo Định nghĩa } \ref{TO} \\
+			& < J_{IFCF}(\bm{\mu}\,; G(\bm{\mu}))                    & \text{theo Bổ đề } \ref{lem1}    \\
+			& < J_{IFCF}(\bm{\mu}\,; \Theta)                         & \text{theo Bổ đề } \ref{lem2}
 		\end{array}
 	\end{align*}
-	Do đó, nếu $(\bm{\mu},\Theta)\notin S_{EM\text{-}IFCF}$ thì 
-	$J_{EM\text{-}IFCF}(T_{EM\text{-}IFCF}(\bm{\mu},\Theta))<J_{EM\text{-}IFCF}(\bm{\mu},\Theta)$.
-	Nói cách khác, $J_{EM\text{-}IFCF}$ là {hàm giảm} đối với cặp $(T_{EM\text{-}IFCF},S_{EM\text{-}IFCF})$ theo nghĩa của định lý Zangwill.
+	Do đó, nếu $(\bm{\mu},\Theta)\notin S_{IFCF}$ thì 
+	$J_{IFCF}(T_{IFCF}(\bm{\mu},\Theta))<J_{IFCF}(\bm{\mu},\Theta)$.
+	Nói cách khác, $J_{IFCF}$ là {hàm giảm} đối với cặp $(T_{IFCF},S_{IFCF})$ theo nghĩa của định lý Zangwill.
 	
 }
 
 \dly{[Ràng buộc liên tục]\label{theo2}
-	$T_{EM-IFCF}$ liên tục trên $\bm{U}_f \times \mathbb{R}^{cd}$. % (sửa từ cn → cd)
+	$T_{IFCF}$ liên tục trên $\bm{U}_f \times \mathbb{R}^{cd}$. % (sửa từ cn → cd)
 }
 
 \chm{
-	Vì $T_{EM-IFCF} = T_2\circ T_1$ là hợp của các hàm liên tục nên cũng liên tục. Ta chỉ cần chỉ ra $T_1$ và $T_2$ đều liên tục. Với $T_1 (\bm{\mu}, \Theta) = G(\bm{\mu})$, $T_1$ liên tục nếu $G$ liên tục. Để chứng minh $G$ liên tục trong $cd$ biến $\bm{\mu}$, ta có $G$ là một trường véc-tơ, với ánh xạ $G\,:\,\mathbb{R}^{cd}\to \mathbb{R}^{cd}$. Vì $\{\bm{\mu}\mapsto \bm{\mu}^m\}$ là liên tục, $\{\bm{\mu}^m\mapsto \bm{\mu}^mf_j\}$ là liên tục. Do đó, $G_{i}$ là thương của hai hàm liên tục nên liên tục với mọi $i$. Do đó, $G$ và $T_1$ liên tục trên toàn bộ tập xác định.
+	Vì $T_{IFCF} = T_2\circ T_1$ là hợp của các hàm liên tục nên cũng liên tục. Ta chỉ cần chỉ ra $T_1$ và $T_2$ đều liên tục. Với $T_1 (\bm{\mu}, \Theta) = G(\bm{\mu})$, $T_1$ liên tục nếu $G$ liên tục. Để chứng minh $G$ liên tục trong $cd$ biến $\bm{\mu}$, ta có $G$ là một trường véc-tơ, với ánh xạ $G\,:\,\mathbb{R}^{cd}\to \mathbb{R}^{cd}$. Vì $\{\bm{\mu}\mapsto \bm{\mu}^m\}$ là liên tục, $\{\bm{\mu}^m\mapsto \bm{\mu}^mf_j\}$ là liên tục. Do đó, $G_{i}$ là thương của hai hàm liên tục nên liên tục với mọi $i$. Do đó, $G$ và $T_1$ liên tục trên toàn bộ tập xác định.
 	
-	Tương tự, vì $T_2(\Theta) = (F(\Theta)\,; \Theta)$, nên chỉ cần chứng minh $F$ liên tục trên $\{\theta_i\}$. Cũng có $F$ là một trường véc-tơ $F\,:\,\mathbb{R}^{cd}\to \mathbb{R}^{cd}$. Vì $\{\theta_i \mapsto D^2(\theta_i\,;f_j)\}$ liên tục với mọi $i$, và $\{D^2(\theta_i\,;f_j)\mapsto D(\theta_i\,;f_j)^{-2/(m-1)}\}$ liên tục. Do đó, $F_{ij}$ là thương của hai hàm liên tục (với giả thuyết $D^2>0$). Do đó, $F$ và $T_2$ liên tục trên toàn bộ tập xác định. Cuối cùng, toán tử $T_{EM\text{-}IFCF}=T_2\circ T_1$ là {liên tục} trên $\bm U_f\times\mathbb{R}^{cd}$.
+	Tương tự, vì $T_2(\Theta) = (F(\Theta)\,; \Theta)$, nên chỉ cần chứng minh $F$ liên tục trên $\{\theta_i\}$. Cũng có $F$ là một trường véc-tơ $F\,:\,\mathbb{R}^{cd}\to \mathbb{R}^{cd}$. Vì $\{\theta_i \mapsto D^2(\theta_i\,;f_j)\}$ liên tục với mọi $i$, và $\{D^2(\theta_i\,;f_j)\mapsto D(\theta_i\,;f_j)^{-2/(m-1)}\}$ liên tục. Mà $F_{ij}$ là thương của hai hàm liên tục (với giả thuyết $D^2>0$). Do đó, $F$ và $T_2$ liên tục trên toàn bộ tập xác định. Cuối cùng, toán tử $T_{IFCF}=T_2\circ T_1$ là {liên tục} trên $\bm U_f\times\mathbb{R}^{cd}$.
 }
 
-\dly{[Định lý hội tụ cho $J_{EM-IFCF}$]\label{theo4}
-	Xét tập $\mathcal{F} = \{f_1\,;f_2\,;\ldots\,;f_n\}\subset \mathbb{R}^d$, cho hàm mục tiêu $J_{EM-IFCF}(\bm{U}\,;\Theta)$ có dạng \eqref{eq:EMIFCF}, trong đó $\bm{U}$ thỏa mãn \eqref{c1_pro} và $\Theta=\{\theta_1\,;\theta_2\,;\ldots\,;\theta_c\}$. Nếu $T_{EM-IFCF}\,:\,\mathbb{R}^{cd} \times \bm{U}_f\to \mathbb{R}^{cd} \times \bm{U}_f$ là một toán tử lặp Picard của $J_{EM-IFCF}$, và với mọi $t$ sao cho $D^2(\theta_i^{(t)}\,;f_j)>0$, thì với mọi $(\bm{\mu}^{(0)}\,;\Theta^{(0)})\in \bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$, hoặc
+\dly{[Định lý hội tụ cho $J_{IFCF}$]\label{theo4}
+	Xét tập $\mathcal{F} = \{f_1\,;f_2\,;\ldots\,;f_n\}\subset \mathbb{R}^d$, cho hàm mục tiêu $J_{IFCF}(\bm{U}\,;\Theta)$ có dạng \eqref{eq:IFCF}, trong đó $\bm{U}$ thỏa mãn \eqref{c1_pro} và $\Theta=\{\theta_1\,;\theta_2\,;\ldots\,;\theta_c\}$. Nếu $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm{U}_f\to \mathbb{R}^{cd} \times \bm{U}_f$ là một toán tử lặp Picard của $J_{IFCF}$, và với mọi $t$ sao cho $D^2(\theta_i^{(t)}\,;f_j)>0$, thì với mọi $(\bm{\mu}^{(0)}\,;\Theta^{(0)})\in \bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$, hoặc
 	\begin{enumerate}
-		\item Dãy $\{(J_{EM-IFCF})^{(t)}(\bm{\mu}^{(0)}, \Theta^{(0)})\}$ dừng tại giá trị cực tiểu cục bộ $(\mu_{ij}^*, \Theta^*)$ của $J_{EM-IFCF}$; hoặc
-		\item Dãy $\{(J_{EM-IFCF})^{(t)}(\bm{\mu}^{(0)}, \Theta^{(0)})\}$ chứa một dãy con sao cho $\{(J_{EM-IFCF})^{(t_k)}(\bm{\mu}^{(0)}\,; \Theta^{(0)})\}\to (\bm{\mu}^*, \Theta^*)$ là giá trị cực tiểu cục bộ của $J_{EM-IFCF}$ khi $t_k\to\infty$.
+		\item Dãy $\{(J_{IFCF})^{(t)}(\bm{\mu}^{(0)}, \Theta^{(0)})\}$ dừng tại giá trị cực tiểu địa phương $(\mu_{ij}^*, \Theta^*)$ của $J_{IFCF}$; hoặc
+		\item Dãy $\{(J_{IFCF})^{(t)}(\bm{\mu}^{(0)}, \Theta^{(0)})\}$ chứa một dãy con sao cho $\{(J_{IFCF})^{(t_k)}(\bm{\mu}^{(0)}\,; \Theta^{(0)})\}\to (\bm{\mu}^*, \Theta^*)$ là giá trị cực tiểu địa phương của $J_{IFCF}$ khi $t_k\to\infty$.
 	\end{enumerate}
 }
 
 \chm{
-	Do hàm mục tiêu $J_{EM-IFCF}$ liên tục trên $\bm{U}_f\times \mathbb{R}^{cd}$, Định lý~\ref{theo1} chỉ ra rằng $J_{EM-IFCF}$ là một hàm Zangwill giảm cho tập nghiệm $\{T_{EM-IFCF}\,;S_{EM-IFCF}\}$ trong đó $S_{EM-IFCF}$ là tập các cực tiểu nghiêm ngặt của $J_{EM-IFCF}$. Định lý~\ref{theo2} khẳng định $T_{EM-IFCF}$ liên tục trên $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$, và theo Định lý~\ref{theo3}, toán tử dãy lặp $J_{EM-IFCF}$ luôn nằm trong một tập con com-pắc của miền xác định. Kết quả này suy ra trực tiếp từ định lý Zangwill.
+	Do hàm mục tiêu $J_{IFCF}$ liên tục trên $\bm{U}_f\times \mathbb{R}^{cd}$, Định lý~\ref{theo1} chỉ ra rằng $J_{IFCF}$ là một hàm Zangwill giảm cho tập nghiệm $\{T_{IFCF}\,;S_{IFCF}\}$ trong đó $S_{IFCF}$ là tập các cực tiểu nghiêm ngặt của $J_{IFCF}$. Định lý~\ref{theo2} khẳng định $T_{IFCF}$ liên tục trên $\bm{U}_f\times [\mathrm{conv}(\mathcal{F})]^c$, và theo Định lý~\ref{theo3}, toán tử dãy lặp $J_{IFCF}$ luôn nằm trong một tập con com-pắc của miền xác định. Kết quả này suy ra trực tiếp từ định lý Zangwill.
 }
+%
 
 
-
-Để mô tả các đường cong giá trị phân vùng $\bm \mu_1$ trong trường hợp phân tích chùm nhị phân, luận văn này mô phỏng trực quan thuật toán EM-IFCF trong môi trường khoảng cách chuẩn hóa $D^2\in[0\,;1]$, với chùm $1$ tại gốc và chùm $2$ tại $D^2=1$ đồng thời với các tham số mờ $m$ khác nhau.
+Để mô tả các đường cong giá trị phân vùng $\bm \mu_1$ trong trường hợp phân tích chùm nhị phân, luận văn này mô phỏng trực quan thuật toán IFCF trong môi trường khoảng cách chuẩn hóa $D^2\in[0\,;1]$, với chùm $1$ tại gốc và chùm $2$ tại $D^2=1$ đồng thời với các tham số mờ $m$ khác nhau.
 
 \begin{figure}[H]
 	\centering
@@ -2086,15 +2205,15 @@ Ba định lý này là một phần của chứng minh \eqref{eq:EMIFCF} bằng
 \end{figure}
 
 
-Hình~\ref{fig:ifcm} minh họa hành vi của EM-IFCF khi $\delta=0$ trong môi trường ứng với các mức mất cân bằng khác nhau $IR=\{1\,; 5\,; 10\,; 20\}$, với trọng số tương ứng $\omega_i$ ở hai chùm. Ta thấy rằng với $IR=1$, các đường cong phân hoạch $\bm \mu_1$ đối xứng quanh khoảng cách $D^2$. Khi $IR$ tăng lên, chùm lớn chiếm ưu thế và các đường cong lệch rõ rệt về phía chùm lớn, biểu hiện hiện tượng nuốt chùm nhỏ hơn theo hiệu ứng xi-phông.  Ngoài ra, sự thay đổi của tham số mờ $ m $ từ $1,1$ đến $10,0$ cho thấy vai trò của nó trong việc kiểm soát độ mờ. Rõ ràng, các giá trị thấp hơn làm sắc nét ranh giới, trong khi các giá trị cao hơn tạo ra sự chuyển tiếp mềm hơn.
+Hình~\ref{fig:ifcm} minh họa hành vi của IFCF khi $\delta=0$ trong môi trường ứng với các mức mất cân bằng khác nhau $IR=\{1\,; 5\,; 10\,; 20\}$, với trọng số tương ứng $\omega_i$ ở hai chùm. Ta thấy rằng với $IR=1$, các đường cong phân hoạch $\bm \mu_1$ đối xứng quanh khoảng cách $D^2$. Khi $IR$ tăng lên, chùm lớn chiếm ưu thế và các đường cong lệch rõ rệt về phía chùm lớn.  Ngoài ra, sự thay đổi của tham số mờ $ m $ từ $1,1$ đến $10,0$ cho thấy vai trò của nó trong việc kiểm soát độ mờ. Rõ ràng, các giá trị thấp hơn làm sắc nét ranh giới, trong khi các giá trị cao hơn tạo ra sự chuyển tiếp mềm hơn.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{partition_delta.pdf}
-	\caption{Ảnh hưởng của tham số hiệu chỉnh biên $\delta$ trong EM-IFCM qua IR}\label{fig:emifcm}
-\end{figure}
-
-Ngược lại, Hình~\ref{fig:emifcm} cho thấy tác động của tham số hiệu chỉnh biên $\delta$ trong EM-IFCF khi cố định $m=2$. Khi $\delta>0$, thành phần hiệu chỉnh biên làm thay đổi đường phân vùng cong mạnh lên phía trên để giữa phân vùng của chùm nhỏ cao hơn, giúp duy trì giá trị phân vùng chùm nhỏ không bị suy giảm quá nhanh khi $IR$ lớn.
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{partition_delta.pdf}
+%	\caption{Ảnh hưởng của tham số hiệu chỉnh biên $\delta$ trong IFCM qua IR}\label{fig:emifcm}
+%\end{figure}
+%
+%Ngược lại, Hình~\ref{fig:emifcm} cho thấy tác động của tham số hiệu chỉnh biên $\delta$ trong IFCF khi cố định $m=2$. Khi $\delta>0$, thành phần hiệu chỉnh biên làm thay đổi đường phân vùng cong mạnh lên phía trên để giữa phân vùng của chùm nhỏ cao hơn, giúp duy trì giá trị phân vùng chùm nhỏ không bị suy giảm quá nhanh khi $IR$ lớn.
 
 
 
@@ -2265,7 +2384,6 @@ Trong ví dụ này, luận văn mở rộng Ví dụ \ref{vdu:gauss1} sang ba c
 }
 
 
-\subsubsection{b.\qquad Kết quả các hiệu ứng}
 
 
 
@@ -2273,20 +2391,18 @@ Trong ví dụ này, luận văn mở rộng Ví dụ \ref{vdu:gauss1} sang ba c
 
 
 
-
-
-\subsubsection{c.\qquad Kết quả các loại khoảng cách}
+\subsubsection{b.\qquad Kết quả các loại khoảng cách}
 
 
 
 
 
-\subsubsection{d.\qquad  Kết quả các tham số mờ}
+\subsubsection{c.\qquad  Kết quả các tham số mờ}
 
 
 
 
-\subsubsection{e.\qquad  Kết quả các loại phân tích chùm}
+\subsubsection{d.\qquad  Kết quả các loại phân tích chùm}
 
 
 
@@ -2573,7 +2689,7 @@ Tuy nhiên, việc trích xuất này cần một số tiền giả định về
 Phân tích chùm phân vùng dựa vào trọng tâm rất đơn giản. 
 
 
-Tuy nhiên, nó cũng có một số khuyết điểm bao gồm tính không xác định của các siêu tham số\index{siêu tham số (hyper-parametre)},  chất lượng dữ liệu đầu vào và khả năng giải thích của mô hình. Đầu tiên, họ thuật toán này không cung cấp $c$ chùm tối ưu. Đôi khi, ta không có tri thức về số lượng $c$, dẫn đến khó khăn khi phân chùm các mẫu có số chiều lớn \cite{schubert2023stop}, và nguy cơ quá khớp\index{quá khớp (overfitting)}. Theo Goutte \textit{et al.}, ``\emph{khi số lượng chùm không phản ánh trong dữ liệu, kết quả cuối cùng cơ bản là vô nghĩa}'' \cite{goutte1999clustering}.  Ngoài ra, do giả định tối ưu lồi, thuật toán dựa trên trọng tâm thường hoạt động hiệu quả nhất với hình dạng gần cầu, và có thể gặp thách thức khi áp dụng cho dữ liệu chứa nhiễu, ngoại lệ\index{điểm ngoại lệ (outliers)}, có chồng lấp giữa các chùm hoặc có sự chênh lệch lớn về kích thước và mật độ. Cuối cùng, hàm mật độ trọng tâm chùm ban đầu cũng ảnh hưởng đến kết quả tối ưu dù đã có nhiều khuyến nghị như $k$-means$^{++}$\index{$k$-means$^{++}$}, $X$-means\index{$X$-means}. 
+Tuy nhiên, nó cũng có một số khuyết điểm bao gồm tính không xác định của các siêu tham số\index{siêu tham số (hyper-parametre)},  chất lượng dữ liệu đầu vào và khả năng giải thích của mô hình. Đầu tiên, họ thuật toán này không cung cấp $c$ chùm tối ưu. Đôi khi, ta không có tri thức về số lượng $c$, dẫn đến khó khăn khi phân chùm các mẫu có số chiều lớn \cite{schubert2023stop}, và nguy cơ quá khớp\index{quá khớp (overfitting)}. Theo Goutte \textit{et al.}, ``\emph{khi số lượng chùm không phản ánh trong dữ liệu, kết quả cuối cùng cơ bản là vô nghĩa}'' \cite{goutte1999clustering}.  Ngoài ra, do giả định tối ưu lồi, thuật toán dựa trên trọng tâm thường hoạt động hiệu quả nhất với hình dạng gần cầu, và có thể gặp thách thức khi áp dụng cho dữ liệu chứa nhiễu, ngoại lệ\index{điểm ngoại lệ (outliers)}, có chồng lấp giữa các chùm hoặc có sự chênh lệch lớn về kích thước và mật độ. Cuối cùng, hàm mật độ trọng tâm chùm ban đầu cũng ảnh hưởng đến kết quả tối ưu dù đã có nhiều khuyến nghị như $k$-means$^{++}$\index{$k$-means$^{++}$}. 
 	
 	Ngược lại, phân tích chùm thứ bậc không đòi hỏi tiên nghiệm về số chùm, nhưng chi phí tính toán cao, đặc biệt với dữ liệu lớn khi cần tính toàn bộ ma trận khoảng cách
 
