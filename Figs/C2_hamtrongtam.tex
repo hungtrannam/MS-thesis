@@ -43,6 +43,18 @@
 			\addplot[black, ultra thick, fill=black!30, opacity=.35]
 			{\wA*gauss(\mA,\sA) + \wB*gauss(\mB,\sB) + \wC*gauss(\mC,\sC)};
 			
+					% ===================== (c) Hellinger centroid =====================
+			\nextgroupplot[title={(c)}]
+			\addplot[black!50, dashed, very thick] {gauss(\mA,\sA)};
+			\addplot[black!50, dashed, very thick] {gauss(\mB,\sB)};
+			\addplot[black!50, dashed, very thick] {gauss(\mC,\sC)};
+			
+			% Hellinger centroid (normalized with Z ≈ 0.5635)
+			\pgfmathsetmacro{\ZH}{0.5635}
+			\addplot[black, ultra thick, fill=black!30, opacity=.35]
+			{ ( ( (1/3)*(sqrt(gauss(\mA,\sA)) + sqrt(gauss(\mB,\sB)) + sqrt(gauss(\mC,\sC))) )^2 ) / \ZH };
+			%			
+			
 			% ===================== (b) M_W(y): Wasserstein-2 barycenter =====================
 			\nextgroupplot[title={(b)}]
 			\addplot[black!50, dashed, very thick] {gauss(\mA,\sA)};
@@ -51,17 +63,7 @@
 			\addplot[black, ultra thick, fill=black!30, opacity=.35]
 			{gauss(\muW,\sigW)};
 			
-			% ===================== (c) Hellinger centroid =====================
-%			\nextgroupplot[title={(c)}]
-%			\addplot[black!50, dashed, very thick] {gauss(\mA,\sA)};
-%			\addplot[black!50, dashed, very thick] {gauss(\mB,\sB)};
-%			\addplot[black!50, dashed, very thick] {gauss(\mC,\sC)};
-%			
-%			% Hellinger centroid (normalized with Z ≈ 0.5635)
-%			\pgfmathsetmacro{\ZH}{0.5635}
-%			\addplot[black, ultra thick, fill=black!30, opacity=.35]
-%			{ ( ( (1/3)*(sqrt(gauss(\mA,\sA)) + sqrt(gauss(\mB,\sB)) + sqrt(gauss(\mC,\sC))) )^2 ) / \ZH };
-%			
+	
 		\end{groupplot}
 	\end{tikzpicture}
 \end{document}

@@ -457,12 +457,12 @@ $
 
 \dng{Với các đối tượng hàm mật độ, toán tử tổng và tích có hướng được thay thế bởi phép nhân điểm\index{phép nhân điểm (point-wise product)} và lũy thừa. Tức là, $(f\oplus g)(x)=f(x)g(x)$ và $(\alpha\odot f)(x) = f^{\alpha}(x)$, với $\alpha\in\mathbb{R}$.}
 
-\dng{[Dữ liệu hàm mật độ $1$-chiều]
+\dng{[Dữ liệu hàm mật độ $1$-chiều]\label{dng:data1}
 Dữ liệu hàm mật độ là một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,;o_2\,;\ldots\,;o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,;u_j]$ là khoảng xác định của $o_j$ và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
 $$\int_{x\in I_j}f_j(x)\mathrm{\,d}x=1, \text{ và } \int_{x \in\mathbb{R}\setminus I_j}f_j(x)\mathrm{\,d}x=0. $$
 }
 
-\dng{[Dữ liệu hàm mật độ $d$-chiều]
+\dng{[Dữ liệu hàm mật độ $d$-chiều]\label{dng:datad}
 Dữ liệu hàm mật độ $d$-chiều là một bộ đối tượng không chắc chắn $\bm o$ có dạng $(\bm o_1\,;\bm o_2\,;\ldots\,;\bm o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $\bm o_j$ chứa một cặp $(\bm  R_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $\bm R_j=[l_1\,;u_1]\times\cdots\times [l_d\,;u_d]\subseteq \mathbb{R}^d$ là vùng xác định $d$-chiều của $o_j$ và $f\,:\,\mathbb{R}^d\to\mathbb{R}^{d+}$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $\bm x\in \bm R_j$ sao cho 
 $$\int_{\bm x\in \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=1, \text{ và } \int_{x \in\mathbb{R}\setminus \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=0. $$
 }
@@ -671,7 +671,7 @@ trong đó, $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa ha
 
 \begin{figure}[H]
 	\centering
-	    \includegraphics[width=.8\linewidth]{Figs/C1_hamdaidien.pdf}
+	    \includegraphics[width=\linewidth]{Figs/C1_hamdaidien.pdf}
 	    \begin{flushleft}
 	    	\it\footnotesize Chú thích: Hàm mật độ đại diện thể hiện bằng đường thẳng in đậm cho ba hàm Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$, và (b) dựa vào vị trí tối ưu. Ta có thể nói hàm mật độ đại diện này là kỳ vọng của các tổng thể khác nhau. Nguồn: Minh họa của tác giả.
 	    \end{flushleft}
@@ -1670,6 +1670,21 @@ Trong dữ liệu $1$-chiều, nghiên cứu về Cá hồi vây vàng (\textit{
 Tuy nhiên, quá trình thu thập dữ liệu này thường mất nhiều thời gian, và khó khăn trong lưu trữ và không gian vô hạn chiều. Cho nên, nhiều phương pháp tiếp cận mới từ nhận dạng thống kê đã giải quyết nhu cầu phân tích dạng dữ liệu này. Chúng bao gồm phân tích chùm và phân loại hàm mật độ xác suất. 
 
 
+%
+%
+%Phần này sử dụng ánh xạ đo được $\mathcal{F}\,:\,(\Omega, \mathcal{S}, P) \to (\mathcal{D}\,,\mathcal{B}_D)$ với $(\Omega, \mathcal{S}, P)$ là không gian xác suất và  sigma-đại số Borel $\mathcal{B}_D$  trên $(\mathcal{D}, d)$. Một tập đối tượng hàm mật độ quan sát là $f_j\sim\mathcal{F}$ với $j=1\,,\ldots\,,n$ (Định nghĩa~\ref{dng:data1} và \ref{dng:datad}).
+%
+%\dng{[Hàm đại diện Fréchet]\label{dng:frechet}
+%	Phần tử hàm đại diện $f^* \in \mathcal{D}$ sao cho
+%	\begin{align}
+%		\theta=\arg\min_{g \in \mathcal{D}} \; \mathbb{E}\!\left(D^2\big(\mathcal{F},g\big)\right),
+%		\label{eq:frechet_mean}
+%	\end{align} là hàm đại diện Fréchet.
+%}
+
+
+
+
 \subsection{Phương pháp phân tích chùm hàm mật độ xác suất}
 
 
@@ -1680,11 +1695,7 @@ Phân tích chùm là một nhánh chính của nhận dạng không được gi
 
 
 
-Bảng~\ref{tab:in_clustering_summary} mô tả quá trình phát triển phương pháp phân tích chùm hàm mật độ giai đoạn 5 năm từ 2019 đến 2024. Nhìn chung, các nghiên cứu cho thấy ba xu thế nổi bật cả về bề sâu và bề rộng. 
-
-Các hàm mục tiêu SSE và VCC dần được mở rộng và phức tạp hơn, như CSB và FSF cho phép đánh giá chất lượng của kết quả phân tích chùm một cách đa chiều và sâu sắc hơn. Nghiên cứu của Thao Nguyen-Trang đã sử dụng FSF \cite{nguyen2023globally}, hoặc CSB \cite{nguyen2023balance} làm mục tiêu phân chùm, cho thấy nghiên cứu đã đào sâu vào nội hàm thuật toán.
-
-Hơn nữa, năm 2019 cho thấy sự mở rộng từ mô hình cứng sang các phương pháp khác như mờ, khả dĩ và bán giám sát. Các nghiên cứu giai đoạn 2019 tập trung vào các mô hình phân chùm cứng, như k-medoids, KCF. Từ năm 2019 trở đi, các nghiên cứu đã bắt đầu chuyển sang sử dụng các mô hình phân chùm mờ, như trong Tai Vo-Van \cite{vovan2019cluster, phamtoan2022automatic}, đã sử dụng FCF với $m=2$.  Cuối năm 2024, nhóm tác giả Thao Nguyen-Trang \cite{nguyen2024new} đã giới thiệu một mô hình phân chùm bán giám sát, sử dụng một phần dữ liệu có nhãn để cải thiện kết quả phân chùm. 
+Bảng~\ref{tab:in_clustering_summary} mô tả quá trình phát triển phương pháp phân tích chùm hàm mật độ giai đoạn 5 năm từ 2019 đến 2024. Nhìn chung, các nghiên cứu cho thấy sự phát triển cả về bề sâu và bề rộng. Các hàm mục tiêu SSE và VCC dần được mở rộng và phức tạp hơn, như CSB và FSF cho phép đánh giá chất lượng của kết quả phân tích chùm một cách đa chiều và sâu sắc hơn. Nghiên cứu của Thao Nguyen-Trang đã sử dụng FSF \cite{nguyen2023globally}, hoặc CSB \cite{nguyen2023balance} làm mục tiêu phân chùm, cho thấy nghiên cứu đã đào sâu vào nội hàm thuật toán. Hơn nữa, năm 2019 cho thấy sự mở rộng từ mô hình cứng sang các phương pháp khác như mờ, khả dĩ và bán giám sát. Các nghiên cứu giai đoạn 2019 tập trung vào các mô hình phân chùm cứng, như $k$-medoids, KCF. Từ năm 2019 trở đi, các nghiên cứu đã bắt đầu chuyển sang sử dụng các mô hình phân chùm mờ, như trong Tai Vo-Van \cite{vovan2019cluster, phamtoan2022automatic}, đã sử dụng FCF với $m=2$.  Cuối năm 2024, nhóm tác giả Thao Nguyen-Trang \cite{nguyen2024new} đã giới thiệu một mô hình phân chùm bán giám sát, sử dụng một phần dữ liệu có nhãn để cải thiện kết quả phân chùm. 
 
 \begin{table}[H]
 	\centering
@@ -1740,6 +1751,8 @@ IR = \frac{\max_i\#c_i}{\min_j \#c_j}$, trong đó $\#c_i$ là số lượng ph�
 Đa số nghiên cứu tập trung vào việc cải thiện hàm mục tiêu hay cơ chế tối ưu hóa, nhưng đều giả định các chùm/lớp có quy mô tương đối đồng đều. Khi tỷ lệ mất cân bằng\index{tỷ lệ mất cân bằng (Imbalance Ratio)} tăng cao, kết quả phân tích thường bị lệch, chùm nhỏ dễ bị hút vào chùm lớn, hoặc phân loại phần tử mới không đúng và lớp thiểu số. Do đó, việc phát triển các thuật toán phân tích chùm và phân loại có khả năng chống chịu với mất cân bằng là một khoảng trống nghiên cứu quan trọng.
 
 
+
+
 \section{Giới thiệu bài toán phân tích chùm cho dữ liệu mất cân bằng}
 
 Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triển để giải quyết nhu cầu thực tế. Bài toán khoanh vùng hình ảnh hòn đảo giữa đại dương được ghi nhận là có sự mất cân bằng, hay phân đoạn chuỗi tín hiệu hiếm như động đất cũng có tính chất mất cân bằng hơn tín hiệu nền yên tĩnh. Dữ liệu lúc này có sự chênh lệch lớn giữa các loại trong tự nhiên và tồn tại hai tình trạng: Kích thước chùm và số lượng phần tử trong chùm mất cân bằng. Kích thước chùm mất cân bằng xảy ra khi các chùm có độ phân tán khác biệt đáng kể về đường kính hoặc mật độ. Trong khi đó, mất cân bằng số lượng khi tổng mẫu chùm chênh lệch lớn.
@@ -1747,9 +1760,7 @@ Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triể
 
 Trong lĩnh vực phân tích chùm, để giải quyết vấn đề mất cân bằng tự nhiên, đa số phương pháp tập trung cải thiện thuật toán, trong khi các phương pháp tăng cường mẫu\index{phương pháp tăng cường mẫu (resampling methods)} ít được áp dụng do khó xác định chùm tiềm ẩn. Ở dữ liệu rời rạc, thuật toán phân tích chùm mất cân bằng đã được giải quyết rất tốt qua các thuật toán csiFCM (2002) \cite{noordam2002multivariate}, siiFCM (2014) \cite{lin2014size}, iFCM (2016) \cite{liu2016unsupervised}, EM-IFCM (2024) \cite{yu2024suppressed}, và EKM (2024) \cite{he2024imbalanced}. Các thuật toán này giải quyết chủ yếu hai vấn đề bao gồm mở rộng kích thước chùm và dịch chuyển trọng tâm.
 
-Đầu tiên, thuật toán KCF, và FCF giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Xiong (2006) \cite{xiong2006k}, giải thích rằng thuật toán $k$-means ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều khi phân cụm dữ liệu mất cân bằng. Hiện tượng này được gọi là "hiệu ứng đồng nhất" do hàm mục tiêu. Tương tự với KCF, hàm mục tiêu của thuật toán FCF cũng được xây dựng theo cùng một nguyên tắc, nên cũng có hiệu ứng trên.
-
-Hơn nữa, khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng nuốt các chùm nhỏ và chia  cho lớp lớn hơn như Yue Pu, Wenbin Yao, \& Xiaoyong Li (2024) đề cập \cite{yu2024suppressed}. Hiệu ứng này được gọi là "hiệu ứng xi phông" có xu hướng kéo (hút) các  phần tử biên của lớp nhỏ về lớp lớn, và trọng tâm của lớp nhỏ cũng dịch chuyển về phía lớp lớn.
+Đầu tiên, thuật toán KCF, và FCF giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Xiong (2006) \cite{xiong2006k}, giải thích rằng thuật toán $k$-means ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều khi phân cụm dữ liệu mất cân bằng. Hiện tượng này được gọi là "hiệu ứng đồng nhất" do hàm mục tiêu. Tương tự với KCF, hàm mục tiêu của thuật toán FCF cũng được xây dựng theo cùng một nguyên tắc, nên cũng có hiệu ứng trên. Hơn nữa, khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng nuốt các chùm nhỏ và chia  cho lớp lớn hơn như Yue Pu, Wenbin Yao, \& Xiaoyong Li (2024) đề cập \cite{yu2024suppressed}. Hiệu ứng này được gọi là "hiệu ứng xi phông" có xu hướng kéo (hút) các  phần tử biên của lớp nhỏ về lớp lớn, và trọng tâm của lớp nhỏ cũng dịch chuyển về phía lớp lớn.
   
   Hình~\ref{fig:IR_STD} thể hiện sự thay đổi của IR và nhiễu của dữ liệu hàm mật độ mất cân bằng lên kết quả trọng tâm thuật toán FCF. Các dòng (1--4) thể hiện sự tăng dần của IR đối với FCF và kết quả phân vùng có xu hướng đồng nhất số lượng hàm mật độ trong mỗi chùm ở hiệu ứng đồng nhất. Trong khi các cột thể hiện dữ liệu nhiễu thể hiện hiệu ứng xi-phông cao. 
 
@@ -1806,7 +1817,8 @@ Hơn nữa, khi có sự khác biệt lớn về số lượng phần tử hoặ
 	\caption{Ảnh hưởng của dữ liệu hàm mật độ Gauss mất cân bằng lên FCF ($m=2\,;c=3\,;\bm D=\mathcal{L}_2$)}\label{fig:IR_STD}
 \end{figure}
 
-Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ có số lượng nhỏ sao cho $\#c_1=IR\cdot\#c_2$ với $IR\in\mathbb{N}_{>0}$. Khi $IR$ tăng lên, hàm tỷ số giữa $\#c_1$ và tổng số phần tử trong dữ liệu được biểu diễn bởi $k(x) = 1-1/(x+1)$. Ta thấy, hàm $k(x)$ là một đường cong tăng đơn điệu và đạo hàm của nó giảm khi $IR$ tăng. Điều này nghĩa là chỉ số hoá theo kích thước chùm thông qua trọng số lớp trở nên bão hoà. 
+Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ có số lượng nhỏ sao cho $\#c_1=IR\cdot\#c_2$ với $IR\in\mathbb{N}_{>0}$. Khi $IR$ tăng lên, hàm tỷ số giữa $\#c_1$ và tổng số phần tử trong dữ liệu được biểu diễn bởi $k(x) = 1-1/(x+1)$. Ta thấy, hàm $k(x)$ là một đường cong tăng đơn điệu và đạo hàm của nó giảm khi $IR$ tăng. Điều này nghĩa là chỉ số hoá theo kích thước chùm thông qua trọng số lớp trở nên bão hoà. Do đó, cần thiết xây dựng bổ sung việc trung hòa các phần tử trong lớp lớn trong hàm mục tiêu.
+
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=0.6\linewidth]{ratio_C1_k.pdf}
@@ -1940,7 +1952,6 @@ G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta 
 	\sum_{i=1}^c \mu_{ij}=1$, $
 	\mu_{ij}\ge 0,\ \alpha_{ij}\ge 0$,  và $ 
 	\alpha_{ij}\mu_{ij}=0,\ \forall i.$
-	
 	Giả sử $\delta_{ij}>0$ với mọi $i$, nếu $\mu_{ij}>0$ thì $\alpha_{ij}=0$. Khi đó \eqref{eq:stat-KKT} cho kết quả
 	\begin{align}
 		\mu_{ij}=\Bigl(\frac{\lambda_j}{m}\Bigr)^{\frac{1}{m-1}}(\delta_{ij})^{-\frac{1}{m-1}}.
@@ -2067,7 +2078,7 @@ G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta 
 %}
 %
 %==================== LEMMA 2: Cập nhật trọng tâm Theta ====================
-\bode{[Cập nhật trọng tâm $\Theta$]\label{lem2}
+\bode{[Cập nhật trọng tâm $\Theta$ với $\mathcal{L}_2^2$]\label{lem2}
 	Với $\bm U$ cố định, bài toán tối thiểu hoá $J_{IFCF}$ theo $\Theta=\{\theta_i\}_{i=1}^c$ là phân tích được theo từng $\theta_i$ và lồi nghiêm ngặt. Tồn tại duy nhất nghiệm cực tiểu $\Theta^*=G(\bm U)$ khi khoảng cách $D^2=\mathcal{L}_2^2$, 
 	\begin{align}
 		\theta_i
@@ -2085,9 +2096,9 @@ G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta 
 	\nabla_{\theta_i}\psi_i(\theta_i)
 	=
 	\frac{1}{\omega_i}\sum_{j=1}^n
-	(\mu_{ij})^{m}(\mu_{ij})^{m}\nabla\theta_iD^2(\theta_i\,,f_j)
+	(\mu_{ij})^{m}(\mu_{ij})^{m}\nabla\theta_i\mathcal{L}_2^2(\theta_i\,,f_j)
 	\end{align}
-	Cho $\nabla_{\theta_i}\psi_i(\theta_i)=\bm 0$, ta được công thức cập nhật  \eqref{eq:theta_update} đối với riêng trường hợp $D^2=\mathcal{L}_2^2(\theta_i\,,f_j)$.
+	Cho $\nabla_{\theta_i}\psi_i(\theta_i)=\bm 0$, ta được công thức cập nhật  \eqref{eq:theta_update} đối với riêng trường hợp $\mathcal{L}_2^2(\theta_i\,,f_j)$.
 	Hơn nữa, với khoảng cách $\mathcal{L}_2$, ma trận Hess theo $\theta_i$ là
 	$
 	\nabla^2_{\theta_i}\psi_i(\theta_i)
@@ -2096,11 +2107,48 @@ G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta 
 	$ xác định dương vì $\sum_j (\mu_{ij})^{m}>0$ và $\omega_i>0$. Do đó $\psi_i$ lồi nghiêm ngặt và nghiệm bậc nhất \eqref{eq:théta} là duy nhất, suy ra nghiệm toàn cục duy nhất $\Theta^*=G(\bm U)$. Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2\,, D^2_H\,, D_{KL}$ hoặc $W_2$, trong khi với các khoảng cách khác bao gồm $\mathcal{L}_2, D_B$ hoặc $D_M$ có thể không duy nhất nghiệm toàn cục.
 }
 
+\bode{[Cập nhật trọng tâm $\Theta$ với $D_H^2$]\label{lem:Hellinger}
+	Với $\bm U$ cố định, bài toán tối thiểu hoá $J_{IFCF}$ theo $\Theta=\{\theta_i\}_{i=1}^c$ có thể tách được theo từng $\theta_i$ và là lồi nghiêm ngặt trong biến $\sqrt{\theta_i}$. 
+	Tồn tại duy nhất nghiệm cực tiểu $\Theta^*=G(\bm U)$ khi khoảng cách $D^2=D_H^2$, trong đó 
+	\begin{align}
+		\theta_i(x)
+		\;=\;
+		\frac{\Big(\sum_{j=1}^n (\mu_{ij})^{m}\,\sqrt{f_j(x)}\Big)^2}
+		{ \int_{\Omega} \Big(\sum_{j=1}^n (\mu_{ij})^{m}\,\sqrt{f_j(y)}\Big)^2\,\mathrm{\,d}y}, 
+		\qquad 1\le i\le c.
+		\label{eq:theta_update_H}
+	\end{align}
+}
+
+\chm{
+	Giữ $U$ cố định, xét $\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,D_H^2(\theta_i,f_j)$. 
+	Ta có khoảng các bình phương Hellinger là $
+	D_H^2(\theta_i,f_j) \;=\; 1 - \int \sqrt{\theta_i(x)\,f_j(x)}\mathrm{\,d}x.$	
+	Do đó
+	\[
+	\psi_i(\theta_i)
+	= \frac{1}{\omega_i}\sum_{j=1}^n (\mu_{ij})^m \left(1-\int_{\Omega} \sqrt{\theta_i(x)\,f_j(x)}\,\mathrm{\,d}x\right).
+	\]
+
+	Vì $\theta(x)\le 0$, đặt $g_i(x)=\theta_i^{1/2}(x)$. Khi đó $\psi_i$ trở thành một hàm lồi theo $g_i$. Vì vậy,
+	\[
+	\frac{\delta \psi_i}{\delta g_i(x)} 
+	= -\frac{1}{\omega_i}\sum_{j=1}^n (\mu_{ij})^m \sqrt{f_j(x)} \;+\; \frac{1}{\omega_i}\Big(\sum_{j=1}^n (\mu_{ij})^m\Big) g_i(x).
+	\]
+	
+	Cho $\frac{\delta \psi_i}{\delta g_i(x)}=0$ và $\theta_i(x)=g_i^2(x)$, ta dẫn đến công thức \eqref{eq:theta_update_H}. Ta cũng có ma trận Hess lúc này là xác định dương, nghiệm \eqref{eq:theta_update_H} là nghiệm toàn cục duy nhất.
+}
 
 
 
 
-Bảng~\ref{tab:KCTT} trình bày các công thức cập nhật trọng tâm $\theta$ của chùmtheo những khoảng cách khác nhau. 
+
+
+
+
+
+
+Bảng~\ref{tab:KCTT} trình bày các công thức cập nhật trọng tâm $\theta$ của chùm theo những khoảng cách khác nhau. 
 
 \begin{table}[H]
 	\centering
@@ -2120,7 +2168,11 @@ $D_H^2(f,\theta)=\tfrac{1}{2}\int \big(\sqrt{f(x)}-\sqrt{\theta(x)}\big)^2 \math
 	\end{tabular*}
 \end{table}
 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{C2_hamtrongtam}
+	\caption{}
+\end{figure}
 
 
 %
@@ -2603,48 +2655,65 @@ Trong xử lý ảnh, đặc trưng là những thông tin tóm tắt để mô 
 Khi chuyển dữ liệu hình ảnh sang dạng hàm mật độ, ý tưởng chính là xem hình ảnh hoặc một phần củahình ảnh như một biểu diễn phân bố xác suất. Cách tiếp cận này cho phép thay thế tập hợp rời rạc các điểm ảnh bằng một hàm liên tục. Các phương pháp ước lượng phổ biến thường dựa trên hình ảnh toàn cục hoặc trên các khối cục bộ. Trong phần này, hai hướng tiếp cận chính được trình bày và phân tích.
 
 
-
-
-\subsubsection{a.\qquad Ước lượng dựa trên điểm ảnh}
+\subsubsection{a.\qquad Ước lượng dựa trên màu sắc}
 
 Xét một ảnh $I \in \mathbb{R}^{M\times N\times C}$. Mỗi điểm ảnh được ký hiệu bởi chỉ số $p \in \{1,\dots,MN\}$ và có thể được ánh xạ thành véc tơ đặc trưng $f_I \in \mathbb{R}^d$ trong không gian cường độ xám hoặc trong không gian màu RGB. Để tiến hành ước lượng, trước tiên toàn bộ ảnh được duỗi thẳng thành véc tơ một chiều
-$$
+\[
 x = \mathrm{vec}(I) = \big(I_{11}, I_{12}, \dots, I_{1N}, I_{21}, \dots, I_{MN}\big)^\intercal \in \mathbb{R}^{MN}.
-$$
+\]
 
 Quá trình duỗi thẳng giúp chuyển đổi ảnh ma trận hai chiều thành dữ liệu véc-tơ một chiều. Tập hợp $\{x_p\}_{p=1}^{MN}$ được coi như một mẫu độc lập từ phân bố xác suất cường độ. Trên cơ sở đó, áp dụng phương pháp ước lượng mật độ hạt nhân với hạt nhân Gauss và quy tắc chọn băng thông của Silverman. Công thức cụ thể của hàm mật độ ước lượng được viết là
-$$
+\[
 \hat{f}(u) = \frac{1}{MN\,h}\sum_{p=1}^{MN} \frac{1}{\sqrt{2\pi}} \exp\!\left(-\frac{(u-x_p)^2}{2h^2}\right),
-$$
+\]
 trong đó $h = 0.9 \hat{\sigma} (MN)^{-1/5}$ với $\hat{\sigma}$ là độ lệch chuẩn của tập cường độ toàn cục.
-
 
 Cách tiếp cận này sử dụng trực tiếp toàn bộ điểm ảnh, do đó phản ánh đặc tính màu sắc toàn cục của hình ảnh. Hình \ref{fig:kdeimagedensity} thể hiện quá trình biến đổi hình ảnh thành hàm mật độ với hình ảnh gốc có kích thước $32\times 32$ với phân bố không đồng đều có hai chấm ở hai phía. Hàm mật độ hạt nhân cho thấy phân bố cường độ xám của ảnh tập trung trong một khoảng giá trị hẹp phản ánh mức sáng tối chủ đạo của ảnh.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.8\linewidth]{Figs/kde_image_density}
-	\caption{Minh họa quá trình chuyển đổi dữ liệu ảnh thành hàm mật độ.}
+	\caption{Minh họa quá trình chuyển đổi dữ liệu ảnh thành hàm mật độ dựa trên màu sắc.}
 	\label{fig:kdeimagedensity}
 \end{figure}
 
 
 \subsubsection{b.\qquad Ước lượng dựa vào khối màu}
 
-Một hướng tiếp cận khác là phân chia ảnh thành các khối nhỏ có kích thước $s \times s$ và không chồng lắp từ phải sang trái, và từ trên xuống dưới. Mỗi khối $P_k$ được ánh xạ thành véc tơ
-$
+Một hướng tiếp cận khác là phân chia ảnh thành các khối nhỏ có kích thước $s \times s$ và không chồng lắp từ phải sang trái, và từ trên xuống dưới. Mỗi ma trận vuông $P_k$ được ánh xạ thành véc tơ
+\[
 z_k = \mathrm{vec}(P_k) \in \mathbb{R}^{s^2}.
-$ Trong từng khối, tập hợp $\{z_{k,p}\}$ được coi là mẫu cục bộ. Với mỗi khối, tiến hành ước lượng mật độ bằng công thức hạt nhân Gauss, băng thông vẫn được lựa chọn theo quy tắc Silverman.  
-Các hàm mật độ cục bộ $\hat{f}_k(u)$  là kết quả sau khi ước lượng cho từng khối.
+\]
+Trong từng khối, tập hợp $\{z_{k,p}\}$ được coi là mẫu cục bộ. Với mỗi khối, tiến hành ước lượng mật độ bằng công thức hạt nhân Gauss, băng thông vẫn được lựa chọn theo quy tắc Silverman.  
+Các hàm mật độ cục bộ $\hat{f}_k(u)$ là kết quả sau khi ước lượng cho từng khối.
 
 Cách tiếp cận này duy trì thông tin màu sắc cho từng khối hình ảnh, phù hợp cho bài toán phân tích chùm vì sự phân biệt của nó trong các vùng màu sắc khác nhau. Hình~\ref{fig:kdepatchesdensity} thể hiện các khối màu được cắt từ hình ảnh gốc tại những vị trí lần lượt. Khối đầu chứa vùng sáng, khối cuối chứa vùng tối, hai khối còn lại nằm trên các vùng trung gian có mức xám thay đổi dần. Hàm mật độ của khối đầu có phân bố tập trung ở cường độ cao, thể hiện sự hiện diện của vùng sáng. Ngược lại, khối cuối có phân bố nghiêng về cường độ thấp phản ánh sự tồn tại của một vùng tối.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.55\linewidth]{Figs/kde_patches_density}
-	\caption{Minh họa các khối và hàm mật độ xác suất tương ứng}
+	\caption{Minh họa quá trình chuyển đổi dữ liệu ảnh thành hàm mật độ dựa trên khối màu.}
 	\label{fig:kdepatchesdensity}
 \end{figure}
+
+
+\subsubsection{c.\qquad Ước lượng dựa vào vị trí điểm ảnh}
+
+Thay vì chỉ xét giá trị cường độ, một cách tiếp cận khác là xem vị trí của các điểm ảnh như biến ngẫu nhiên. Cụ thể, với một hình ảnh $I \in \mathbb{R}^{M\times N}$, mỗi điểm ảnh $(i,j)$ được xem là một phần tử trong lưới tọa độ $\{1,\dots,M\}\times \{1,\dots,N\}$. Để xây dựng phân bố xác suất, ta chuẩn hóa cường độ của từng điểm ảnh theo công thức
+\[
+p_{ij} = \frac{I_{ij}}{\sum_{a=1}^M \sum_{b=1}^N I_{ab}}.
+\]
+
+Khi đó, ma trận $P = (p_{ij}) \in \mathbb{R}^{M\times N}$ được diễn giải như một phân phối xác suất rời rạc trên mặt phẳng tọa độ, phản ánh khả năng xuất hiện của một điểm ảnh tại vị trí $(i,j)$. Cách tiếp cận vị trí duy trì thông tin hình học của cấu trúc ảnh. Tùy vào bài toán và tính hợp lý của nó mà ta sử dụng các loại ước lượng khác nhau.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.7\linewidth]{Figs/kde_position}
+	\caption{Minh họa quá trình chuyển đổi dữ liệu ảnh thành hàm mật độ dựa trên vị trí.}
+	\label{fig:kdeposition}
+\end{figure}
+
+
 
 
 
@@ -2663,8 +2732,25 @@ Cách tiếp cận này duy trì thông tin màu sắc cho từng khối hình �
 \subsection{Dữ liệu}
 
 
+
+
+
+
+
+
+
+
+
 \subsection{Phương pháp thực hiện}
 \subsection{Kết quả thực hiện}
+
+
+
+
+
+
+
+
 \section{Ứng dụng của bài toán phân loại}
 \subsection{Dữ liệu}
 \subsection{Phương pháp thực hiện}
