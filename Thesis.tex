@@ -1761,7 +1761,7 @@ Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triể
 
 Trong lĩnh vực phân tích chùm, để giải quyết vấn đề mất cân bằng tự nhiên, đa số phương pháp tập trung cải thiện thuật toán, trong khi các phương pháp tăng cường mẫu\index{phương pháp tăng cường mẫu (resampling methods)} ít được áp dụng do khó xác định chùm tiềm ẩn. Ở dữ liệu rời rạc, thuật toán phân tích chùm mất cân bằng đã được giải quyết rất tốt qua các thuật toán csiFCM (2002) \cite{noordam2002multivariate}, siiFCM (2014) \cite{lin2014size}, iFCM (2016) \cite{liu2016unsupervised}, EM-IFCM (2024) \cite{yu2024suppressed}, và EKM (2024) \cite{he2024imbalanced}. Các thuật toán này giải quyết chủ yếu hai vấn đề bao gồm mở rộng kích thước chùm và dịch chuyển trọng tâm.
 
-Đầu tiên, thuật toán KCF, và FCF giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Xiong (2006) \cite{xiong2006k}, giải thích rằng thuật toán $k$-means ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều khi phân cụm dữ liệu mất cân bằng. Hiện tượng này được gọi là "hiệu ứng đồng nhất" do hàm mục tiêu. Tương tự với KCF, hàm mục tiêu của thuật toán FCF cũng được xây dựng theo cùng một nguyên tắc, nên cũng có hiệu ứng trên. Hơn nữa, khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng nuốt các chùm nhỏ và chia  cho lớp lớn hơn như Yue Pu, Wenbin Yao, \& Xiaoyong Li (2024) đề cập \cite{yu2024suppressed}. Hiệu ứng này được gọi là "hiệu ứng xi phông" có xu hướng kéo (hút) các  phần tử biên của lớp nhỏ về lớp lớn, và trọng tâm của lớp nhỏ cũng dịch chuyển về phía lớp lớn.
+Đầu tiên, thuật toán KCF, và FCF giả định các chùm có cùng kích thước \cite{askari2021fuzzy}. Xiong (2006) \cite{xiong2006k}, giải thích rằng thuật toán $k$-means ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều khi phân chùm dữ liệu mất cân bằng. Hiện tượng này được gọi là "hiệu ứng đồng nhất" do hàm mục tiêu. Tương tự với KCF, hàm mục tiêu của thuật toán FCF cũng được xây dựng theo cùng một nguyên tắc, nên cũng có hiệu ứng trên. Hơn nữa, khi có sự khác biệt lớn về số lượng phần tử hoặc kích thước chùm không đồng đều, các thuật toán phân chùm phân vùng có xu hướng nuốt các chùm nhỏ và chia  cho lớp lớn hơn như Yue Pu, Wenbin Yao, \& Xiaoyong Li (2024) đề cập \cite{yu2024suppressed}. Hiệu ứng này được gọi là "hiệu ứng xi phông" có xu hướng kéo (hút) các  phần tử biên của lớp nhỏ về lớp lớn, và trọng tâm của lớp nhỏ cũng dịch chuyển về phía lớp lớn.
   
   Hình~\ref{fig:IR_STD} thể hiện sự thay đổi của IR và nhiễu của dữ liệu hàm mật độ mất cân bằng lên kết quả trọng tâm thuật toán FCF. Các dòng (1--4) thể hiện sự tăng dần của IR đối với FCF và kết quả phân vùng có xu hướng đồng nhất số lượng hàm mật độ trong mỗi chùm ở hiệu ứng đồng nhất. Trong khi các cột thể hiện dữ liệu nhiễu thể hiện hiệu ứng xi-phông cao. 
 
@@ -2138,9 +2138,19 @@ G\,:\,\bm{U}_f \to \mathbb{R}^{cd} \,; G(\bm{\mu})=\Theta$, trong đó, $\Theta 
 
 
 
+Ta cũng chứng minh được công thức đóng tại Bổ đề~\ref{lem:Hellinger} cũng là một hàm mật độ xác suất.
 
+\chm{
+Từ kết quả công thức~\eqref{eq:theta_update_H}, ta có
+\[
+\int_{\Omega}\theta_i(x)\,\mathrm{d}x
+=\int_{\Omega}\frac{\Big(\sum_{j=1}^n (\mu_{ij})^{m}\,\sqrt{f_j(x)}\Big)^2}
+{ \int_{\Omega}\Big(\sum_{j=1}^n (\mu_{ij})^{m}\,\sqrt{f_j(y)}\Big)^2\,\mathrm{d}y}
+\,\mathrm{d}x=\frac{ \int_{\Omega}\Big(\sum_{j=1}^n (\mu_{ij})^{m}\,\sqrt{f_j(x)}\Big)^2\,\mathrm{d}x}
+{ \int_{\Omega}\Big(\sum_{j=1}^n (\mu_{ij})^{m}\,\sqrt{f_j(y)}\Big)^2\,\mathrm{d}y}=1.
+\]
 
-
+}
 
 
 
@@ -2257,7 +2267,7 @@ Ba định lý này là một phần của chứng minh \eqref{eq:IFCF} bằng �
 \end{figure}
 
 
-Hình~\ref{fig:ifcm} minh họa hành vi của IFCF khi $\delta=0$ trong môi trường ứng với các mức mất cân bằng khác nhau $IR=\{1\,; 5\,; 10\,; 20\}$, với trọng số tương ứng $\omega_i$ ở hai chùm. Ta thấy rằng với $IR=1$, các đường cong phân hoạch $\bm \mu_1$ đối xứng quanh khoảng cách $D^2$. Khi $IR$ tăng lên, chùm lớn chiếm ưu thế và các đường cong lệch rõ rệt về phía chùm lớn.  Ngoài ra, sự thay đổi của tham số mờ $ m $ từ $1,1$ đến $10,0$ cho thấy vai trò của nó trong việc kiểm soát độ mờ. Rõ ràng, các giá trị thấp hơn làm sắc nét ranh giới, trong khi các giá trị cao hơn tạo ra sự chuyển tiếp mềm hơn.
+Hình~\ref{fig:ifcm} minh họa hành vi của IFCF khi $\delta=0$ trong môi trường ứng với các mức mất cân bằng khác nhau $IR=\{1\,; 5\,; 10\,; 20\}$, với trọng số tương ứng $\omega_i$ ở hai chùm. Ta thấy rằng với $IR=1$, các đường cong phân hoạch $\bm \mu_1$ đối xứng quanh khoảng cách $D^2$. Khi $IR$ tăng lên, chùm lớn chiếm ưu thế và các đường cong lệch rõ rệt về phía chùm lớn.  Ngoài ra, sự thay đổi của tham số mờ $ m $ từ $1,1$ đến $10,0$ cho thấy vai trò của nó trong việc kiểm soát độ mờ. Rõ ràng, các giá trị thấp hơn làm sắc nét ranh giới, trong khi các giá trị cao hơn tạo ra sự chuyển tiếp mềm hơn. Tóm lại, Thuật toán~\ref{alg:IFCF} mô tả cách thực hiện thuật toán IFCF.
 
 %\begin{figure}[H]
 %	\centering
@@ -2397,9 +2407,13 @@ Xét các cặp \((f_i\,; f_j)\), ta có các trường hợp
 		\end{array}
 	\end{align*}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{pdf_bandau}
+	\caption{Dữ liệu tại Ví dụ \ref{vdu:gauss1}}\label{fig:vdu:gauss1}
+\end{figure}
 
-
-Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số thực với hai chùm được giả định trước. Vai trò chính của dữ liệu nhân tạo này là đánh giá độ ổn định của thuật toán trong các kịch bản mất cân bằng nghiêm trọng khi $IR$ thay đổi từ $10$ đến $70$. $IR$ càng lớn thì sự chênh lệch giữa chùm $1$ và $2$ càng cao. Hình~\ref{fig:EX1_main} thể hiện rõ tác động của $IR$ lên phân bố dữ liệu. Khi $IR$ tăng ($1:10$, $1:50$, và $1:1400$), chùm màu xanh trở nên dày đặc hơn, trong khi chùm màu đỏ giữ nguyên kích thước.}
+	Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số thực với hai chùm được giả định trước. Vai trò chính của dữ liệu nhân tạo này là đánh giá độ ổn định của thuật toán trong các kịch bản mất cân bằng nghiêm trọng khi $IR$ thay đổi từ $10$ đến $50$. $IR$ càng lớn thì sự chênh lệch giữa chùm $1$ và $2$ càng cao. Hình~\ref{fig:vdu:gauss1} thể hiện rõ tác động của $IR$ lên phân bố dữ liệu. Khi $IR$ tăng ($1:10$, $1:30$, và $1:50$), chùm lớn hơn trở nên dày đặc hơn, trong khi chùm nhỏ giữ nguyên kích thước.}
 
 
 
@@ -2412,7 +2426,7 @@ Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số th�
 %\begin{align*}
 %	f(x \,\vert \, \xi\,; \sigma\,; \lambda)=\frac{2}{\lambda}\phi\left(\frac{x-\xi}{\sigma}\right)\Phi\left(\lambda\frac{x-\xi}{\sigma}\right),
 %\end{align*}
-%trong đó $\phi(\cdot)$ và $\Phi(\cdot)$ lần lượt là hàm mật độ chuẩn và hàm phân phối tích lũy chuẩn. Tham số $\xi$ là vị trí của kỳ vọng, $\sigma$ là độ lệch chuẩn, và $\lambda$ điều khiển độ lệch (skewness). Trong khung nghiên cứu này, tham số vị trí $\xi_i$ được lấy mẫu từ các phân phối chuẩn $\mathcal{N}(0\,;0.2)$, $\mathcal{N}(2\,;0.2)$ và $\mathcal{N}(-2\,;0.2)$ tương ứng cho chùm, $1$, $2$ và $3$. Các tham số độ lệch-Gauss được đặt là $\sigma_i=[0\,; 10\,; -10]$, trong khi các tham số lệch được xác định là $\lambda_i=[1\,; 2\,; 2]$, nhằm tạo ra sự bất đối xứng giữa các cụm.
+%trong đó $\phi(\cdot)$ và $\Phi(\cdot)$ lần lượt là hàm mật độ chuẩn và hàm phân phối tích lũy chuẩn. Tham số $\xi$ là vị trí của kỳ vọng, $\sigma$ là độ lệch chuẩn, và $\lambda$ điều khiển độ lệch (skewness). Trong khung nghiên cứu này, tham số vị trí $\xi_i$ được lấy mẫu từ các phân phối chuẩn $\mathcal{N}(0\,;0.2)$, $\mathcal{N}(2\,;0.2)$ và $\mathcal{N}(-2\,;0.2)$ tương ứng cho chùm, $1$, $2$ và $3$. Các tham số độ lệch-Gauss được đặt là $\sigma_i=[0\,; 10\,; -10]$, trong khi các tham số lệch được xác định là $\lambda_i=[1\,; 2\,; 2]$, nhằm tạo ra sự bất đối xứng giữa các chùm.
 %
 %
 %Trong ví dụ này, luận văn mở rộng Ví dụ \ref{vdu:gauss1} sang ba chùm nhằm tăng độ phức tạp và tạo sự khác biệt lớn hơn. Các hàm mật độ của ba chùm này được minh họa trong Hình~\ref{fig:EX3_main}, với các tỷ lệ $IR$ khác nhau: (a) $1:10:10$, (b) $1:50:50$, và (c) $1:100:100$. 
@@ -2435,7 +2449,7 @@ Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số th�
 %		\includegraphics[width=\textwidth]{Fig/EX3_IR_100.eps}
 %		\caption{IR: $1:100:100$}
 %	\end{subfigure}
-%	\caption{Ba cụm hàm mật độ trong Ví dụ 2.}
+%	\caption{Ba chùm hàm mật độ trong Ví dụ 2.}
 %	\label{fig:EX3_main}
 %\end{figure}
 
@@ -2457,51 +2471,44 @@ Các thuật toán phân chùm hoạt động với nhiều công thức đo kh�
 	\centering
 	\scriptsize
 	\caption{So sánh các loại khoảng cách với các mức IR }
-	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llcccc@{\extracolsep\fill}}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
 		\toprule
-		\textbf{Khoảng cách} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ & $IR=70$ \\
-		\midrule
-		\multirow{5}{*}{$\mathcal{L}_1$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		\textbf{Khoảng cách} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ \\
 		\midrule
 		\multirow{5}{*}{$\mathcal{L}_2$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		& Sil  & -- & --  & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- &  -- & -- \\
+		& ARI  & -- & -- & -- \\
+		& NMI  & -- & -- & -- \\
 		\midrule
 		\multirow{5}{*}{Hellinger}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		& Sil  & -- & --  & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & --  & -- \\
+		& ARI  & -- & -- & -- \\
+		& NMI  & -- & -- &  -- \\
 		\midrule
 		\multirow{5}{*}{Bhattacharyya}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & --  \\
+		& DBI  & -- & -- & --  \\
+		& ARI  & -- & -- & -- \\
+		& NMI  & -- & -- & --  \\
 		\midrule
 		\multirow{5}{*}{Thông tin Kulback-Leibler}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		& Sil  & -- & -- & --  \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & -- \\
+		& NMI  & -- & -- & -- \\
 		\midrule
 		\multirow{5}{*}{Wasserstein-2}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
@@ -2519,75 +2526,105 @@ Các thuật toán phân chùm hoạt động với nhiều công thức đo kh�
 
 \subsubsection{c.\qquad  Kết quả các tham số mờ}
 
+
+
+
+
 \begin{table}[H]
 	\centering
 	\scriptsize
-	\caption{So sánh các tham số mờ $m$ với các mức IR }
-	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llcccc@{\extracolsep\fill}}
+	\caption{So sánh các tham số mờ $m$ với các mức IR}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
 		\toprule
-		\textbf{Tham số $m$} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ & $IR=70$ \\
+		\textbf{Tham số $m$} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ \\
 		\midrule
-		\multirow{5}{*}{$m=1.1$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		\multirow{5}{*}{$m=1,5$}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\midrule
-		\multirow{5}{*}{$m=1.5$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		\multirow{5}{*}{$m=2,0$}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\midrule
-		\multirow{5}{*}{$m=2$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		\multirow{5}{*}{$m=2,5$}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\midrule
-		\multirow{5}{*}{$m=2.5$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		\multirow{5}{*}{$m=3,0$}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\midrule
-		\multirow{5}{*}{$m=3$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
-		\midrule
-		\multirow{5}{*}{$m=5$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		\multirow{5}{*}{$m=5,0$}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\midrule
 		\multirow{5}{*}{$m=10$}
-		& Sil  & -- & -- & -- & -- \\
-		& DI   & -- & -- & -- & -- \\
-		& DBI  & -- & -- & -- & -- \\
-		& ARI  & -- & -- & -- & -- \\
-		& NMI  & -- & -- & -- & -- \\
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
 
 
 
+
+
+
+
+
+
 \subsubsection{d.\qquad  Kết quả các loại phân tích chùm}
 
 
-
-
-
-
+\begin{table}[H]
+	\centering
+	\scriptsize
+	\caption{So sánh các tham số mờ $m$ với các mức IR}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
+		\toprule
+		\textbf{Thuật toán} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ \\
+		\midrule
+		\multirow{5}{*}{Thuật toán IFCF (đề xuất)}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{Thuật toán FCF \cite{nguyentrang2017fuzzy}}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{Thuật toán KCF \cite{pham2019new}}
+		& Sil  & -- & -- & -- \\
+		& DI   & -- & -- & -- \\
+		& DBI  & -- & -- & -- \\
+		& ARI  & -- & -- & --  \\
+		& NMI  & -- & -- & -- \\
+		\bottomrule
+	\end{tabular*}
+\end{table}
 
 
 
@@ -2637,8 +2674,8 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 		2023 & Tai Vo-Van, Hieu Nguyen Thi Kim \& Dinh Pham-Toan \cite{vovan2023multi} & \\
 		2023 & Pavlů \textit{et al.} \cite{pavluu2023classification} & Nhúng hàm mật độ vào không gian Bayes, triển khai logistic hàm mật độ cho không gian này \\
 		2024 & Thu-Anh Nguyen-Tran, An Thien Ngoc Nguyen \& Dinh Pham-Toan\cite{tran2025novel}&\\
-		2025 & Tai Vo-Van \& Dinh Pham-Toan \cite{vo2024supervised} & \\
-		2025 & Tai Vo-Van \cite{vovan2025classifying} & \\
+		2025 & Tai Vo-Van \& Dinh Pham-Toan \cite{vo2024supervised} & Học đa lớp cho dữ liệu hàm mật độ bằng phương pháp Bayes cải tiến\\
+		2025 & Tai Vo-Van \cite{vovan2025classifying} & Cải thiện độ chính xác trong phân loại dữ liệu hình ảnh đa kênh màu bằng Bayes cải tiến \\
 		2025 & Tai Vo-Van \cite{vo2025developing} &  Phát triển phương pháp phân loại Bayes cải tiến bằng khoảng cách tương tự chùm, \\
 		\bottomrule
 	\end{tabular*}
@@ -2657,11 +2694,12 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 \section{Giới thiệu bài toán phân loại cho dữ liệu mất cân bằng}
 
 
+
+
+
 \subsection{Thuật toán}
 
-
-
-
+Thuật toán này gồm hai giai đoạn: trích xuất đặc trưng ảnh thành hàm mật độ xác suất, sau đó thiết lập nguyên tắc phân loại dựa vào Bayes. Giả sử có $c$ lớp $c_i$, trong đó nhóm $c_i$ chứa $n_j$ đối tượng hàm mật độ. Phân loại một hàm mật độ mới  $h(x)$ vào nhóm $c_i$ bằng quy tắc Bayes. Gán một phần tử mới vào một lớp nếu nó có xác suất hậu nghiệm đối với lớp đó là cao nhất, tức là $c_i = \arg \max_{1 \leq i \leq c} \left\{\mu_i \cdot D(h, \theta_i)\right\}.$ Trong đó, xác suất tiên nghiệm được tính bằng Thuật toán~\ref{alg:IFCF}, khoảng cách $D$ được chuẩn hóa trong khoảng $[0\,;1]$.
 
 
 
@@ -2878,6 +2916,7 @@ Khi đó, ma trận $P = (p_{ij}) \in \mathbb{R}^{M\times N}$ được diễn gi
 
 
 
+
 \subsection{Phương pháp thực hiện}
 \subsection{Kết quả thực hiện}
 
@@ -2946,17 +2985,12 @@ Tóm lại, các thuật toán phân tích chùm mang lại tiềm năng lớn t
 \chapter*{PHẦN KẾT LUẬN}\label{chapter_ketluan}
 \addcontentsline{toc}{chapter}{PHẦN KẾT LUẬN}
 
-\begin{itemize}
-	\item[--] Tổng kết các vấn đề đã thực hiện trong đề cương;
-	\item[--] Đánh giá những khó khăn, hạn chế của các mô hình về mặt lý thuyết và ứng dụng;
-	\item[--] Đưa ra những định hướng có thể phát triển trong tương lai
-\end{itemize}
-
 \section*{1\quad Kết luận}
 
-Trí tuệ nhân tạo là trọng tâm, là mũi đột phá chính của phát triển khoa học công nghệ, đổi mới sáng tạo và chuyển đổi số.
+Nhận dạng thống kê cho hàm mật độ xác suất là một chủ đề mới vì cho đến hiện tại các lý thuyết và ứng dụng của nó đều cần nhiều nỗ lực xây dựng.
 
 \section*{2\quad Định hướng nghiên cứu}
+
 
 
 
@@ -3401,6 +3435,24 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 	\end{algorithmic}
 \end{algorithm}
 
+\begin{algorithm}[H]
+	\footnotesize
+	\caption{Giải thuật phân tích chùm mờ cải tiến (IFCF)}
+	\label{alg:IFCF}
+	\begin{algorithmic}[1]
+		\Procedure{IFCF}{$c\,;\varepsilon$}\Comment{Cho trước số chùm $c$}
+		\State $t\gets0$
+		\State Khởi tạo ${\bm\mu}^{(t)}$ và $\Theta^{(t)}$ ngẫu nhiên và $\omega_i^{(t)} = \bm 0$
+		\While{$\Vert {\bm\mu}^{(t+1)} - {\bm\mu}^{(t)} \Vert<\varepsilon$}
+		\State $t \gets t+1$
+		\State Cập nhật $\Theta^{(t+1)}$ bằng Công thức~\eqref{eq:theta_update}
+		\State Cập nhật ${\bm\mu}^{(t+1)}$ bằng Công thức~\eqref{eq:ifcf_u_final} và \eqref{c1_pro}
+		\State Tính $\omega_i^{(t+1)} \gets \frac{1}{n}\sum_{j=1}^n \mu_{ij}^{(t+1)}$, \quad $1\le i\le c$
+		\EndWhile
+		\State \textbf{return} ${\bm\mu}$, $\Theta$, và $\bm\omega$.\Comment{Ma trận phân vùng, hàm mật độ đại diện, trọng số chùm}
+		\EndProcedure
+	\end{algorithmic}
+\end{algorithm}
 
 
 
