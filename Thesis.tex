@@ -1734,6 +1734,7 @@ Bảng~\ref{tab:in_clustering_summary} mô tả quá trình phát triển phươ
 		\midrule
 		2020 & Jen-Hao Chen \& Wen-Liang Hung \cite{chen2021jackknife} & Phân chùm cứng bằng jackknife Shannon entropy, điều chỉnh ngưỡng bằng tối đại VCC& hạt nhân Gauss $\mathcal{L}_1$ & $\checkmark$\\
 		2021 & Tavakkol, Behnam \& Son, Youngdoo \cite{tavakkol2021fuzzy} & Phân chùm mờ hạt nhân $k$-medoids cho dữ liệu hàm mật độ $2$-chiều, $m=2$, số chùm cho trước& hạt nhân Gauss $\mathcal{L}_1$& $\times$   \\
+		2024 & Okano Ryo \& Imaizumi Masaaki \cite{okano2024wasserstein} & Phân chùm cứng cho dữ liệu hàm mật độ &$W_2$ &$\times$   \\
 		\bottomrule
 	\end{tabular*}
 	\begin{flushleft}\it\footnotesize
@@ -1823,10 +1824,6 @@ Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ có
 	\centering
 	\includegraphics[width=0.6\linewidth]{ratio_C1_k.pdf}
 \end{figure}
-
-
-
-
 
 
 
@@ -2400,7 +2397,7 @@ Xét các cặp \((f_i\,; f_j)\), ta có các trường hợp
 
 
 Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số thực với hai chùm được giả định trước. Vai trò chính của dữ liệu nhân tạo này là đánh giá độ ổn định của thuật toán trong các kịch bản mất cân bằng nghiêm trọng khi $IR$ thay đổi từ $10$ đến $100$. $IR$ càng lớn thì sự chênh lệch giữa chùm $1$ và $2$ càng cao. Hình~\ref{fig:EX1_main} thể hiện rõ tác động của $IR$ lên phân bố dữ liệu. Khi $IR$ tăng ($1:10$, $1:50$, và $1:100$), chùm màu xanh trở nên dày đặc hơn, trong khi chùm màu đỏ giữ nguyên kích thước.
-}
+hơn}
 
 %\vdu{[Hàm Gauss-lệch, ba chùm]  Giả sử phân phối lệch-Gauss từ \url{http://azzalini.stat.unipd.it/SN/}. Hàm mật độ của phân phối lệch–Gauss được định nghĩa như sau.
 %\begin{align*}
@@ -2505,13 +2502,14 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 		\textbf{Năm} & \textbf{Tác giả} & \textbf{Mô tả phương pháp} \\
 		\midrule
 		2004 & Bi Jinbo \& Zhang Tong \cite{bi2004support} & Máy véc-tơ hỗ trợ với bất định đầu vào: giả sử nhiễu cộng $\Delta x_i$ bị chặn $|\Delta x_i|\le \delta_i$. Giải biên tồi nhất cho ra hinge-loss hiệu chỉnh; có thể kernel hoá. \\
-		2009 & Ren Jiangtao \textit{et al.} \cite{ren2009naive} & Naive Bayes cho dữ liệu bất định: ước lượng mật độ điều kiện lớp bằng kỳ vọng kernel trên PDF; ba biến thể AVG/SBC/FBC (FBC thường tốt nhất). \\
-		2009 & Tsang Smith \textit{et al.} \cite{tsang2009decision} & Cây quyết định, chia nút bằng entropy kỳ vọng từ các “tuple phân số” khi tách ngưỡng. \\
-		2023 & Tai Vo-Van, Hieu Nguyen Thi Kim \& Dinh Pham-Toan\cite{vovan2023multi} & \\
-		2010 & Ge Jiaqi, Xia Yuni \& Nadungodage Chandima \cite{ge2010unn} & Mạng thần kinh xử lý trực tiếp phân bố đầu vào, mở rộng MLP và tối ưu để tăng tốc. \\
+		2009 & Ren Jiangtao \textit{et al.} \cite{ren2009naive} & Naive Bayes cho dữ liệu bất định: ước lượng mật độ điều kiện lớp bằng kỳ vọng kernel trên hàm mật độ; ba biến thể AVG/SBC/FBC (FBC thường tốt nhất). \\
+		2009 & Tsang Smith \textit{et al.} \cite{tsang2009decision} & Cây quyết định, chia nút bằng entropy kỳ vọng từ các bộ ba phân số khi tách ngưỡng. \\
+		2023 & Tai Vo-Van, Hieu Nguyen Thi Kim \& Dinh Pham-Toan \cite{vovan2023multi} & \\
 		2023 & Pavlů \textit{et al.} \cite{pavluu2023classification} & Nhúng hàm mật độ vào không gian Bayes, triển khai logistic hàm mật độ cho không gian này \\
 		2024 & Thu-Anh Nguyen-Tran, An Thien Ngoc Nguyen \& Dinh Pham-Toan\cite{tran2025novel}&\\
 		2025 & Tai Vo-Van \& Dinh Pham-Toan \cite{vo2024supervised} & \\
+		2025 & Tai Vo-Van \cite{vovan2025classifying} & \\
+		2025 & Tai Vo-Van \cite{vo2025developing} &  Phát triển phương pháp phân loại Bayes cải tiến bằng khoảng cách tương tự chùm, \\
 		\bottomrule
 	\end{tabular*}
 	\begin{flushleft}\it\footnotesize
@@ -2530,6 +2528,15 @@ Phương pháp phân loại cho hàm mật độ xác suất là một bài toá
 
 
 \subsection{Thuật toán}
+
+
+
+
+
+
+
+
+
 
 
 
