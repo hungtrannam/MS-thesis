@@ -2168,7 +2168,10 @@ $D_H^2(f,\theta)=\tfrac{1}{2}\int \big(\sqrt{f(x)}-\sqrt{\theta(x)}\big)^2 \math
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{C2_hamtrongtam}
-	\caption{}
+	\begin{flushleft}
+		\it\footnotesize Ghi chú từng loại khoảng cách (a) $\mathcal{L}_2$, (b) Hellinger và (c) Wasserstein-2.
+	\end{flushleft}
+	\caption[Minh họa các công thức trọng tâm theo khoảng cách]{Minh họa các công thức trọng tâm theo khoảng cách}
 \end{figure}
 
 
@@ -2388,16 +2391,22 @@ Xét các cặp \((f_i\,; f_j)\), ta có các trường hợp
 	\begin{align*}
 		\begin{array}{clll}
 			\text{Chùm } 1: & f(x\,\vert \,\mu\,;\sigma^2)\sim \mathcal{N}(\mu_1\,;\sigma_1^2)\,; 
-			\text{với } \mu_1 \sim \mathcal{N}(-5.0\,;1.0^2)\,;\;\sigma_1 = 2.0,\\
+			\text{với } \mu_1 \sim \mathcal{N}(-5,0\,;1,0)\,;\;\sigma_1 = 2,0,\\
 			\text{Chùm } 2: & f(x\,\vert \,\mu\,;\sigma^2)\sim \mathcal{N}(\mu_2\,;\sigma_2^2)\,; 
-			\text{với } \mu_2 \sim \mathcal{N}(5.0\,;1.0^2)\,;\;\sigma_2 = 4.0.
+			\text{với } \mu_2 \sim \mathcal{N}(5,0\,;1,0)\,;\;\sigma_2 = 4,0.
 		\end{array}
 	\end{align*}
 
 
 
-Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số thực với hai chùm được giả định trước. Vai trò chính của dữ liệu nhân tạo này là đánh giá độ ổn định của thuật toán trong các kịch bản mất cân bằng nghiêm trọng khi $IR$ thay đổi từ $10$ đến $100$. $IR$ càng lớn thì sự chênh lệch giữa chùm $1$ và $2$ càng cao. Hình~\ref{fig:EX1_main} thể hiện rõ tác động của $IR$ lên phân bố dữ liệu. Khi $IR$ tăng ($1:10$, $1:50$, và $1:100$), chùm màu xanh trở nên dày đặc hơn, trong khi chùm màu đỏ giữ nguyên kích thước.
-hơn}
+Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số thực với hai chùm được giả định trước. Vai trò chính của dữ liệu nhân tạo này là đánh giá độ ổn định của thuật toán trong các kịch bản mất cân bằng nghiêm trọng khi $IR$ thay đổi từ $10$ đến $70$. $IR$ càng lớn thì sự chênh lệch giữa chùm $1$ và $2$ càng cao. Hình~\ref{fig:EX1_main} thể hiện rõ tác động của $IR$ lên phân bố dữ liệu. Khi $IR$ tăng ($1:10$, $1:50$, và $1:1400$), chùm màu xanh trở nên dày đặc hơn, trong khi chùm màu đỏ giữ nguyên kích thước.}
+
+
+
+
+
+
+
 
 %\vdu{[Hàm Gauss-lệch, ba chùm]  Giả sử phân phối lệch-Gauss từ \url{http://azzalini.stat.unipd.it/SN/}. Hàm mật độ của phân phối lệch–Gauss được định nghĩa như sau.
 %\begin{align*}
@@ -2442,12 +2451,133 @@ hơn}
 
 \subsubsection{b.\qquad Kết quả các loại khoảng cách}
 
+Các thuật toán phân chùm hoạt động với nhiều công thức đo khác nhau, bao gồm khoảng cách $\mathcal{L}_2$,  Hellinger, Bhattacharyya, và Wasserstein-2 (Bảng~\ref{tab1:KC_PDF}). Để bảo đảm tính công bằng, số chùm $c=2$, tham số mờ $m=2,0$, sai số hội tụ $\varepsilon=10^{-12}$, số vòng lặp tối đa $T_{\max}=200$ và phương pháp khởi tạo được cố định là $k$-mean++\index{$k$-mean++}. 
+
+\begin{table}[H]
+	\centering
+	\scriptsize
+	\caption{So sánh các loại khoảng cách với các mức IR }
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llcccc@{\extracolsep\fill}}
+		\toprule
+		\textbf{Khoảng cách} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ & $IR=70$ \\
+		\midrule
+		\multirow{5}{*}{$\mathcal{L}_1$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$\mathcal{L}_2$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{Hellinger}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{Bhattacharyya}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{Thông tin Kulback-Leibler}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{Wasserstein-2}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\bottomrule
+	\end{tabular*}
+\end{table}
+
+
+
+
+
+
+
+
 
 
 
 
 \subsubsection{c.\qquad  Kết quả các tham số mờ}
 
+\begin{table}[H]
+	\centering
+	\scriptsize
+	\caption{So sánh các tham số mờ $m$ với các mức IR }
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llcccc@{\extracolsep\fill}}
+		\toprule
+		\textbf{Tham số $m$} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ & $IR=70$ \\
+		\midrule
+		\multirow{5}{*}{$m=1.1$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$m=1.5$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$m=2$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$m=2.5$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$m=3$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$m=5$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\midrule
+		\multirow{5}{*}{$m=10$}
+		& Sil  & -- & -- & -- & -- \\
+		& DI   & -- & -- & -- & -- \\
+		& DBI  & -- & -- & -- & -- \\
+		& ARI  & -- & -- & -- & -- \\
+		& NMI  & -- & -- & -- & -- \\
+		\bottomrule
+	\end{tabular*}
+\end{table}
 
 
 
