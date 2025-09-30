@@ -2467,48 +2467,34 @@ Xét các cặp \((f_i\,; f_j)\), ta có các trường hợp
 
 Các thuật toán phân chùm hoạt động với nhiều công thức đo khác nhau, bao gồm khoảng cách $\mathcal{L}_2$,  Hellinger, Bhattacharyya, và Wasserstein-2 (Bảng~\ref{tab1:KC_PDF}). Để bảo đảm tính công bằng, số chùm $c=2$, tham số mờ $m=2,0$, sai số hội tụ $\varepsilon=10^{-12}$, số vòng lặp tối đa $T_{\max}=200$ và phương pháp khởi tạo được cố định là $k$-mean++\index{$k$-mean++}. 
 
+
 \begin{table}[H]
 	\centering
 	\scriptsize
-	\caption{So sánh các loại khoảng cách với các mức IR }
-	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
+	\caption{So sánh các loại khoảng cách với các mức IR}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccccc@{\extracolsep\fill}}
 		\toprule
-		\textbf{Khoảng cách} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ \\
+		\textbf{Khoảng cách} & \textbf{IR} & Sil & DI & DBI & ARI & NMI \\
 		\midrule
-		\multirow{5}{*}{$\mathcal{L}_2$}
-		& Sil  & -- & --  & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- &  -- & -- \\
-		& ARI  & -- & -- & -- \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{BC}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{Hellinger}
-		& Sil  & -- & --  & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & --  & -- \\
-		& ARI  & -- & -- & -- \\
-		& NMI  & -- & -- &  -- \\
+		\multirow{3}{*}{Hellinger}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{Bhattacharyya}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & --  \\
-		& DBI  & -- & -- & --  \\
-		& ARI  & -- & -- & -- \\
-		& NMI  & -- & -- & --  \\
+		\multirow{3}{*}{$\mathcal{L}_2$}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{Thông tin Kulback-Leibler}
-		& Sil  & -- & -- & --  \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & -- \\
-		& NMI  & -- & -- & -- \\
-		\midrule
-		\multirow{5}{*}{Wasserstein-2}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{W2}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
@@ -2529,56 +2515,48 @@ Các thuật toán phân chùm hoạt động với nhiều công thức đo kh�
 
 
 
-
 \begin{table}[H]
 	\centering
 	\scriptsize
-	\caption{So sánh các tham số mờ $m$ với các mức IR}
-	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
+	\caption{So sánh các mức Fuzziness với các giá trị IR}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccccc@{\extracolsep\fill}}
 		\toprule
-		\textbf{Tham số $m$} & \textbf{Chỉ số đánh giá} & $IR=10$ & $IR=30$ & $IR=50$ \\
+		\textbf{Tham số mờ} & \textbf{IR} & Sil & DI & DBI & ARI & NMI \\
 		\midrule
-		\multirow{5}{*}{$m=1,5$}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{1.1}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{$m=2,0$}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{1.5}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{$m=2,5$}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{2.0}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{$m=3,0$}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{2.5}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{$m=5,0$}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{3.0}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\midrule
-		\multirow{5}{*}{$m=10$}
-		& Sil  & -- & -- & -- \\
-		& DI   & -- & -- & -- \\
-		& DBI  & -- & -- & -- \\
-		& ARI  & -- & -- & --  \\
-		& NMI  & -- & -- & -- \\
+		\multirow{3}{*}{5.0}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		\midrule
+		\multirow{3}{*}{10.0}
+		& 10 & 0.65$\pm$0.00 & 0.90$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 30 & 0.62$\pm$0.00 & 0.87$\pm$0.00 & 0.49$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
+		& 50 & 0.62$\pm$0.00 & 0.83$\pm$0.00 & 0.54$\pm$0.00 & 1.00$\pm$0.00 & 1.00$\pm$0.00 \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
@@ -2908,8 +2886,49 @@ Khi đó, ma trận $P = (p_{ij}) \in \mathbb{R}^{M\times N}$ được diễn gi
 
 
 
+\vdu{\label{vdu:anh1}
+	Luận văn mô phỏng một tập dữ liệu ảnh mất cân bằng và định nghĩa trước hai chùm là sự khác biệt màu sắc của hai ảnh kết cấu. Hai ảnh gốc (kích thước $200\times 200$ pixel với $256$ mức xám) có cường độ nền khác nhau, $D83$ và $D102$. Những ảnh này được lấy từ cơ sở dữ liệu Kết cấu Brodatz tại \url{https://multibandtexture.recherche.usherbrooke.ca/original_brodatz.html} và được cắt ngẫu nhiên và phân bổ đều thành $64 \times 64$ ảnh. Sau đó, các ảnh được ghép lại thành một tập dữ liệu mất cân bằng với $IR$ dao động từ $10$ đến $70$.
+	
+	Hình~\ref{fig:EX2_main_img} minh họa một ảnh đã cắt và các hàm mật độ được trích xuất của nó. Khi xem xét Hình~\ref{fig:EX2_main}, chúng tôi nhận thấy thiếu sự khác biệt rõ ràng và nguy cơ mất cân bằng đáng kể trong tập dữ liệu. Chúng tôi nhận thức và chia nội dung của tập dữ liệu ảnh thành hai chùm do tính chất tiên nghiệm của nó ($D83$ và $D102$). Thách thức hiện tại là phân tích hình ảnh thành các chùm tương ứng một cách nhanh chóng.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{.4\linewidth}
+			\centering
+			\includegraphics[width=.8\textwidth]{D82.png}
+			\caption{$D83$}
+		\end{subfigure}
+		\begin{subfigure}[b]{.4\linewidth}
+			\centering
+			\includegraphics[width=.8\textwidth]{D102.png}
+			\caption{$D102$}
+		\end{subfigure}
+		\caption{Các hình ảnh được cắt từ tập dữ liệu Brodatz.}\label{fig:EX2_main_img}
+	\end{figure}
+	
+}
 
 
+\vdu{\label{vdu:anh2}
+Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy nguồn mất cân bằng ở cấp độ biển và đảo từ \url{https://oceancolor.gsfc.nasa.gov/}. Các bãi san hô nông, bãi cát nhỏ và các mảng thảm thực vật trên đảo bị áp đảo rất nhiều bởi các pixel ở vùng nước sâu. Độ lệch nghiêm trọng này đòi hỏi một thuật toán phân chùm mất cân bằng. Để phân đoạn ảnh này theo màu, trước tiên chúng tôi chuyển đổi ảnh thang độ xám và quét cửa sổ trượt các mảng $(p\times p)$ không chồng lấn từ trái sang phải, từ trên xuống dưới. Mỗi mảng giờ được làm phẳng thành một vectơ $(p\times p)$-pixel, hàm mật độ cường độ của nó được ước tính thông qua \texttt{ksdensity()}, và khối lập phương $(\text{patch}\times h\times\text{pdf})$ kết quả trên $3$-D được lưu trữ để phân chùm các mảng. Chiến lược này giữ lại các dấu hiệu đồng nhất địa phương và ngăn chặn việc ranh giới màu bị mờ. Ở đây, chúng tôi đặt kích thước khối màu bằng $4\times 4$.
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[h]{0.40\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Fig/Yam_Island.png}
+		\caption{Landsat Image}
+	\end{subfigure}\hfill\\
+	\begin{subfigure}[h]{0.47\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{Fig/APP_pdf}
+		\caption{Density of each pacthes ($4\times4$)}
+	\end{subfigure}\hfill\\
+	\caption{The real application image and its patches density function}
+\end{figure}
+
+}
 
 
 
@@ -2918,10 +2937,26 @@ Khi đó, ma trận $P = (p_{ij}) \in \mathbb{R}^{M\times N}$ được diễn gi
 
 
 \subsection{Phương pháp thực hiện}
+
+
+\subsubsection{a.\qquad Ví dụ~\ref{vdu:anh1}}
+
+Đối với Ví dụ
+
+
+
+\subsubsection{b.\qquad Ví  dụ~\ref{vdu:anh2}}
+
+
+
+
+
 \subsection{Kết quả thực hiện}
 
 
+\subsubsection{a.\qquad Ví dụ~\ref{vdu:anh1}}
 
+\subsubsection{b.\qquad Ví dụ~\ref{vdu:anh2}}
 
 
 
