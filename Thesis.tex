@@ -2895,12 +2895,12 @@ Khi đó, ma trận $P = (p_{ij}) \in \mathbb{R}^{M\times N}$ được diễn gi
 		\centering
 		\begin{subfigure}[b]{.4\linewidth}
 			\centering
-			\includegraphics[width=.8\textwidth]{D82.png}
+			\includegraphics[width=.6\textwidth]{D82.png}
 			\caption{$D83$}
 		\end{subfigure}
 		\begin{subfigure}[b]{.4\linewidth}
 			\centering
-			\includegraphics[width=.8\textwidth]{D102.png}
+			\includegraphics[width=.6\textwidth]{D102.png}
 			\caption{$D102$}
 		\end{subfigure}
 		\caption{Các hình ảnh được cắt từ tập dữ liệu Brodatz.}\label{fig:EX2_main_img}
@@ -2910,23 +2910,25 @@ Khi đó, ma trận $P = (p_{ij}) \in \mathbb{R}^{M\times N}$ được diễn gi
 
 
 \vdu{\label{vdu:anh2}
-Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy nguồn mất cân bằng ở cấp độ biển và đảo từ \url{https://oceancolor.gsfc.nasa.gov/}. Các bãi san hô nông, bãi cát nhỏ và các mảng thảm thực vật trên đảo bị áp đảo rất nhiều bởi các pixel ở vùng nước sâu. Độ lệch nghiêm trọng này đòi hỏi một thuật toán phân chùm mất cân bằng. Để phân đoạn ảnh này theo màu, trước tiên chúng tôi chuyển đổi ảnh thang độ xám và quét cửa sổ trượt các mảng $(p\times p)$ không chồng lấn từ trái sang phải, từ trên xuống dưới. Mỗi mảng giờ được làm phẳng thành một vectơ $(p\times p)$-pixel, hàm mật độ cường độ của nó được ước tính thông qua \texttt{ksdensity()}, và khối lập phương $(\text{patch}\times h\times\text{pdf})$ kết quả trên $3$-D được lưu trữ để phân chùm các mảng. Chiến lược này giữ lại các dấu hiệu đồng nhất địa phương và ngăn chặn việc ranh giới màu bị mờ. Ở đây, chúng tôi đặt kích thước khối màu bằng $4\times 4$.
-
+Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy nguồn mất cân bằng ở cấp độ biển và đảo từ \url{https://oceancolor.gsfc.nasa.gov/}. Các bãi san hô nông, bãi cát nhỏ và các mảng thảm thực vật trên đảo bị áp đảo rất nhiều bởi các pixel ở vùng nước sâu. Độ lệch nghiêm trọng này đòi hỏi một thuật toán phân chùm mất cân bằng.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[h]{0.40\textwidth}
+	\begin{subfigure}[h]{0.4\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Fig/Yam_Island.png}
-		\caption{Landsat Image}
-	\end{subfigure}\hfill\\
-	\begin{subfigure}[h]{0.47\textwidth}
+		\includegraphics[width=\linewidth]{Yam_Island.png}
+		\caption{Hình ảnh Landsat}
+	\end{subfigure}
+	\begin{subfigure}[h]{0.47\linewidth}
 		\centering
-		\includegraphics[width=\linewidth]{Fig/APP_pdf}
-		\caption{Density of each pacthes ($4\times4$)}
-	\end{subfigure}\hfill\\
-	\caption{The real application image and its patches density function}
+		\includegraphics[width=\linewidth]{APP_pdf}
+		\caption{Mật độ của các khối màu ($4\times4$)}
+	\end{subfigure}
+	\caption{Hình ảnh thực tế và các hàm mật độ xác suất trích xuất từ khối màu}
 \end{figure}
+
+Để phân đoạn hình ảnh này theo màu, trước tiên hình ảnh được chuyển đổi ảnh thang độ xám và quét cửa sổ trượt các mảng $(p\times p)$ không chồng lấn từ trái sang phải, từ trên xuống dưới. Mỗi mảng giờ được làm phẳng thành một véc-tơ $(p\times p)$-pixel, hàm mật độ cường độ của nó được ước tính thông qua hàm mật độ hạt nhân (Chương~\ref{chapter_1}, minh họa ở Hình~\ref{fig:kdepatchesdensity}), và khối lập phương $(\text{patch}\times h\times\text{pdf})$ kết quả trên $3$-D được lưu trữ để phân chùm các mảng. Ở đây, kích thước khối màu được đặt cố định là $4\times 4$.
+
 
 }
 
@@ -2939,14 +2941,22 @@ Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy n
 \subsection{Phương pháp thực hiện}
 
 
-\subsubsection{a.\qquad Ví dụ~\ref{vdu:anh1}}
 
-Đối với Ví dụ
+Để so sánh công bằng giữa các thuật toán được đề xuất, luận văn giới thiệu các thuật toán cơ sở bao gồm KCF \cite{nguyen2024new}, FCF theo CWD \cite{vovan2019cluster}, FCM theo $\mathcal{L}_1$ \cite{nguyentrang2017fuzzy} chuyên dùng để phân chùm các hàm mật độ. Bảng~\ref{tab:para} mô tả các tham số và cơ sở của phương pháp được đề xuất.
 
-
-
-\subsubsection{b.\qquad Ví  dụ~\ref{vdu:anh2}}
-
+\begin{table*}[h]
+	\centering\scriptsize
+	\caption{Cấu hình thuật toán phân chùm cho phân tích so sánh}\label{tab:para}
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lp{7cm}l@{\extracolsep\fill}}
+		\toprule
+		\textbf{Phương pháp} & \textbf{Mô tả} & \textbf{Tham số đầu vào} \\ \midrule
+		FCF-$\mathcal{L}_1$ \cite{nguyentrang2017fuzzy} & dựa trên $c$-means mờ truyền thống với $\mathcal{L}_1$ giữa hai hàm mật độ & $maxIter = 500\,, m=2\,, \varepsilon = 1\times 10^{-6}$ \\
+		FCF-$CWD$ \cite{vovan2019cluster} & dựa trên $c$-means mờ truyền thống $c$-means với khoảng cách độ rộng cụm giữa hai hàm mật độ & $maxIter = 500\,, m=2\,, \varepsilon = 1\times 10^{-6}$ \\
+		KCF \cite{nguyen2024new} &dựa trên $k$-means truyền thống với khoảng cách $\mathcal{L}_1$ giữa hai hàm mật độ & $maxIter = 500$ \\
+		IFCF (Đề xuất) & dựa trên $c$-means mờ  cải tiến cho hàm mật độ mất cân bằng & $maxIter = 500\,, m = 2\,, \varepsilon = 1\times 10^{-6}$ \\
+		\bottomrule
+	\end{tabular*}
+\end{table*}
 
 
 
@@ -2955,6 +2965,80 @@ Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy n
 
 
 \subsubsection{a.\qquad Ví dụ~\ref{vdu:anh1}}
+
+Theo kết quả phân vùng, các bảng của Hình~\ref{fig:U_ex3}(a)--Hình~\ref{fig:U_ex3}(d) hiển thị thành viên trên mỗi mẫu của từng thuật toán cụm (ngoại trừ FCM-$\mathcal {L}_1$) với $IR = 80$. Hình minh họa rằng chỉ có IFCF mới duy trì được độ sắc nét hoàn hảo, chứng minh một ngưỡng mất cân bằng chưa được ghi nhận, vượt quá ngưỡng này, các phương pháp dựa trên trọng tâm không thể duy trì các phân vùng đáng tin cậy.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.6\linewidth]{fig:U_ex3.pdf}
+	\caption{Ma trận phân vùng của các phương pháp tại $IR = 80$}
+	\label{fig:U_ex3}
+\end{figure}
+
+Hơn nữa, để đánh giá xác thực phân vùng, Bảng~\ref{tab:EX3_EVA} cho thấy IFCF đạt tốt nhất, có khả năng chống nhiễu cao nhất và duy trì hiệu suất tính toán tốt.
+
+Một mặt, FCM-CWD và FCM-$\mathcal {L}_1$ giống hệt nhau về mặt thống kê trên mọi phép đo, chứng tỏ rằng hiệu chỉnh khoảng cách không mang lại lợi ích đáng kể nào trong các môi trường mất cân bằng. Hơn nữa, KCF thể hiện sự sụt giảm chất lượng mạnh tại $IR\ge 80$, trong đó $ARI$ giảm mạnh từ $1,00$ xuống $0,02$ và Dunn giảm xuống $0,00$; Điều này cho thấy một ngưỡng nhiễu tới hạn, vượt quá ngưỡng này, các phương pháp trọng tâm cổ điển sẽ mất toàn bộ cấu trúc.
+Hơn nữa, SUP đạt được Silhouette $=1$ nhưng đồng thời tạo ra các giá trị Dunn dao động từ $6112$ tại $IR=20$ xuống $141$ tại $IR=80$, cho thấy tính đồng nhất nội bộ của chùm tốt. Tuy nhiên, phương pháp này chỉ ổn định trong $4$-$5$ lần lặp, nhưng sự thời gian chạy tăng tuyến tính ($>49$s tại $IR=100$) cho thấy sự không phù hợp giữa số lần lặp và hiệu quả tính toán thực tế.
+Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là hoạt động đồng thời trên cả năm tiêu chí $ARI=NMI=1,0$, Chỉ số Dunn khoảng $6,0$, Chỉ số Silhouette khoảng $0,99$, thời gian chạy $<0,11$ giây và hội tụ trong $5-10$ lần lặp trên các thiết lập cho trước. Điều này chứng minh rằng khả năng chống mất cân bằng, tính nhỏ gọn và khả năng mở rộng.
+
+\begin{table*}[h]\scriptsize
+	\caption{Comparison of state-of-the-art methods with varying IR (Example 3).}
+	\label{tab:EX3_EVA}
+	\centering
+	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llcccc@{\extracolsep\fill}}
+		\toprule
+		\textbf{Metric} & \textbf{IR} 
+		& \textbf{FCF-CWD} & \textbf{FCM}-$\mathcal{L}_1$
+		& KCF&  \textbf{IFCF} \\
+		\midrule
+		% --- ARI ---
+		\multirow{4}{*}{ARI}
+		&   20 & 0,12$\pm$0,19 & 0,12$\pm$0,19 & 1,00$\pm$0,00 & 1,00$\pm$0,00\\
+		&   50 & 0,01$\pm$0,00 & 0,01$\pm$0,00 & 1,00$\pm$0,00 & 1,00$\pm$0,00\\
+		&   80 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 0,02$\pm$0,00 & 1,00$\pm$0,00\\
+		&  100 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 0,02$\pm$0,00 & 1,00$\pm$0,00\\
+		\midrule
+		% --- NMI ---
+		\multirow{4}{*}{NMI}
+		&   20 & 0,14$\pm$0,12 & 0,14$\pm$0,12 & 1,00$\pm$0,00 & 1,00$\pm$0,00\\
+		&   50 & 0,04$\pm$0,00 & 0,04$\pm$0,00 & 1,00$\pm$0,00 & 1,00$\pm$0,00\\
+		&   80 & 0,03$\pm$0,00 & 0,03$\pm$0,00 & 0,04$\pm$0,00 & 1,00$\pm$0,00\\
+		&  100 & 0,02$\pm$0,00 & 0,02$\pm$0,00 & 0,03$\pm$0,00 & 1,00$\pm$0,00\\
+		\midrule
+		% --- Dunn ---
+		\multirow{4}{*}{Dunn}
+		&   20 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 6,31$\pm$0,00 & 6,31$\pm$0,00\\
+		&   50 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 7,66$\pm$0,00 & 7,66$\pm$0,00\\
+		&   80 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 6,68$\pm$0,00\\
+		&  100 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 0,00$\pm$0,00 & 5,80$\pm$0,00\\
+		\midrule
+		% --- Silhouette ---
+		\multirow{4}{*}{Silhouette}
+		&   20 & 0,41$\pm$0,29 & 0,41$\pm$0,28 & 0,99$\pm$0,00 & 0,99$\pm$0,00\\
+		&   50 & 0,19$\pm$0,01 & 0,19$\pm$0,01 & 0,99$\pm$0,00 & 0,99$\pm$0,00\\
+		&   80 & 0,23$\pm$0,00 & 0,23$\pm$0,00 & 0,34$\pm$0,00 & 0,99$\pm$0,00\\
+		&  100 & 0,25$\pm$0,00 & 0,25$\pm$0,00 & 0,36$\pm$0,00 & 0,99$\pm$0,00\\
+		\midrule
+		% --- Time ---
+		\multirow{4}{*}{Time}
+		&   20 & 0,01$\pm$0,01 & 0,01$\pm$0,01 & 0,01$\pm$0,00 & 0,02$\pm$0,00\\
+		&   50 & 0,03$\pm$0,01 & 0,02$\pm$0,01 & 0,04$\pm$0,02 & 0,04$\pm$0,02\\
+		&   80 & 0,03$\pm$0,01 & 0,02$\pm$0,01 & 0,06$\pm$0,02 & 0,07$\pm$0,00\\
+		&  100 & 0,04$\pm$0,02 & 0,03$\pm$0,02 & 0,07$\pm$0,03 & 0,11$\pm$0,02\\
+		\midrule
+		% --- Iterations ---
+		\multirow{4}{*}{Iterations}
+		&   20 & 8,00$\pm$5,00 & 8,00$\pm$5,00 & 3,50$\pm$1,00 & 5,00$\pm$1,00\\
+		&   50 & 9,50$\pm$7,00 & 9,50$\pm$7,00 & 12,00$\pm$5,00 & 7,00$\pm$1,00\\
+		&   80 & 7,00$\pm$3,00 & 7,00$\pm$3,00 & 14,00$\pm$4,00 & 9,00$\pm$1,00\\
+		&  100 & 7,00$\pm$3,00 & 7,00$\pm$3,00 & 11,00$\pm$3,00 & 10,00$\pm$1,00\\
+		\bottomrule
+	\end{tabular*}
+\end{table*}
+
+
+
+
 
 \subsubsection{b.\qquad Ví dụ~\ref{vdu:anh2}}
 
