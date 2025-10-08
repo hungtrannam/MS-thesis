@@ -9,7 +9,7 @@
 
 
 % ====== CÀI ĐẶT LỀ TRANG ======
-\usepackage[top=3cm,bottom=2cm,right=2cm,left=2cm,headheight=30pt]{geometry} % Cài đặt lề văn bản và chiều cao phần đầu trang
+\usepackage[top=2cm,bottom=2cm,right=2cm,left=3cm,headheight=30pt]{geometry} % Cài đặt lề văn bản và chiều cao phần đầu trang
 
 % ====== GÓI DANH SÁCH ======
 \usepackage{enumerate} % Tạo danh sách đánh số
@@ -71,6 +71,7 @@
 \linespread{1.2} % Giãn dòng
 \setlength{\parskip}{\baselineskip} % Khoảng cách giữa các đoạn
 \usepackage[skip=10pt plus1pt, indent=1cm]{parskip} % Tùy chỉnh cách đoạn và thụt đầu dòng
+\usepackage{setspace}
 
 % ====== TỪ VIẾT TẮT & THUẬT NGỮ ======
 %\usepackage[abbreviations,symbols,nogroupskip]{glossaries-extra} % Tạo danh sách thuật ngữ
@@ -233,33 +234,42 @@
 
 
 			%%%%%%%%%%% DANH MỤC NỘI DUNG %%%%%%%%%%%%
-	\tableofcontents % Mục lục
+
+
+{\begin{spacing}{1.}
+		\tableofcontents
+
+
+
 		\listoftables % Danh sách bảng
 	\addcontentsline{toc}{chapter}{\numberline{DANH SÁCH BẢNG}}%
 	\listoffigures % Danh sách hình
 	\addcontentsline{toc}{chapter}{\numberline{DANH SÁCH HÌNH VẼ}}%
 %	\listofalgorithms % Danh sách giải thuật
 %		\addcontentsline{toc}{chapter}{\numberline{DANH SÁCH GIẢI THUẬT}}%
+\end{spacing}
+}
 
 			%%%%%%%%%%% DANH MỤC  KÝ HIỆU TOÁN HỌC %%%%%%%%%%%%
 	\newpage
+	\vspace*{50pt} % khoảng cách phía trên
 	\begin{center}
-	{\fontsize{14}{0pt}\selectfont\bf DANH SÁCH KÝ HIỆU TOÁN HỌC\footnote{Các ký hiệu đã được thống nhất, các ký hiệu khác sẽ được làm rõ trong luận văn}}
+	{\fontsize{14}{0pt}\selectfont\bf DANH SÁCH KÝ HIỆU TOÁN HỌC}
+		\end{center}
+	\vspace{20pt}  % khoảng cách phía dưới tiêu đề
 	\addcontentsline{toc}{chapter}{\numberline{DANH SÁCH KÝ HIỆU TOÁN HỌC}}%
-\end{center}
-\vspace{50pt}
 
 
 \begin{table}[H]
 	\centering\footnotesize
 	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}}
 		\toprule
-		\bf Ký hiệu                                                   & \bf Mô tả                                                   \\ \midrule
+		\bf Ký hiệu                                                  & \bf Mô tả                                                   \\ \midrule
 		$X\,;Y\,;Z\,;S$                                               & Biến ngẫu nhiên                                             \\
 		$Y$                                                           & Tập nhãn của dữ liệu (đối với bài toán phân loại)           \\
 		$ \bm D\,; \bm U\,; \bm U^\intercal $                         & Ma trận, ma trận chuyển vị                                  \\
 		$ \mathcal{F}\,;\mathcal{G}\,; \mathcal{H}\,; \mathcal{P}\,;\mathcal{Q} $   & Tập hợp                                                     \\
-		$\#\mathcal{F}$                                               & Lực lượng của tập hợp $\mathcal{F}$                         \\
+		$\#\mathcal{F}\,,\#c$                                               & Lực lượng của tập hợp $\mathcal{F}$, số phần tử của chùm $c$                         \\
 		$\mathbb{R}\,;\mathbb{R}_{>0}\,;\mathbb{N}\,;\mathbb{N}_{>0}$ & Số thực, số thực dương, số tự nhiên, số tự nhiên dương      \\
 		$\mathbb{E}(\cdot)$                                           & Kỳ vọng của biến ngẫu nhiên                                 \\
 		$\mathrm{Var}(\cdot)$                                         & Phương sai của biến ngẫu nhiên                              \\
@@ -272,16 +282,22 @@
 		$\mathcal{L}(\cdot)$ & Hàm L'Arange \\
 		$\langle \cdot\,;\cdot\rangle$ & Tích trong của hai ma trận \\\bottomrule
 	\end{tabular*}
+	\begin{flushleft}
+		\it\footnotesize
+		Các ký hiệu đã được thống nhất, các ký hiệu khác sẽ được làm rõ trong luận văn
+	\end{flushleft}
 \end{table}
 
 
 			%%%%%%%%%%% DANH MỤC TỪ VIẾT TẮT%%%%%%%%%%%%
-		\newpage
-		\begin{center}
-		{\fontsize{14}{0pt}\selectfont\bf DANH SÁCH TỪ VIẾT TẮT}
-		\addcontentsline{toc}{chapter}{\numberline{DANH SÁCH TỪ VIẾT TẮT}}%
-	\end{center}
-	\vspace{50pt}
+\newpage
+\vspace*{50pt} % khoảng cách phía trên
+\begin{center}
+	{\fontsize{14}{0pt}\selectfont\bf DANH SÁCH TỪ VIẾT TẮT}
+\end{center}
+\vspace{20pt}  % khoảng cách phía dưới tiêu đề
+\addcontentsline{toc}{chapter}{\numberline{}DANH SÁCH TỪ VIẾT TẮT}
+
 
 
 \begin{table}[H]
@@ -313,14 +329,14 @@
 
 \section*{1\quad Lý do chọn đề tài}\addcontentsline{toc}{section}{1\qquad Lý do chọn đề tài}
 
- Nghiên cứu -- phát triển các nguyên tắc và ứng dụng hệ thống thông minh nhân tạo (AI)\index{thông minh nhân tạo (AI)} là yếu tố then chốt nhằm thúc đẩy tăng trưởng kinh tế bền vững ở các quốc gia \citep{belhadi2024artificial,act2023artificial}. Với khả năng ứng dụng đa ngành -- đa chiều, AI không chỉ cải thiện năng suất lao động mà còn mở ra nhiều cơ hội việc làm, góp phần xây dựng nền kinh tế số \cite{mollema2024ai}, nâng cao tiện ích, thu nhập và chất lượng cuộc sống \citep{dey2024artificial}. Trong sự phát triển của AI, nhận dạng thống kê được xem là một trong những kiến thức nền~tảng nhằm phát triển các AI dự đoán hiện nay.
+ Nghiên cứu -- phát triển các nguyên tắc và ứng dụng hệ thống thông minh nhân tạo (AI)\index{thông minh nhân tạo (AI)} là yếu tố then chốt nhằm thúc đẩy tăng trưởng kinh tế bền vững ở các quốc gia \citep{belhadi2024artificial,act2023artificial}. Với khả năng ứng dụng đa ngành -- đa chiều, AI không chỉ cải thiện năng suất lao động mà còn mở ra nhiều cơ hội việc làm, góp phần xây dựng nền kinh tế số \cite{mollema2024ai}, nâng cao tiện ích, thu nhập, và chất lượng cuộc sống \citep{dey2024artificial}. Trong sự phát triển của AI dự đoán, nhận dạng thống kê được xem là một trong những kiến thức nền~tảng.
 
 
-Nhận dạng thống kê gồm có hai bài toán chính: nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} và không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)} \citep{Bishop:DeepLearning24,theodoridis2006pattern}. Nhận dạng không được giám sát là việc chia dữ liệu thành các chùm sao cho các phần tử trong cùng một chùm có sự tương tự nhiều hơn so với các phần tử bên ngoài chùm đó \citep{bezdek1984fcm,macqueen1967some}. Do đó, nó còn được gọi là bài toán phân tích chùm. Phân tích chùm là cơ sở của việc lưu trữ, trích xuất và xử lý dữ liệu lớn nên được rất nhiều nhà thống kê và công nghệ thông tin quan tâm.  Nhận dạng được giám sát là việc xếp một phần tử vào một nhóm trong các nhóm đã biết một cách thích hợp \cite{Bishop:DeepLearning24,webb2003statistical}. Do đó, nó còn được gọi là bài toán phân loại. Phân loại đã và đang được áp dụng trong nhiều lĩnh vực khác nhau. Chẳng hạn, trong y tế hoạt động chẩn đoán bệnh của các bác sĩ xem một người có bệnh hay không có bệnh B, loại nào trong bệnh B thực chất là thực hiện bài toán phân loại. Trong lĩnh vực xã hội và an ninh, việc nhận dạng khuôn mặt, chữ ký, dấu vân tay,\ldots cũng chính là thực hiện bài toán phân loại.
+Nhận dạng thống kê giải quyết hai bài toán chính bao gồm nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} và không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)} \citep{Bishop:DeepLearning24,theodoridis2006pattern}. Nhận dạng không được giám sát là việc chia dữ liệu thành các nhóm sao cho các phần tử trong cùng một nhóm đó có sự tương tự nhiều hơn so với các phần tử bên ngoài nhóm \citep{bezdek1984fcm,macqueen1967some}. Do đó, nó còn được gọi là bài toán phân tích chùm. Phân tích chùm là cơ sở của việc lưu trữ, trích xuất và xử lý dữ liệu lớn nên được rất nhiều nhà thống kê và công nghệ thông tin quan tâm.  Nhận dạng được giám sát là việc xếp một phần tử vào một lớp trong các lớp đã biết một cách thích hợp \cite{Bishop:DeepLearning24,webb2003statistical}. Do đó, nó còn được gọi là bài toán phân loại. Phân loại đã và đang được áp dụng trong nhiều lĩnh vực khác nhau. Chẳng hạn, trong y tế hoạt động chẩn đoán bệnh của các bác sĩ xem một người có bệnh hay không có bệnh B, loại nào trong bệnh B thực chất là thực hiện bài toán phân loại. Trong lĩnh vực xã hội và an ninh, việc nhận dạng khuôn mặt, chữ ký, dấu vân tay của một người cũng chính là thực hiện bài toán phân loại.
 
-Dữ liệu cho nhận dạng thống kê có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất. Nhận dạng thống kê cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu rất nhiều \citep{zha2023data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu này đã được đề xuất và phát triển. Khi dữ liệu lớn và phức tạp như hình ảnh, đối tượng hình ảnh có thể được xem là một hàm mật độ xác suất trong một số phương pháp biểu diễn \citep{nguyen2024new}, do đó nhận dạng thống kê cho hàm mật độ xác suất được đề xuất. 
+Dữ liệu cho nhận dạng thống kê có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất. Nhận dạng thống kê cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu tiên phong \citep{zha2023data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu khoảng đã được đề xuất và phát triển \cite{maia2011holt}. Khi dữ liệu lớn và phức tạp như hình ảnh, đối tượng hình ảnh có thể được xem là một hàm mật độ xác suất trong một số phương pháp biểu diễn \citep{nguyen2024new}, do đó nhận dạng thống kê cho hàm mật độ xác suất được đề xuất. 
 
-Xét về số lượng phần tử trong các nhóm, dữ liệu có thể được gọi là mất cân bằng và không mất cân bằng. Khi số lượng phần tử của các nhóm không có sự chênh lệch nhiều thì nó được gọi là không mất cân bằng. Trong nhận dạng dữ liệu của thực tế, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng.  Đó là kiểu dữ liệu mà một nhóm hoặc một số ít nhóm có số lượng phần tử quá nhỏ so với các nhóm còn lại \citep{hu2024gat}. Khi một mô hình nhận dạng phải đối mặt với chênh lệch lớn về số lượng mẫu, nó dễ dàng bị thiên lệch về lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các mẫu của lớp thiểu số \citep{nguyen2009learning}. Chẳng hạn, trong tầm soát  ung thư, ca bị bệnh có thể ít hơn 1000 lần so với trường hợp không bị bệnh \citep{tang2008svms}. Khi đó các thuật toán nhận dạng  truyền thống sẽ không phát huy hiệu quả vì nó có xu hướng thiên vị lớp đa số mà bỏ qua lớp thiểu số. Trong trường hợp này, độ chính xác của các lớp thiểu số là quan trọng hơn \citep{hu2024gat}, bởi vì việc tầm soát sai người mắc ung thư là khỏe mạnh gây ra tổn thất tính mạng lớn hơn nhiều so với sai lầm ngược lại. 
+Xét về số lượng phần tử trong các nhóm/lớp, dữ liệu có thể được gọi là mất cân bằng và không mất cân bằng. Khi số lượng phần tử của các nhóm/lớp không có sự chênh lệch nhiều thì nó được gọi là không mất cân bằng. Tuy nhiên, trong nhận dạng dữ liệu của thực tế, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng.  Đó là kiểu dữ liệu có một hoặc một số ít nhóm/lớp chứa số lượng phần tử quá nhỏ so với các nhóm còn lại \citep{hu2024gat}. Chẳng hạn, trong tầm soát  ung thư, ca bị bệnh có thể ít hơn 1000 lần so với trường hợp không bị bệnh \citep{tang2008svms}. Trong trường hợp này, độ chính xác của các nhóm/lớp thiểu số là quan trọng hơn \citep{hu2024gat}, bởi vì việc tầm soát sai người mắc ung thư là khỏe mạnh gây ra tổn thất tính mạng lớn hơn nhiều so với tầm soát sai người không mắc. Trong khi đó, mô hình nhận dạng phải đối mặt với chênh lệch lớn về số lượng mẫu, nó dễ dàng bị thiên lệch về nhóm/lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các mẫu thiểu số \citep{nguyen2009learning}. Tức là, các thuật toán nhận dạng  truyền thống sẽ không phát huy hiệu quả.
 
 Nhận dạng thống kê cho dữ liệu mất cân bằng với các phần tử rời rạc đã được quan tâm trong những năm gần đây. Tuy nhiên với dữ liệu hàm mật độ xác suất hầu như chưa được xem xét. Từ sự phân tích trên, đề tài {\bf ``Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu hình ảnh''} được chọn làm luận văn tốt nghiệp. 
 
@@ -393,12 +409,12 @@ Tương tự, ta mở rộng biến ngẫu nhiên $d$-chiều cho véc-tơ  ${\b
 $P(x) = P\{\omega\,:\,X(\omega)\le x\}\,; \forall x \in\mathbb{R}.$
 }
 
-\tch{Phân phối $P$ thỏa các tính chất sau.
+\tch{Phân phối $P$ thỏa các tính chất sau
 \begin{enumerate}
-    \item $P$ không giảm,
-    \item $\lim_{x\to\infty} P(x)= 1$ và $\lim_{x\to-\infty} P(x)= 0$,
-    \item $P$ liên tục phải, tức là $\lim_{x\downarrow y }P(y) = P(x)$,
-    \item Nếu  $P(x_-) = \lim_{y\uparrow x} P(y)$ thì $P(x_-) = \mathbb{P}(X < x)$,
+    \item $P$ không giảm,  tức là nếu $s_1\le s_2$ thì $P(s_1)\le P(s_2)$;
+    \item $\lim_{x\to\infty} P(x)= 1$ và $\lim_{x\to-\infty} P(x)= 0$;
+    \item $P$ liên tục phải, tức là $\lim_{x\downarrow y }P(y) = P(x)$;
+    \item Nếu  $P(x_-) = \lim_{y\uparrow x} P(y)$ thì $P(x_-) = \mathbb{P}(X < x)$;
     \item $\mathbb{P}(X=x)=P(x)-P(x_-)$.
 \end{enumerate}
 }
@@ -406,16 +422,15 @@ $P(x) = P\{\omega\,:\,X(\omega)\le x\}\,; \forall x \in\mathbb{R}.$
 \dng{[Hàm phân vị]\label{dng:hamphanvi}
 	Cho phân phối $P$ trên $\mathbb{R}$, hàm phân vị\index{hàm phân vị (quantile function)} $F^{-1}\,:\,[0\,;1]\to\mathbb{R}$ được định nghĩa bởi
 	$
-	F^{-1}(s) = \inf \{ x \in \mathbb{R} \,:\, P(x) \geq s \}\,; s \in [0\,;1].
-	$
+	F^{-1}(s) = \inf \{ x \in \mathbb{R} \,:\, P(x) \geq s \}$, với  $s \in [0\,;1]$.
 }
 
-\tch{Hàm phân vị $F^{-1}$ thỏa các tính chất sau.
+\tch{Hàm phân vị $F^{-1}$ thỏa các tính chất sau
 	\begin{enumerate}
-		\item $F^{-1}$ không giảm: nếu $s_1 \leq s_2$ thì $F^{-1}(s_1) \leq F^{-1}(s_2)$,
-		\item Nếu $P$ liên tục, $P(F^{-1}(s)) = s$ và $F^{-1}(P(x)) = x$,
+		\item $F^{-1}$ không giảm, tức là nếu $s_1 \leq s_2$ thì $F^{-1}(s_1) \leq F^{-1}(s_2)$;
+		\item Nếu $P$ liên tục, $P(F^{-1}(s)) = s$ và $F^{-1}(P(x)) = x$;
 		\item Kỳ vọng và phương sai được biểu diễn qua $F^{-1}$ dưới công thức
-		$ \mathbb{E}(X)=\int^1_0 F^{-1}(s)\mathrm{\,d}s$ và $\mathrm{Var}(X) = \mathbb{E}(X^2) - \mathbb{E}^2(X),$
+		$ \mathbb{E}(X)=\int^1_0 F^{-1}(s)\mathrm{\,d}s$ và $\mathrm{Var}(X) = \mathbb{E}^2\left(X-\mathbb{E}(X)\right)$;
 		\item Nếu $P$ đối xứng quanh $\mu$, ta có quan hệ đối xứng $ F^{-1}(1-s)=2\mu -F^{-1}(s)$.
 	\end{enumerate}
 }
@@ -434,13 +449,13 @@ Họ các hàm phân phối $P: \mathbb{R}^d \to [0\,;\infty]$ là liên tục t
 
 }
 
-\tch{Hàm mật độ thỏa mãn các tính chất sau.\label{tc1}
+\tch{\label{tc1} Hàm mật độ thỏa mãn các tính chất sau
 \begin{enumerate}
-    \item Hàm mật độ xác suất liên tục $f(x)$ là hàm không âm, $f(x)\ge0\,; \forall x\in\Omega$,
-    \item Tích phân $f(x)$ trên toàn miền $\Omega$ bằng $1$,
+    \item Hàm mật độ xác suất liên tục $f(x)$ là hàm không âm, $f(x)\ge0\,; \forall x\in\Omega$;
+    \item Tích phân $f(x)$ trên toàn miền $\Omega$ bằng $1$;
     \item Xác suất trên tập con Borel $A \subseteq \Omega$ được tính bằng tích phân $
     \mathbb{P}(X \in A) = \int_A f(x) \,\mathrm{d}x
-    $,
+    $;
     \item Công thức xác suất trong tập Borel thực $$\mathbb{P}(a<x<b) = \mathbb{P}(a<x\le b) = \mathbb{P}(a\le x<b) = \mathbb{P}(a\le x \le b)=\int_a^b f(x)\mathrm{\,d}x.$$
 \end{enumerate}
 }
@@ -448,14 +463,14 @@ Họ các hàm phân phối $P: \mathbb{R}^d \to [0\,;\infty]$ là liên tục t
 
 
 \chy{
-Các hàm phân phối $P$, và phân vị $F^{-1}$ đều không bảo toàn trong không gian véc-tơ Hilbert. Các giá trị của mật độ xác suất liên tục thì có thể tùy ý, nhưng phải thỏa mãn Tính chất \ref{tc1}. Một xác suất tại điểm $x=x_0$ không được khảo sát trong hàm mật độ liên tục tuyệt đối mà ở một tập Borel thực như Tính chất \ref{tc1}.(3). Tức là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục.
+Các hàm phân phối $P$, và phân vị $F^{-1}$ đều không bảo toàn trong không gian véc-tơ Hilbert\index{không gian véc-tơ Hilbert (Hilbert vector space)}. Các giá trị của mật độ xác suất liên tục thì có thể tùy ý, nhưng phải thỏa mãn Tính chất \ref{tc1}. Một xác suất tại điểm $x=x_0$ không được khảo sát trong hàm mật độ liên tục tuyệt đối mà ở một tập Borel thực như Tính chất \ref{tc1}.(3). Tức là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục. Ta có thể tổng quát hóa tập các hàm mật độ thành không gian con lồi của $\mathcal{L}^1(\Omega)$ và đóng trong tô-pô chuẩn $\mathcal{F}(\Omega) = \left\{f\,:\,\Omega\to \mathbb{R}^+\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$V
 }
 
 
 
 
 
-Ta có thể tổng quát hóa tập các hàm mật độ thành không gian con lồi của $\mathcal{L}^1(\Omega)$ và đóng trong tô-pô chuẩn $\mathcal{F}(\Omega) = \left\{f\,:\,\Omega\to \mathbb{R}^+\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$
+
 
 
 
@@ -469,15 +484,15 @@ $
 
 
 
-\dng{Với các đối tượng hàm mật độ, toán tử tổng và tích có hướng được thay thế bởi phép nhân điểm\index{phép nhân điểm (point-wise product)} và lũy thừa. Tức là, $(f\oplus g)(x)=f(x)g(x)$ và $(\alpha\odot f)(x) = f^{\alpha}(x)$, với $\alpha\in\mathbb{R}$.}
+\dng{Với các đối tượng hàm mật độ trong khoảng $I\ne0$, toán tử tổng và tích có hướng được thay thế bởi phép nhân điểm\index{phép nhân điểm (point-wise product)} và lũy thừa. Tức là, $$(f\oplus g)(x)=\frac{f(x)g(x)}{\int_I f(\xi)g(\xi)\mathrm{\,d}\xi}\,, \text{ và }(\alpha\odot f)(x) = \frac{f^{\alpha}(x)}{\int_I f^{\alpha}(\xi)\mathrm{\,d}\xi}\}\,, \text{ với }\alpha\in\mathbb{R}.$$}
 
 \dng{[Dữ liệu hàm mật độ $1$-chiều]\label{dng:data1}
-Dữ liệu hàm mật độ là một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,;o_2\,;\ldots\,;o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,;u_j]$ là khoảng xác định của $o_j$ và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
+Dữ liệu hàm mật độ là một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,;o_2\,;\ldots\,;o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,;u_j]$ là khoảng xác định của $o_j$, và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
 $$\int_{x\in I_j}f_j(x)\mathrm{\,d}x=1, \text{ và } \int_{x \in\mathbb{R}\setminus I_j}f_j(x)\mathrm{\,d}x=0. $$
 }
 
 \dng{[Dữ liệu hàm mật độ $d$-chiều]\label{dng:datad}
-Dữ liệu hàm mật độ $d$-chiều là một bộ đối tượng không chắc chắn $\bm o$ có dạng $(\bm o_1\,;\bm o_2\,;\ldots\,;\bm o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $\bm o_j$ chứa một cặp $(\bm  R_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $\bm R_j=[l_1\,;u_1]\times\cdots\times [l_d\,;u_d]\subseteq \mathbb{R}^d$ là vùng xác định $d$-chiều của $o_j$ và $f\,:\,\mathbb{R}^d\to\mathbb{R}^{d+}$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $\bm x\in \bm R_j$ sao cho 
+Dữ liệu hàm mật độ $d$-chiều là một bộ đối tượng không chắc chắn $\bm o$ có dạng $(\bm o_1\,;\bm o_2\,;\ldots\,;\bm o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $\bm o_j$ chứa một cặp $(\bm  R_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $\bm R_j=[l_1\,;u_1]\times\cdots\times [l_d\,;u_d]\subseteq \mathbb{R}^d$ là vùng xác định $d$-chiều của $o_j$, và $f\,:\,\mathbb{R}^d\to\mathbb{R}^{d+}$ là hàm mật độ xác suất xếp các giá trị xác suất vào mỗi $\bm x\in \bm R_j$ sao cho 
 $$\int_{\bm x\in \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=1, \text{ và } \int_{x \in\mathbb{R}\setminus \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=0. $$
 }
 
@@ -493,20 +508,21 @@ Hàm mật độ xác suất cụ thể được nghiên cứu bởi các nhà k
 
 
 \dng{[Hàm mật độ Gauss]\label{dng:Gauss}
-		Biến ngẫu nhiên liên tục $X$ tuân theo mật độ Gauss (chuẩn) với hai tham số $\mu$ và $\sigma^2$ (trong đó $\mu\in\mathbb{R}$ và $\sigma^2\in\mathbb{R}_{>0}$) nếu nó có hàm mật độ xác suất là
+		Biến ngẫu nhiên liên tục $X$ tuân theo mật độ Gauss (chuẩn) với hai tham số $\mu$ và $\sigma^2$ (trong đó $\mu\in\mathbb{R}$, và $\sigma^2\in\mathbb{R}_{>0}$) nếu nó có hàm mật độ xác suất là
 		$$ \mathcal{N}(x\,;\,\mu\,,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),\, x \in \mathbb{R}.	 $$
 	}
 
-	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất Gauss là $\mathbb{E}(X) = \mu\,, \mathrm{Var}(X) = \sigma^2$.
+	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất Gauss lần lượt là $\mathbb{E}(X) = \mu$, và  $\mathrm{Var}(X) = \sigma^2$.
 }
 
 
-Hàm mật độ Gauss có dáng điệu hình cong đối xứng và miền xác định khắp không gian. Đặc trưng kỳ vọng $\bm\mu$ chính là giá trị cực đại và xác định vị trí của hàm mật độ, đặc trưng phương sai $\bm\Sigma$ thể hiện độ phân tán hay độ cao của hàm, phương sai càng nhỏ thì hàm mật độ càng cao và hẹp. Thông thường, dữ liệu rời rạc thường được biến đổi thành dữ liệu hàm mật độ qua biểu diễn của hàm mật độ Gauss (khi ước lượng tham số) hoặc nhân-Gauss (khi ước lượng phi tham số). Hơn hết, định lý giới hạn trung tâm chứng minh tổng các biến ngẫu nhiên độc lập có phân phối xấp xỉ Gauss.
+Hàm mật độ Gauss có dáng điệu hình cong đối xứng và miền xác định khắp không gian. Đặc trưng kỳ vọng chính là giá trị cực đại và xác định vị trí của hàm mật độ. Đặc trưng phương sai thể hiện độ phân tán hay độ cao của hàm. Giá trị của nó càng nhỏ thì hàm mật độ càng cao và hẹp. Thông thường, dữ liệu rời rạc thường được biến đổi thành dữ liệu hàm mật độ qua biểu diễn của hàm mật độ Gauss (khi ước lượng tham số) hoặc nhân-Gauss (khi ước lượng phi tham số). Hơn hết, định lý giới hạn trung tâm chứng minh tổng các biến ngẫu nhiên độc lập có phân phối xấp xỉ Gauss. Ta cũng thành lập được công thức tính xác suất khi $X\sim\mathcal{N}(\mu\,;\sigma^2)$ là $\mathbb{P}(a<X<b)=\varphi\left(\frac{b-\mu}{\sigma}\right)-\varphi\left(\frac{a-\mu}{\sigma}\right)$.
+
 
 \bode{[Tổng hai hàm mật độ Gauss]\label{ble:sum-Gauss}
-	Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2)$ và $X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2)$. Khi đó tổng $S = X_1 \pm X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
+	Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\mu_1\,; \sigma_1^2)$ và $X_2 \sim \mathcal{N}(\mu_2\,;  \sigma_2^2)$. Khi đó $S = X_1 \pm X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
 	$
-	S \sim \mathcal{N}(\mu_1 \pm \mu_2,\, \sigma_1^2 + \sigma_2^2).
+	S \sim \mathcal{N}(\mu_1 \pm \mu_2\,;  \sigma_1^2 + \sigma_2^2).
 	$
 }
 
@@ -520,7 +536,7 @@ Hàm mật độ Gauss có dáng điệu hình cong đối xứng và miền xá
 \chm{
 	Xét tích phân 
 	\begin{align*}
-		I &= \int_{-\infty}^{\infty} \mathcal{N}(x\,;\,\mu_1\,;\sigma_1^2) \cdot \mathcal{N}(x\,;\,\mu_2\,;\sigma_2^2)\,\mathrm{d}x =\int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{(x - \mu_1)^2}{2\sigma_1^2} - \frac{(x - \mu_2)^2}{2\sigma_2^2}\right)\,\mathrm{d}x\\
+		&\int_{-\infty}^{\infty} \mathcal{N}(x\,;\,\mu_1\,;\sigma_1^2) \cdot \mathcal{N}(x\,;\,\mu_2\,;\sigma_2^2)\,\mathrm{d}x\\ &=\int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{(x - \mu_1)^2}{2\sigma_1^2} - \frac{(x - \mu_2)^2}{2\sigma_2^2}\right)\,\mathrm{d}x\\
 		&= \int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{1}{2} \underbrace{\left(\frac{1}{\sigma_1^2} + \frac{1}{\sigma_2^2} \right)}_{\coloneq1/\sigma^2} x^2 
 		+ \underbrace{\left( \frac{\mu_1}{\sigma_1^2} + \frac{\mu_2}{\sigma_2^2} \right)}_{\coloneq\mu} x - \frac{\mu_1^2}{2\sigma_1^2} - \frac{\mu_2^2}{2\sigma_2^2}
 		\right)\,\mathrm{d}x\\
@@ -535,19 +551,18 @@ Từ đây, ta suy ra được điều phải chứng minh.
 
 \dng{[Hàm mật độ Gauss $d$-chiều]
 		Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo mật độ Gauss (chuẩn) với hai tham số ${\bm\mu}$ và $\bm\Sigma$ (trong đó ${\bm\mu}\in\mathbb{R}^d$ và $\bm\Sigma$ thuộc đa tạp của ma trận đối xứng xác định dương) nếu nó có hàm mật độ xác suất là
-		$$ \mathcal{N}(\bm x\,;\,{\bm\mu}\,;{\bm\Sigma}) = \frac{1}{(2\pi)^{d/2}|{\bm\Sigma}|^{1/2}}\exp\left(-\frac{1}{2}(\bm x-{\bm\mu})^\intercal{\bm\Sigma}^{-1}(\bm x-{\bm\mu})\right),\,\bm x \in \mathbb{R}^d,	 $$
+		$$ \mathcal{N}(\bm x\,;\,{\bm\mu}\,;{\bm\Sigma}) = \frac{1}{(2\pi)^{d/2}|{\bm\Sigma}|^{1/2}}\exp\left(-\frac{1}{2}(\bm x-{\bm\mu})^\intercal{\bm\Sigma}^{-1}(\bm x-{\bm\mu})\right)\,,\bm x \in \mathbb{R}^d,	 $$
 		trong đó, $|\bm\Sigma|$ là định thức của ma trận hiệp phương sai.
 	}
 	
 		
-	\dly{[Kỳ vọng và hiệp phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $\bm X$ có hàm mật độ xác suất Gauss là $\mathbb{E}(\bm{X})= \bm{\mu}\,,
-		\mathrm{Cov}(\bm{X}) = \bm{\Sigma}.$
+	\dly{[Kỳ vọng và hiệp phương sai] Véc-tơ kỳ vọng và ma trận hiệp phương sai của biến ngẫu nhiên  $\bm X$ có hàm mật độ xác suất Gauss lần lượt là $\mathbb{E}(\bm{X})= \bm{\mu}$, và $\mathrm{Cov}(\bm{X}) = \bm{\Sigma}$.
 	}
 	
 		\bode{[Tổng hai hàm mật độ Gauss $d$-chiều]\label{ble:sum-Gaussdimension}
-		Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\bm\mu_1\,; \bm\Sigma_1)$ và $X_2 \sim \mathcal{N}(\bm\mu_2\,; \bm\Sigma_2)$. Khi đó tổng $S = X_1 + X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
+		Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\bm\mu_1\,; \bm\Sigma_1)$ và $X_2 \sim \mathcal{N}(\bm\mu_2\,; \bm\Sigma_2)$. Khi đó $S = X_1 \pm X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
 		$
-		S \sim \mathcal{N}(\bm\mu_1 + \bm\mu_2\,; \bm\Sigma_1 + \bm\Sigma_2).
+		S \sim \mathcal{N}(\bm\mu_1 \pm \bm\mu_2\,; \bm\Sigma_1 + \bm\Sigma_2).
 		$
 	}
 	
@@ -568,9 +583,9 @@ Từ đây, ta suy ra được điều phải chứng minh.
 	
 
 	
-\chy{	Hàm mật độ $h(x)$ của tổng $S=X+Y$ hai biến ngẫu nhiên độc lập là kết quả của tích chập giữa các hàm mật độ tương ứng, tức là $h(x)=f_X(x) \oplus g_Y(x)$.
-	
-	}
+%\chy{	Hàm mật độ $h(x)$ của tổng $S=X+Y$ hai biến ngẫu nhiên độc lập là kết quả của tích chập giữa các hàm mật độ tương ứng, tức là $h(x)=f_X(x) \oplus g_Y(x)$.
+%	
+%	}
 
 	
 %	
@@ -590,16 +605,15 @@ Từ đây, ta suy ra được điều phải chứng minh.
 
 Ngoài ra, các phát triển bất đối xứng của Gauss điển hình là hàm Gauss-lệch \cite{azzalini1985class}. với hàm mật độ của nó được định nghĩa như sau.
 \dng{[Hàm mật độ Gauss-lệch]
-	Biến ngẫu nhiên liên tục $X$ tuân theo mật độ Gauss-lệch (chuẩn-lệch) \cite{azzalini1985class} với ba tham số $\mu$, $\sigma^2$ và $\alpha$ (trong đó $\mu\,,\alpha\in\mathbb{R}$ và $\sigma^2\in\mathbb{R}_{>0}$) nếu nó có hàm mật độ xác suất là
+	Biến ngẫu nhiên liên tục $X$ tuân theo mật độ Gauss-lệch (chuẩn-lệch) \cite{azzalini1985class} với ba tham số $\mu$, $\sigma^2$, và $\alpha$ (trong đó $\mu\,,\alpha\in\mathbb{R}$, và $\sigma^2\in\mathbb{R}_{>0}$) nếu nó có hàm mật độ xác suất là
 	$$ \mathcal{SN}(x\,;\,\mu\,,\sigma^2\,,\alpha) = \frac{2}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\int^{\alpha(x-\mu)/\sigma}_{-\infty}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{t^2}{2}\right)\mathrm{\,d}t,\, x \in \mathbb{R}.	 $$
 }
 
 Hàm mật độ Gauss-lệch nhận thêm một tham số thể hiện mức độ lệch $\alpha$. Khi giá trị $\alpha$ càng lớn, độ lệch so với kỳ vọng $\mu$ càng lớn. Khi $\alpha = 0$, phân phối này trở về Gauss như Định nghĩa~\ref{dng:Gauss}.
 
-\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất Gauss-lệch là 
-	$	\mathbb{E}(X) = \mu + \sigma \delta \sqrt{\frac{2}{\pi}}\,;
-		\mathrm{Var}(X) = \sigma^2 \left(1 - \frac{2 \delta^2}{\pi}\right)
-		$, với $\delta=\frac{\alpha}{\sqrt{1 + \alpha^2}}$ nằm trong $(-1\,;1)$.
+\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất Gauss-lệch lần lượt là 
+	$	\mathbb{E}(X) = \mu + \sigma \delta \sqrt{\frac{2}{\pi}}$, và $\mathrm{Var}(X) = \sigma^2 \left(1 - \frac{2 \delta^2}{\pi}\right)
+		$, với $\delta=\frac{\alpha}{\sqrt{1 + \alpha^2}}$ nằm trong khoảng $(-1\,;1)$.
 }
 
 
@@ -608,9 +622,9 @@ Hàm mật độ Gauss-lệch nhận thêm một tham số thể hiện mức đ
 
 
 \dng{[Hàm mật độ đều]
-	Biến ngẫu nhiên liên tục $X$ tuân theo phân phối đều trên đoạn $[l\,;u]$ (với $l < u$ và $l\,, u \in \mathbb{R}$) nếu nó có hàm mật độ xác suất là
+	Biến ngẫu nhiên liên tục $X$ tuân theo phân phối đều trên đoạn $[l\,;u]$ (với $l < u$, và $l\,, u \in \mathbb{R}$) nếu nó có hàm mật độ xác suất là
 	$$
-	\mathcal	U(x\,;\,l\,; u) =
+	\mathcal	U(x\,;\,l\,, u) =
 	\begin{cases}
 		\frac{1}{u- l}, & x \in [l\,; u], \\
 		0, & x\notin [l\,;u].
@@ -618,13 +632,13 @@ Hàm mật độ Gauss-lệch nhận thêm một tham số thể hiện mức đ
 	$$
 }
 
-	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất đều là $\mathbb{E}(X) = \frac{l + u}{2}\,; \mathrm{Var}(X) = \frac{(u- l)^2}{12}$.
+	\dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có hàm mật độ xác suất đều lầ  lượt là $\mathbb{E}(X) = \frac{l + u}{2}$, và $\mathrm{Var}(X) = \frac{(u- l)^2}{12}$.
 }
 
 \dng{[Hàm mật độ đều $d$-chiều]
-	Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo phân phối đều trên hình hộp $[l_1\,; u_1] \times \cdots \times [l_d\,; u_d]$ (với $l_i < u_i$, $l_i\,; u_i \in \mathbb{R}$) nếu nó có hàm mật độ xác suất là
+	Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo phân phối đều trên hình hộp $[l_1\,; u_1] \times \cdots \times [l_d\,; u_d]$ (với $l_i < u_i$, và $l_i\,, u_i \in \mathbb{R}$) nếu nó có hàm mật độ xác suất là
 	$$
-	\mathcal	U(\bm x\,;\,\bm l\,; \bm u) =
+	\mathcal	U(\bm x\,;\,\bm l\,, \bm u) =
 	\begin{cases}
 		\prod_{i=1}^d \frac{1}{u_i -l_i}, & \bm x \in [l_1\,; u_1] \times \cdots \times [l_d\,; u_d], \\
 		0, & \text{ngược lại}.
@@ -632,14 +646,14 @@ Hàm mật độ Gauss-lệch nhận thêm một tham số thể hiện mức đ
 	$$
 }
 
-	\dly{[Kỳ vọng và hiệp phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $\bm X$ có hàm mật độ xác suất đều là $\mathbb{E}(\bm X) = \frac{\bm{l} + \bm{u}}{2}\,; \mathrm{Cov}(\bm X) = \mathrm{diag}\left(\frac{(u_1 - l_1)^2}{12}, \dots, \frac{(u_d - l_d)^2}{12}\right)$.
+	\dly{[Kỳ vọng và hiệp phương sai] Véc-tơ kỳ vọng và ma trận hiệp phương sai của biến ngẫu nhiên $\bm X$ có hàm mật độ xác suất đều lần lượt là $\mathbb{E}(\bm X) = \frac{\bm{l} + \bm{u}}{2}$, và $\mathrm{Cov}(\bm X) = \mathrm{diag}\left(\frac{(u_1 - l_1)^2}{12}, \dots, \frac{(u_d - l_d)^2}{12}\right)$.
 }
 
 \section{Một số hàm mật độ bổ sung}
 Gần đây, các thuật toán phân tích chùm dựa vào trọng tâm đề xuất bổ sung hàm mật độ xác suất trọng tâm (hay hàm mật độ đại diện của chùm) \cite{nguyentrang2017fuzzy,vovan2019cluster}. Nó có chức năng như trung bình có trọng số của tổng các hàm mật độ trong chùm.
 
 \dng{[Hàm mật độ đại diện chùm]
-    Cho tập $\mathcal{F}$ gồm $n$-hàm mật độ xác suất với $n\ge 2$. Ta phân bổ $\mathcal{F}$ vào $c$-chùm $(1<c\le n)$, khi này hàm mật độ đại diện của các chùm $c_i$ là 
+    Cho tập $\mathcal{F}$ gồm $n$-hàm mật độ xác suất với $n\ge 2$. Ta phân bổ $\mathcal{F}$ vào $c$-chùm, với $1<c\le n$. Khi này, hàm mật độ đại diện của các chùm $c_i$ là 
     \begin{align}\label{daidien}
         \theta_i(x) = \frac{\sum_{j=1}^n\mu_{ij}\times f_j(x)}{\sum_{j=1}^n\mu_{ij}},
     \end{align}
@@ -649,7 +663,7 @@ Gần đây, các thuật toán phân tích chùm dựa vào trọng tâm đề 
 
 
 
-Dựa vào định nghĩa trên, ta dễ dàng nhận được $\theta_i$ cũng là một hàm mật độ thỏa Tính chất~\ref{tc1}. 
+Dựa vào định nghĩa trên, ta dễ dàng nhận được $\theta_i$ cũng là một hàm mật độ (Tính chất~\ref{tc1}). 
 \chm{Các giá trị trọng số $0\le\mu_{ij}\le1$ nên các $\theta_i$ liên tục không âm, và 
 $$\int_{\Omega}\theta_i(x)\mathrm{\,d}x=\int_{\Omega}\frac{\sum_{j=1}^n\mu_{ij}\times f_j(x)}{\sum_{j=1}^n\mu_{ij}}\mathrm{\,d}x = \frac{\sum_{j=1}^n\mu_{ij}\times \int_{\Omega}f_j(x)\mathrm{\,d}x }{\sum_{j=1}^n\mu_{ij}} = 1.$$}
 
@@ -668,29 +682,30 @@ $$\int_{\Omega}\theta_i(x)\mathrm{\,d}x=\int_{\Omega}\frac{\sum_{j=1}^n\mu_{ij}\
 }
 
 
-Ta cũng mở rộng được cho hàm mật độ đại diện chùm đến không gian $d$-chiều tương tự cho véc-tơ ngẫu nhiên $\bm X$ và nó cũng thỏa mãn các tính chất của một hàm mật độ xác suất. Mới đây, Thao Nguyen-Trang \textit{et al.} \cite{nguyen2023globally,nguyen2023balance} đề xuất hàm mật độ đại diện Gauss như là một phiên bản Gauss hóa của hàm Fréchet \cite{frechet1948elements}. 
+Ta cũng mở rộng được cho hàm mật độ đại diện chùm đến không gian $d$-chiều tương tự cho véc-tơ ngẫu nhiên $\bm X$, và nó cũng thỏa mãn các tính chất của một hàm mật độ xác suất. Mới đây, Thao Nguyen-Trang \textit{et al.} \cite{nguyen2023globally,nguyen2023balance} đề xuất hàm mật độ đại diện Gauss như là một phiên bản Gauss hóa của hàm Fréchet \cite{frechet1948elements}. 
 
 \dng{[Hàm mật độ đại diện Gauss] Hàm mật độ đại diện Gauss có dạng phân phối chuẩn sao cho tổng khoảng cách giữa chúng đến các hàm mật độ khác là nhỏ nhất \cite{frechet1948elements}, tức là
 $$\theta_i(x) = \arg\min_{\mathcal{N}(\mu\,;\sigma)}\sum_{j=1}^n\mu_{ij}D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x)).$$
-trong đó, $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa hai hàm mật độ Gauss trong tổng thể. 
+trong đó, $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa hai hàm mật độ Gauss đến tất cả các hàm mật độ $f_j(x)$ trong tổng thể. 
 }
 
 
 
-\chy{	 Hàm mật độ đại diện Gauss là hàm trung bình Fréchet nên có nghiệm duy nhất \cite{frechet1948elements}. Khác với \eqref{daidien}, hàm mật độ này chỉ cần tìm một hàm Gauss duy nhất mà không cần tổ hợp các $f_j$ giúp tăng khả năng khái quát hóa. Ta cũng có phương sai Fréchet $\mathrm{Var}_j(X)=\mathbb{E}(D^2(\mathcal{N}(\mu\,;\sigma)\,;f_j(x)))$.
+\chy{	 Hàm mật độ đại diện Gauss là hàm trung bình Fréchet nên có nghiệm duy nhất \cite{frechet1948elements}. Khác với Công thức~\eqref{daidien}, hàm mật độ này chỉ cần tìm một hàm Gauss duy nhất mà không cần tổ hợp các $f_j$ giúp tăng khả năng khái quát hóa. Ta cũng có phương sai Fréchet $\mathrm{Var}_j(X)=\mathbb{E}(D^2(\mathcal{N}(\mu\,;\sigma)\,;f_j(x)))$.
 	}
 	
+	
  
- Hình \ref{fig:hamdaidien} minh họa cụ thể hai cách biểu diễn hàm mật độ đại diện trong cùng một chùm hàm Gauss. Dễ thấy sự khác biệt, hàm mật độ đại diện tập trung vào phân bổ trung bình của nó tại các chùm, còn hàm mật độ đại diện Gauss lựa chọn vị trí dựa vào khoảng cách các hàm mật độ với nhau. 
+ Hình \ref{fig:hamdaidien} minh họa cụ thể hai cách biểu diễn hàm mật độ đại diện trong cùng một chùm hàm Gauss. Dễ thấy sự khác biệt, hàm mật độ đại diện tập trung vào phân bổ trung bình của nó tại các chùm, còn hàm mật độ đại diện Gauss lựa chọn vị trí dựa vào khoảng cách các hàm mật độ với nhau. Tóm lại, hàm đại diện có chức năng là hàm mật độ kỳ vọng của các tổng thể khác nhau.
 
 \begin{figure}[H]
 	\centering
 	    \includegraphics[width=.8\linewidth]{Figs/C1_hamdaidien.pdf}
-	    \begin{flushleft}
-	    	\it\footnotesize Chú thích: Hàm mật độ đại diện thể hiện bằng đường thẳng in đậm cho ba hàm Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$, và (b) dựa vào vị trí tối ưu. Ta có thể nói hàm mật độ đại diện này là kỳ vọng của các tổng thể khác nhau. Nguồn: Minh họa của tác giả.
-	    \end{flushleft}
 	\caption{Minh họa hai hàm mật độ xác suất đại diện một chùm hàm mật độ $\mathcal{F}$.}
 	\label{fig:hamdaidien}
+		    \begin{flushleft}
+		\it\footnotesize Chú thích: Hàm mật độ đại diện thể hiện bằng đường thẳng in đậm cho ba hàm Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$, và (b) dựa vào vị trí tối ưu với khoảng cách $\mathcal{L}_2$. Nguồn: Minh họa của tác giả.
+	\end{flushleft}
 \end{figure}
 
 
@@ -700,39 +715,16 @@ trong đó, $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa ha
 
 Trong thực tế, ta cần phải ước lượng hàm mật độ xác suất dựa vào dữ liệu rời rạc, luận văn này sử dụng phương pháp ước lượng hàm hạt nhân để chuyển từ bài toán rời rạc sang hàm mật độ xác suất.
 \dng{[Ước lượng hàm mật độ bằng phương pháp hàm hạt nhân]
-	Giả sử ta có một tập dữ liệu rời rạc gồm $n$ quan sát ${\bm{x}_j}$ với $j = 1, \ldots, n$ trong không gian $\mathbb{R}^d$. Mỗi điểm $\bm{x}_j = (x_{1j}, x_{2j}, \ldots, x_{dj})^\intercal$. Hàm mật độ xác suất tại điểm $\bm{x} = (x_1, x_2, \ldots, x_d)^\intercal$ được ước lượng bằng phương pháp hạt nhân bởi
+	Giả sử ta có một tập dữ liệu rời rạc gồm $n$ quan sát ${\bm{x}_j}$, với $j = 1\,; \ldots\,;  n$ trong không gian $\mathbb{R}^d$. Mỗi điểm $\bm{x}_j = (x_{1j}\,;  x_{2j}\,;  \ldots\,;  x_{dj})^\intercal$. Khi đó, hàm mật độ xác suất $\widehat f(\bm{x})$ tại điểm $\bm{x} = (x_1\,;  x_2\,;  \ldots\,;  x_d)^\intercal$ được ước lượng bằng phương pháp hạt nhân bởi công thức
 	\[
-	\hat{f}(\bm{x}) = \frac{1}{n \prod_{i=1}^d {bw}_i} \displaystyle\sum_{j=1}^{n} \displaystyle\prod_{i=1}^{d} \kappa_i\left( \frac{x_i - x_{ij}}{{bw}_i} \right),
+	\widehat{f}(\bm{x}) = \frac{1}{n \prod_{i=1}^d {bw}_i} \displaystyle\sum_{j=1}^{n} \displaystyle\prod_{i=1}^{d} \kappa_i\left( \frac{x_i - x_{ij}}{{bw}_i} \right),
 	\]
-	trong đó $\kappa_i$ là hàm hạt nhân theo chiều $i$ có tính chất $\kappa(\cdot) \ge 0$ và $\int \kappa(z)\mathrm{d}z = 1$, tham số ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
+	trong đó $\kappa_i$ là hàm hạt nhân theo chiều thứ $i$ có tính chất $\kappa(\cdot) \ge 0$ và $\int \kappa(z)\mathrm{d}z = 1$, và tham số ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
 }
 
-\chy{Khi tham số trơn $bw$ nhỏ, hàm mật độ ước lượng sẽ kém trơn và có thể dao động mạnh; ngược lại, nếu $bw$ lớn thì hàm trở nên trơn hơn nhưng có thể làm mất chi tiết quan trọng của phân phối gốc. Trong trường hợp đơn giản, có thể chọn cùng một hàm hạt nhân và cùng một tham số trơn cho tất cả các chiều, tức là $\kappa_i \equiv \kappa$ và ${bw}_i = {bw}$ với mọi $i=1,\ldots,d$. 
+\chy{Khi tham số trơn $bw$ nhỏ, hàm mật độ ước lượng sẽ kém trơn và có thể dao động mạnh. Ngược lại, nếu $bw$ lớn thì hàm trở nên trơn hơn nhưng có thể làm mất chi tiết quan trọng của phân phối gốc. Trong trường hợp đơn giản, có thể chọn cùng một hàm hạt nhân và cùng một tham số trơn cho tất cả các chiều, tức là $\kappa_i \equiv \kappa$ và ${bw}_i = {bw}$ với mọi $i=1,\ldots,d$. }
 	
-	Một số hàm hạt nhân phổ biến được liệt kê trong Bảng~\ref{tab:kernel}. Luận văn này khảo sát hàm mật độ ước lượng từ hàm hạt nhân Gauss và Epanechnikov với tham số trơn cố định và được tính bởi công thức của Silverman, $bw = 1.06 \times \mathrm{Var}(x_j) \times n^{-1/5}$.
-
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.48\textwidth}
-			\includegraphics[width=\linewidth]{Figs/C1_kde_kernels.pdf}
-			\caption{}
-	\end{subfigure}
-		\begin{subfigure}{.48\textwidth}
-		\includegraphics[width=\linewidth]{Figs/C1_kde_bw.pdf}
-		\caption{}
-	\end{subfigure}
-	\caption{So sánh các hàm hạt nhân và hệ số trơn trong ước lượng mật độ xác suất}
-	\label{fig:kde}
-		\begin{flushleft}
-		\it\footnotesize
-		Chú thích: Vùng xám là phân phối thực tế $X\sim 0,3\mathcal{N}(0\,;1) + 0,7\mathcal{N}(5\,;1)$, (a) các hàm hạt nhân ảnh hưởng đến khả năng khớp với hàm mật độ thực tế, trong khi (b) tham số trơn ảnh hưởng đến mức độ khớp. Nguồn: Minh họa của tác giả.
-	\end{flushleft}
-\end{figure}
-}
-
-
-
+	Một số công thức hàm hạt nhân phổ biến được liệt kê trong Bảng~\ref{tab:kernel}. Luận văn này khảo sát hàm mật độ ước lượng từ hàm hạt nhân Gauss với tham số trơn cố định và được tính bởi công thức của Silverman cho bởi Công thức $bw = 1.06 \times \mathrm{Var}(x_j) \times n^{-1/5}$.
 
 
 \begin{table}[H]
@@ -762,8 +754,25 @@ Trong thực tế, ta cần phải ước lượng hàm mật độ xác suất 
 	\end{tabular*}
 \end{table}
 
+Hình~\ref{fig:kde}(a) so sánh các hàm hạt nhân khác nhau. Cùng tham số trơn $bw=1$, hàm Gauss cho đường trơn, còn hàm logistic dao động yếu, và hàm Epanechnikov nổi bật rõ đỉnh. Hình~\ref{fig:kde}(b) giữ cố định nhân Gauss và thay băng thông. Rõ ràng, $bw$ nhỏ hơn làm đồ thị nhọn và chi tiết hơn, và ngược lại.
 
-
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.48\textwidth}
+		\includegraphics[width=\linewidth]{Figs/C1_kde_kernels.pdf}
+		\caption{}
+	\end{subfigure}
+	\begin{subfigure}{.48\textwidth}
+		\includegraphics[width=\linewidth]{Figs/C1_kde_bw.pdf}
+		\caption{}
+	\end{subfigure}
+	\caption{So sánh các hàm hạt nhân và hệ số trơn trong ước lượng mật độ xác suất}
+	\label{fig:kde}
+	\begin{flushleft}
+		\it\footnotesize
+		Chú thích: Vùng xám là phân phối thực tế $X\sim 0,3\mathcal{N}(0\,;1) + 0,7\mathcal{N}(5\,;1)$, Đường đen là minh họa của (a) các hàm hạt nhân với tham số trơn $bw=1$, ảnh hưởng đến khả năng khớp với hàm mật độ thực tế, và (b) tham số trơn với hàm hạt nhân Gauss, ảnh hưởng đến mức độ khớp. Nguồn: Minh họa của tác giả.
+	\end{flushleft}
+\end{figure}
 
 
 
@@ -781,13 +790,10 @@ Khoảng cách là độ đo xa-gần các vật thể. Ở đây, khái niệm 
  \dng{[Khoảng cách $\mathcal L_p$]\label{D} Cho hai hàm mật độ xác suất $f_1\,, f_2$ trên $\mathbb R^d$. Khoảng cách $\mathcal{L}_p$ được định nghĩa là\[ \mathcal L_p(f,g)=\left(\int_{\mathbb R^d}|f_1(x)-f_2(x)|^p\,\mathrm{d}x\right)^{\!1/p}\,, 1\le p<\infty .\]
 }
 	
-	Theo Định nghĩa \ref{D}, khoảng cách giữa hai hàm mật độ thỏa mãn các tiên đề của mê-tríc. Thực tế, ta thường sử dụng $p=1$ hoặc $p=2$ cho các tính toán. Trong lý thuyết thống kê và thông tin, một mê-tríc được gọi là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}. Ta cũng có mối quan hệ giữa hai hàm mật độ đối mới trọng tâm bất kỳ trong mê-tríc.
-
+	Theo Định nghĩa \ref{D}, khoảng cách giữa hai hàm mật độ thỏa mãn các tiên đề của mê-tríc. Trong lý thuyết thống kê và thông tin, một mê-tríc được gọi là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}. Thực tế, ta thường sử dụng $p=1$ hoặc $p=2$ cho các tính toán. Ta cũng có mối quan hệ giữa hai hàm mật độ đối mới trọng tâm bất kỳ trong mê-tríc. 
 	
-	
-	
-	\bode{[Bất đẳng thức tam giác]
-		Với mọi $f_j, f_k \in c_i$ và trọng tâm chùm $\theta_i$ có khoảng cách là mê-tríc, ta có bất đẳng thức tam giác $D(f_j, f_k) \leq D(f_j, \theta_i) + D(f_k, \theta_i).$
+		\bode{[Bất đẳng thức tam giác]\label{bode:bdttg}
+		Với mọi $f_j, f_k \in c_i$ trong không gian khoảng cách mê-tríc, và trọng tâm chùm $\theta_i$, ta có bất đẳng thức tam giác $D(f_j, f_k) \leq D(f_j, \theta_i) + D(f_k, \theta_i).$
 	}
 	
 		Tai Vo-Van (2019) \cite{vovan2019cluster} dựa trên khoảng cách $\mathcal L_p$ để giới thiệu độ rộng chùm.
@@ -796,7 +802,7 @@ Khoảng cách là độ đo xa-gần các vật thể. Ở đây, khái niệm 
 	
 
 \dng{[$f$-phân kỳ] Hàm $D\,:\,P_1\times P_2\rightarrow \mathbb{R}$ được gọi là $f$-phân kỳ của hai hàm mật độ $f_1\in P_1$ và $f_2\in P_2$ khi nó thỏa hệ số phân kỳ giữa hai xác suất \cite{ali1966general}
-$$D(P_1, P_2) = h \left(\mathbb{E}_1 \left(g \left( \frac{f_2}{f_1} \right) \right) \right),$$
+$$D(P_1\,; P_2) = h \left(\mathbb{E}_1 \left(g \left( \frac{f_2}{f_1} \right) \right) \right),$$
 	trong đó $g$ là một hàm liên tục lồi trên $\mathbb{R}_{>0}$, $h$ là hàm tăng trên $\mathbb{R}$, và $\mathbb{E}_1$ là kỳ vọng của  $P_1$.
 	} 
 
@@ -819,15 +825,16 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 	Bayes	Error &$1-\displaystyle\int_{\Omega} \min\{\pi f_1(x)\,;\pi(1-f_2(x))\}\mathrm{\,d}x$ &$-\min\{u\,;1-u\}$ & $u+1$ & $[0\,;1]$ \\
 		\bottomrule
 	\end{tabular*}
-	\\\hfill {\footnotesize Trong khoảng cách Chernoff, $0\le r\le 1$, và \textit{Nguồn: Tác giả tổng hợp}}
+\begin{flushleft}
+	\it\footnotesize Trong khoảng cách Chernoff, $0\le r\le 1$, và trong khoảng cách Matusita, $r\ge2$. Nguồn: Tác giả tổng hợp
+\end{flushleft}
 \end{table}
 
 
 
-\chy{Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Tương tự khoảng cách Matusita là tổng quát hóa của bình phương Hellinger khi $r=2$. Trong $\mathcal{L}_p$, chỉ có $\mathcal{L}_1$ là một $f$-phân kỳ và là Matusita với $r=1$. Đáng chú ý, Matusita thỏa mãn tính chất mê-tríc.
-}
+Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Tương tự khoảng cách Matusita là tổng quát hóa của bình phương Hellinger khi $r=2$. Trong $\mathcal{L}_p$, chỉ có $\mathcal{L}_1$ là một $f$-phân kỳ và là Matusita với $r=1$. Đáng chú ý, Matusita cũng thỏa mãn tính chất mê-tríc.
 
-Ở Hình~\ref{fig:dayKC}, luận văn này ghi nhận giá trị khoảng cách $f_1\sim\mathcal{N}(0\,;1)$ và $f_2\sim \mathcal{N}(\mu\,;1)$ với $\mu$ trượt từ $-10$ đến $20$.
+Hình~\ref{fig:dayKC} ghi nhận các giá trị khoảng cách giữa hàm mật độ $f_1\sim\mathcal{N}(0\,;1)$ và $f_2\sim \mathcal{N}(\mu\,;1)$, với $\mu$ trượt từ $-10$ đến $20$. Ta thấy khi hai hàm mật độ $f_2$ cách nhau quá xa hàm $f_1$, tức là $|\mu_2|\gg0$, tất cả loại khoảng cách  hàm mật độ đều bão hòa và không đo được sự khác biệt. Lúc này hai hàm mật độ về mặt không gian rất xa nhau, nhưng khoảng cách không thể đo xa hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hàm mật độ.
 
 \begin{figure}[h]
     \centering
@@ -840,20 +847,19 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 	\caption{}
 \end{subfigure}
    \begin{flushleft}
-   	 {\footnotesize \textit{(a) Các khoảng cách có miền xác định bị chặn trên, (b) ngược lại. Nguồn: Minh họa của tác giả}}
+\it\footnotesize
+  Chú thích: Khảo sát (a) các khoảng cách có miền xác định bị chặn trên, và (b) ngược lại. Nguồn: Minh họa của tác giả
    \end{flushleft}
     \caption{Dãy khoảng cách $D(f_1\,;f_2)$ giữa hai hàm mật độ Gauss $\mathcal{N}(0\,;1)$ và $\mathcal{N}(\mu\,;1)$}
     \label{fig:dayKC}
 \end{figure}
 
 
-\chy{Ta thấy khi hai hàm mật độ $f_2$ cách nhau quá xa hàm $f_1$, tức là $|\mu_2|\gg0$, tất cả loại khoảng cách  hàm mật độ đều bão hòa và không đo được sự khác biệt. Lúc này hai hàm mật độ về mặt không gian rất xa nhau, nhưng khoảng cách không thể đo xa hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hàm mật độ.
-	}
+Do đó, luận văn này giới thiệu khoảng cách Wasserstein\index{khoảng cách Wasserstein (Wasserstein distance)} (hay Kantorovich–Rubinstein), là một mê-tríc hỗ trợ tốt cho tính toán khoảng cách các hàm mật độ không chồng lấp \cite{villani2008optimal} thỏa Định nghĩa~\ref{D} và bất đẳng thức tam giác của Bổ đề~\ref{bode:bdttg}. Khoảng cách này được phát triển trong bài toán vận chuyển tối ưu\index{vận chuyển tối ưu (optimal transport)}, nhưng chưa được nghiên cứu trong lĩnh vực nhận dạng hàm mật độ.
 
-Luận văn này giới thiệu khoảng cách Wasserstein (hay Kantorovich–Rubinstein), là một mê-tríc hỗ trợ tốt cho tính toán khoảng cách các hàm mật độ không chồng lấp \cite{villani2008optimal} thỏa Định nghĩa~\ref{D} và bất đẳng thức tam giác. Khoảng cách này được phát triển trong bài toán vận chuyển tối ưu\index{vận chuyển tối ưu (optimal transport)}, nhưng chưa được nghiên cứu trong lĩnh vực nhận dạng hàm mật độ.
 \dng{[Khoảng cách $p$-Wasserstein]
-Khoảng cách $p$-Wasserstein ($p\ge1$) giữa hai độ đo xác suất $\mu$ và $\nu$ trong không gian $\mathbb{R}^d$ được định nghĩa là $$W_p(\mu, \nu) = \inf_{\substack{X \sim \mu \\ Y \sim \nu}} \left( \mathbb{E} \| X - Y \|^p \right)^{1/p}
-= \left( \inf_{\gamma \in \Gamma(\mu, \nu)} \int_{M \times M} d(x, y)^p \mathrm{\,d}\gamma(x, y) \right)^{1/p},
+Khoảng cách $p$-Wasserstein ($p\ge1$) giữa hai độ đo xác suất $\mu$ và $\nu$ trong không gian $\mathbb{R}^d$ được định nghĩa là $$W_p(\mu\,; \nu) = \inf_{\substack{X \sim \mu \\ Y \sim \nu}} \left( \mathbb{E} \| X - Y \|^p \right)^{1/p}
+= \left( \inf_{\gamma \in \Gamma(\mu, \nu)} \int_{M \times M} d(x\,; y)^p \mathrm{\,d}\gamma(x, y) \right)^{1/p},
 $$
 }
 
@@ -862,25 +868,22 @@ Khoảng cách $p$-Wasserstein  đo mức chênh lệch tối ưu giữa hai ph�
 \dly{\label{dly:phanvi}
 	Khoảng cách $p$-Wasserstein giữa hai độ đo xác suất $\mu$ và $\nu$ có thể được biểu diễn dưới dạng phân vị trong trường hợp $1$-chiều bởi định nghĩa
 	$$
-	W_p^p(\mu, \nu) = \int_0^1 \left| F_\mu^{-1}(s) - F_\nu^{-1}(s) \right|^p \,\mathrm{d}s,
+	W_p^p(\mu\,; \nu) = \int_0^1 \left| F_\mu^{-1}(s) - F_\nu^{-1}(s) \right|^p \,\mathrm{d}s,
 	$$
 	trong đó $F_\mu^{-1}$ và $F_\nu^{-1}$ lần lượt là hàm phân vị của $\mu$ và $\nu$ (Xem Định nghĩa~\ref{dng:hamphanvi}).
 }
 
-\dly{[Khoảng cách $2$-Wasserstein giữa hai hàm mật độ Gauss 1 chiều]
-	Giả sử hai hàm mật độ $f_1(x) \sim \mathcal{N}(\mu_1, \sigma_1^2)$ và $f_2(x) \sim \mathcal{N}(\mu_2, \sigma_2^2)$ là hai phân bố Gauss một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
+\dly{[Khoảng cách $2$-Wasserstein giữa hai hàm mật độ Gauss $1$-chiều]
+	Giả sử hai hàm mật độ $f_1(x) \sim \mathcal{N}(\mu_1\,; \sigma_1^2)$ và $f_2(x) \sim \mathcal{N}(\mu_2\,; \sigma_2^2)$ là hai phân bố Gauss $1$-chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
 	$
-	D_{W}^2(f_1, f_2) = (\mu_1 - \mu_2)^2 + (\sigma_1 - \sigma_2)^2.
+	W^2_2(f_1\;, f_2) = (\mu_1 - \mu_2)^2 + (\sigma_1 - \sigma_2)^2.
 	$
 }
-
-
-
 
 \chm{Dựa vào Định lý~\ref{dly:phanvi}, ta xét hàm phân vị Gauss $F_i^{-1}(u)= \mu_i + \sigma_i \Phi^{-1}(u),
 	$ với $\Phi^{-1}(u)$ là phân vị chuẩn $\mathcal{N}(0,1)$. Khi đó,
 	\begin{align*}
-		D_{W}^2(f_1, f_2) 
+		W_2^2(f_1\,; f_2) 
 		&= \int_0^1 \left( \mu_1 + \sigma_1 \Phi^{-1}(u) - \mu_2 - \sigma_2 \Phi^{-1}(u) \right)^2 \mathrm{\,d}u \\
 		&= \int_0^1 \left( (\mu_1 - \mu_2) + (\sigma_1 - \sigma_2) \Phi^{-1}(u) \right)^2 \mathrm{\,d}u \\
 	&= \int_0^1 \Big[ 
@@ -895,74 +898,73 @@ Khoảng cách $p$-Wasserstein  đo mức chênh lệch tối ưu giữa hai ph�
 Từ đây ta suy ra được điều phải chứng minh.
 }
 
-Tương tự ta cũng suy ra được Định lý khoảng cách sau.
+Tương tự ta cũng suy ra được Định lý khoảng cách cho hai hàm mật độ Gauss $d$-chiều như sau.
 
 \dly{[Khoảng cách $2$-Wasserstein giữa hai hàm mật độ Gauss $d$-chiều]
-	Giả sử hai hàm mật độ $f_1(x) \sim \mathcal{N}(\mu_1, \Sigma_1)$ và $f_2(x) \sim \mathcal{N}(\mu_2, \Sigma_2)$ là hai phân bố Gauss trong $\mathbb{R}^d$. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
+	Giả sử hai hàm mật độ $f_1(x) \sim \mathcal{N}(\mu_1\,; \Sigma_1)$ và $f_2(x) \sim \mathcal{N}(\mu_2\,; \Sigma_2)$ là hai phân bố Gauss trong $\mathbb{R}^d$. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
 	$$
-	D_{W}^2(f_1, f_2) = \|\mu_1 - \mu_2\|_2^2 + \mathrm{Tr}\left(\Sigma_1 + \Sigma_2 - 2(\Sigma_2^{1/2} \Sigma_1 \Sigma_2^{1/2})^{1/2}\right).
+	W^2_2(f_1\,; f_2) = \|\mu_1 - \mu_2\|_2^2 + \mathrm{Tr}\left(\Sigma_1 + \Sigma_2 - 2(\Sigma_2^{1/2} \Sigma_1 \Sigma_2^{1/2})^{1/2}\right).
 	$$
 }
 
 
 
-\dly{[Khoảng cách $2$-Wasserstein giữa hai phân phối đều $1$-chiều] Giả sử hai hàm mật độ  $f_1(x) \sim \mathcal{U}[a_1, b_1]$ và $f_2(x) \sim \mathcal{U}[a_2, b_2]$ là hai phân phối đều một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
+\dly{[Khoảng cách $2$-Wasserstein giữa hai phân phối đều $1$-chiều] Giả sử hai hàm mật độ  $f_1(x) \sim \mathcal{U}[a_1\,; b_1]$ và $f_2(x) \sim \mathcal{U}[a_2\,; b_2]$ là hai phân phối đều một chiều. Khi đó, khoảng cách $2$-Wasserstein giữa chúng là
 		$
-	D_{W}^2(f_1, f_2) = (\mu_1 - \mu_2)^2 + \frac{1}{12}(l_1-l_2)^2,
+	W_2^2(f_1\,; f_2) = (\mu_1 - \mu_2)^2 + \frac{1}{12}(l_1-l_2)^2,
 	$
-	trong đó $m_i = \frac{a_i + b_i}{2}$ là trung điểm và $l_i = b_i - a_i$ là độ dài của khoảng $[a_i, b_i]$.}
+	trong đó $m_i = \frac{a_i + b_i}{2}$ là trung điểm, và $l_i = b_i - a_i$ là độ dài của khoảng $[a_i\,; b_i]$.}
 
 
 
-\vdu{[So sánh các loại khoảng cách hàm mật độ] Xét hai hàm mật độ xác suất đều $f_1(x)$ và $f_2(x)$. Hình~\ref{fig:daydeu} mô tả bốn tình huống khoảng cách giữa hai hàm mật độ này.
+\vdu{[So sánh các loại khoảng cách hàm mật độ]\label{vidu:SS_KS} Xét hai hàm mật độ xác suất đều $f_1(x)$ và $f_2(x)$ tại các vị trí khác nhau trên trục $x\in\mathbb{R}$.
+	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\linewidth]{Figs/C1_Uniform.pdf}
-		\begin{flushleft}
-		% Chú thích giải thích
-		\footnotesize \it Chú thích: Bốn trường hợp mật độ đều với (a) hai hàm rời nhau, cùng chiều rộng; (b) hai hàm rời nhau, khác chiều rộng; (c) hai hàm rời nhau, cách xa nhau; và (d) hai hàm chồng lấp. Ở đây, ô vuông trắng \begin{tikzpicture}
-			\node[draw=black,line width=1pt,opacity=0.7,fill=black!5, minimum size=3mm] () {};\end{tikzpicture} biểu thị hàm mật độ $f_1(x)$ và ô vuông xám  \begin{tikzpicture}
-			\node[draw=black,line width=1pt,opacity=0.7, fill=black!75, minimum size=3mm] () {};\end{tikzpicture}  biểu thị hàm mật độ $f_2(x)$. Nguồn: Minh họa của tác giả.
+		\caption{Các trường hợp trong khoảng cách giữa hai hàm mật độ đều $f_1(x)$ và $f_2(x)$ đối với Ví dụ \ref{vidu:SS_KS}.}\label{fig:daydeu}
+				\begin{flushleft}
+			\footnotesize \it Chú thích: Bốn trường hợp mật độ đều với (a) hai hàm rời nhau, cùng chiều rộng; (b) hai hàm rời nhau, khác chiều rộng; (c) hai hàm rời nhau, cách xa nhau; và (d) hai hàm chồng lấp. Ở đây, ô vuông trắng \begin{tikzpicture}
+				\node[draw=black,line width=1pt,opacity=0.7,fill=black!5, minimum size=3mm] () {};\end{tikzpicture} biểu thị hàm mật độ $f_1(x)$, và ô vuông xám  \begin{tikzpicture}
+				\node[draw=black,line width=1pt,opacity=0.7, fill=black!75, minimum size=3mm] () {};\end{tikzpicture}  biểu thị hàm mật độ $f_2(x)$. Nguồn: Minh họa của tác giả.
 		\end{flushleft}
-		\caption{Các trường hợp trong khoảng cách giữa hai hàm mật độ đều $f_1(x)$ và $f_2(x)$.}\label{fig:daydeu}
-		
 	\end{figure}
 	
+Hình~\ref{fig:daydeu} mô tả khoảng cách giữa hai hàm mật độ này tại các vị trí có thể có. Ta có Bảng~\ref{tab:vidusosanh} tổng hợp kết quả các phép đo khoảng cách bốn tình huống như sau. 
 
-Ta có Bảng~\ref{tab:vidusosanh} tổng hợp kết quả các phép đo này trong bốn tình huống. 
 \begin{table}[H]
-	\caption{Các kết quả khoảng cách giữa hai hàm mật độ đều}
+	\caption{Các kết quả khoảng cách giữa hai hàm mật độ đều trong bốn tình huống vị trí đối với Ví dụ~\ref{vidu:SS_KS}}
 	\label{tab:vidusosanh}
 	\centering\scriptsize
 	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}llcccc@{\extracolsep\fill}}
 		\toprule
-		\multirow{2}{*}{Nhóm}            & \multirow{2}{*}{$D(f_1\,;f_2)$} &          \multicolumn{4}{c}{Trường hợp}          \\ \cmidrule{3-6}
-		                                 &                                 &    (a)     &    (b)    &    (c)     &    (d)     \\ \midrule
-		\multirow{3}{*}{$\mathcal{L}_p$} & $\mathcal{L}_1$                 &   2{,}00   &  2{,}00   &   2{,}00   &   1{,}00   \\
-		                                 & $\mathcal{L}_2$                 &   1{,}41   &  1{,}22   &   1{,}41   &   0{,}71   \\
-		                                 & $D_O$ (Overlap)                 &   1{,}00   &  1{,}00   &   1{,}00   &   0{,}50   \\
-		                                 & $CWD$                           &   1{,}00   &  1{,}00   &   1{,}00   &   0{,}50   \\ \midrule
-		\multirow{6}{*}{$f$-phân kỳ}     & $D_{B}$ (Bhattacharyya)         &  $\infty$  & $\infty$  &  $\infty$  &   0{,}69   \\
-		                                 & $D_H$ (Hellinger)               &   1{,}00   &  1{,}00   &   1{,}00   &   0{,}71   \\
-		                                 & $D_M$ (Matusita)                &   1{,}41   &  1{,}41   &   1{,}41   &   1{,}00   \\
-		                                 & $D_{KL}$ (Kullback–Leibler)     &  27{,}63   &  27{,}28  &  27{,}63   &  13{,}47   \\
-		                                 & $D_{JS}$ (Jensen–Shannon)       &  27{,}63   &  26{,}94  &  27{,}63   &  13{,}47   \\ \midrule
-		Optimal                          & $D_{W}$ (2-Wasserstein)         & \bf 3{,}00 & \bf 3{,}5 & \bf 6{,}00 & \bf 1{,}00 \\ \bottomrule
+		\multirow{2}{*}{Họ khoảng cách}     & \multirow{2}{*}{$D(f_1\,;f_2)$} &          \multicolumn{4}{c}{Trường hợp}          \\ \cmidrule{3-6}
+		                                    &                                 &    (a)     &    (b)    &    (c)     &    (d)     \\ \midrule
+		\multirow{3}{*}{Họ $\mathcal{L}_p$} & $\mathcal{L}_1$                 &   2{,}0   &  2{,}0   &   2{,}0   &   1{,}0   \\
+		                                    & $\mathcal{L}_2$                 &   1{,}4   &  1{,}2   &   1{,}4   &   0{,}7   \\
+		                                    & $D_O$ (Overlap)                 &   1{,}0   &  1{,}0   &   1{,}0   &   0{,}5   \\
+		                                    & $CWD$                           &   1{,}0   &  1{,}0   &   1{,}0   &   0{,}5   \\ \midrule
+		\multirow{6}{*}{Họ  $f$-phân kỳ}    & $D_{BC}$ (Bhattacharyya)        &  $\infty$  & $\infty$  &  $\infty$  &   0{,}7   \\
+		                                    & $D^2_H$ (Hellinger)             &   1{,}0   &  1{,}0   &   1{,}0   &   0{,}7   \\
+		                                    & $D_M$ (Matusita)                &   1{,}4   &  1{,}4   &   1{,}4   &   1{,}0   \\
+		                                    & $D_{KL}$ (Kullback–Leibler)     &  27{,}6   &  27{,}3  &  27{,}6   &  13{,}5   \\
+		                                    & $D_{JS}$ (Jensen–Shannon)       &  27{,}6   &  26{,}9  &  27{,}6   &  13{,}5   \\ \midrule
+		Họ Optimal                          & $W_2^2$ (2-Wasserstein)         & \bf 3{,}0 & \bf 3{,}5 & \bf 6{,}0 & \bf 1{,}0 \\ \bottomrule
 	\end{tabular*}
 \end{table}
 
-Trước hết, các khoảng cách $\mathcal{L}_1$ và $\mathcal{L}_2$ trong các trường hợp (a), (b), và (c), mặc dù $f_1(x)$ và $f_2(x)$ nằm xa dần, nhưng các giá trị $\mathcal{L}_1$ và $\mathcal{L}_2$ hầu như không đổi (đều bằng 2 hoặc $\sqrt{2}$). Khoảng cách này nhận biết được khác biệt hình dáng và phân bố, nhưng không nhận biết tốt yếu tố vị trí trong không gian. Hệ số Bhattacharyya và khoảng cách Hellinger chỉ có ý nghĩa trong trường hợp (d), khi có phần chồng lấp giữa $f_1(x)$ và $f_2(x)$. Điều này cho thấy chúng nhạy với mức độ chồng lấp, nhưng không phân biệt được hai hàm độc lập nhau. 
+Trước hết, trong các trường hợp (a), (b), và (c), mặc dù $f_1(x)$ và $f_2(x)$ nằm xa dần, nhưng các giá trị khoảng cách $\mathcal{L}_1$ và $\mathcal{L}_2$ hầu như không đổi (đều bằng $2{,}0$ hoặc $1{,}4$). Khoảng cách này nhận biết được khác biệt hình dáng và phân bố, nhưng không nhận biết tốt yếu tố vị trí trong không gian. Hệ số Bhattacharyya và khoảng cách Hellinger chỉ có ý nghĩa trong trường hợp (d), khi có phần chồng lấp giữa $f_1(x)$ và $f_2(x)$. Điều này cho thấy chúng nhạy với mức độ chồng lấp, nhưng không phân biệt được hai hàm có vị trí tách biệt nhau. 
 
-Ngược lại, khoảng cách Wasserstein nhạy cảm với vị trí hình học, hình dáng và phân bố. Khi so (a) và (c), ta thấy khoảng cách này tăng rất lớn cho thấy hiệu quả so sánh vị trí. Xét (a) và (b), khi thay đổi hình dáng hàm mật độ, khoảng cách này cũng có sự khác biệt. Đáng chú ý, khoảng cách $\mathcal{L}_2$ và $D_W$ là trái ngược nhau. Khi thay đổi hình dáng đồ thị, khoảng cách $\mathcal{L}_2$ giảm nhưng $D_W$ lại tăng lên. Cuối cùng, trường hợp (d) cho thấy khoảng cách cũng có ý nghĩa khi chồng lấp. 
+Ngược lại, khoảng cách Wasserstein nhạy cảm với vị trí hình học, hình dáng và phân bố. Khi so sánh (a) và (c), ta thấy khoảng cách này tăng rất lớn. Điều này cho thấy có hiệu quả khi so sánh vị trí. Xét tình huống (a) và (b), khi thay đổi hình dáng hàm mật độ, khoảng cách này cũng có sự khác biệt. Đáng chú ý, khoảng cách $\mathcal{L}_2$ và $W_2^2$ là trái ngược nhau. Khi thay đổi hình dáng đồ thị, khoảng cách $\mathcal{L}_2$ giảm nhưng $D_W$ lại tăng lên. Cuối cùng, trường hợp (d) cho thấy khoảng cách cũng có ý nghĩa khi chồng lấp. 
 }
 
 %Ta tiếp tục định nghĩa các khái niệm liên quan đến khoảng cách hai hàm mật độ.
 
 \dng{[Affinity] Hàm $\rho\,:\,f\rightarrow [0\,;1]$ được gọi là affinity của hai hàm mật độ $f_1(x)$ và $f_2(x)$ nếu nó thỏa mãn ba điều kiện
 	\begin{enumerate}
-		\item $0\le \rho(f_1\,;f_2) \le1$,
-		\item $\rho(f_1\,;f_2) = 1$ nếu và chỉ nếu $f_1\equiv f_2$, và
-		\item mỗi dãy hàm $\{f_n\}$ thì $\rho(f_n\,;f_0)\rightarrow 1$ 
+		\item $0\le \rho(f_1\,;f_2) \le1$;
+		\item $\rho(f_1\,;f_2) = 1$ nếu và chỉ nếu $f_1\equiv f_2$; và
+		\item mỗi dãy hàm $\{f_n\}$ thì $\rho(f_n\,;f_0)\rightarrow 1$.
 	\end{enumerate}
 }
 
@@ -971,20 +973,20 @@ Ngược lại, khoảng cách Wasserstein nhạy cảm với vị trí hình h�
 \vdu{
 	Affinity cơ bản cho tương tự hai hàm mật độ $f_1(x)$ và $f_2(x)$ là Affinity Bhattacharyya\index{Affinity Bhattacharyya} với 
 	$
-	\rho_B(f_1, f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\mathrm{\,d}x.
+	\rho_{BC}(f_1\,; f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\mathrm{\,d}x.
 	$
 }
 
 \dng{[Hàm hạt nhân của khoảng cách]  Hàm
 	$
 	K\,:\, \mathcal{F} \times \mathcal{F} \to [0\,;1]
-	$ với tập $\mathcal{F}$	được gọi là hạt nhân (hạch) giữa hai hàm mật độ $f_1(x), f_2(x)$ nếu nó thỏa mãn
+	$ với tập $\mathcal{F}$	được gọi là hạt nhân (hạch) giữa hai hàm mật độ $f_1(x)$ và $f_2(x)$ nếu nó thỏa mãn
 	\begin{enumerate}
-		\item $0 \leq K(f_1, f_2) \leq 1$,
-		\item $K(f_1, f_2) = K(f_2, f_1)\,; \forall f_1, f_2 \in \mathcal{F}$,
-		\item với mọi tập hữu hạn $\{f_1\,; \ldots\,; f_n\} \subset \mathcal{F}$ và các hệ số $\alpha_1\,;\ldots\,;\alpha_n \in \mathbb{R}$, hàm hạt nhân là xác định dương, tức là 
+		\item $0 \leq K(f_1\,; f_2) \leq 1$;
+		\item $K(f_1\,; f_2) = K(f_2\;, f_1)$ với mọi $f_1\,, f_2 \in \mathcal{F}$;
+		\item với mọi tập hữu hạn $\{f_1\,; \ldots\,; f_n\} \subset \mathcal{F}$, và các hệ số $\alpha_1\,;\ldots\,;\alpha_n \in \mathbb{R}$, hàm hạt nhân là xác định dương, tức là
 		$
-		\sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j K(f_i, f_j) \geq 0.
+		\sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j K(f_i\,; f_j) \geq 0.
 		$
 	\end{enumerate}
 }
@@ -994,41 +996,41 @@ Ba hạt nhân cơ bản cho khoảng cách hai hàm mật độ $f_1(x)$ và $f
 \begin{enumerate}
 	\item Hạt nhân chuẩn\index{hạt nhân chuẩn (Gaussian kernel)}, 
 	$
-	K_G(f_1, f_2) = \exp(-\frac{\mathcal{L}_p^2(f_1, f_2)}{\beta\sigma^2})\,; \beta \in \mathbb{R}_{>0},
+	K_G(f_1\,; f_2) = \exp(-\frac{\mathcal{L}_p^2(f_1\,;  f_2)}{\beta\sigma^2})\,; \beta \in \mathbb{R}_{>0},
 	$
 	
 	\item Hạt nhân tuyến tính \index{hạt nhân tuyến tính (Linear kernel)}, 
 	$
-	K_L(f_1, f_2) = \int_\Omega f_1(x)f_2(x)\,\mathrm{d}x,
+	K_L(f_1\,;  f_2) = \int_\Omega f_1(x)f_2(x)\,\mathrm{d}x,
 	$
 	
 	\item Hạt nhân Bhattacharyya \index{Hạt nhân Bhattacharyya}, 
 	$
-	K_B(f_1, f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\,\mathrm{d}x,
+	K_{BC}(f_1\,;  f_2) = \int_\Omega \sqrt{f_1(x) f_2(x)}\,\mathrm{d}x,
 	$
 	
 	\item Hạt nhân \(\chi^2\)\index{Hạt nhân \(\chi^2\) (Chi-squared kernel)}, 
 	$
-	K_{\chi^2}(f_1, f_2) = \int_\Omega \frac{2f_1(x)f_2(x)}{f_1(x) + f_2(x)}\,\mathrm{d}x.
+	K_{\chi^2}(f_1\,;  f_2) = \int_\Omega \frac{2f_1(x)f_2(x)}{f_1(x) + f_2(x)}\,\mathrm{d}x.
 	$
 \end{enumerate}
 }
 
-Hàm hạt nhân $K(\cdot\,;\cdot)$ càng gần 1 thì hai hàm mật độ càng giống nhau và ngược lại. Ở đây, việc chuyển đổi từ hàm hạt nhân đến khoảng cách được cho bởi $D = 1-K_G$ khi các hạt nhân chuẩn hóa $[0\,;1]$, hoặc $D=2(1-K_H)$ khi là hạt nhân Bhattacharyya.
+Hàm hạt nhân $K(\cdot\,;\cdot)$ càng gần giá trị $1{,}0$ thì hai hàm mật độ càng giống nhau, và ngược lại. Ở đây, việc chuyển đổi từ hàm hạt nhân thành khoảng cách được cho bởi công thức $D = 1-K_G$ đối với các hạt nhân chuẩn hóa $[0\,;1]$, hoặc $D=2(1-K_H)$ đối với hạt nhân Bhattacharyya.
 
 \dng{[Ma trận khoảng cách từng đôi]
-	Cho tập $n$ hàm mật độ $\{f_1, f_2, \dots, f_n\}$, ma trận khoảng cách $\bm D \in \mathbb{R}^{n \times n}$ là một ma trận đối xứng và có $\mathrm{Trace}(\bm D)=0$, được định nghĩa bởi $
-	\bm D_{ij} = D(f_i, f_j)$, với mọi $i,j =1,\dots,n$.
+	Cho tập $n$ hàm mật độ $\{f_1\,; f_2\,; \dots\,; f_n\}$, ma trận khoảng cách $\bm D \in \mathbb{R}^{n \times n}$ là một ma trận đối xứng và có $\mathrm{Trace}(\bm D)=0$, được định nghĩa bởi $
+	\bm D_{ij} = D(f_i\,; f_j)$, với mọi $i\,;j =1\,;\dots\,;n$.
 }
 
 \subsection{Sự tương tự của nhiều hơn hai hàm mật độ xác suất}
 
 \subsubsection{a.\quad Liên kết chùm hàm mật độ}
 
-Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{G}$ chứa hữu hạn phần tử và $D(f\,;g)$ là khoảng cách giữa hai hàm mật độ, $f\in\mathcal{F}$ và $g\in\mathcal{G}$. Khoảng cách giữa hai chùm hàm mật độ gọi là \emph{liên kết}, là một ánh xạ $\delta\,:\, {\mathcal {P}\!\left( {X}\right) } \times {\mathcal {P}\left( {X}\right) } \times \mathcal {M}(X) \to \mathbb {R}_+$, trong đó, $\mathcal{P}(X)$ là tập lũy thừa của $X$.
+Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{G}$ chứa hữu hạn phần tử, và $D(f\,;g)$ là khoảng cách giữa hai hàm mật độ, sao cho $f\in\mathcal{F}$ và $g\in\mathcal{G}$. Khoảng cách giữa hai chùm hàm mật độ là một ánh xạ $\delta\,:\, {\mathcal {P}\!\left( {X}\right) } \times {\mathcal {P}\left( {X}\right) } \times \mathcal {M}(X) \to \mathbb {R}_+$, trong đó, $\mathcal{P}(X)$ là tập lũy thừa của $X$. Ta còn gọi chùm hàm mật độ là \emph{liên kết}\index{liên kết (linkage)}, và ký hiệu là $\Delta$. Bảng~\ref{tab:LINKAGE} tổng kết các loại liên kết $\Delta$.
 
 \begin{table}[H]
-\caption{Bảng tổng kết các loại liên kết $\Delta$ giữa hai chùm hàm mật độ xác suất}
+\caption{Bảng tổng kết các loại liên kết $\Delta$ giữa hai chùm hàm mật độ xác suất $\mathcal{F}$ và $\mathcal{G}$}\label{tab:LINKAGE}
 	\centering\scriptsize
 	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lll@{\extracolsep\fill}} 
 			\toprule
@@ -1040,7 +1042,9 @@ Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{
 			Liên kết Ward \cite{ward1963hierarchical}&$\Delta_{Ward}$ &$\frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}} D^2\big(\theta_{\mathcal{F}},\, \theta_{\mathcal{G}}\big)
 			$\\ \bottomrule
 		\end{tabular*}
-		\\\hfill {\footnotesize \textit{Chú thích: \footnotemark[1]: tổng khoảng cách nhỏ nhất; \footnotemark[2]: tổng khoảng cách lớn nhất. Nguồn: Tác giả tổng hợp}}
+\begin{flushleft}
+ {\footnotesize \textit{Chú thích: \footnotemark[1]: tổng khoảng cách nhỏ nhất; \footnotemark[2]: tổng khoảng cách lớn nhất. Nguồn: Tác giả tổng hợp}}
+\end{flushleft}
 \end{table}
 
 
@@ -1055,41 +1059,35 @@ Giả sử hai chùm hàm mật độ không rỗng $\mathcal{F}$ và $\mathcal{
 %\end{figure}
 
 
-Khi hai ta cần tính khoảng cách từ hợp hai chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng các loại liên kết trên. Trong thực tế, các liên kết $\Delta$ được biến đổi theo công thức trong Bảng~\ref{tab:lienketchum}.
+Khi cần tính khoảng cách từ hợp hai chùm hàm $\mathcal{F}\cup\mathcal{G}$ đến một chùm hàm $\mathcal{H}$, ta cũng có thể sử dụng công thức biến đổi theo Bảng~\ref{tab:lienketchum}. Ví dụ~\ref{VD:dist} cung cấp hướng dẫn tính toán các liên kết $\Delta$ được trình bày ở Phụ lục B, tr.~\pageref{phulucB}.
+
 \begin{table}[H]
 	\centering
 	\scriptsize
-	\caption{Các phép đo khoảng cách giữa liên kết chùm $(\mathcal{F}\cup\mathcal{G})$ và chùm $\mathcal{H}$}\label{tab:lienketchum}
+	\caption{Các phép đo khoảng cách giữa liên kết chùm $(\mathcal{F}\cup\mathcal{G})$ và chùm hàm $\mathcal{H}$}\label{tab:lienketchum}
 	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}}
 		\toprule
 		\textbf{Ký hiệu} & \textbf{Công thức} \\
 		\midrule
-		$\Delta_{\min}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H})$ &
-		$\displaystyle \min\big\{D_{f\in\mathcal{F},\, h\in\mathcal{H}}(f,\, h),\, D_{g\in\mathcal{G},\, h\in\mathcal{H}}(g,\, h)\big\}$ \\[6pt]
-		
-		$\Delta_{\max}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H})$ &
-		$\displaystyle \max\big\{D_{f\in\mathcal{F},\, h\in\mathcal{H}}(f,\, h),\, D_{g\in\mathcal{G},\, h\in\mathcal{H}}(g,\, h)\big\}$ \\[6pt]
-		
-		$\Delta_{\mathrm{avg}}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H})$ &
+		$\Delta_{\min}(\mathcal{F} \cup \mathcal{G}\,; \mathcal{H})$ &
+		$\displaystyle \min\big\{D_{f\in\mathcal{F}\,; h\in\mathcal{H}}(f\,; h)\,;D_{g\in\mathcal{G}\,; h\in\mathcal{H}}(g\,; h)\big\}$ \\
+		$\Delta_{\max}(\mathcal{F} \cup \mathcal{G}\,; \mathcal{H})$ &
+		$\displaystyle \max\big\{D_{f\in\mathcal{F}\,; h\in\mathcal{H}}(f\,; h)\,; D_{g\in\mathcal{G}\,; h\in\mathcal{H}}(g\,; h)\big\}$ \\
+		$\Delta_{\mathrm{avg}}(\mathcal{F} \cup \mathcal{G}\,; \mathcal{H})$ &
 		$ \frac{1}{\#(\mathcal{F}\cup\mathcal{G}) \cdot \#\mathcal{H}} 
-		\sum_{\substack{f \in \mathcal{F} \cup \mathcal{G}\\ h \in \mathcal{H}}} D(f,\, h)$ \\[8pt]
-		
-		$\Delta_{\mathrm{centroid}}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H})$ &
-		$ D\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big)$ \\[6pt]
-		
-		$\Delta_{\mathrm{Ward}}(\mathcal{F} \cup \mathcal{G},\, \mathcal{H})$ &
+		\sum_{\substack{f \in \mathcal{F} \cup \mathcal{G}\\ h \in \mathcal{H}}} D(f\,; h)$ \\
+		$\Delta_{\mathrm{centroid}}(\mathcal{F} \cup \mathcal{G}\,; \mathcal{H})$ &
+		$ D\big(\theta_{\mathcal{F} \cup \mathcal{G}}\,; \theta_{\mathcal{H}}\big)$ \\
+		$\Delta_{\mathrm{Ward}}(\mathcal{F} \cup \mathcal{G}\,; \mathcal{H})$ &
 		$ \frac{\#(\mathcal{F}\cup\mathcal{G})\cdot \#\mathcal{H}}{(\#\mathcal{F}\cup\#\mathcal{G})\cup\#\mathcal{H}}
-		\, D^2\big(\theta_{\mathcal{F} \cup \mathcal{G}},\, \theta_{\mathcal{H}}\big)$ \\
+		\, D^2\big(\theta_{\mathcal{F} \cup \mathcal{G}}\,; \theta_{\mathcal{H}}\big)$ \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
 
-
-Ví dụ~\ref{VD:dist} cung cấp hướng dẫn tính toán các liên kết $\Delta$ được trình bày ở Phụ lục B, tr.~\pageref{phulucB}.
-
 \subsubsection{b.\quad Tương tự chùm hàm mật độ}
 
-Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
+Nếu xem chùm hàm mật độ là tổng thể chứa các hàm mật độ, ta có thể đánh giá mức độ ổn định (giống nhau) của tổng thể này qua các hệ số tương tự chùm được giới thiệu ở Bảng~\ref{tab:chumham}.
 
 \begin{table}[H]
 	\centering\scriptsize
@@ -1103,20 +1101,18 @@ Giả sử tập hợp $\mathcal{F}$ có nhiều hơn hai phần tử $(n>2)$
 			Hệ số tương tự chùm \cite{vovan2018similar}& $\frac{k}{k-1}\left(1-\frac{1}{k}\int_{\Omega}f_{\max}(x)\mathrm{\,d}x\right)$\\
 			\bottomrule
 		\end{tabular*}
-        \\
-        \hfill {\footnotesize \textit{Nguồn: Tác giả tổng hợp}}
 \end{table}
 
-\chy{Trong Bảng \ref{tab:chumham} Affinity Toussaint suy biến thành Affinity Matusita khi $\alpha_1=\alpha_2=\cdots=\alpha_n=\frac{1}{n}$. Khi Affinity của Matusita có $n=2$ thì nó trở thành hệ số Bhattacharyya. Cuối cùng, hệ số tượng tự chùm chuẩn hóa tuyến tính độ rộng chùm.}
+Bảng \ref{tab:chumham} cho thấy Affinity của Toussaint suy biến thành Affinity của Matusita khi $\alpha_1=\alpha_2=\cdots=\alpha_n=\frac{1}{n}$. Khi Affinity của Matusita có $n=2$ thì nó trở thành hệ số Bhattacharyya. Cuối cùng, hệ số tượng tự chùm chuẩn hóa tuyến tính độ rộng chùm.
 
 \section{Phương pháp số xấp xỉ tích phân}
 
 Các tích phân trong lĩnh vực hàm mật độ cần xấp xỉ bằng phương pháp số. Luận văn này, chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann nhưng cũng không tốn quá nhiều tài nguyên như Monte Carlo hay Simpsons. Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
-$ \int_{\Omega}f(x)\mathrm{\,d}x = \lim_{h\to0}\sum_{i}h^d w_if(x)$. Khi này, giả sử hàm $f\,:\,[a\,;b]\to \mathbb{R}$, chia đoạn $[a\,;b]$ thành $n$, phương pháp hình thang một chiều xấp xỉ tích phân
+$ \int_{\Omega}f(x)\mathrm{\,d}x = \lim_{h\to0}\sum_{i}h^d w_if(x_i)$. Khi này, giả sử hàm $f\,:\,[a\,;b]\to \mathbb{R}$, ta chia đoạn $[a\,;b]$ thành $n$ phần bằng nhau với độ chia $h=(b-a)/n$, phương pháp hình thang một chiều xấp xỉ tích phân với mọi $x_i = a + ih$, và $i=0\,;\dots\,;n$,
 	\[
-	\int_a^b f(x)\, dx \approx \frac{h}{2} \left( f(x_0) + 2 \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right),
+	\int_a^b f(x)\, dx \approx \frac{h}{2} \left( f(x_0) + 2 \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right)
 	\]
-trong đó $x_i = a + ih$, $i=0,\dots,n$. 
+
 
 
 
@@ -1154,7 +1150,7 @@ trong đó $x_i = a + ih$, $i=0,\dots,n$.
 \section{Phân tích chùm cho hàm mật độ xác suất}
 
 
-\subsection{Phân tích chùm không mờ}	
+\subsection{Phân tích chùm không mờ}
 
 Phân tích chùm không mờ (hay phân chùm cứng) yêu cầu một phần tử chỉ thuộc duy nhất một chùm cố định. Tiểu mục này trình bày hai khía cạnh chính của phân tích chùm bao gồm phân tích chùm phân vùng (dựa trên trọng tâm) và phân cấp thứ bậc. 
 
@@ -1162,15 +1158,15 @@ Phân tích chùm không mờ (hay phân chùm cứng) yêu cầu một phần t
 
 \subsubsection{a.\quad Phân tích chùm $k$-means (KCF)}
 
-Phân tích chùm phân vùng giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $\bm x_j$, trong đó $j=1\,;2\,;\ldots\,;n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(\bm x)$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm nguyên, với $i=1\,;2\,;\ldots\,;c$ thỏa mãn ba ràng buộc
+Phân tích chùm phân vùng giả sử $\mathcal{S}$ là tập các véc-tơ $d$-chiều $x_j$, trong đó $j=1\,;2\,;\ldots\,;n$. Mỗi đối tượng $o_j$ liên hệ với hàm mật độ xác suất $f_j(x)$. Tập $\mathcal{F}$ gồm họ $n$-hàm mật độ trên $\Omega$. Bài toán phân tích chùm phân bổ $j$-hàm mật độ vào $c$-chùm ($c\in\mathbb{N}$), với $i=1\,;2\,;\ldots\,;c$ thỏa mãn ba ràng buộc
 \begin{enumerate}
-	\item Hợp tất cả các chùm $\bigcup_i c_i$ bằng $\mathcal{F}$,
-	\item Giao của mỗi chùm là rỗng, $c_i\cap c_j =\emptyset$, với mỗi $i\ne j$,
-	\item Lực lượng của mỗi chùm là khác rỗng, $|c_i|\ne \emptyset$.
+	\item Hợp tất cả các chùm $\bigcup_i c_i$ bằng $\mathcal{F}$;
+	\item Giao của mỗi chùm là rỗng, tức là $c_i\cap c_j =\emptyset$, với mỗi $i\ne j$;
+	\item Lực lượng của mỗi chùm là khác rỗng, tức là $|c_i|\ne \emptyset$.
 \end{enumerate}
 
 %Thuật toán $k$-means lần đầu được đề cập bởi J. Macqueen \cite{} cho dữ liệu rời rạc nhưng mãi đến, nó được mở rộng cho hàm mật độ với ý tưởng giải bài toán bán giám sát. 
-Phép gán này được mô tả bằng một ánh xạ nhiều-đến-một\index{ánh xạ nhiều-đến-một (many-to-one map)}, hay còn gọi là bộ mã hóa\index{bộ mã hóa (encoding)} $c_i=c(f_j)$, trong đó đối tượng $f_j$ gán vào chùm $c_i$ là duy nhất. Cụ thể, ràng buộc 1 đảm bảo tất cả các đối tượng phải được phân tách thành các chùm, trong đó, mỗi chùm phải chứa ít nhất một phần tử (ràng buộc 3) và không có đối tượng nào được xếp vào cùng một chùm (ràng buộc 2). 
+Phép gán này được mô tả bằng một ánh xạ nhiều-đến-một\index{ánh xạ nhiều-đến-một (many-to-one map)}, hay còn gọi là bộ mã hóa\index{bộ mã hóa (encoding)} $c_i=c(f_j)$, trong đó một hàm mật độ $f_j$ được gán vào chùm thứ $c_i$ là duy nhất. Cụ thể, ràng buộc 1 đảm bảo tất cả các đối tượng phải được phân tách thành các chùm, trong đó, mỗi chùm phải chứa ít nhất một đối tượng hàm mật độ (ràng buộc 3), và không có đối tượng nào được xếp vào hai chùm riêng biệt (ràng buộc 2). 
 
 Phân tích chùm KCF là bài toán tối tiểu đơn mục tiêu cho tổng các bình phương khoảng cách trong chùm các hàm mật độ \cite{macqueen1967some,Tai2010,nguyen2024new}, tức là
 \begin{align}\tag{KCF}\label{Jk}
@@ -1178,49 +1174,45 @@ Phân tích chùm KCF là bài toán tối tiểu đơn mục tiêu cho tổng c
 \end{align}
  trong đó, hàm $\theta_i(x)$ là hàm mật độ trọng tâm của chùm thứ $c_i$. Ký hiệu $
 {D}^2(\theta_i\,;{f}_j)$ là khoảng cách giữa hàm mật độ trọng tâm $\theta(x)$ đến các đối tượng $f_j(x)$ còn lại trong dữ liệu. 
-Ta cũng có $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{\{j\in c_i\}}$. Tức là $\mu_{ij} =1$ nếu hàm $j$ thuộc chùm $c_k$ và $\mu_{ij}=0$ nếu ngược lại. 
+Ta cũng có $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của hàm mật độ $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{\{j\in c_i\}}$. Tức là $\mu_{ij} =1$ nếu hàm mật độ $f_j$ thuộc chùm $c_i$, và $\mu_{ij}=0$ nếu ngược lại. 
 
 \chm{
-Điều kiện \(\sum_{i} \mu_{ij} = 1\) đảm bảo rằng mỗi hàm \(f_j\) được gán vào đúng một chùm duy nhất.
-Tập tất cả các ma trận \(U\) là hữu hạn, và việc cố định \(U\) biến hàm mục tiêu~\ref{Jk} trở thành hàm tuyến tính theo \(U\).
-Đặc biệt, với \(\theta_i\) cố định, giá trị \(J\) được tối thiểu khi gán \(f_j\) vào chùm \(c_i\) sao cho \(D^2(f_j, \theta_i)\) nhỏ nhất, tức là
+Điều kiện \(\sum_{i} \mu_{ij} = 1\) đảm bảo rằng mỗi hàm \(f_j\) được gán vào đúng một chùm duy nhất. Mà tập tất cả các ma trận \(U\) là hữu hạn, và việc cố định \(U\) biến hàm mục tiêu~\ref{Jk} trở thành hàm tuyến tính theo \(U\).
+Đặc biệt, với \(\theta_i\) cố định, giá trị \(J\) được tối thiểu khi gán \(f_j\) vào chùm \(c_i\) sao cho \(D^2(f_j\,; \theta_i)\) nhỏ nhất, tức là
 $
-\mu_{ij} = \mathbf{1}\{i = \arg\min_\ell D^2(f_j, \theta_\ell)\}.
+\mu_{ij} = \mathbf{1}\{i = \arg\min_s D^2(f_j, \theta_s)\}.
 $
 }
 
 
 \bode{[Thành lập hàm mật độ đại diện]
-Giả sử $\mathcal{F}$-hàm mật độ được phân thành $c$-chùm qua các mức độ thành viên $\mu_{ij}$, với bình phương khoảng cách $
-{D}^2(\theta_i, f_j)$. Khi đó, hàm mật độ đại diện $\theta_i^\ast(x)$ tối ưu trên mỗi chùm $c_i$ được cho bởi công thức
+Giả sử tập $\mathcal{F}$-hàm mật độ được phân thành $c$-chùm qua các mức độ thành viên $\mu_{ij}$ với bình phương khoảng cách $
+{D}^2(\theta_i\,; f_j)$. Khi đó, hàm mật độ đại diện $\theta_i^*(x)$ tối ưu trên mỗi chùm $c_i$ được cho bởi công thức
 \[
-\theta_i^\ast(x) = \frac{\sum_{f_j \in c_i} \mu_{ij} f_j(x)}{\sum_{f_j \in c_i} \mu_{ij}}.
+\theta_i^*(x) = \frac{\sum_{f_j \in c_i} \mu_{ij} f_j(x)}{\sum_{f_j \in c_i} \mu_{ij}}.
 \]
 }
 
 
-\chm{Từ hàm mục tiêu~\ref{Jk}, ta tính các đạo hàm riêng theo $c_i$. 
-Đổi thứ tự tổng và tích phân ta được
-\[
-J(\mathcal{F},c)=\int_{\Omega}\sum_{i=1}^c\sum_{j=1}^n \mu_{ij}\big(\theta_i(x)-f_j(x)\big)^2\,\mathrm{d}x.
-\]
-
+\chm{Từ hàm mục tiêu~\ref{Jk}, ta cố định $\mu_{ij}$, và đổi thứ tự tổng và tích phân của hàm mục tiêu $J$, ta có
+$
+J(\mathcal{F},c)=\int_{\Omega}\sum_{i=1}^c\sum_{j=1}^n \mu_{ij}\big(\theta_i(x)-f_j(x)\big)^2\,\mathrm{d}x.$ 
 Lấy đạo hàm của $J$ theo $\theta_i(x)$ ta có
 $
 \frac{\partial }{\partial \theta_i(x)} J =2\sum_{j=1}^n \mu_{ij}\big(\theta_i(x)-f_j(x)\big).
 $
-Cho đạo hàm bằng $0$ ta suy ra được điều phải chứng minh. Tóm lại, mật độ đại diện tối ưu để cực tiểu hàm mục tiêu là hàm mật độ trọng tâm~\eqref{daidien} các hàm mật độ trong các chùm. 
+Cho đạo hàm bằng $0$ ta suy ra được điều phải chứng minh. 
 }
 
-\chy{Vì mỗi hàm mật độ trọng tâm~\eqref{daidien} được đại diện trừu tượng bằng trung bình có trọng số của từng chùm, nên kết quả trọng tâm này có thể không đồng nhất với bất kỳ đối tượng nào trong mẫu. Thay vào đó, mật độ trọng tâm này nằm bất kỳ trong không gian, đóng vai trò như một đối tượng tham chiếu để các hàm mật độ khác so sánh \cite{watson2023philosophy}.
+Tóm lại, mật độ đại diện tối ưu để cực tiểu hàm mục tiêu là hàm mật độ trọng tâm~\eqref{daidien} các hàm mật độ trong các chùm. Hơn nữa,
+vì mỗi hàm mật độ trọng tâm~\eqref{daidien} được đại diện trừu tượng bằng trung bình có trọng số của từng chùm, nên kết quả trọng tâm này có thể không đồng nhất với bất kỳ đối tượng nào trong mẫu. Thay vào đó, mật độ trọng tâm này nằm bất kỳ trong không gian, đóng vai trò như một đối tượng tham chiếu để các hàm mật độ khác so sánh \cite{watson2023philosophy}.
 
-Một hàm mật độ mới \( h \) được gán vào chùm \( c_k \) nếu $
-k = \arg\min_{i} D^2(h, \theta_i)
-$. Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{\{j\in c_i\}}$ nên ta có thể rút gọn hàm mật độ đại diện \eqref{daidien} thành trung bình Fréchet với $\mathcal{L}_2$
+Một hàm mật độ mới \( h(x) \) được gán vào chùm \( c_k \) nếu $
+k = \arg\min_{i} D^2(h\,; \theta_i)
+$. Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{\{j\in c_i\}}$ nên ta có thể rút gọn hàm mật độ đại diện \eqref{daidien} thành trung bình Fréchet với khoảng cách $\mathcal{L}_2$, tức là
 \begin{align}\label{daidien_KM2}
-    \theta_i(x) = \frac{1}{\#c_i}\sum_{f_j(x)\in c_i}f_j(x).
+	\theta_i(x) = \frac{1}{\#c_i}\sum_{f_j(x)\in c_i}f_j(x).
 \end{align}
-}
 
 
 
@@ -1229,21 +1221,21 @@ $. Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{\{j\in c_i\}}$ nên 
 }
 
 \chm{
-	Gọi $\mathcal{Z}^{(t)} = \{c_1^{(t)}, \ldots, c_k^{(t)}\}$ là phân hoạch tại bước $t$, với hàm trọng tâm $\theta_i^{(t)}(x)$ và hàm mục tiêu $
+	Gọi $\mathcal{Z}^{(t)} = \{c_1^{(t)}\,; \ldots\,; c_k^{(t)}\}$ là phân hoạch tại bước $t$, với hàm trọng tâm $\theta_i^{(t)}(x)$ và hàm mục tiêu $
 	J^{(t)}$. Khi trọng tâm $\theta_i^{(t)}$ cố định, mỗi hàm $f$ được gán vào chùm gần nhất. Khi đó, 
 	$
-	\sum_{i=1}^k \sum_{f \in c_i^{(t+1)}} D^2(f,\, \theta_i^{(t)}) \leq J^{(t)},
-	$	(1).
+	\sum_{i=1}^k \sum_{f \in c_i^{(t+1)}} D^2(f\,; \theta_i^{(t)}) \leq J^{(t)}\, (1).
+	$
 	Còn khi chùm $c_i^{(t+1)}$ cố định, hàm trọng tâm $\theta_i^{(t+1)}$ được cập nhật sao cho
 	$
-	\sum_{f \in c_i^{(t+1)}} D^2(f,\, \theta_i^{(t+1)}) \leq \sum_{f \in c_i^{(t+1)}} D^2(f,\, \theta_i^{(t)}), 
-	$ (2). 	Cộng (1) và (2) ta được giá trị
+	\sum_{f \in c_i^{(t+1)}} D^2(f\,; \theta_i^{(t+1)}) \leq \sum_{f \in c_i^{(t+1)}} D^2(f\,; \theta_i^{(t)})\, (2) 
+	$. 	Cộng (1) và (2) ta được giá trị
 	$
-	J^{(t+1)} = \sum_{i=1}^k \sum_{f \in c_i^{(t+1)}} D^2(f,\, \theta_i^{(t+1)}) \leq J^{(t)}.
+	J^{(t+1)} = \sum_{i=1}^k \sum_{f \in c_i^{(t+1)}} D^2(f\,; \theta_i^{(t+1)}) \leq J^{(t)}.
 	$	
 	Hơn nữa, ta có chặn dưới
 	$
-	J^{(t)} - J^{(t+1)} \geq \sum_{i=1}^k |c_i^{(t+1)}| \cdot D^2(\theta_i^{(t)},\, \theta_i^{(t+1)}).
+	J^{(t)} - J^{(t+1)} \geq \sum_{i=1}^k |c_i^{(t+1)}| \cdot D^2(\theta_i^{(t)}\,; \theta_i^{(t+1)}).
 	$
 	Suy ra, thuật toán hội tụ đơn điệu và dừng sau hữu hạn bước do số phân hoạch hữu hạn.
 }
@@ -1693,7 +1685,7 @@ Chương \ref{chapter_1} trình bày cơ sở lý thuyết của hàm mật đ�
 %
 \chapter{NHẬN DẠNG THỐNG KÊ CHO HÀM MẬT ĐỘ XÁC SUẤT\\VỚI~DỮ~LIỆU MẤT~CÂN~BẰNG}\label{chapter_2}
 
-\section{Giới thiệu}
+\section{Giới thiệu dữ liệu hàm mật độ}
 
 
 
@@ -1704,7 +1696,7 @@ Dữ liệu hàm mật độ liên tục ngày càng được quan tâm trong nh
 Tuy nhiên, quá trình thu thập và xử lý loại dữ liệu này thường đòi hỏi nhiều thời gian, đồng thời gặp khó khăn trong việc lưu trữ và biểu diễn trong không gian vô hạn chiều. Do đó, trong những năm gần đây, nhiều phương pháp tiếp cận mới từ nhận dạng thống kê đã được phát triển nhằm đáp ứng nhu cầu phân tích và khai thác dữ liệu dạng hàm mật độ. Các hướng tiếp cận này bao gồm hai nhóm chính: phân tích chùm và phân loại hàm mật độ xác suất.
 
 
-
+\section{Giới thiệu bài toán phân tích chùm cho dữ liệu mất cân bằng}
 
 
 \subsection{Phương pháp phân tích chùm hàm mật độ xác suất}
@@ -1765,7 +1757,7 @@ IR = \frac{\max_i\#c_i}{\min_j \#c_j}$, trong đó $\#c_i$ là số lượng ph�
 
 
 
-\section{Giới thiệu bài toán phân tích chùm cho dữ liệu mất cân bằng}
+
 
 Phân tích chùm cho dữ liệu mất cân bằng là chủ đề phát triển để giải quyết nhu cầu thực tế. Bài toán khoanh vùng hình ảnh hòn đảo giữa đại dương được ghi nhận là có sự mất cân bằng, hay phân đoạn chuỗi tín hiệu hiếm như động đất cũng có tính chất mất cân bằng hơn tín hiệu nền yên tĩnh. Nói cách khác, dữ liệu lúc này có sự chênh lệch lớn giữa các loại trong tự nhiên và tồn tại hai tình trạng: Kích thước chùm và số lượng phần tử trong chùm mất cân bằng. 
 Cụ thể, mất cân bằng về kích thước chùm xảy ra khi các chùm có mức độ phân tán khác biệt đáng kể về đường kính hoặc mật độ, trong khi mất cân bằng về số lượng biểu hiện qua sự chênh lệch lớn trong tổng số mẫu giữa các chùm. Khi đó, các thuật toán phân tích chùm truyền thống dễ gặp khó khăn trong việc duy trì ranh giới rõ ràng giữa các nhóm.
@@ -2601,16 +2593,21 @@ Ngược lại, thuật toán IFCF duy trì độ ổn định ngay cả khi $IR
 
 
 
+
+\section{Giới thiệu bài toán phân loại cho dữ liệu mất cân bằng}
+
+
+
 \subsection{Phương pháp phân loại hàm mật độ xác suất}
 
 
 Phương pháp phân loại là một nhánh của nhận dạng có giám sát, phát triển với mục tiêu thành lập quy tắc quy nạp có chức năng phân tách được các lớp quan tâm với sai lầm thực nghiệm tối tiểu.  Ta giả sử tồn tại một không gian đầu vào $\mathcal{F}$ và tập nhãn rời rạc ${Y} = \{1, 2, \dots, C\}$. Cặp dữ liệu $(f, y)$ là biến ngẫu nhiên có phân phối chung $P_{\mathcal{F},Y}$ trên $\mathcal{F} \times {Y}$.  Mục tiêu của bài toán là tìm một ánh xạ phân loại $h : \mathcal{F} \to {Y}$ thuộc không gian giả thuyết $\mathcal{H}$ sao cho tối tiểu hóa giá trị kỳ vọng của hàm mất mát\index{hàm mất mát (loss function)} $\ell : {Y} \times {Y} \to \mathbb{R}_{\ge 0}$, tức là $
-	h^* = \arg\min_{h \in \mathcal{H}} \mathbb{E}{(f,y)\sim P_{\mathcal{F},Y}} \left[\ell(h(f), y)\right].$ Tuy nhiên, do phân phối thực $P_{\mathcal{F}\,;{Y}}$ là chưa biết, ta cần tiếp cận qua một tập huấn luyện $\mathcal{D}_n = \{(f_1, y_1), \ldots, (f_n, y_n)\} \subset \mathcal{F} \times {Y}$. Vì vậy, ta giải bài toán $
+h^* = \arg\min_{h \in \mathcal{H}} \mathbb{E}{(f,y)\sim P_{\mathcal{F},Y}} \left[\ell(h(f), y)\right].$ Tuy nhiên, do phân phối thực $P_{\mathcal{F}\,;{Y}}$ là chưa biết, ta cần tiếp cận qua một tập huấn luyện $\mathcal{D}_n = \{(f_1, y_1), \ldots, (f_n, y_n)\} \subset \mathcal{F} \times {Y}$. Vì vậy, ta giải bài toán $
 \hat{h}_n = \arg\min{h \in \mathcal{H}} \frac{1}{n} \sum_{j=1}^n \ell(h(f_j), y_j).
 $
 Trong thực tế, các quy luật đánh giá có bệnh B hay không dựa vào những dữ liệu cho trước chính là thực hiện bài toán phân loại. Hay phân biệt được hữu hạn các biểu cảm khuôn mặt dựa vào hình ảnh cũng phải thực hiện bài toán phân loại. Đầu ra của mô hình phân loại là ước tính hoặc dự đoán hữu hạn các nhãn cho trước (không đo được) với dữ liệu mới chưa được mô hình hóa \cite{Fillmore-Patrick_2025}. 
 
-	Phương pháp phân loại cho hàm mật độ xác suất là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. Nhìn chung, hai phương pháp chính để phân loại là từ hai góc nhìn bao gồm ánh xạ hàm mật độ thành véc-tơ hữu hạn chiều thông qua các đặc trưng thống kê, hay xử lý trực tiếp trong không gian hàm. Cả hai hướng này đều có ưu và nhược điểm riêng, trong đó cách tiếp cận theo không gian hàm cho phép bảo toàn thông tin xác suất tốt hơn nhưng đòi hỏi chi phí tính toán lớn hơn. Bảng~\ref{tab:pdf_classification_summary} mô tả quá trình phát triển của lĩnh vực này. 
+Phương pháp phân loại cho hàm mật độ xác suất là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. Nhìn chung, hai phương pháp chính để phân loại là từ hai góc nhìn bao gồm ánh xạ hàm mật độ thành véc-tơ hữu hạn chiều thông qua các đặc trưng thống kê, hay xử lý trực tiếp trong không gian hàm. Cả hai hướng này đều có ưu và nhược điểm riêng, trong đó cách tiếp cận theo không gian hàm cho phép bảo toàn thông tin xác suất tốt hơn nhưng đòi hỏi chi phí tính toán lớn hơn. Bảng~\ref{tab:pdf_classification_summary} mô tả quá trình phát triển của lĩnh vực này. 
 
 
 
@@ -2618,7 +2615,7 @@ Trong thực tế, các quy luật đánh giá có bệnh B hay không dựa và
 \begin{table}[H]
 	\centering
 	\scriptsize
-		\caption{Tổng quan phương pháp phân loại cho hàm mật độ xác suất}
+	\caption{Tổng quan phương pháp phân loại cho hàm mật độ xác suất}
 	\label{tab:pdf_classification_summary}
 	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lp{6cm}p{9cm}@{\extracolsep\fill}}
 		\toprule
@@ -2635,15 +2632,13 @@ Trong thực tế, các quy luật đánh giá có bệnh B hay không dựa và
 	\begin{flushleft}\it\footnotesize
 		
 	\end{flushleft}
-
+	
 \end{table}
 
 
 Trong bối cảnh này, các nghiên cứu trong nhước đã có nhiều đóng góp nổi bật. Chuỗi công trình gần đây tập trung cải tiến mô hình Bayes truyền thống để thích ứng với dữ liệu dạng hàm mật độ, mở rộng từ bài toán hai lớp sang đa lớp, và từ dữ liệu đơn kênh sang hình ảnh đa kênh màu. Các thuật toán Bayes cải tiến chứng minh được tính ổn định và khả năng tổng quát hóa tốt. Đặc biệt, giai đoạn 2023--2025 đánh dấu bước trưởng thành quan trọng của hướng nghiên cứu này.
 
 
-
-\section{Giới thiệu bài toán phân loại cho dữ liệu mất cân bằng}
 
 Khi tồn tại $IR$ trong dữ liệu, các thuật toán phân loại truyền thống có xu hướng nghiêng về phía lớp chiếm đa số, bởi vì việc giảm sai số tổng thể thường đạt được bằng cách hy sinh khả năng nhận diện lớp hiếm. Hệ quả là, trong các bài toán có tính rủi ro cao như phát hiện gian lận, chẩn đoán y khoa hay cảnh báo thiên tai, việc bỏ sót một vài trường hợp hiếm có thể dẫn đến hậu quả nghiêm trọng hơn nhiều so với việc dự đoán nhầm một trường hợp phổ biến. Do đó, vấn đề mất cân bằng trong phân loại không chỉ là một khía cạnh kỹ thuật, mà còn là yếu tố quyết định độ tin cậy của mô hình trong các ứng dụng thực tế.
 
@@ -3542,8 +3537,10 @@ Trên phương diện ứng dụng, các hướng mở rộng được định h
 \bibliographystyle{ieeetr}
 %\bibliographystyle{apacite}
 
-{\fontsize{11}{15pt}\selectfont
+{\begin{spacing}{1}
+		\fontsize{11}{15pt}\selectfont
 \bibliography{Tailieu}
+\end{spacing}
 }
 
 
@@ -3552,6 +3549,8 @@ Trên phương diện ứng dụng, các hướng mở rộng được định h
 %\clearpage
 %\pagenumbering{roman}	
 %\appendix
+
+\begin{spacing}{1.25}
 
 \chapter*{PHỤ LỤC A\\LÝ THUYẾT BỔ SUNG VÀ MÃ NGUỒN}\label{phulucC}
 \addcontentsline{toc}{chapter}{PHỤ LỤC}
@@ -3681,7 +3680,6 @@ Phần này cung cấp lý thuyết và các thuật toán của luận văn.
 
 
 
-\newpage
 
 
 Về tài nguyên tính toán, luận văn này chạy trên hệ điều hành Ubuntu 24.04.2 LTS, nhân Linux 6.11.0-19-generic, 11th Gen Intel$\copyright$ Core$^\text{TM}$ i5-11400H$\times$12, bộ nhớ 16.0 GiB. 
@@ -4115,6 +4113,7 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 
 
 
+\end{spacing}
 
 
 
@@ -4189,6 +4188,16 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 
 \addcontentsline{toc}{chapter}{\numberline{CHỈ MỤC}}%
 \printindex
+
+
+\includepdf[pages=-]{HOSO/baibao.pdf}
+
+
+
+
+
+
+
 
 
 
