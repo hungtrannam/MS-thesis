@@ -1760,7 +1760,7 @@ Trong lĩnh vực này, đã có nhiều công trình nghiên cứu chuyên sâu
 		\midrule
 				2020 & Jen-Hao Chen \& Wen-Liang Hung \cite{chen2021jackknife} & Phân chùm cứng bằng jackknife Shannon entropy, điều chỉnh ngưỡng bằng tối đại VCC& hạt nhân Gauss $\mathcal{L}_1$ & $\checkmark$\\
 		2021 & Tavakkol, Behnam \& Son, Youngdoo \cite{tavakkol2021fuzzy} & Phân chùm mờ hạt nhân $k$-medoids cho dữ liệu hàm mật độ $2$-chiều, $m=2$, số chùm cho trước& hạt nhân Gauss $\mathcal{L}_1$& $\times$   \\
-		2024 & Okano Ryo \& Imaizumi Masaaki \cite{okano2024wasserstein} & Phân chùm cứng cho dữ liệu hàm mật độ &$W_2$ &$\times$   \\
+		2024 & Okano Ryo \& Imaizumi Masaaki \cite{okano2024wasserstein} & Phân chùm cứng cho dữ liệu hàm mật độ &$W^2_2$ &$\times$   \\
 		\bottomrule
 	\end{tabular*}
 	\label{tab:in_clustering_summary}
@@ -2176,7 +2176,7 @@ Ta định nghĩa toán tử $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \math
 	$ xác định dương vì $\sum_j (\mu_{ij})^{m}>0$ và $\omega_i>0$. Do đó $\psi_i$ lồi nghiêm ngặt và nghiệm bậc nhất \eqref{eq:théta} là duy nhất, suy ra nghiệm toàn cục duy nhất $\Theta^*=G(\bm U)$.
 }
 
-Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2$, $D^2_H$, hoặc $W_2$, trong khi với các khoảng cách khác như $D_{BC}$, $D_{KL}$, hoặc $D_{JS}$ có thể không duy nhất nghiệm toàn cục. Bổ đề~\ref{lem:Hellinger} chứng minh công thức thành lập trọng tâm đối với khoảng cách $D^2_H$.
+Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2$, $D^2_H$, hoặc $W^2_2$, trong khi với các khoảng cách khác như $D_{BC}$, $D_{KL}$, hoặc $D_{JS}$ có thể không duy nhất nghiệm toàn cục. Bổ đề~\ref{lem:Hellinger} chứng minh công thức thành lập trọng tâm đối với khoảng cách $D^2_H$.
 
 \bode{[Cập nhật trọng tâm $\Theta$ với $D^2_H$]\label{lem:Hellinger}
 	Với $\bm U$ cố định, bài toán tối thiểu hoá hàm mục tiêu \eqref{eq:IFCF} theo $\Theta$ có thể tách được theo từng $\theta_i$, và là lồi nghiêm ngặt trong biến $\sqrt{\theta_i}$. 
@@ -2191,9 +2191,9 @@ Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt tr
 }
 
 \chm{
-	Giữ $\bm U$ cố định, xét $\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,D_H^2(\theta_i,f_j)$. 
+	Giữ $\bm U$ cố định, xét $\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,D^2_H(\theta_i,f_j)$. 
 	Ta có khoảng các bình phương Hellinger là $
-	D_H^2(\theta_i,f_j) \;=\; 1 - \int \sqrt{\theta_i(x)\,f_j(x)}\mathrm{\,d}x.$	
+	D^2_H(\theta_i,f_j) \;=\; 1 - \int \sqrt{\theta_i(x)\,f_j(x)}\mathrm{\,d}x.$	
 	Do đó
 	$$
 	\psi_i(\theta_i)
@@ -2227,7 +2227,7 @@ $$
 
 
 
-Tổng thể, Bảng~\ref{tab:KCTT} và Hình~\ref{fig:trongtam_3KC} thể hiện sự khác biệt các khoảng cách $\mathcal{L}_2$, $D_H^2$ và $W_2$ trong xác định trọng tâm chùm gồm ba hàm mật độ xác suất, cho thấy hình dạng, vị trí, và phân tán của nó.
+Tổng thể, Bảng~\ref{tab:KCTT} và Hình~\ref{fig:trongtam_3KC} thể hiện sự khác biệt các khoảng cách $\mathcal{L}_2$, $D_H^2$ và $W^2_2$ trong xác định trọng tâm chùm gồm ba hàm mật độ xác suất, cho thấy hình dạng, vị trí, và phân tán của nó.
 
 \begin{table}[H]
 	\centering
@@ -2380,10 +2380,10 @@ Thông thường, việc đánh giá kết quả phân tích chùm được chia
 	$
 	là khoảng cách trung bình giữa $f_j$ và các hàm mật độ trong chùm gần nhất $c_j$ với $j \ne i$.
 	
-	\item[Chỉ số Dunn] 
-	Chỉ số Dunn đánh giá mức độ tách biệt giữa các chùm, được định nghĩa bởi
+	\item[Chỉ số $Dunn$] 
+	Chỉ số $Dunn$ đánh giá mức độ tách biệt giữa các chùm, được định nghĩa bởi
 	$
-	\mathrm{Dunn} = 
+	{Dunn} = 
 	\frac{ \min_{i \ne j} \Delta_{\min}(c_i\,; c_j)}
 	{ \max_{m} \Delta(c_m)}
 	$,
@@ -2420,7 +2420,7 @@ Thông thường, việc đánh giá kết quả phân tích chùm được chia
 \end{description}
 
 
-Chỉ số $$Silhouette$$ và $Dunn$ có giá trị càng nhỏ, kết quả phân tích chùm càng tốt. Ngược lại, chỉ số $DBI$ càng nhỏ càng tốt, do giá trị thấp biểu thị sự phân tách tốt và giảm mức độ chồng lấn giữa các chùm. Ta cũng có thể khảo sát và chọn số chùm tối ưu qua các CVI này. Để minh họa, Hình~\ref{fig:c1kbestfcf} cho giá trị các chỉ số CVI với số chùm $c=2\div7$ đối với dữ liệu ở Ví dụ~\ref{VD:thubac}. Kết quả cho thấy chỉ số $$Silhouette$$ đạt cực đại tại $c=3$, chỉ số $Dunn$ cao nhất tại $c=6$, và $DBI$ giảm dần. Như vậy, cả ba chỉ số đều gợi ý rằng mô hình phân chùm có hiệu quả cao nhất khi số chùm $c=3$, thể hiện sự tách biệt giữa các nhóm hàm mật độ.
+Chỉ số $Silhouette$ và $Dunn$ có giá trị càng nhỏ, kết quả phân tích chùm càng tốt. Ngược lại, chỉ số $DBI$ càng nhỏ càng tốt, do giá trị thấp biểu thị sự phân tách tốt và giảm mức độ chồng lấn giữa các chùm. Ta cũng có thể khảo sát và chọn số chùm tối ưu qua các CVI này. Để minh họa, Hình~\ref{fig:c1kbestfcf} cho giá trị các chỉ số CVI với số chùm $c=2\div7$ đối với dữ liệu ở Ví dụ~\ref{VD:thubac}. Kết quả cho thấy chỉ số $Silhouette$ đạt cực đại tại $c=3$, chỉ số $Dunn$ cao nhất tại $c=6$, và $DBI$ giảm dần. Như vậy, cả ba chỉ số đều gợi ý rằng mô hình phân chùm có hiệu quả cao nhất khi số chùm $c=3$, thể hiện sự tách biệt giữa các nhóm hàm mật độ.
 
 
 \begin{figure}[H]
@@ -2431,7 +2431,7 @@ Chỉ số $$Silhouette$$ và $Dunn$ có giá trị càng nhỏ, kết quả ph�
 	\label{fig:c1kbestfcf}
 		\begin{flushleft}
 		\footnotesize\it
-		Chú thích: Hình ở trên thể hiện chỉ số $Silhouette$ và Dunn vì chúng càng lớn càng tốt. Ngược lại, chỉ số DBI càng nhỏ càng tốt. Điểm khuỷ tay là điểm mà ở đó độ dốc giữa hai dãy chùm bất kỳ đạt cực đại. Ở đây, ta thấy chỉ số $Silhouette$ và DBI đều đề xuất $k$-chùm tối ưu là $k=3$. Trong khi đó, chỉ~số Dunn cho kết quả $k=6$. 
+		Chú thích: Hình ở trên thể hiện chỉ số $Silhouette$ và $Dunn$ vì chúng càng lớn càng tốt. Ngược lại, chỉ số $DBI$ càng nhỏ càng tốt. Điểm khuỷ tay là điểm mà ở đó độ dốc giữa hai dãy chùm bất kỳ đạt cực đại. Ở đây, ta thấy chỉ số $Silhouette$ và $DBI$ đều đề xuất $k$-chùm tối ưu là $k=3$. Trong khi đó, chỉ~số $Dunn$ cho kết quả $k=6$. 
 	\end{flushleft}
 \end{figure}
 
@@ -2527,10 +2527,10 @@ Luận văn mô phỏng dữ liệu hàm mật độ Gauss trên tập số th�
 
 \subsubsection{b.\qquad Kết quả các loại khoảng cách}
 
-Các thuật toán phân chùm được triển khai với nhiều loại khoảng cách khác nhau, bao gồm $\mathcal{L}_2$, $D_H$, $D_{BC}$, $D_{JS}$ và $W_2$, như được trình bày trong Bảng~\ref{tab1:KC_PDF}. Kết quả chi tiết được trình bày trong Hình~\ref{fig:CD:vdu:gauss1} thể hiện giá trị trung vị của các chỉ số đánh giá phân chùm qua kiểm định Friedmanc.
+Các thuật toán phân chùm được triển khai với nhiều loại khoảng cách khác nhau, bao gồm $\mathcal{L}_2$, $D^2_H$, $D_{BC}$, $D_{JS}$ và $W^2_2$, như được trình bày trong Bảng~\ref{tab1:KC_PDF}. Kết quả chi tiết được trình bày trong Hình~\ref{fig:CD:vdu:gauss1} thể hiện giá trị trung vị của các chỉ số đánh giá phân chùm qua kiểm định Friedmanc.
 
 Rõ ràng, khi $IR$ tăng từ $10\div 50$, hầu hết các chỉ số đánh giá như $ARI$, $NMI$, $Dunn$ và $Silhouette$ đều giảm đáng kể. Ở mức $IR = 10$, các phương pháp đạt giá trị rất cao, với $ARI = 0{,}93$ và $NMI = 0{,}86$, phản ánh khả năng tách chùm tốt và ổn định. Tuy nhiên, khi $IR \ge 30$, các chỉ số này nhanh chóng suy giảm gần về $0{,}00$, cho thấy mô hình bắt đầu suy yếu. Đồng thời, thời gian tính toán và số vòng lặp hội tụ tăng lên rõ rệt theo $IR$, thể hiện rằng bài toán trở nên phức tạp hơn khi mức mất cân bằng dữ liệu tăng cao.
-Ngoài ra, các khoảng cách $\mathcal{L}_2$, $D_{BC}$, $D^2_H$ và $D_{JS}$ cho kết quả gần tương đương nhau ở các mức $IR$ thấp. Tuy nhiên, khi $IR$ tăng, $D^2_H$ và $D_{JS}$ cho thấy tính ổn định cao hơn, duy trì giá trị $ARI$ và $NMI$ cao hơn so với $\mathcal{L}_2$ và đặc biệt là $W_2$. Ngược lại, khoảng cách $W_2$ thể hiện hiệu năng yếu hơn cả về chỉ số nội bộ lẫn chỉ số bên ngoài, đồng thời đòi hỏi chi phí tính toán cao hơn đáng kể.
+Ngoài ra, các khoảng cách $\mathcal{L}_2$, $D_{BC}$, $D^2_H$ và $D_{JS}$ cho kết quả gần tương đương nhau ở các mức $IR$ thấp. Tuy nhiên, khi $IR$ tăng, $D^2_H$ và $D_{JS}$ cho thấy tính ổn định cao hơn, duy trì giá trị $ARI$ và $NMI$ cao hơn so với $\mathcal{L}_2$ và đặc biệt là $W^2_2$. Ngược lại, khoảng cách $W^2_2$ thể hiện hiệu năng yếu hơn cả về chỉ số nội bộ lẫn chỉ số bên ngoài, đồng thời đòi hỏi chi phí tính toán cao hơn đáng kể.
 
 Phân tích thống kê sâu hơn bằng phép kiểm định Friedman ($\chi^2 = 14\div15$, $p < 0{,}02$) cho thấy sự khác biệt giữa các loại khoảng cách là có ý nghĩa thống kê. Kết quả này khẳng định rằng lựa chọn độ đo thích hợp có ảnh hưởng trực tiếp đến chất lượng phân tích chùm.
 
@@ -2538,19 +2538,19 @@ Phân tích thống kê sâu hơn bằng phép kiểm định Friedman ($\chi^2 
 	\centering
 	\includegraphics[width=\linewidth]{eva_distances}
 	\begin{flushleft}
-		\footnotesize \it
-		Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$, và (d) thời gian tính toán
-	\end{flushleft}
 	\caption{Đánh giá thống kê các chỉ số cho Ví dụ~\ref{vdu:gauss1}}
 	\label{fig:CD:vdu:gauss1}
+			\footnotesize \it
+	Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$, và (d) thời gian tính toán. Giá trị $p$ được ước tính từ kiểm định phi tham số Friedman cho giả thiết thống kê là các loại khoảng cách này có phương sai như nhau.
+	\end{flushleft}
 \end{figure}
 
-Ở các chỉ số $ARI$ (Hình~\ref{fig:CD:vdu:gauss1}(a)) và $NMI$ (Hình~\ref{fig:CD:vdu:gauss1}(b)), các khoảng cách $D_{JS}$, $D_{BC}$ và $\mathcal{L}_2$ có thứ hạng cao trong kiểm định hậu nghiệm Nemenyi (tham khảo thêm Phụ lục~B, tr.~\pageref{phulucB}), thể hiện tính chính xác ổn định. Ngược lại, $W_2$ liên tục đạt thứ hạng thấp nhất. Với chỉ số $Silhouette$, khoảng cách $D_{JS}$ tiếp tục thể hiện hiệu năng vượt trội (Hình~\ref{fig:CD:vdu:gauss1}(c)), trong khi $D^2_H$ và $D_{BC}$ đạt cân bằng giữa độ chính xác và độ bền vững.
-Về chi phí tính toán, $D_{JS}$ và $W_2$ là hai phương pháp tốn kém nhất do liên quan đến các phép lô-ga-rít hoặc tích phân trên hàm phân phối tích lũy, trong khi $D_{BC}$ và $\mathcal{L}_2$ có tốc độ xử lý nhanh hơn đáng kể. Nếu cần cân bằng giữa độ chính xác và thời gian, hai khoảng cách $D^2_H$ và $D_{BC}$ là lựa chọn hợp lý.
+Ở các chỉ số $ARI$ (Hình~\ref{fig:CD:vdu:gauss1}(a)) và $NMI$ (Hình~\ref{fig:CD:vdu:gauss1}(b)), các khoảng cách $D_{JS}$, $D_{BC}$ và $\mathcal{L}_2$ có thứ hạng cao trong kiểm định hậu nghiệm Nemenyi (tham khảo thêm Phụ lục~B, tr.~\pageref{phulucB}), thể hiện tính chính xác ổn định. Ngược lại, $W^2_2$ liên tục đạt thứ hạng thấp nhất. Với chỉ số $Silhouette$, khoảng cách $D_{JS}$ tiếp tục thể hiện hiệu năng vượt trội (Hình~\ref{fig:CD:vdu:gauss1}(c)), trong khi $D^2_H$ và $D_{BC}$ đạt cân bằng giữa độ chính xác và độ bền vững.
+Về chi phí tính toán, $D_{JS}$ và $W^2_2$ là hai phương pháp tốn kém nhất do liên quan đến các phép lô-ga-rít hoặc tích phân trên hàm phân phối tích lũy, trong khi $D_{BC}$ và $\mathcal{L}_2$ có tốc độ xử lý nhanh hơn đáng kể. Nếu cần cân bằng giữa độ chính xác và thời gian, hai khoảng cách $D^2_H$ và $D_{BC}$ là lựa chọn hợp lý.
 
-Kết quả phân tích thống kê thứ hạng các độ đo khoảng cách cho thấy sự khác biệt rõ rệt về hiệu năng chùm ($p$-value$<0{,}02$). Cụ thể, ở các chỉ số $ARI$ (Hình~\ref{fig:CD:vdu:gauss1}(a)) và $NMI$ (Hình~\ref{fig:CD:vdu:gauss1}(b)), các khoảng cách $D_{JS}$, $D_{BC}$ và $\mathcal{L}_2$ đều đạt thứ hạng cao trong kiểm định hậu nghiệm Nemenyi (tham khảo thêm Phụ lục~B, tr.~\pageref{phulucB}), chưng minh tính ổn định và độ chính xác cao. Trong khi đó, khoảng cách $W_2$ xếp hạng thấp nhất, cho thấy độ nhạy cao nhưng thiếu ổn định trong môi trường mất cân bằng mạnh. Tiếp theo, với chỉ số $Silhouette$, khoảng cách $D_{JS}$ tiếp tục thể hiện hiệu năng nổi bật (Hình~\ref{fig:CD:vdu:gauss1}(c)), trong khi $D^2_H$ và $D_{BC}$ duy trì mức cân bằng tốt. Xu hướng này cho thấy rằng các độ đo dựa trên phân kỳ thông tin có ưu thế.
+Kết quả phân tích thống kê thứ hạng các độ đo khoảng cách cho thấy sự khác biệt rõ rệt về hiệu năng chùm ($p$-value$<0{,}02$). Cụ thể, ở các chỉ số $ARI$ (Hình~\ref{fig:CD:vdu:gauss1}(a)) và $NMI$ (Hình~\ref{fig:CD:vdu:gauss1}(b)), các khoảng cách $D_{JS}$, $D_{BC}$ và $\mathcal{L}_2$ đều đạt thứ hạng cao trong kiểm định hậu nghiệm Nemenyi (tham khảo thêm Phụ lục~B, tr.~\pageref{phulucB}), chưng minh tính ổn định và độ chính xác cao. Trong khi đó, khoảng cách $W^2_2$ xếp hạng thấp nhất, cho thấy độ nhạy cao nhưng thiếu ổn định trong môi trường mất cân bằng mạnh. Tiếp theo, với chỉ số $Silhouette$, khoảng cách $D_{JS}$ tiếp tục thể hiện hiệu năng nổi bật (Hình~\ref{fig:CD:vdu:gauss1}(c)), trong khi $D^2_H$ và $D_{BC}$ duy trì mức cân bằng tốt. Xu hướng này cho thấy rằng các độ đo dựa trên phân kỳ thông tin có ưu thế.
 
-Về mặt chi phí tính toán, các độ đo $D_{JS}$ và $W_2$ là hai phương pháp tốn kém nhất, chủ yếu do yêu cầu các phép tính lô-ga-rít hoặc tích phân trên hàm phân phối tích lũy. Ngược lại, $D_{BC}$ và $\mathcal{L}_2$ có tốc độ xử lý nhanh hơn qua cấu trúc tính toán đơn giản hơn. Tóm lại, trong các tình huống cần cân bằng giữa độ chính xác và thời gian thực thi, hai khoảng cách $D^2_H$ và $D_{BC}$ được xem là lựa chọn hợp lý nhất.
+Về mặt chi phí tính toán, các độ đo $D_{JS}$ và $W^2_2$ là hai phương pháp tốn kém nhất, chủ yếu do yêu cầu các phép tính lô-ga-rít hoặc tích phân trên hàm phân phối tích lũy. Ngược lại, $D_{BC}$ và $\mathcal{L}_2$ có tốc độ xử lý nhanh hơn qua cấu trúc tính toán đơn giản hơn. Tóm lại, trong các tình huống cần cân bằng giữa độ chính xác và thời gian thực thi, hai khoảng cách $D^2_H$ và $D_{BC}$ được xem là lựa chọn hợp lý nhất.
 
 
 
@@ -2995,7 +2995,7 @@ $$
 \end{bmatrix}_{3\times 20}.
 $$
 
-Vì vậy, ta có thể tính được xác suất hậu nghiệm của các hàm mật độ kiểm tra với $\tau = \overline{D_{ij}}$ là $$\mathbb{P}(c=c_i\,;f=f^{(test)}_j)=\frac{\bm U_{ij} \exp(-\bm D_{ij}/\tau)}{\sum_s\bm U_{sj} \exp(-\bm D_{sj}/\tau)}= \begin{bmatrix}
+Vì vậy, ta có thể tính được xác suất hậu nghiệm của các hàm mật độ kiểm tra với $\tau = \overline{D_{ij}}$ là $$\footnotesize\mathbb{P}(c=c_i\,;f=f^{(test)}_j)=\frac{\bm U_{ij} \exp(-\bm D_{ij}/\tau)}{\sum_s\bm U_{sj} \exp(-\bm D_{sj}/\tau)}= \begin{bmatrix}
 	0.056 & 0.128 & 0.999 & \cdots & 0.128 & 0.999\\
 	0.888 & 0.741 & 0.000 & \cdots & 0.741 & 0.000\\
 	0.055 & 0.131 & 0.001 & \cdots & 0.131 & 0.001
@@ -3283,21 +3283,21 @@ Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là ho�
 		& \textbf{KCF}&  \textbf{IFCF} \\
 		\midrule
 		% --- ARI ---
-		\multirow{4}{*}{ARI}
+		\multirow{4}{*}{$ARI$}
 		&   20 & 0{,}12$\pm$0{,}19 & 0{,}12$\pm$0{,}19 & 1{,}0$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		&   50 & 0{,}01$\pm$0{,}00 & 0{,}01$\pm$0{,}00 & 1{,}0$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		&   80 & 0{,}00$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}02$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		&  100 & 0{,}00$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}02$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		\midrule
 		% --- NMI ---
-		\multirow{4}{*}{NMI}
+		\multirow{4}{*}{$NMI$}
 		&   20 & 0{,}14$\pm$0{,}12 & 0{,}14$\pm$0{,}12 & 1{,}0$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		&   50 & 0{,}04$\pm$0{,}00 & 0{,}04$\pm$0{,}00 & 1{,}0$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		&   80 & 0{,}03$\pm$0{,}00 & 0{,}03$\pm$0{,}00 & 0{,}04$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		&  100 & 0{,}02$\pm$0{,}00 & 0{,}02$\pm$0{,}00 & 0{,}03$\pm$0{,}00 & 1{,}0$\pm$0{,}00\\
 		\midrule
 		% --- Dunn ---
-		\multirow{4}{*}{Dunn}
+		\multirow{4}{*}{$Dunn$}
 		&   20 & 0{,}00$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 6{,}3$\pm$0{,}00 & 6{,}3$\pm$0{,}00\\
 		&   50 & 0{,}00$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 7{,}7$\pm$0{,}00 & 7{,}7$\pm$0{,}00\\
 		&   80 & 0{,}00$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 6{,}7$\pm$0{,}00\\
@@ -3338,10 +3338,9 @@ Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là ho�
 
 Các đường cong trong Hình~\ref{fig_M_ex3} có cùng trục hoành $m\in\{1{,}1\,;1{,}5\,;2{,}0\,;2{,}5\,;5{,}0\,;10{,}0\}$ và trục tung là $ARI$ và $Silhouette$. Trong các Hình~\ref{fig_M_ex3}, chỉ có đường cong $IR=20$ cho kết quả $ARI$ cao, trong khi các đường cong từ hơn $50$ đều bị giảm về $0{,}00$ ngay từ giá trị $m$ thấp.
 
-Nhìn chung, kết quả thực nghiệm cho thấy hiệu suất phân chùm phụ thuộc rõ rệt vào tham số mờ $m$ khi $IR$ thay đổi. Trong thuật toán đề xuất, phân chùm chất lượng cao được duy trì đối với các giá trị $m$ nhỏ, bất kể $IR$. Khi $m$ tăng, sự suy giảm hiệu suất xảy ra đột ngột hơn đối với các giá trị $IR$ cao hơn; tuy nhiên, phương pháp đề xuất cho thấy sự suy giảm chậm hơn đáng kể so với hành vi FCF thông thường được báo cáo trong các nghiên cứu trước đó \cite{nguyentrang2017fuzzy}.
+Nhìn chung, kết quả thực nghiệm cho thấy hiệu suất phân chùm phụ thuộc rõ rệt vào tham số mờ $m$ khi $IR$ thay đổi. Trong thuật toán đề xuất, phân chùm chất lượng cao được duy trì đối với các giá trị $m$ nhỏ, bất kể $IR$. Khi $m$ tăng, sự suy giảm hiệu suất xảy ra đột ngột hơn đối với các giá trị $IR$ cao hơn; tuy nhiên, phương pháp đề xuất cho thấy sự suy giảm chậm hơn đáng kể so với hành vi FCF thông thường được báo cáo trong các nghiên cứu trước đó \cite{nguyentrang2017fuzzy}. Cụ thể, đối với $IR=20$ hoặc $50$, cả $ARI$ và $Silhouette$ vẫn gần tối ưu cho đến khi $m=5$, sau đó điểm số giảm mạnh. Trong khi đó, đối với $IR>80$ cao hơn, phân chùm mờ thông thường, như được ghi nhận trong các công trình trước đây \cite{nguyen2024new,nguyen2024efficient}, có xu hướng mất khả năng phân tách chùm ở mức $m=2$ nhỏ hơn nhiều, thường dẫn đến các phép gán gần như ngẫu nhiên. Ngược lại, phương pháp đề xuất làm chậm quá trình suy giảm này, duy trì chất lượng phân chùm ổn định hơn trên phạm vi giá trị $m$ rộng hơn.
 
-Cụ thể, đối với $IR=20$ hoặc $50$, cả ARI và $Silhouette$ vẫn gần tối ưu cho đến khi $m=5$, sau đó điểm số giảm mạnh. Trong khi đó, đối với $IR>80$ cao hơn, phân chùm mờ thông thường, như được ghi nhận trong các công trình trước đây \cite{nguyen2024new,nguyen2024efficient}, có xu hướng mất khả năng phân tách chùm ở mức $m=2$ nhỏ hơn nhiều, thường dẫn đến các phép gán gần như ngẫu nhiên. Ngược lại, phương pháp đề xuất làm chậm quá trình suy giảm này, duy trì chất lượng phân chùm ổn định hơn trên phạm vi giá trị $m$ rộng hơn.
-
+Kết quả này chứng minh IFCF là phương pháp hiệu quả để phân tích và nhóm các đối tượng dựa trên đặc trưng màu sắc hoặc kết cấu, ngay cả khi các đối tượng cần nhận dạng chỉ chiếm một phần rất nhỏ trong tổng thể dữ liệu.
 
 \subsubsection{b.\qquad Ví dụ~\ref{vdu:anh2}}
 
@@ -3367,39 +3366,43 @@ Hình~\ref{fig:APP} cho thấy kết quả phân tích chùm BKIFF với số ch
 	\begin{subfigure}[h]{0.32\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k5}
-		\caption{$k=5$}
+		\caption{$c=5$}
 	\end{subfigure}
 	\begin{subfigure}[h]{0.32\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k6}
-		\caption{$k=6$}
+		\caption{$c=6$}
 	\end{subfigure}
 	\begin{subfigure}[h]{0.32\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k7}
-		\caption{$k=7$}
+		\caption{$c=7$}
 	\end{subfigure}\hfil\\
 	\begin{subfigure}[h]{0.32\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k8}
-		\caption{$k=8$}
+		\caption{$c=8$}
 	\end{subfigure}
 	\begin{subfigure}[h]{0.32\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k9}
-		\caption{$k=9$}
+		\caption{$c=9$}
 	\end{subfigure}
 	\begin{subfigure}[h]{0.32\textwidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k10}
-		\caption{$k=10$}
+		\caption{$c=10$}
 	\end{subfigure}
-	\caption{Phương pháp IFCF được đề xuất áp dụng cho ảnh Landsat}\label{fig:APP}
+	\caption{Phương pháp IFCF được đề xuất áp dụng cho ảnh Landsat đối với Ví dụ~\ref{vdu:anh2}}\label{fig:APP}
 \end{figure*}
 
 Kết quả là, trên $c = 2\div10$, quá trình phân đoạn BKIFF diễn ra đơn điệu và không tạo ra các hiện tượng nhiễu hạt muối tiêu. Ở $c = 2$, thuật toán phân tách cảnh thành vùng nước sâu và các vùng ven biển xung quanh. Khi chùm $c$ tăng dần về phía $3$, độ tương phản quang phổ giữa các rạn san hô và hòn đảo trở nên rõ ràng hơn, qua đó cho thấy các đường viền hiển thị sắc nét hơn.
 Tiếp đến, trong khoảng $c = 4\div6$, hòn đảo trở nên nổi bật hơn, thể hiện rõ các khu vực cát nhẹ, thảm thực vật và các vùng biển khác nhau. Đồng thời, một lớp mới được hình thành để làm nổi bật sự khác biệt trong nước biển. Hơn nữa, ở các lớp vi mô $c = 7\div9$, các đặc điểm như bãi cát mỏng, chiếm chưa đến $0{,}5$\% tổng số pixel, vẫn được nhóm lại, cho thấy khả năng của thuật toán trong việc bảo tồn các dấu hiệu cường độ sáng nhỏ. Cuối cùng, ở $c = 10$, không có chùm nào bị phá vỡ, thể hiện tính nhất quán không gian nội tại của thuật toán.
 Tóm lại, số chùm trung bình $c$ từ $4\div6$ được xem là phù hợp nhất để cân bằng giữa khả năng phân biệt lớp phủ và khả năng khái quát hóa đối với Ví dụ~\ref{vdu:anh2}. Ngược lại, các giá trị $c$ cao hơn thích hợp hơn cho các nghiên cứu vi mô, nơi cần điều tra sâu và phân tích chi tiết hơn.
+
+Hình ảnh Landsat-8 của Đảo Yam được sử dụng có các điểm ảnh vùng nước sâu áp đảo rất nhiều các điểm thuộc các bãi san hô nông, bãi cát nhỏ và thảm thực vật trên đảo. Điều này tạo ra một nguồn mất cân bằng tự nhiên. Nhiệm vụ phân tích chùm trong Ví dụ này có thể dĩ nhiên được phân đoạn thủ công do không có nhiều trở ngại. Nhưng để máy tính hiểu được sắc độ màu của hình ảnh, ta có thể dùng IFCF theo khối màu. 
+
+
 
 \section{Ứng dụng của bài toán phân loại}
 
@@ -3456,7 +3459,7 @@ Kết quả trong Bảng~\ref{tab:bayes_ifcf_results} cho thấy sự khác bi�
 \begin{table}[H]
 	\centering
 	\scriptsize
-	\caption{Kết quả so sánh các mô hình Bayes với các tiên nghiệm khác nhau đối với Ví dụ~\ref{vidu:dat}}
+	\caption{Kết quả so sánh các mô hình Bayes với các tiên nghiệm cơ sở khác nhau đối với Ví dụ~\ref{vidu:dat}}
 	\label{tab:bayes_ifcf_results}
 	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
 		\toprule
@@ -3753,7 +3756,7 @@ Giả sử ta có ba chùm hàm mật độ xác suất Gauss $\mathcal{F}\,;\ma
 	\end{array}
 	$$
 	Từ đây, ta có thể dễ dàng tính được các liên kết $\Delta(\mathcal{F}\,; \mathcal{G}) $ thông qua ma trận này. Ta có,
-\begin{align*}
+{\small\begin{align*}
 	\Delta_{\min}(\mathcal{F}\,; \mathcal{G}) 
 	&= \min\big\{
 	\mathcal{L}_2(f_1\,; g_1)\,; \mathcal{L}_2(f_1\,; g_2)\,; \mathcal{L}_2(f_1\,; g_3)\,;
@@ -3773,13 +3776,14 @@ Giả sử ta có ba chùm hàm mật độ xác suất Gauss $\mathcal{F}\,;\ma
 	&=\mathcal{L}_2(\theta_\mathcal{F}\,; \theta_{\mathcal{G}})
 	= \left(2 - 2 \exp\left(-\frac{(0{,}65 - 4{,}8)^2}{4}\right)\right)^{1/2}
 	= 1{,}4,\\
-	&\text{với } \theta_{\mathcal{F}} = (0{,}3 + 1{,}0)/2 = 0{,}65\,; \quad 
+	&\text{với } \theta_{\mathcal{F}} = (0{,}30 + 1{,}0)/2 = 0{,}65\,; \quad 
 	\theta_{\mathcal{G}} = (4{,}0 + 5{,}5 + 4{,}8)/3 = 4{,}8,\\[3pt]
 	\Delta_{\text{Ward}}(\mathcal{F}\,; \mathcal{G}) 
 	&= \frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}}
 	\cdot \mathcal{L}_2^2(\theta_{\mathcal{F}}\,; \theta_{\mathcal{G}})
 	= \frac{2 \cdot 3}{2 + 3} \cdot (1{,}4)^2 = 2{,}4.
 \end{align*}
+}
 
 Tương tự, ta cũng có kết quả cho $\Delta(\mathcal{F}\cup\mathcal{G}\,; \mathcal{H})$ là
 \begin{align*}
@@ -3899,9 +3903,9 @@ Cuối cùng, ta chọn xếp chùm $\{f_2\,;f_5\,;f_7\}$  vào chùm $\{f_3\,;f
 
 \paragraph{Bài giải Ví dụ~\ref{VD:FCF}.}
 Cho $c=3$, $\epsilon=10^{-3}$, Các trọng tâm khởi tạo ngẫu nhiên bởi
-$\theta_1(x)\sim\mathcal N(0;1)$, 
-$\theta_2(x)\sim\mathcal N(2;1)$, 
-$\theta_3(x)\sim\mathcal N(5;1)$.
+$\theta_1(x)\sim\mathcal N(0\,;1)$, 
+$\theta_2(x)\sim\mathcal N(2\,;1)$, 
+$\theta_3(x)\sim\mathcal N(5\,;1)$.
  Ta cũng khởi tạo các phần tử trong ma trận $\bm U$ tuân theo phân phối Dirichlet. 
 Ma trận khoảng cách $\bm D$ trong đó hàng $i$ là $\theta_i$, cột $j$ là $f_j$, các khoảng cách được tính bởi $\mathcal{L}_2$ dựa vào trọng tâm và phân vùng như sau
 
@@ -3956,7 +3960,7 @@ $$
 \end{figure}
 
 
-Gom toàn bộ cột, ta nhận được ma trận phân vùng sau vòng lặp đầu tiên là $\bm U$. Với chuẩn $\mathcal L_2$ trên hàm, theo \eqref{pvFCF2}. Để tính toán tiêu chuẩn dừng, ta tính theo công thức $$\left\Vert {\bm\mu}^{(t+1)} - {\bm\mu}^{(t)} \right \Vert = 0{,}96.$$ Vì chuẩn này chưa nhỏ hơn tiêu chuẩn dừng, ta tiếp tục lặp lại quá trình trên. Sau $t=9$ vòng lặp, thuật toán FCF dừng với chuẩn là $6{,}1\times 10^{-4}$.
+Gom toàn bộ cột, ta nhận được ma trận phân vùng sau vòng lặp đầu tiên là $\bm U$. Với chuẩn $\mathcal L_2$ trên hàm, theo \eqref{pvFCF1}. Để tính toán tiêu chuẩn dừng, ta tính theo công thức $$\left\Vert {\bm\mu}^{(t+1)} - {\bm\mu}^{(t)} \right \Vert = 0{,}96.$$ Vì chuẩn này chưa nhỏ hơn tiêu chuẩn dừng, ta tiếp tục lặp lại quá trình trên. Sau $t=9$ vòng lặp, thuật toán FCF dừng với chuẩn là $6{,}1\times 10^{-4}$.
 
 
 \begin{figure}[H]
@@ -4004,7 +4008,6 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 	\caption{Thay đổi của trọng tâm chùm FCF qua các vòng lặp}\label{fig:vdu:trongtamFCF}
 \end{figure}
 
-
 \begin{table}[H]
 	\centering
 	\scriptsize
@@ -4013,31 +4016,33 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 		\toprule
 		{Khoảng cách} & meanrank & median & mad & ci\_lower & ci\_upper & effect\_size & magnitude & effect\_size\_above & magnitude above \\
 		\midrule
-$D_{H}$                 & 4.0 & -0.001551 & 0.017663 & -0.019214 & 0.93993  &  0.000000 & negligible &  0.000000 & negligible \\
-$\mathcal{L}_2$         & 3.9 & -0.010574 & 0.009523 & -0.020588 & 0.932119 &  0.428897 & small      &  0.428897 & small \\
-$D_{\mathrm{JS}}$       & 3.8 & -0.001818 & 0.011585 & -0.013402 & 0.93993  &  0.012035 & negligible & -0.556951 & medium \\
-$W_2$                   & 2.1 &  0.881896 & 0.118104 &  0.450172 & 1.000000 & -7.056713 & large      & -7.103256 & large \\
-$D_{\mathrm{BC}}$       & 1.2 &  0.883307 & 0.003776 &  0.879531 & 1.000000 & -46.730339 & large     & -0.011391 & negligible \\
+		$D^2_{H}$                 & 4{,}0 & -0{,}00 & 0{,}02 & -0{,}02 & 0{,}9  &  0{,}00 & negligible &  0{,}00 & negligible \\
+		$\mathcal{L}_2$         & 3{,}9 & -0{,}01 & 0{,}01 & -0{,}02 & 0{,}9  &  0{,}43 & small      &  0{,}43 & small \\
+		$D_{\mathrm{JS}}$       & 3{,}8 & -0{,}00 & 0{,}01 & -0{,}01 & 0{,}9  &  0{,}01 & negligible & -0{,}56 & medium \\
+		$W^2_2$                 & 2{,}1 &  0{,}88 & 0{,}12 &  0{,}45 & 1{,}0  & -7{,}1  & large      & -7{,}1  & large \\
+		$D_{\mathrm{BC}}$       & 1{,}2 &  0{,}88 & 0{,}00 &  0{,}88 & 1{,}0  & -46{,}7 & large      & -0{,}01 & negligible \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
 
+
 \begin{table}[H]
 	\centering
 	\scriptsize
-	\caption{Kết quả so sánh các khoảng cách theo chỉ số đối với $NMI$ Ví dụ~\ref{vdu:gauss1}}
+	\caption{Kết quả so sánh các khoảng cách theo chỉ số $NMI$ đối với Ví dụ~\ref{vdu:gauss1}}
 	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{1.5cm}ccccccccp{2cm}@{\extracolsep\fill}}
 		\toprule
 		Khoảng cách & meanrank & median & mad & ci\_lower & ci\_upper & effect\_size & magnitude & effect\_size\_above & magnitude above \\
 		\midrule
-$D_{H}$                 & 4.2 & 0.028672 & 0.002723 & 0.025949 & 0.876524 &  0.000000 & negligible &  0.000000 & negligible \\
-$\mathcal{L}_2$         & 3.9 & 0.051818 & 0.024099 & 0.027092 & 0.862962 & -0.910378 & large      & -0.910378 & large \\
-$D_{\mathrm{JS}}$       & 3.6 & 0.051341 & 0.025252 & 0.026089 & 0.876524 & -0.851356 & large      &  0.013043 & negligible \\
-$W_2$                   & 2.1 & 0.796297 & 0.176127 & 0.363509 & 1.000000 & -4.156832 & large      & -3.993718 & large \\
-$D_{\mathrm{BC}}$       & 1.2 & 0.800313 & 0.009732 & 0.790582 & 1.000000 & -72.836544 & large     & -0.021719 & negligible \\
+		$D^2_{H}$                 & 4{,}2 & 0{,}03 & 0{,}00 & 0{,}03 & 0{,}9  &  0{,}00 & negligible &  0{,}00 & negligible \\
+		$\mathcal{L}_2$         & 3{,}9 & 0{,}05 & 0{,}02 & 0{,}03 & 0{,}9  & -0{,}91 & large      & -0{,}91 & large \\
+		$D_{\mathrm{JS}}$       & 3{,}6 & 0{,}05 & 0{,}03 & 0{,}03 & 0{,}9  & -0{,}85 & large      &  0{,}01 & negligible \\
+		$W^2_2$                 & 2{,}1 & 0{,}80 & 0{,}18 & 0{,}36 & 1{,}0  & -4{,}2  & large      & -4{,}0  & large \\
+		$D_{\mathrm{BC}}$       & 1{,}2 & 0{,}80 & 0{,}01 & 0{,}79 & 1{,}0  & -72{,}8 & large      & -0{,}02 & negligible \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
+
 
 \begin{table}[H]
 	\centering
@@ -4047,14 +4052,15 @@ $D_{\mathrm{BC}}$       & 1.2 & 0.800313 & 0.009732 & 0.790582 & 1.000000 & -72.
 		\toprule
 		{Khoảng cách} & meanrank & mean & std & ci\_lower & ci\_upper & effect\_size & magnitude & effect\_size\_above & magnitude above \\
 		\midrule
-$D_{H}$                 & 4.2 & 0.495819 & 0.029603 & 0.466216 & 0.659092 &  0.000000 & negligible &  0.000000 & negligible \\
-$D_{\mathrm{JS}}$       & 4.0 & 0.495607 & 0.029312 & 0.466295 & 0.659092 &  0.004854 & negligible &  0.004854 & negligible \\
-$\mathcal{L}_2$         & 3.5 & 0.481554 & 0.014613 & 0.432698 & 0.659092 &  0.412173 & small      &  0.409274 & small \\
-$W_2$                   & 2.1 & 0.620630 & 0.022065 & 0.592853 & 0.659092 & -3.224505 & large      & -5.012632 & large \\
-$D_{\mathrm{BC}}$       & 1.2 & 0.620630 & 0.006647 & 0.611582 & 0.672148 & -3.923972 & large      &  0.000000 & negligible \\
+		$D^2_{H}$                 & 4{,}2 & 0{,}50 & 0{,}03 & 0{,}47 & 0{,}66 &  0{,}00 & negligible &  0{,}00 & negligible \\
+		$D_{\mathrm{JS}}$       & 4{,}0 & 0{,}50 & 0{,}03 & 0{,}47 & 0{,}66 &  0{,}00 & negligible &  0{,}00 & negligible \\
+		$\mathcal{L}_2$         & 3{,}5 & 0{,}48 & 0{,}01 & 0{,}43 & 0{,}66 &  0{,}41 & small      &  0{,}41 & small \\
+		$W^2_2$                 & 2{,}1 & 0{,}62 & 0{,}02 & 0{,}59 & 0{,}66 & -3{,}22 & large      & -5{,}01 & large \\
+		$D_{\mathrm{BC}}$       & 1{,}2 & 0{,}62 & 0{,}01 & 0{,}61 & 0{,}67 & -3{,}92 & large      &  0{,}00 & negligible \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
+
 
 \begin{table}[H]
 	\centering
@@ -4064,11 +4070,11 @@ $D_{\mathrm{BC}}$       & 1.2 & 0.620630 & 0.006647 & 0.611582 & 0.672148 & -3.9
 		\toprule
 		{Khoảng cách} & meanrank & mean & std & ci\_lower & ci\_upper & effect\_size & magnitude & effect\_size\_above & magnitude above \\
 		\midrule
-$D_{\mathrm{BC}}$       & 4.6 & 0.067778 & 0.064004 & -0.064007 & 0.199564 &  0.000000 & negligible &  0.000000 & negligible \\
-$\mathcal{L}_2$         & 3.6 & 0.115243 & 0.080680 & -0.050879 & 0.281365 & -0.651793 & medium     & -0.651793 & medium \\
-$W_2$                   & 3.6 & 0.090621 & 0.051703 & -0.015836 & 0.197077 & -0.392616 & small      &  0.363381 & small \\
-$D_{H}$                 & 2.2 & 0.367436 & 0.334679 & -0.321673 & 1.056545 & -1.243690 & large      & -1.155995 & large \\
-$D_{\mathrm{JS}}$       & 1.0 & 1.241478 & 1.076920 & -0.975915 & 3.458871 & -1.538590 & large      & -1.096083 & large \\
+		$D_{\mathrm{BC}}$       & 4{,}6 & 0{,}07 & 0{,}06 & -0{,}06 & 0{,}20 &  0{,}00 & negligible &  0{,}00 & negligible \\
+		$\mathcal{L}_2$         & 3{,}6 & 0{,}12 & 0{,}08 & -0{,}05 & 0{,}28 & -0{,}65 & medium     & -0{,}65 & medium \\
+		$W^2_2$                 & 3{,}6 & 0{,}09 & 0{,}05 & -0{,}02 & 0{,}20 & -0{,}39 & small      &  0{,}36 & small \\
+		$D_{H}$                 & 2{,}2 & 0{,}37 & 0{,}33 & -0{,}32 & 1{,}1  & -1{,}24 & large      & -1{,}16 & large \\
+		$D_{\mathrm{JS}}$       & 1{,}0 & 1{,}2  & 1{,}1  & -1{,}0  & 3{,}5  & -1{,}5  & large      & -1{,}1  & large \\
 		\bottomrule
 	\end{tabular*}
 \end{table}
@@ -4115,7 +4121,7 @@ Thuật toán IFCF cải tiến hàm mục tiêu giúp trung hòa đóng góp c�
 
 Khi $\omega_1 \to \infty$, ta có $
 	\lim_{\omega_1 \to \infty} \mu_{i1} = 1$,
-	$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$ Điều này cho thấy khi tỷ lệ mất cân bằng ($\text{IR}$) tăng đến vô cùng, mức độ phân vùng mờ cho chùm lớn sẽ tiến về 1, và chùm nhỏ sẽ tiến về 0. Hiện tượng này được gọi là phân cực trong các mức độ phân vùng.
+	$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$ Điều này cho thấy khi tỷ lệ mất cân bằng ($\text{IR}$) tăng đến vô cùng, mức độ phân vùng mờ cho chùm lớn sẽ tiến về 1, và chùm nhỏ sẽ tiến về 0. Hiện tượng này được gọi là phân cực trong các mức độ phân vùng. Ta vẫn chưa có cơ chế phát triển nào cho hiên tượng này mặt dù đã có cải tiến.
 
 
 
@@ -4213,7 +4219,7 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 
 
 \includepdf[pages=-]{HOSO/baibao.pdf}
-
+\includepdf[pages=-]{HOSO/trinhki_liemchinh.pdf}
 
 
 
