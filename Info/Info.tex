@@ -41,7 +41,7 @@ Hoàn thành luận văn, em nhận ra hành trình này được viết bên kh
 
 Trên hành trình đó, em gửi lời tri ân vô hạn đến thầy hướng dẫn luận văn \textit{\textbf{PGs. TS. Võ Văn Tài}} đã tận tình giảng dạy và tạo điều kiện cho em trong suốt quá trình học tập và nghiên cứu. Em đã làm nên nhờ thầy, thầy truyền phương pháp, truyền lửa, truyền lí tưởng sống cho em. 
 
-Đồng thời, em xin gửi lời cảm ơn chân thành đến quý quý thầy cô \textit{Khoa Khoa học Tự nhiên - Đại học Cần Thơ}, cô Phạm Bích Như, thầy Nguyễn Hữu Khánh, thầy Trần Văn Lý, và thầy Lâm Hoàng Chương; Quý thầy từ Thành phố Hồ Chí Minh, thầy Lê Sĩ Đồng, thầy Phạm Bích Huy đã dạy em những kiến thức nền tảng, đã không tiếc công chỉ dẫn, trao đổi, định hướng cho em. Em xin cảm ơn TS. Nguyễn Trang Thảo, người anh cả của nhóm nghiên cứu, ThS Thái Minh Trọng, cùng quý đồng nghiệp tại \textit{Viện Khoa học Tính toán và Trí tuệ Nhân tạo - trường Đại học Văn Lang} đã giúp em có thêm nhiều góc nhìn sâu sắc trong nghiên cứu.
+Đồng thời, em xin gửi lời cảm ơn chân thành đến quý quý thầy cô \textit{Khoa Khoa học Tự nhiên - Đại học Cần Thơ}, cô Phạm Bích Như, thầy Nguyễn Hữu Khánh, thầy Trần Văn Lý, thầy Lâm Hoàng Chương và cô Dương Thị Bé Ba; Quý thầy từ Thành phố Hồ Chí Minh, thầy Lê Sĩ Đồng, thầy Phạm Bích Huy và thầy Tô Anh Dũng đã dạy em những kiến thức nền tảng, đã không tiếc công chỉ dẫn, trao đổi, định hướng cho em. Em xin cảm ơn TS. Nguyễn Trang Thảo, người anh cả của nhóm nghiên cứu, ThS Thái Minh Trọng, cùng quý đồng nghiệp tại \textit{Viện Khoa học Tính toán và Trí tuệ Nhân tạo - trường Đại học Văn Lang} đã giúp em có thêm nhiều góc nhìn sâu sắc trong nghiên cứu.
 
 Tôi xin cảm ơn vì Luận văn tốt nghiệp này được tài trợ bởi \textbf{\textit{Chương trình học bổng đào tạo thạc sĩ, tiến sĩ trong nước của Quỹ Đổi mới sáng tạo Vingroup (VINIF),}} mã số VINIF.2024.ThS.56. Đây không chỉ là sự hỗ trợ vật chất, mà là niềm tin mà Quỹ đã đặt vào thế hệ trẻ trên con đường nghiên cứu khoa học.
 
@@ -68,13 +68,33 @@ Do khả năng có hạn trong khi nguồn tri thức là vô hạn, luận văn
 	\addcontentsline{toc}{chapter}{\numberline{TÓM TẮT NỘI DUNG}}%
 \end{center}
 \vspace{20pt}
-Nhận dạng thống kê cho hàm mật độ xác suất là một chủ đề mới và là kiến thức nền tảng nhằm phát triển các hệ thống AI dự đoán hiện nay. Dữ liệu cho nhận dạng thống kê có thể là dữ liệu rời rạc, dữ liệu khoảng, hoặc hàm mật độ xác suất. Trong thực tế, nhiều trường hợp gặp phải dữ liệu mất cân bằng. Khi đó, các mô hình nhận dạng truyền thống dễ dàng bị thiên lệch về lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các lớp thiểu số quan trọng.
-Luận văn này xây dựng thuật toán phân tích chùm và phân loại cho hàm mật độ xác suất với dữ liệu mất cân bằng, đồng thời, áp dụng các thuật toán này cho dữ liệu hình ảnh khi các đặc trưng đại diện bởi hàm mật độ xác suất.
-Về phân tích chùm, luận văn đề xuất thuật toán Phân tích chùm mờ cải tiến (IFCF) giải quyết ``hiệu ứng đồng nhất'' qua việc cải tiến hàm mục tiêu. Luận văn cũng đã thiết lập và chứng minh IFCF hội tụ dựa trên định lý Zangwill, với một số điều kiện ràng buộc về khoảng cách. 
-Về phân loại, luận văn thiết lập mô hình Bayes-IFCF mở rộng của IFCF sang bài toán phân loại có giám sát. Phương pháp này sử dụng ma trận phân vùng mờ từ IFCF để xác định xác suất tiên nghiệm động cho các lớp.
-Kết quả được đưa ra dưới dạng Ví dụ số, cho thấy IFCF đạt hiệu suất gần như hoàn hảo $(ARI = 1,00\,; NMI = 1,00)$ trên dữ liệu ảnh kết cấu Brodatz và Landsat.
-Mô hình Bayes-IFCF cũng cho kết quả nhất quán và chính xác cao $(ACC = 1{,}00\,; GM = 1{,}00\,; F_1 = 1{,}00)$ trong bài toán phân loại màu sắc các loại đất. \\
-\textbf{Từ khóa:} Nhận dạng thống kê; Hàm mật độ xác suất; Phân loại có giám sát; Phân cụm không giám sát; Dữ liệu hình ảnh.
+Nhận dạng thống kê (SR) gồm có hai bài toán chính: Nhận dạng có giám sát và không có
+giám sát. Nhận dạng có giám sát là việc xếp một phần tử vào một nhóm thích hợp trong
+các nhóm đã biết nên nó còn được gọi là bài toán phân loại. Nhận dạng không giám sát
+là việc chia một tập dữ liệu thành các chùm, sao cho các phần tử trong cùng một chùm
+thì có sự tương tự nhiều hơn so với các phần tử bên ngoài chùm đó. Do đó, bài toán này
+còn được gọi là phân tích chùm. Hai bài toán phân loại và phân tích chùm được xem là
+nền tảng của khoa học dữ liệu và trí tuệ nhân tạo (AI) ngày nay nên đã và đang được
+rất nhiều nhà khoa học thống kê và công nghệ thông tin quan tâm. Dữ liệu cho SR có
+thể là dữ liệu điểm, dữ liệu khoảng, hoặc hàm mật độ xác suất (PDF), trong đó dữ liệu
+PDF được xem là hướng nghiên cứu mới của SR. Trong thực tế, khi thực hiện SR cho
+PDF, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng. Khi đó, các mô hình SR
+truyền thống dễ dàng bị thiên lệch về lớp đa số, dẫn đến hiệu quả thấp trong việc nhận
+dạng các lớp thiểu số quan trọng. Luận văn này xây dựng thuật toán phân tích chùm và
+phân loại cho PDF với dữ liệu mất cân bằng, đồng thời áp dụng các thuật toán này cho
+dữ liệu ảnh khi các đặc trưng của nó được trích xuất và đại diện bởi PDF. Về phân tích
+chùm, luận văn đề xuất thuật toán phân tích chùm mờ cải tiến (IFCF) giải quyết “hiệu
+ứng đồng nhất” qua việc cải tiến hàm mục tiêu. Luận văn cũng đã thiết lập và chứng
+minh IFCF hội tụ dựa trên định lý Zangwill với một số điều kiện ràng buộc về khoảng
+cách. Về phân loại, luận văn thiết lập mô hình Bayes-IFCF mở rộng của IFCF sang bài
+toán phân loại có giám sát. Phương pháp này sử dụng ma trận phân vùng mờ từ IFCF để
+xác định xác suất tiên nghiệm động cho các lớp. Kết quả được đưa ra dưới dạng ví dụ
+số, cho thấy IFCF đạt hiệu suất gần như hoàn hảo ($ARI = 1{,}0\,; NMI = 1{,}0$) trên dữ
+liệu ảnh kết cấu Brodatz và Landsat. Mô hình Bayes-IFCF cũng cho kết quả nhất quán
+và chính xác cao ($ACC = 1{,}0\,; GM = 1{,}0\,; F_1 = 1{,}0$) trong bài toán phân loại màu sắc
+các loại đất.
+
+\textbf{Từ khóa:} Nhận dạng thống kê; Hàm mật độ xác suất; Phân loại có giám sát; Phân tích chùm không giám sát; Dữ liệu hình ảnh
 
 
 
@@ -174,7 +194,7 @@ Tôi xin lấy danh dự và uy tín của bản thân để đảm bảo cho l�
 \section*{2\qquad Quá trình Đào tạo}
 	
 	\begin{table}[H]
-		\centering\footnotesize
+		\centering
 		\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ccp{10cm}@{\extracolsep\fill}} 
 		\toprule
 	\bf	Trình độ &\bf Thời gian &\bf Địa chỉ \\ \midrule
@@ -203,18 +223,18 @@ Tôi xin lấy danh dự và uy tín của bản thân để đảm bảo cho l�
 
 Bài báo khoa học hỗ trợ nội dung luận văn Thạc sĩ của tác giả
 
-\begin{itemize}\footnotesize
+\begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
 \item	\textbf{T. N. Hưng}, C. N. Thơ, và V. V. Tài, \textit{“Cải tiến thuật toán tự cập nhật chùm cho các hàm mật độ xác suất”}, CTU J. Sci., vol 61, số p.h 4, tháng 8 2025,
 \item T. M. Lượng, N. K. Ngân, \textbf{T. N. Hưng}, N. H. Chi, N. N. Huỳnh, và V. V. Tài, \textit{“Thuật toán xây dựng chùm ảnh dựa trên các pixel màu được trích xuất”}, CTU J. Sci., vol 60, số p.h CĐ Khoa học tự nhiên, tr 98-107, tháng 8 2024.
 	\item \textbf{Tran-Nam, H.} \& Che-Ngoc, H., \textit{A Black-winged Kite Improved Fuzzy Clustering handling Imbalanced Uncertain Data}. IEEE Access (2025). (\textit{Revised}).
 	\item \textbf{Tran-Nam, H.} \& Vo-Van, T., \textit{Developing Bayesian classifier algorithm for images based on fuzzy relationship of extracted features}.  Japanese Journal of Statistics and Data Science. (\textit{Revised}).
-\end{itemize}
+\end{enumerate}
 
 Bài báo khoa học hỗ trợ liên quan của tác giả
 
-\begin{itemize}\footnotesize
-\item \textbf{Tran-Nam, H.}, Nguyen-Trang, T. \& Che-Ngoc, H. \textit{A new possibilistic-based clustering method for probability density functions and its application to detecting abnormal elements}. Sci Rep 14, 17871 (2024). { \url{https://doi.org/10.1038/s41598-024-68323-9}}
-\end{itemize}
+\begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
+\item \textbf{Tran-Nam, H.}, Nguyen-Trang, T. \& Che-Ngoc, H. \textit{A new possibilistic-based cluste-ring method for probability density functions and its application to detecting abnor-mal elements}. Sci Rep 14, 17871 (2024). {\footnotesize \url{https://doi.org/10.1038/s41598-024-68323-9}}
+\end{enumerate}
 
 \hspace*{\fill}
 \begin{tabular}{@{}c@{}} 
