@@ -133,8 +133,8 @@
 
 \DeclareCaptionFont{tblfont}{\fontsize{12pt}{14pt}\selectfont\bfseries} % tên bảng 12pt đậm
 
-\captionsetup[table]{position=top, justification=raggedright, singlelinecheck=false, font=tblfont, labelfont=tblfont,textfont=tblfont}
-\captionsetup[figure]{position=bottom, justification=centering, singlelinecheck=false, font=tblfont, labelfont=tblfont,textfont=tblfont}
+\captionsetup[table]{position=top, justification=raggedright, singlelinecheck=false, font=tblfont, labelfont=tblfont,textfont=tblfont,format=plain}
+\captionsetup[figure]{position=bottom, justification=centering, singlelinecheck=false, font=tblfont, labelfont=tblfont,textfont=tblfont,format=plain}
 
 
 
@@ -702,9 +702,9 @@ trong đó, $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa m�
 	    \includegraphics[width=.8\linewidth]{Figs/C1_hamdaidien.pdf}
 	\caption{Minh họa hai PDF đại diện trong một tập hợp các PDF $\mathcal{F}$.}
 	\label{fig:hamdaidien}
-		    \begin{flushleft}
+		    \begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it Chú thích: PDF thể hiện bằng đường thẳng in đậm cho ba PDF Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$, và (b) dựa vào vị trí tối ưu với khoảng cách $\mathcal{L}_2$. Nguồn: Minh họa của tác giả.
-	\end{flushleft}
+	\end{minipage}
 \end{figure}
 
 
@@ -751,6 +751,10 @@ Trong thực tế, ta cần phải ước lượng PDF dựa vào dữ liệu r�
 		$(-\infty,\infty)$ & $\mathcal{C}^\infty$\\
 		\bottomrule
 	\end{tabular*}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tổng hợp
+	\end{minipage}
 \end{table}
 
 Hình~\ref{fig:kde}(a) so sánh các hàm hạt nhân khác nhau. Cùng tham số trơn $bw=1$, hàm Gauss cho đường trơn, còn hàm logistic dao động yếu, và hàm Epanechnikov nổi bật rõ đỉnh. Hình~\ref{fig:kde}(b) giữ cố định nhân Gauss và thay băng thông. Rõ ràng, $bw$ nhỏ hơn làm đồ thị nhọn và chi tiết hơn, và ngược lại.
@@ -801,7 +805,7 @@ Phần này giới thiệu một số độ đo đánh giá sự tương tự c�
 
 \dng{[$f$-phân kỳ] Hàm $D\,:\,P_1\times P_2\rightarrow \mathbb{R}$ được gọi là $f$-phân kỳ của hai PDF $f_1\in P_1$ và $f_2\in P_2$ khi nó thỏa hệ số phân kỳ giữa hai PDF \cite{ali1966general}
 $$D(P_1\,; P_2) = h \left(\mathbb{E}_1 \left(g \left( \frac{f_2}{f_1} \right) \right) \right),$$
-	trong đó $g$ là một hàm liên tục lồi trên $\mathbb{R}_{>0}$, $h$ là hàm tăng trên $\mathbb{R}$, và $\mathbb{E}_1$ là kỳ vọng của  $P_1$.
+	trong đó hàm $g$ là một hàm liên tục lồi trên $\mathbb{R}_{>0}$, $h$ là hàm tăng trên $\mathbb{R}$, và $\mathbb{E}_1$ là kỳ vọng của phân phối $P_1$.
 	} 
 
 
@@ -823,12 +827,11 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 	Bayes	Error &$1-\displaystyle\int_{\Omega} \min\{\pi f_1(x)\,;\pi(1-f_2(x))\}\mathrm{\,d}x$ &$-\min\{u\,;1-u\}$ & $u+1$ & $[0\,;1]$ \\
 		\bottomrule
 	\end{tabular*}
-\begin{flushleft}
+\begin{minipage}{\textwidth}
 	\fontsize{11pt}{14pt}\selectfont\it
-	Chú thích: trong khoảng cách Chernoff, $0\le r\le 1$, và trong khoảng cách Matusita, $r\ge2$. Nguồn: Tác giả tổng hợp
-\end{flushleft}
+	Chú thích: trong khoảng cách Chernoff, $0\le r\le 1$, và trong khoảng cách Matusita, $r\ge2$. Nguồn: Tác giả tổng hợp.
+\end{minipage}
 \end{table}
-
 
 
 Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Tương tự khoảng cách Matusita là tổng quát hóa của bình phương Hellinger khi $r=2$. Trong $\mathcal{L}_p$, chỉ có $\mathcal{L}_1$ là một $f$-phân kỳ và là Matusita với $r=1$. Đáng chú ý, Matusita cũng thỏa mãn tính chất mê-tríc.
@@ -844,13 +847,14 @@ Hình~\ref{fig:dayKC} ghi nhận các giá trị khoảng cách giữa hai PDF $
 \begin{subfigure}{.48\linewidth}
 	\includegraphics[width=\linewidth]{Figs/C1_dist2.pdf}
 	\caption{}
-\end{subfigure}
+\end{subfigure}  
+\caption{Dãy khoảng cách $D(f_1\,;f_2)$ giữa hai PDF Gauss $\mathcal{N}(0\,;1)$ và $\mathcal{N}(\mu\,;1)$}
+\label{fig:dayKC}
    \begin{flushleft}
 \fontsize{11pt}{14pt}\selectfont\it
-  Chú thích: Khảo sát (a) các khoảng cách có miền xác định bị chặn trên, và (b) ngược lại. Nguồn: Minh họa của tác giả
+  Chú thích: Khảo sát (a) các khoảng cách có miền xác định bị chặn trên, và (b) ngược lại. Nguồn: Minh họa của tác giả.
    \end{flushleft}
-    \caption{Dãy khoảng cách $D(f_1\,;f_2)$ giữa hai PDF Gauss $\mathcal{N}(0\,;1)$ và $\mathcal{N}(\mu\,;1)$}
-    \label{fig:dayKC}
+  
 \end{figure}
 
 
@@ -922,11 +926,11 @@ Tương tự ta cũng suy ra được Định lý khoảng cách cho hai PDF Gau
 		\centering
 		\includegraphics[width=\linewidth]{Figs/C1_Uniform.pdf}
 		\caption{Các trường hợp trong khoảng cách giữa hai PDF-đều $f_1(x)$ và $f_2(x)$ đối với Ví dụ \ref{vidu:SS_KS}.}\label{fig:daydeu}
-				\begin{flushleft}
+				\begin{minipage}{\textwidth}
 			\fontsize{11pt}{14pt}\selectfont\it Chú thích: Bốn trường hợp PDF-đều với (a) hai hàm rời nhau, cùng chiều rộng; (b) hai hàm rời nhau, khác chiều rộng; (c) hai hàm rời nhau, cách xa nhau; và (d) hai hàm chồng lấp. Ở đây, ô vuông trắng \begin{tikzpicture}
 				\node[draw=black,line width=1pt,opacity=0.7,fill=black!5, minimum size=3mm] () {};\end{tikzpicture} biểu thị PDF $f_1(x)$, và ô vuông xám  \begin{tikzpicture}
 				\node[draw=black,line width=1pt,opacity=0.7, fill=black!75, minimum size=3mm] () {};\end{tikzpicture}  biểu thị PDF $f_2(x)$. Nguồn: Minh họa của tác giả.
-		\end{flushleft}
+		\end{minipage}
 	\end{figure}
 	
 Hình~\ref{fig:daydeu} mô tả khoảng cách giữa hai PDF-đều này tại các vị trí có thể có trong bốn trường hợp. Ta có Bảng~\ref{tab:vidusosanh} tổng hợp kết quả các phép đo khoảng cách bốn tình huống như sau. 
@@ -950,6 +954,10 @@ Hình~\ref{fig:daydeu} mô tả khoảng cách giữa hai PDF-đều này tại 
 		                                    & $D_{JS}$ (Jensen–Shannon)       &  27{,}6   &  26{,}9  &  27{,}6   &  13{,}5   \\ \midrule
 		Họ Optimal                          & $W_2^2$ (2-Wasserstein)         & \bf 3{,}0 & \bf 3{,}5 & \bf 6{,}0 & \bf 1{,}0 \\ \bottomrule
 	\end{tabular*}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tính toán.
+	\end{minipage}
 \end{table}
 
 Trước hết, trong các trường hợp (a), (b), và (c), mặc dù $f_1(x)$ và $f_2(x)$ nằm xa dần, nhưng các giá trị khoảng cách $\mathcal{L}_1$ và $\mathcal{L}_2$ hầu như không đổi (đều bằng $2{,}0$ hoặc $1{,}4$). Khoảng cách này nhận biết được khác biệt hình dáng và phân bố, nhưng không nhận biết tốt yếu tố vị trí trong không gian. Hệ số Bhattacharyya và khoảng cách Hellinger chỉ có ý nghĩa trong trường hợp (d), khi có phần chồng lấp giữa hai PDF. Điều này cho thấy chúng nhạy với mức độ chồng lấp, nhưng không phân biệt được hai PDF có vị trí tách biệt nhau. 
@@ -1043,7 +1051,7 @@ Giả sử hai chùm PDF không rỗng $\mathcal{F}$ và $\mathcal{G}$ chứa h�
 		\end{tabular*}
 \begin{flushleft}
 \fontsize{11pt}{14pt}\selectfont\it
-Chú thích: \footnotemark[1]: tổng khoảng cách nhỏ nhất; \footnotemark[2]: tổng khoảng cách lớn nhất. Nguồn: Tác giả tổng hợp
+Chú thích: \footnotemark[1]: tổng khoảng cách nhỏ nhất; \footnotemark[2]: tổng khoảng cách lớn nhất. Nguồn: Tác giả tổng hợp.
 \end{flushleft}
 \end{table}
 
@@ -1083,6 +1091,10 @@ Khi cần tính khoảng cách từ hợp hai chùm PDF $\mathcal{F}\cup\mathcal
 		\, D^2\big(\theta_{\mathcal{F} \cup \mathcal{G}}\,; \theta_{\mathcal{H}}\big)$ \\
 		\bottomrule
 	\end{tabular*}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tổng hợp.
+	\end{minipage}
 \end{table}
 
 \subsubsection{b.\quad Tương tự chùm hàm mật độ xác suất}
@@ -1102,7 +1114,7 @@ Nếu xem chùm PDF là tổng thể chứa các PDF, ta có thể đánh giá m
 			\bottomrule
 		\end{tabular*}
 		\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
-			Chú thích: trong Affinity của Matusita và Toussaint, hệ số $\alpha_1+\alpha_2+\cdots+\alpha_n=1$, và trong độ rộng chùm, hệ số $ f_{\max}(x) = \max_x\{f_1(x)\,;f_2(x)\,;\ldots\,;f_n(x)\}$
+			Chú thích: trong Affinity của Matusita và Toussaint, hệ số $\alpha_1+\alpha_2+\cdots+\alpha_n=1$, và trong độ rộng chùm, hệ số $ f_{\max}(x) = \max_x\{f_1(x)\,;f_2(x)\,;\ldots\,;f_n(x)\}$. Nguồn: Tác giả tổng hợp.
 		\end{flushleft}
 \end{table}
 
@@ -1265,10 +1277,10 @@ $. Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{\{j\in c_i\}}$ nên 
 		\end{subfigure}
 		
 		\caption{Kết quả trọng tâm và ma trận phân vùng của thuật toán KCF đối với Ví dụ~\ref{vdu:KCF}}\label{figs:vdu:KCF}
-		\begin{flushleft}
+		\begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it
 		Chú thích: Hình (a) PDF trọng tâm chùm bằng nét liền và dữ liệu PDF nét đứt ở các chùm, và (b) ma trận phân vùng cứng của KCF. Nguồn: Minh họa của tác giả.
-		\end{flushleft}
+		\end{minipage}
 	\end{figure}
 	
 	}
@@ -1307,9 +1319,9 @@ Ta có kết quả phân cấp thứ bậc tích tụ bởi Hình~\ref{figs:thub
 	     \end{subfigure}
 	     
 	     \caption{Kết quả phân cấp thứ bậc tích tụ HCF đối với Ví dụ~\ref{VD:thubac}}\label{figs:thubac}
-	     \begin{flushleft}
-	     \fontsize{11pt}{14pt}\selectfont\it Chú thích: Cây phân cấp ở phía trên thể hiện cách sắp xếp và nhóm các PDF dựa trên liên kết, phần dưới thể hiện ma trận khoảng cách tương ứng của PDF đó. Nguồn: Minh họa của tác giả
-	     \end{flushleft}
+	     \begin{minipage}{\textwidth}
+	     \fontsize{11pt}{14pt}\selectfont\it Chú thích: Cây phân cấp ở phía trên thể hiện cách sắp xếp và nhóm các PDF dựa trên liên kết, phần dưới thể hiện ma trận khoảng cách tương ứng của PDF đó. Nguồn: Minh họa của tác giả.
+	     \end{minipage}
 	\end{figure}
 }
 
@@ -1359,11 +1371,11 @@ Nhiều nghiên cứu tổng quát hóa tham số $m$ đã được đặt ra sa
 
 	\caption{Biểu đồ phân vùng mờ theo khoảng cách $D_{1j}$ với các hệ số $m$ khác nhau.}
 	\label{fig:phanvung}
-		\begin{flushleft}
+		\begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it 
 		Chú thích: Giá trị $\mu_{1j}$ tại trục tung biểu diễn mức độ phân vùng tại chùm thứ $1$ theo khoảng cách $ D^2_{1j} = \mathcal{L}^2_1(f_1\,;f_j)$ với các giá trị $m=\{1{,}1; 1{,}5; 2{,}0; 3{,}0; 5{,}0; 10{,}0\}$. Nét đậm hơn thể hiện $m=2$.
 		Nguồn: Minh họa của tác giả.
-	\end{flushleft}
+	\end{minipage}
 \end{figure}
 
 %Luận văn này, chúng tôi chọn cố định $m=2$.
@@ -1485,6 +1497,10 @@ mà qua đó ta có nhiều phương pháp tối ưu như tối ưu độ dốc 
 		\includegraphics[width=0.7\linewidth]{Figs/C1_beta_log}
 		\caption{Hàm $\widehat\beta(x)$ được ước lượng qua $10$ hàm cơ sở Gauss.}
 		\label{fig:beta_log}
+		\begin{minipage}{\textwidth}
+			\fontsize{11pt}{14pt}\selectfont\it
+			Nguồn: Minh họa của tác giả.
+		\end{minipage}
 	\end{figure}
 	
 Tiếp theo, để phân loại $h$, ta cũng chiếu lên không gian cơ sở. Hàm $h$ được chiếu lên $10$ hàm cơ sở Gauss để tạo thành vector đặc trưng được đưa vào mô hình logistic đã huấn luyện. Cuối cùng, mô hình logistic dự đoán xác suất $h$ thuộc lớp $\mathcal{F}$ là $43\%$. Do đó, ta phân loại $h(x)$ vào lớp $\mathcal{F}$.
@@ -1563,7 +1579,7 @@ Khi đó, hàm phân lớp tương ứng đối với PDF mới $h$ là
 \subsection{Phương pháp Na\"{\i}ve Bayes\index{phương pháp Na\"{\i}ve Bayes (Na\"{\i}ve Bayes method)}}
 
 
-\subsubsection{a\qquad Thuật toán phân lớp}
+\subsubsection{a.\qquad Thuật toán phân lớp}
 
 Phương pháp Na\"{\i}ve  Bayes đã được nhiều nhà thống kê quan tâm cho dữ liệu PDF bởi \cite{ren2009naive}. 
 Cho tập huấn luyện gồm các PDF và nhãn của từng hàm
@@ -1679,10 +1695,8 @@ Cuối cùng, xác suất hậu nghiệm của hai lớp được tính bởi c�
 
 
 
-\subsubsection{b\qquad Xác định tiên nghiệm}
-Trong phân lớp Bayes, xác suất tiên nghiệm $\mathbb{P}(Y=k)$ thường được ước lượng dựa vào kiến thức chuyên gia hoặc thông tin trong lịch sử nghiên cứu tương tự. Trong trường hợp không có thông tin tiên nghiệm, ta giả định các lớp có tiên nghiệm như nhau, tức là $\mathbb{P}(Y=k)=1/k$. Trong nhiều tình huống, xác suất tiên nghiệm còn có thể ước lượng từ tần suất xuất hiện của các lớp trong tập dữ liệu huấn luyện. Khi đó, $\mathbb{P}(Y=k)=n_k/n$, trong đó $n_k$ là số lượng mẫu thuộc lớp $k$ và $n$ là tổng số mẫu. Tuy nhiên, phương pháp này có thể gặp vấn đề khi dữ liệu ít. Phương pháp Laplace\index{phương pháp Laplace (Laplace smoothing)} được sử dụng để điều chỉnh, $\mathbb{P}(Y=k) = (n_k+\alpha)/(n+\alpha k)$, với $\alpha>0$. Với tiên nghiệm Laplace, ta chọn $\alpha =1$, và với Jeffreys, ta chọn $\alpha=1/2$.
-
-
+\subsubsection{b.\quad Xác định tiên nghiệm}
+Trong phân lớp Bayes, xác suất tiên nghiệm $\mathbb{P}(Y=k)$ thường được ước lượng dựa vào kiến thức chuyên gia hoặc thông tin trong lịch sử nghiên cứu tương tự. Trong trường hợp không có thông tin tiên nghiệm, ta giả định các lớp có tiên nghiệm như nhau, tức là $\mathbb{P}(Y=k)=1/k$. Trong nhiều tình huống, xác suất tiên nghiệm còn có thể ước lượng từ tần suất xuất hiện của các lớp trong tập dữ liệu huấn luyện. Khi đó, $\mathbb{P}(Y=k)=n_k/n$, trong đó $n_k$ là số lượng mẫu thuộc lớp $k$ và $n$ là tổng số mẫu. Tuy nhiên, phương pháp này có thể gặp vấn đề khi dữ liệu ít. Phương pháp Laplace\index{phương pháp Laplace (Laplace smoothing)} được sử dụng để điều chỉnh, $\mathbb{P}(Y=k) = (n_k+\alpha)/(n+\alpha k)$ với $\alpha>0$. Với tiên nghiệm Laplace, ta chọn $\alpha =1$, và với Jeffreys, ta chọn $\alpha=1/2$.
 
 
 %
@@ -1747,7 +1761,7 @@ Dữ liệu hàm mật độ liên tục ngày càng được quan tâm trong nh
 \caption{Minh họa các dữ liệu PDF được thu thập trong thực tế từ các nghiên cứu trước đây}\label{tab:DL_thucte}
 \begin{flushleft}
 	\fontsize{11pt}{14pt}\selectfont\it
-Chú thích:	(a) Dữ liệu \texttt{Tuna\_Fork\_Length} của\cite{minami2024regression} biểu diễn phân bố chiều dài thân cá ở các vùng biển khác nhau, (b) Dữ liệu \texttt{BOLD} của \cite{petersen2016functional} là chuỗi tính hiệu fMRI được biểu diễn bởi PDF, (c) Dữ liệu \texttt{Blood\_dataset} trong \cite{irpino2015basic} gồm các phân bố xác suất thực nghiệm của ba chỉ số sức khỏe, và (d) Dữ liệu \texttt{CTU} của \cite{nguyentrang2017fuzzy} là dữ liệu PDF $2$-chiều của GPA và rèn luyện của các Khoa/Viện Đại học Cần Thơ.
+Chú thích:	(a) Dữ liệu \texttt{Tuna\_Fork\_Length} của\cite{minami2024regression} biểu diễn phân bố chiều dài thân cá ở các vùng biển khác nhau, (b) Dữ liệu \texttt{BOLD} của \cite{petersen2016functional} là chuỗi tính hiệu fMRI được biểu diễn bởi PDF, (c) Dữ liệu \texttt{Blood\_dataset} trong \cite{irpino2015basic} gồm các phân bố xác suất thực nghiệm của ba chỉ số sức khỏe, và (d) Dữ liệu \texttt{CTU} của \cite{nguyentrang2017fuzzy} là dữ liệu PDF $2$-chiều của GPA và rèn luyện của các Khoa/Viện Đại học Cần Thơ. Nguồn: Tác giả tổng hợp.
 \end{flushleft}
 \end{figure}
 
@@ -1795,10 +1809,10 @@ Trong lĩnh vực này, đã có nhiều công trình nghiên cứu chuyên sâu
 		\bottomrule
 	\end{tabular*}
 	\label{tab:in_clustering_summary}
-		\begin{flushleft}
+\begin{minipage}{\textwidth}
 			\fontsize{11pt}{14pt}\selectfont\it
-	Chú thích:	Đối với hàm mục tiêu, SSE: sai số của bình phương tối tiểu; VCC: tiêu chuẩn tỷ lệ phương sai (chỉ số Calinski--Harabasz); CSB: hợp của độ đo tương đồng và cân bằng; FSF: tỷ lệ giữa SSE và sự phân biệt giữa các chùm. Đối với phương pháp tối ưu, DE:  tiến hóa vi phân; aeDE: tiến hóa vi phân ưu tú thích nghi; GA: giải thuật di truyền. Ở cột cuối, dấu $\checkmark$ có nghĩa là tự động toàn bộ thuật toán.
-	\end{flushleft}
+	Chú thích:	Đối với hàm mục tiêu, SSE: sai số của bình phương tối tiểu; VCC: tiêu chuẩn tỷ lệ phương sai (chỉ số Calinski--Harabasz); CSB: hợp của độ đo tương đồng và cân bằng; FSF: tỷ lệ giữa SSE và sự phân biệt giữa các chùm. Đối với phương pháp tối ưu, DE:  tiến hóa vi phân; aeDE: tiến hóa vi phân ưu tú thích nghi; GA: giải thuật di truyền. Ở cột cuối, dấu $\checkmark$ có nghĩa là tự động toàn bộ thuật toán. Nguồn: Tác giả tổng hợp.
+\end{minipage}
 \end{table}
 
 Nhìn chung, các nghiên cứu từ các tác giả trong nước cho thấy xu hướng phát triển mạnh mẽ cả về chiều sâu lý thuyết lẫn chiều rộng ứng dụng. Cụ thể, các hàm mục tiêu truyền thống như SSE và VCC đã dần được mở rộng và tinh chỉnh thành những biến thể phức tạp hơn, chẳng hạn như CSB và FSF, cho phép đánh giá chất lượng kết quả phân tích chùm một cách đa chiều và sâu sắc hơn. Đáng chú ý, nghiên cứu của Thao Nguyen-Trang đã sử dụng FSF \cite{nguyen2023globally} hoặc CSB \cite{nguyen2023balance} làm hàm mục tiêu phân chùm, qua đó thể hiện nỗ lực đào sâu vào nội hàm và bản chất tối ưu của thuật toán.
@@ -1919,6 +1933,10 @@ Trong phạm vi của luận văn này, “hiệu ứng đồng nhất” đư�
 						\caption{Tỷ lệ $IR$ $20:1$, tỷ lệ nhiễu $1{,}5:1$}
 	\end{subfigure}
 	\caption{Ảnh hưởng của dữ liệu PDF Gauss mất cân bằng lên thuật toán FCF ($m=2\,;c=2\,; D=\mathcal{L}^2_2$)}\label{fig:IR_STD}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.	
+	\end{minipage}
 \end{figure}
 
 
@@ -1947,6 +1965,10 @@ Khi mức độ mất cân bằng tăng, phần đóng góp của chùm lớn v�
 	\centering
 	\includegraphics[width=\linewidth]{partition_m.pdf}
 	\caption{Ảnh hưởng của tham số mờ $m$ trong IFCM qua tỷ lệ $IR=\{1\,;5\,;10\,;20\}$}\label{fig:ifcm_m}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 
@@ -2306,11 +2328,11 @@ $D_H^2(f\,;\theta)=\frac{1}{2}\displaystyle\int \big(\sqrt{f(x)}-\sqrt{\theta(x)
 	\centering
 	\includegraphics[width=\linewidth]{C2_hamtrongtam}
 
-	\caption{Minh họa các công thức trọng tâm theo khoảng cách khác nhau đối với hàm mục tiêu \eqref{eq:IFCF}}\label{fig:trongtam_3KC}
-		\begin{flushleft}
+	\caption[Minh họa các công thức trọng tâm theo khoảng cách đối với \eqref{eq:IFCF}]{Minh họa các công thức trọng tâm theo khoảng cách đối với hàm mục tiêu \eqref{eq:IFCF}}\label{fig:trongtam_3KC}
+\begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it
-		Chú thích: Trọng tâm (nét liền) của ba PDF (nét đứt) qua các loại khoảng cách (a) $\mathcal{L}_2$, (b) Hellinger và (c) $2$-Wasserstein.
-	\end{flushleft}
+		Chú thích: Trọng tâm (nét liền) của ba PDF (nét đứt) qua các loại khoảng cách (a) $\mathcal{L}_2$, (b) Hellinger và (c) $2$-Wasserstein. Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 
@@ -2436,10 +2458,10 @@ Ta cũng có thể khảo sát và chọn số chùm tối ưu qua các CVI này
 
 	\caption[Một số chỉ số đánh giá và số chùm tối ưu]{Một số chỉ số đánh giá và số chùm tối ưu được đề xuất từ phương pháp khuỷu tay với dữ liệu PDF ở Ví dụ~\ref{VD:thubac}}
 	\label{fig:c1kbestfcf}
-		\begin{flushleft}
+\begin{minipage}{\textwidth}
 	\fontsize{11pt}{14pt}\selectfont\it
-		Chú thích: Hình ở trên thể hiện chỉ số $Silhouette$ và $Dunn$ vì chúng càng lớn càng tốt. Ngược lại, chỉ số $DBI$ càng nhỏ càng tốt. Điểm khuỷ tay là điểm mà ở đó độ dốc giữa hai dãy chùm bất kỳ đạt cực đại. Ở đây, ta thấy chỉ số $Silhouette$ và $DBI$ đều đề xuất $k$-chùm tối ưu là $k=3$. Trong khi đó, chỉ~số $Dunn$ cho kết quả $k=6$. 
-	\end{flushleft}
+		Chú thích: Hình ở trên thể hiện chỉ số $Silhouette$ và $Dunn$ vì chúng càng lớn càng tốt. Ngược lại, chỉ số $DBI$ càng nhỏ càng tốt. Điểm khuỷ tay là điểm mà ở đó độ dốc giữa hai dãy chùm bất kỳ đạt cực đại. Ở đây, ta thấy chỉ số $Silhouette$ và $DBI$ đều đề xuất $k$-chùm tối ưu là $k=3$. Trong khi đó, chỉ~số $Dunn$ cho kết quả $k=6$. Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Bên cạnh đó, hệ số tương tự chùm được trình bày trong Bảng~\ref{tab:chumham} cũng được xem là một chỉ số đánh giá bên ngoài, giúp định lượng mức độ tương tự giữa hai chùm PDF \cite{vovan2018similar}. Thông qua việc kết hợp các chỉ số này, có thể đánh giá toàn diện hơn về tính ổn định và độ chính xác của kết quả phân tích chùm. Trong phạm vi luận văn này, các thuật toán được thống nhất sử dụng khoảng cách $\mathcal{L}_2$ để đảm bảo tính nhất quán trong so sánh và đánh giá. 
@@ -2487,10 +2509,10 @@ $$
 		Đo mức độ phụ thuộc thông tin giữa hai phân hoạch.\\
 		\bottomrule
 	\end{tabular*}
-	\begin{flushleft}
+\begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it
-		Trong đó, $ p_i = {\#\mathcal{F}_i}/{n}$, $p_j = {\#\mathcal{G}_j}/{n}$, $ p_{ij} = {\#(\mathcal{F}_i \cap \mathcal{G}_j)}/{n}, $ ta có, $I(\mathcal{P},\mathcal{Q}) = \sum_{i,j} p_{ij} \log \frac{p_{ij}}{p_i p_j}$, với $H(\mathcal{P}) = - \sum_i p_i \log p_i$ và $H(\mathcal{Q}) = - \sum_j p_j \log p_j.$
-	\end{flushleft}
+		Trong đó, $ p_i = {\#\mathcal{F}_i}/{n}$, $p_j = {\#\mathcal{G}_j}/{n}$, $ p_{ij} = {\#(\mathcal{F}_i \cap \mathcal{G}_j)}/{n}, $ ta có, $I(\mathcal{P},\mathcal{Q}) = \sum_{i,j} p_{ij} \log \frac{p_{ij}}{p_i p_j}$, với $H(\mathcal{P}) = - \sum_i p_i \log p_i$ và $H(\mathcal{Q}) = - \sum_j p_j \log p_j$. Nguồn: Tác giả tổng hợp.
+	\end{minipage}
 \end{table}
 
 \chy{
@@ -2506,7 +2528,7 @@ Trong thực tế, ta nên sử dụng một cách có ý nghĩa song song cả 
 
 Để khảo sát hành vi của thuật toán được đề xuất trong các bài toán phân tích chùm, trước tiên, luận văn này tạo dữ liệu tổng hợp qua Ví dụ~\ref{vdu:gauss1}.
 
-\subsubsection{a.\qquad Dữ liệu mô phỏng}
+\subsubsection{a.\quad Dữ liệu mô phỏng}
 
 \vdu{[Phân tích hai chùm hàm Gauss mất cân bằng]\label{vdu:gauss1} 
 	Giả sử dữ liệu được tạo theo công thức tổng quát về kỳ vọng và độ lệch chuẩn của mỗi chùm, cụ thể như sau.
@@ -2525,6 +2547,10 @@ Trong thực tế, ta nên sử dụng một cách có ý nghĩa song song cả 
 	\centering
 	\includegraphics[width=\linewidth]{pdf_bandau}
 	\caption{Dữ liệu  Gauss mô phỏng tại Ví dụ \ref{vdu:gauss1}}\label{fig:vdu:gauss1}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 }
 
@@ -2533,7 +2559,7 @@ Luận văn mô phỏng dữ liệu PDF Gauss trên tập số thực với hai 
 
 Để bảo đảm tính công bằng, trong ví dụ này luận văn khảo sát các thuật toán với số chùm cố định $c=2$, tham số mờ $m=2{,}0$, sai số hội tụ $\varepsilon=10^{-12}$, số vòng lặp tối đa $T_{\max}=200$ và phương pháp khởi tạo được cố định là $k$-means++\index{$k$-means++}. Luận văn này đánh giá tác động  lặp lại ngẫu nhiên thuật toán IFCF với $30$ lần thử nghiệm ngẫu nhiên. 
 
-\subsubsection{b.\qquad Kết quả các loại khoảng cách}
+\subsubsection{b.\quad Kết quả các loại khoảng cách}
 
 Các thuật toán phân chùm được triển khai với nhiều loại khoảng cách khác nhau, bao gồm $\mathcal{L}_2$, $D^2_H$, $D_{BC}$, $D_{JS}$ và $W^2_2$, như được trình bày trong Bảng~\ref{tab1:KC_PDF}. Kết quả chi tiết được trình bày trong Hình~\ref{fig:CD:vdu:gauss1} thể hiện giá trị trung vị của các chỉ số đánh giá phân chùm qua kiểm định Friedmanc.
 
@@ -2546,10 +2572,10 @@ Phân tích thống kê sâu hơn bằng phép kiểm định Friedman ($\chi^2 
 	\centering
 	\includegraphics[width=\linewidth]{eva_distances}	
 	\caption{Đánh giá thống kê các chỉ số cho Ví dụ~\ref{vdu:gauss1}}	\label{fig:CD:vdu:gauss1}
-	\begin{flushleft}
+\begin{minipage}{\textwidth}
 \fontsize{11pt}{14pt}\selectfont\it
-	Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$, và (d) thời gian tính toán. Giá trị $p$ được ước tính từ kiểm định phi tham số Friedman cho giả thiết thống kê là các loại khoảng cách này có phương sai như nhau.
-	\end{flushleft}
+	Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$, và (d) thời gian tính toán. Giá trị $p$ được ước tính từ kiểm định phi tham số Friedman cho giả thiết thống kê là các loại khoảng cách này có phương sai như nhau. Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Ở các chỉ số $ARI$ (Hình~\ref{fig:CD:vdu:gauss1}(a)) và $NMI$ (Hình~\ref{fig:CD:vdu:gauss1}(b)), các khoảng cách $D_{JS}$, $D_{BC}$ và $\mathcal{L}_2$ có thứ hạng cao trong kiểm định hậu nghiệm Nemenyi (tham khảo thêm Phụ lục~B, tr.~\pageref{phulucB}), thể hiện tính chính xác ổn định. Ngược lại, $W^2_2$ liên tục đạt thứ hạng thấp nhất. Với chỉ số $Silhouette$, khoảng cách $D_{JS}$ tiếp tục thể hiện hiệu năng vượt trội (Hình~\ref{fig:CD:vdu:gauss1}(c)), trong khi $D^2_H$ và $D_{BC}$ đạt cân bằng giữa độ chính xác và độ bền vững.
@@ -2564,12 +2590,16 @@ Về mặt chi phí tính toán, các độ đo $D_{JS}$ và $W^2_2$ là hai ph�
 
 
 
-\subsubsection{c.\qquad  Kết quả các tham số mờ}
+\subsubsection{c.\quad  Kết quả các tham số mờ}
 Hình~\ref{fig:m:vdu:gauss1} minh họa mối quan hệ giữa tham số $m$ và hai chỉ số đánh giá $ARI$ và $Silhouette$, được phân tích tại các tỷ lệ $IR$ khác nhau. Kết quả cho thấy khi $m$ tăng, hiệu năng của mô hình giảm mạnh theo cả hai chỉ số. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.7\linewidth]{figM}
 	\caption{Kết quả tham số $m$ qua các chỉ số đánh giá đối với Ví dụ~\ref{vdu:gauss1}}\label{fig:m:vdu:gauss1}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Cụ thể, khi $m$ vượt quá $4{,}0$, giá trị $ARI$ giảm nhanh về gần $0{,}00$. Điêu này cho thấy tham số mờ quá cao ($m>3{,}0$) làm ranh giới giữa các chùm trở nên mờ nhạt.
@@ -2577,7 +2607,7 @@ Bên cạnh đó, chỉ số $Silhouette$ cũng thể hiện xu hướng suy gi�
 
 
 
-\subsubsection{d.\qquad  Kết quả các loại phân tích chùm}
+\subsubsection{d.\quad  Kết quả các loại phân tích chùm}
 
 Kết quả so sánh giữa thuật toán đề xuất IFCF và phương pháp FCF truyền thống được trình bày trong Hình~\ref{fig:W:vdu:gauss1}. Dễ nhận thấy rằng trung vị của các chỉ số $ARI$, $NMI$ và $Silhouette$ trong FCF giảm nhanh khi tỷ lệ $IR$ tăng, cho thấy thuật toán truyền thống không còn duy trì được ranh giới chùm ổn định khi dữ liệu bị lệch mạnh về kích thước chùm. Mặc dù FCF có tốc độ tính toán nhanh hơn (Hình~\ref{fig:W:vdu:gauss1}(d)), nhưng độ ổn định giữa các lần lặp không cao ($p < 0{,}05$, kiểm định Wilcoxon). So sánh với IFCF, kết quả thống kê cho thấy sự khác biệt có ý nghĩa ở tất cả các chỉ số được xem xét (Hình~\ref{fig:W:vdu:gauss1}(a)$\div$(d)), phản ánh ưu thế rõ rệt của phương pháp đề xuất.
 
@@ -2585,10 +2615,10 @@ Kết quả so sánh giữa thuật toán đề xuất IFCF và phương pháp F
 	\includegraphics[width=\linewidth]{eva_by_distance_wilcoxon}
 	\caption{Đánh giá thống kê các chỉ số so sánh thuật toán cho Ví dụ~\ref{vdu:gauss1}}
 	\label{fig:W:vdu:gauss1}
-		\begin{flushleft}
+\begin{minipage}{\textwidth}
 \fontsize{11pt}{14pt}\selectfont\it
-		Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$, và (d) thời gian tính toán. Màu xám đậm là thuật toán IFCF đề xuất, và màu xám nhạt là FCF truyền thống.
-	\end{flushleft}
+		Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$, và (d) thời gian tính toán. Màu xám đậm là thuật toán IFCF đề xuất, và màu xám nhạt là FCF truyền thống. Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Ngược lại, thuật toán IFCF duy trì độ ổn định ngay cả khi $IR > 30$, với các giá trị trung vị của $ARI$ và $NMI$ luôn cao hơn đáng kể so với FCF, đồng thời độ biến thiên nhỏ hơn, chứng tỏ khả năng hội tụ ổn định. Kết quả kiểm định Wilcoxon ($p < 0{,}01$) khẳng định rằng IFCF không chỉ cho kết quả chính xác mà còn có tốc độ tính toán cạnh tranh. Tổng thể, điều này cho thấy IFCF đạt được sự cân bằng hiệu quả giữa độ chính xác, độ bền vững và chi phí tính toán.
@@ -2656,7 +2686,10 @@ Phương pháp phân loại cho PDF là một bài toán mới mẻ nên còn nh
 		2025 & Tai Vo-Van \cite{vo2025developing} &  Phát triển phương pháp phân loại Bayes cải tiến bằng khoảng cách tương tự chùm \\
 		\bottomrule
 	\end{tabular*}
-	
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tổng hợp.
+	\end{minipage}
 \end{table}
 
 
@@ -2784,10 +2817,10 @@ Từ ma trận nhầm lẫn, ta định nghĩa các chỉ số phổ biến khá
 		AUC-ROC             & $\displaystyle\int_{0}^{1} \text{TPR}(\text{FPR}) \mathrm{\,d}\text{FPR}$                               & Diện tích dưới đường cong ROC               &     $[0\,;1]$      \\
 		AUC-PR          & $\displaystyle\int_{0}^{1} \text{Precision}(\text{Recall}) \mathrm{\,d}\text{Recall}$        & Diện tích dưới đường cong Precision-Recall   &     $[0\,;1]$      \\ \bottomrule
 	\end{tabular*}
-	\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
+	\begin{minipage}{\textwidth}\fontsize{11pt}{14pt}\selectfont\it
 	Chú thích: Trong đó, các chỉ số cơ bản $
-	\mathrm{Precision} = \frac{\mathrm{\#TP}}{\mathrm{\#TP} + \mathrm{\#FP}}$ và $	\mathrm{Recall} = \frac{\mathrm{\#TP}}{\mathrm{\#TP} + \mathrm{\#FN}}$
-\end{flushleft}
+	\mathrm{Precision} = \frac{\mathrm{\#TP}}{\mathrm{\#TP} + \mathrm{\#FP}}$ và $	\mathrm{Recall} = \frac{\mathrm{\#TP}}{\mathrm{\#TP} + \mathrm{\#FN}}$. Nguồn: Tác giả tổng hợp.
+\end{minipage}
 
 \end{table}
 
@@ -2809,10 +2842,10 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 
 
 
-\subsubsection{a.\qquad Dữ liệu mô phỏng}
+\subsubsection{a.\quad Dữ liệu mô phỏng}
 
 
-\vdu{[Hàm Gauss-lệch, ba lớp] \label{vidu2:lechgauss} Giả sử phân phối lệch-Gauss từ \url{http://azzalini.stat.unipd.it/SN/}. Một PDF Gauss-lệch được định nghĩa như sau.
+\vdu{[Hàm Gauss-lệch, ba lớp] \label{vidu2:lechgauss} Giả sử phân phối lệch-Gauss được lấy từ nguồn \url{http://azzalini.stat.unipd.it/SN/}. Một PDF Gauss-lệch được định nghĩa như sau.
 	\begin{align*}
 		f(x \,\vert \, \xi\,; \sigma\,; \lambda)=\frac{2}{\lambda}\phi\left(\frac{x-\xi}{\sigma}\right)\Phi\left(\lambda\frac{x-\xi}{\sigma}\right),
 	\end{align*}
@@ -2831,7 +2864,7 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 		\end{subfigure}
 		\caption{Minh họa dữ liệu Ví dụ~\ref{vidu2:lechgauss}}\label{fig:vidu2:lechgauss}
 		\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
-			Chú thích: (a) Toàn bộ dữ liệu PDF,  và (b) Các PDF kiểm tra được lấy ngẫu nhiên trong dữ liệu.
+			Chú thích: (a) Toàn bộ dữ liệu PDF,  và (b) Các PDF kiểm tra được lấy ngẫu nhiên trong dữ liệu. Nguồn: Minh họa của tác giả.
 		\end{flushleft}
 		\end{figure}
 	
@@ -2841,7 +2874,7 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 
 
 
-\subsubsection{b.\qquad Các bước thực hiện}
+\subsubsection{b.\quad Các bước thực hiện}
 
 
 Luận văn thực hiện các bước trong Thuật toán~\ref{alg:IFCF_QB} một cách tuần tự. Thuật toán gồm hai phần bao gồm tìm xác suất tiên nghiệm và phân lớp Bayes. Thuật toán tìm xác suất tiên nghiệm là IFCF (Thuật toán~\ref{alg:IFCF}) với khoảng cách tiêu chuẩn $\mathcal{L}^2_2$ và các tham số liên quan bao gồm $m = 2{,}0$, $c=3$, và khởi tạo bằng $k$-means++\index{$k$-means++}. Sau đó, phân lớp Bayes xác định các lớp mà tập kiểm tra thuộc về.
@@ -2875,6 +2908,10 @@ Chọn cố định số lượng phần tử trong tập kiểm tra là $n_1 = 
 		\bottomrule
 	\end{tabular*}
 	\label{tab:phanbo_du_lieu}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tính toán.
+	\end{minipage}
 \end{table}
 
 
@@ -2900,9 +2937,9 @@ Chọn cố định số lượng phần tử trong tập kiểm tra là $n_1 = 
 			\caption{}
 	\end{subfigure}
 	\caption{Quá trình biến đổi của các trọng tâm đối với Ví dụ~\ref{vidu2:lechgauss}}\label{fig:vidu2:trongtam}
-	\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
-		Chú thích: (a) Khởi tạo từ $k$-means++\index{$k$-means++}, (b) Vòng lặp thứ nhất $t=1$, (c) Vòng lặp thứ hai $t=2$, (d) Vòng lặp cuối cùng.
-	\end{flushleft}
+\begin{minipage}{\textwidth}\fontsize{11pt}{14pt}\selectfont\it
+		Chú thích: (a) Khởi tạo từ $k$-means++\index{$k$-means++}, (b) Vòng lặp thứ nhất $t=1$, (c) Vòng lặp thứ hai $t=2$, (d) Vòng lặp cuối cùng. Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 \textit{Bước 2.2.} Ta tiến hành tính khoảng cách $\mathcal{L}_2(\theta_i\,;f_j)$ giữa các PDF trọng tâm khởi tạo với tất cả các PDF còn lại. Ở đây, luận văn trình bày cụ thể cột đầu tiên như sau.
@@ -3023,7 +3060,7 @@ Tuy nhiên, mỗi lớp trên dựa vào sự ngẫu nhiên của khởi tạo n
 
 
 
-\subsubsection{c.\qquad Kết quả số}
+\subsubsection{c.\quad Kết quả số}
 
 Luận văn lặp lại thuật toán phân loại Bayes-IFCF cho 30 lần ngẫu nhiên ở bước chọn dữ liệu PDF kiểm tra. Các chỉ số đánh giá được ghi nhận bao gồm $AUC$-$ROC$, $F_1$-score, và đánh giá thuật toán đề xuất Bayes-IFCF so với những thuật toán đã có bao gồm Bayes-U (phân phối đều giữa ba lớp), Bayes-L (phương pháp Laplace-$\alpha=1$), Bayes-J (phương pháp Jeffreys-$\alpha=\frac{1}{2}$), Bayes-FCM (phân tích chùm mờ).
 
@@ -3032,7 +3069,7 @@ Luận văn lặp lại thuật toán phân loại Bayes-IFCF cho 30 lần ngẫ
 	\includegraphics[width=\linewidth]{CD_3metrics}
 	\caption{Kết quả ANOVA cho các chỉ số phân loại đối với Ví dụ~\ref{vidu2:lechgauss}}\label{fig:CD_IFCM_Bayes}
 	\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
-		Chú thích: (a) Độ chính xác $ACC$, (b) Độ chính xác cân bằng $GM$ và (c) Chỉ số $F_1$-score.
+		Chú thích: (a) Độ chính xác $ACC$, (b) Độ chính xác cân bằng $GM$ và (c) Chỉ số $F_1$-score. Nguồn: Minh họa của tác giả.
 	\end{flushleft}
 \end{figure}
 \noindent
@@ -3101,7 +3138,7 @@ Trong xử lý ảnh, đặc trưng là những thông tin tóm tắt để mô 
 Khi chuyển dữ liệu hình ảnh sang dạng PDF, ý tưởng chính là xem hình ảnh hoặc một phần củahình ảnh như một biểu diễn phân bố xác suất. Cách tiếp cận này cho phép thay thế tập hợp rời rạc các điểm ảnh bằng một hàm liên tục. Các phương pháp ước lượng phổ biến thường dựa trên hình ảnh toàn cục hoặc trên các khối cục bộ. Trong phần này, hai hướng tiếp cận chính được trình bày và phân tích.
 
 
-\subsubsection{a.\qquad Ước lượng dựa trên màu sắc}
+\subsubsection{a.\quad Ước lượng dựa trên màu sắc}
 
 Xét một ảnh $I \in \mathbb{R}^{M\times N\times C}$. Mỗi điểm ảnh được ký hiệu bởi chỉ số $p \in \{1\,,2\,,\ldots\,,MN\}$ và có thể được ánh xạ thành véc tơ đặc trưng $f_I \in \mathbb{R}^d$ trong không gian cường độ xám hoặc trong không gian màu RGB. Để tiến hành ước lượng, trước tiên toàn bộ ảnh được duỗi thẳng thành véc tơ một chiều
 $$
@@ -3121,10 +3158,14 @@ Cách tiếp cận này sử dụng trực tiếp toàn bộ điểm ảnh, do �
 	\includegraphics[width=.8\linewidth]{Figs/kde_image_density}
 	\caption{Minh họa quá trình chuyển đổi dữ liệu ảnh thành PDF dựa trên màu sắc.}
 	\label{fig:kdeimagedensity}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 
-\subsubsection{b.\qquad Ước lượng dựa vào khối màu}
+\subsubsection{b.\quad Ước lượng dựa vào khối màu}
 
 Một hướng tiếp cận khác là phân chia ảnh thành các khối nhỏ có kích thước $s \times s$ và không chồng lấp từ phải sang trái, và từ trên xuống dưới. Mỗi ma trận vuông $P_k$ được ánh xạ thành vector
 $
@@ -3139,6 +3180,10 @@ Cách tiếp cận này duy trì thông tin màu sắc cho từng khối hình �
 	\includegraphics[width=0.55\linewidth]{Figs/kde_patches_density}
 	\caption{Minh họa quá trình chuyển đổi dữ liệu ảnh thành PDF dựa trên khối màu.}
 	\label{fig:kdepatchesdensity}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 
@@ -3211,9 +3256,9 @@ Cách tiếp cận này duy trì thông tin màu sắc cho từng khối hình �
 			\caption{}
 		\end{subfigure}
 		\caption{Các hình ảnh được cắt từ tập dữ liệu Brodatz.}\label{fig:EX2_main_img}
-		\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
-			Chú thích (a) Hình ảnh $D83$ và (b) Hình ảnh $D102$; (c) PDF trích xuất $1:10$, (d) PDF trích xuất $1:50$, và (e) PDF trích xuất $1:100$
-		\end{flushleft}
+		\begin{minipage}{\textwidth}\fontsize{11pt}{14pt}\selectfont\it
+			Chú thích (a) Hình ảnh $D83$ và (b) Hình ảnh $D102$; (c) PDF trích xuất $1:10$, (d) PDF trích xuất $1:50$, và (e) PDF trích xuất $1:100$. Nguồn: Minh họa của tác giả.
+		\end{minipage}
 	\end{figure}
 	
 	
@@ -3238,9 +3283,9 @@ Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy n
 		\caption{}
 	\end{subfigure}
 	\caption{Hình ảnh thực tế và các PDF được trích xuất từ khối màu}
-	\begin{flushleft}\fontsize{11pt}{14pt}\selectfont\it
-	Chú thích:	(a) Hình ảnh Landsat đã chuyển về ảnh xám, và (b) Mật độ của các khối màu ($4\times4$)
-	\end{flushleft}
+\begin{minipage}{\textwidth}\fontsize{11pt}{14pt}\selectfont\it
+	Chú thích:	(a) Hình ảnh Landsat đã chuyển về ảnh xám, và (b) Mật độ của các khối màu ($4\times4$). Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Để phân đoạn hình ảnh này theo màu, trước tiên hình ảnh được chuyển đổi ảnh thang độ xám và quét cửa sổ trượt các mảng $(p\times p)$ không chồng lấn từ trái sang phải, từ trên xuống dưới. Mỗi mảng giờ được làm phẳng thành một vector $(p\times p)$-pixel, PDF cường độ của nó được ước tính thông qua PDF hạt nhân (Chương~\ref{chapter_1}, minh họa ở Hình~\ref{fig:kdepatchesdensity}), và khối lập phương $(\text{patch}\times h\times\text{pdf})$ kết quả trên $3$-D được lưu trữ để phân chùm các mảng. Ở đây, kích thước khối màu được đặt cố định là $4\times 4$.
@@ -3272,6 +3317,10 @@ Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy n
 		IFCF (Đề xuất) & dựa trên $c$-means mờ  cải tiến cho PDF mất cân bằng & $maxIter = 500\,; m = 2\,; \varepsilon = 1\times 10^{-6}$ \\
 		\bottomrule
 	\end{tabular*}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tổng hợp.
+	\end{minipage}
 \end{table*}
 
 
@@ -3280,7 +3329,7 @@ Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy n
 \subsection{Kết quả thực hiện}
 
 
-\subsubsection{a.\qquad Ví dụ~\ref{vdu:anh1}}
+\subsubsection{a.\quad Ví dụ~\ref{vdu:anh1}}
 
 Theo kết quả phân vùng, các bảng của Hình~\ref{fig:U_ex3}(a)--Hình~\ref{fig:U_ex3}(d) hiển thị thành viên trên mỗi mẫu của từng thuật toán chùm (ngoại trừ FCF-$\mathcal {L}_1$) với $IR = 80$. 
 
@@ -3289,6 +3338,10 @@ Theo kết quả phân vùng, các bảng của Hình~\ref{fig:U_ex3}(a)--Hình~
 	\includegraphics[width=.6\linewidth]{fig:U_ex3.pdf}
 	\caption{Ma trận phân vùng của các phương pháp tại $IR = 80$}
 	\label{fig:U_ex3}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Hình~\ref{fig_M_ex3} minh họa ma trận phân vùng của bốn phương pháp tại mức mất cân bằng $IR = 80$. Có thể thấy rõ sự khác biệt đáng kể giữa các kỹ thuật trong khả năng duy trì ranh giới phân chùm khi dữ liệu bị lệch mạnh.
@@ -3356,6 +3409,10 @@ Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là ho�
 		&  100 & 7{,}0$\pm$3{,}0 & 7{,}0$\pm$3{,}0 & 11{,}0$\pm$3{,}0 & 10{,}0$\pm$1{,}0\\
 		\bottomrule
 	\end{tabular*}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tính toán.
+	\end{minipage}
 \end{table*}
 
 
@@ -3365,6 +3422,10 @@ Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là ho�
 	\includegraphics[width=.8\linewidth]{fig_M_ex3}
 	\caption{Khảo sát sự biến đổi của tham số đối với Ví dụ~\ref{vdu:anh1}}
 	\label{fig_M_ex3}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 Các đường cong trong Hình~\ref{fig_M_ex3} có cùng trục hoành $m\in\{1{,}1\,;1{,}5\,;2{,}0\,;2{,}5\,;5{,}0\,;10{,}0\}$ và trục tung là $ARI$ và $Silhouette$. Trong các Hình~\ref{fig_M_ex3}, chỉ có đường cong $IR=20$ cho kết quả $ARI$ cao, trong khi các đường cong từ hơn $50$ đều bị giảm về $0{,}00$ ngay từ giá trị $m$ thấp.
@@ -3373,59 +3434,67 @@ Nhìn chung, kết quả thực nghiệm cho thấy hiệu suất phân chùm ph
 
 Kết quả này chứng minh IFCF là phương pháp hiệu quả để phân tích và nhóm các đối tượng dựa trên đặc trưng màu sắc hoặc kết cấu, ngay cả khi các đối tượng cần nhận dạng chỉ chiếm một phần rất nhỏ trong tổng thể dữ liệu.
 
-\subsubsection{b.\qquad Ví dụ~\ref{vdu:anh2}}
+\subsubsection{b.\quad Ví dụ~\ref{vdu:anh2}}
 
 Hình~\ref{fig:APP} cho thấy kết quả phân tích chùm BKIFF với số chùm $c$ tăng dần từ $2\div 10$ được áp dụng để phân đoạn ảnh Landsat của đảo Yam và vùng biển xung quanh, cho thấy mức độ chi tiết của việc tách lớp phủ đất tăng lên theo số chùm $c$.
 
-\begin{figure*}[h]
+\begin{landscape}
+	
+\begin{figure*}
 	\centering
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k2}
 		\caption{$k=2$}
 	\end{subfigure}
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k3}
 		\caption{$k=3$}
 	\end{subfigure}
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k4}
 		\caption{$k=4$}
 	\end{subfigure}\hfil\\
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k5}
 		\caption{$c=5$}
 	\end{subfigure}
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k6}
 		\caption{$c=6$}
 	\end{subfigure}
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k7}
 		\caption{$c=7$}
 	\end{subfigure}\hfil\\
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k8}
 		\caption{$c=8$}
 	\end{subfigure}
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k9}
 		\caption{$c=9$}
 	\end{subfigure}
-	\begin{subfigure}[h]{0.32\textwidth}
+	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k10}
 		\caption{$c=10$}
 	\end{subfigure}
 	\caption{Phương pháp IFCF được đề xuất áp dụng cho ảnh Landsat đối với Ví dụ~\ref{vdu:anh2}}\label{fig:APP}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure*}
+
+\end{landscape}
 
 Kết quả là, trên $c = 2\div10$, quá trình phân đoạn BKIFF diễn ra đơn điệu và không tạo ra các hiện tượng nhiễu hạt muối tiêu. Ở $c = 2$, thuật toán phân tách cảnh thành vùng nước sâu và các vùng ven biển xung quanh. Khi chùm $c$ tăng dần về phía $3$, độ tương phản quang phổ giữa các rạn san hô và hòn đảo trở nên rõ ràng hơn, qua đó cho thấy các đường viền hiển thị sắc nét hơn.
 Tiếp đến, trong khoảng $c = 4\div6$, hòn đảo trở nên nổi bật hơn, thể hiện rõ các khu vực cát nhẹ, thảm thực vật và các vùng biển khác nhau. Đồng thời, một lớp mới được hình thành để làm nổi bật sự khác biệt trong nước biển. Hơn nữa, ở các lớp vi mô $c = 7\div9$, các đặc điểm như bãi cát mỏng, chiếm chưa đến $0{,}5$\% tổng số pixel, vẫn được nhóm lại, cho thấy khả năng của thuật toán trong việc bảo tồn các dấu hiệu cường độ sáng nhỏ. Cuối cùng, ở $c = 10$, không có chùm nào bị phá vỡ, thể hiện tính nhất quán không gian nội tại của thuật toán.
@@ -3452,6 +3521,7 @@ Cụ thể, hình ảnh gốc của mỗi lớp được xoay ngẫu nhiên tron
 
 
 \begin{figure}[H]
+	\centering
 	\begin{subfigure}{.48\textwidth}
 			\centering
 		\includegraphics[width=\linewidth]{Figure_1}
@@ -3463,6 +3533,10 @@ Cụ thể, hình ảnh gốc của mỗi lớp được xoay ngẫu nhiên tron
 			\caption{}
 	\end{subfigure}
 	\caption{Dữ liệu phân loại màu sắc của các loại đất đối với Ví dụ~\ref{vidu:dat}}\label{fig:vidu:dat2}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Minh họa của tác giả.
+	\end{minipage}
 \end{figure}
 
 
@@ -3503,6 +3577,10 @@ Kết quả trong Bảng~\ref{tab:bayes_ifcf_results} cho thấy sự khác bi�
 		Bayes-J    & 0{,}50$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}38$\pm$0{,}00 & 0{,}00 \\
 		\bottomrule
 	\end{tabular*}
+	\begin{minipage}{\textwidth}
+		\fontsize{11pt}{14pt}\selectfont\it
+		Nguồn: Tác giả tính toán.
+	\end{minipage}
 \end{table}
 
 
@@ -3580,7 +3658,7 @@ Trên phương diện ứng dụng, các hướng mở rộng được định h
 
 %%%%%%%%%%%% Tài liệu tham khảo %%%%%%%%%%%%
 \addcontentsline{toc}{chapter}{\numberline{TÀI LIỆU THAM KHẢO}}%
-\bibliographystyle{ieeetr}
+\bibliographystyle{plain}
 %\bibliographystyle{apacite}
 
 {\begin{spacing}{1}
@@ -3920,20 +3998,7 @@ $\theta_1(x)\sim\mathcal N(0\,;1)$,
 $\theta_2(x)\sim\mathcal N(2\,;1)$, 
 $\theta_3(x)\sim\mathcal N(5\,;1)$.
  Ta cũng khởi tạo các phần tử trong ma trận $\bm U$ tuân theo phân phối Dirichlet. 
-Ma trận khoảng cách $\bm D$ trong đó hàng $i$ là $\theta_i$, cột $j$ là $f_j$, các khoảng cách được tính bởi $\mathcal{L}_2$ dựa vào trọng tâm và phân vùng như sau
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.48\textwidth}
-			\includegraphics[width=\textwidth]{FCF_U0}
-			\caption{Ma trận phân vùng $\bm U$}
-	\end{subfigure}
-	\begin{subfigure}{.48\textwidth}
-	\includegraphics[width=\textwidth]{FCF_D0}
-	\caption{Ma trận khoảng cách $\bm D$}
-\end{subfigure}
-\caption{Khởi tạo ngẫu nhiên của FCF}\label{fig:UD0}
-\end{figure}
+Ma trận khoảng cách $\bm D$ trong đó hàng $i$ là $\theta_i$, cột $j$ là $f_j$, các khoảng cách được tính bởi $\mathcal{L}_2$ dựa vào trọng tâm và phân vùng.
 
 %======================== D(0): TỪỜNG MINH ========================
 Khoảng cách $\bm D^{(t=0)}$ với $\mathcal{L}_2=\|\,\mathcal N(\mu;1)-\mathcal N(\nu;1)\,\|_2
@@ -3959,40 +4024,44 @@ $$
 $$
 
 
-\begin{figure}[H]
+
+\begin{figure}
 	\centering
+		\begin{subfigure}{.48\textwidth}
+		\includegraphics[width=\textwidth]{FCF_U0}
+		\caption{Khởi tạo ngẫu nhiên $\bm U$ ở $t=0$}
+	\end{subfigure}
+	\begin{subfigure}{.48\textwidth}
+		\includegraphics[width=\textwidth]{FCF_D0}
+		\caption{Khởi tạo ngẫu nhiên $\bm D$ ở $t=0$}
+		\end{subfigure}
 	\begin{subfigure}{.48\textwidth}
 		\includegraphics[width=\textwidth]{FCF_U1}
-		\caption{Ma trận phân vùng $\bm U$}
+		\caption{Ma trận phân vùng $\bm U$ ở $t=1$}
 	\end{subfigure}
 	\begin{subfigure}{.48\textwidth}
 		\includegraphics[width=\textwidth]{FCF_D1}
-		\caption{Ma trận khoảng cách $\bm D$}
+		\caption{Ma trận khoảng cách $\bm D$ ở $t=1$}
+	\end{subfigure}\\
+		\begin{subfigure}{.48\textwidth}
+		\includegraphics[width=\textwidth]{FCF_U9}
+		\caption{Ma trận phân vùng $\bm U$ ở $t=9$}
 	\end{subfigure}
-	\caption{Vòng lặp $t=1$ của FCF}
+	\begin{subfigure}{.48\textwidth}
+		\includegraphics[width=\textwidth]{FCF_D9}
+		\caption{Ma trận khoảng cách $\bm D$ ở $t=9$}
+	\end{subfigure}
+	\caption{Minh họa sự cập nhật của ma trận phân vùng và khoảng cách đối với Ví dụ~\ref{VD:FCF}}\label{fig:UD0}
 \end{figure}
 
 
 Gom toàn bộ cột, ta nhận được ma trận phân vùng sau vòng lặp đầu tiên là $\bm U$. Với chuẩn $\mathcal L_2$ trên hàm, theo \eqref{pvFCF1}. Để tính toán tiêu chuẩn dừng, ta tính theo công thức $$\left\Vert {\bm\mu}^{(t+1)} - {\bm\mu}^{(t)} \right \Vert = 0{,}96.$$ Vì chuẩn này chưa nhỏ hơn tiêu chuẩn dừng, ta tiếp tục lặp lại quá trình trên. Sau $t=9$ vòng lặp, thuật toán FCF dừng với chuẩn là $6{,}1\times 10^{-4}$.
 
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.48\textwidth}
-		\includegraphics[width=\textwidth]{FCF_U9}
-		\caption{Ma trận phân vùng $\bm U$}
-	\end{subfigure}
-	\begin{subfigure}{.48\textwidth}
-		\includegraphics[width=\textwidth]{FCF_D9}
-		\caption{Ma trận khoảng cách $\bm D$}
-	\end{subfigure}
-	\caption{Vòng lặp $t=9$ của FCF}
-\end{figure}
-
-
 Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng tâm ở Hình~\ref{fig:vdu:trongtamFCF}. Khác với các điểm rời rạc, trọng tâm FCM chỉ tịnh tiến trong không gian toạ độ, các PDF trọng tâm trong FCF vừa biến dạng hình dạng vừa dịch chuyển vị trí.
 
-\begin{figure}[H]
+\begin{landscape}
+
+\begin{figure}
 	\centering
 	\begin{subfigure}{.32\textwidth}
 		\includegraphics[width=\textwidth]{FCF_V0}
@@ -4005,7 +4074,7 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 		\begin{subfigure}{.32\textwidth}
 		\includegraphics[width=\textwidth]{FCF_V2}
 		\caption{Trọng tâm vòng lặp $t=2$}
-	\end{subfigure}\hfil\\
+	\end{subfigure}\\
 		\begin{subfigure}{.32\textwidth}
 		\includegraphics[width=\textwidth]{FCF_V3}
 		\caption{Trọng tâm vòng lặp $t=3$}
@@ -4021,9 +4090,6 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 	\caption{Thay đổi của trọng tâm chùm FCF qua các vòng lặp}\label{fig:vdu:trongtamFCF}
 \end{figure}
 
-
-
-\begin{landscape}
 	\begin{table}[H]
 		\centering
 		\footnotesize
