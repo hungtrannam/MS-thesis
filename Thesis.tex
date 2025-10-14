@@ -324,7 +324,7 @@
  Nghiên cứu -- phát triển các nguyên tắc và ứng dụng hệ thống thông minh nhân tạo (AI)\index{thông minh nhân tạo (AI)} là yếu tố then chốt nhằm thúc đẩy tăng trưởng kinh tế bền vững ở các quốc gia \cite{belhadi2024artificial,act2023artificial}. Với khả năng ứng dụng đa ngành -- đa chiều, AI không chỉ cải thiện năng suất lao động mà còn mở ra nhiều cơ hội việc làm, góp phần xây dựng nền kinh tế số \cite{mollema2024ai}, nâng cao tiện ích, thu nhập và chất lượng cuộc sống \cite{dey2024artificial}. Trong sự phát triển của AI dự đoán, nhận dạng thống kê được xem là một trong những kiến thức nền~tảng.
 
 
-Nhận dạng thống kê (SR) giải quyết hai bài toán chính bao gồm nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} và không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)} \cite{Bishop:DeepLearning24,theodoridis2006pattern}. Nhận dạng không được giám sát là việc chia dữ liệu thành các nhóm sao cho các phần tử trong cùng một nhóm đó có sự tương tự nhiều hơn so với các phần tử bên ngoài nhóm \cite{bezdek1984fcm,macqueen1967some}. Do đó, nó còn được gọi là bài toán phân tích chùm. Phân tích chùm là cơ sở của việc lưu trữ, trích xuất và xử lý dữ liệu lớn nên được rất nhiều nhà thống kê và công nghệ thông tin quan tâm.  Nhận dạng được giám sát là việc xếp một phần tử vào một lớp trong các lớp đã biết một cách thích hợp \cite{Bishop:DeepLearning24,webb2003statistical}. Do đó, nó còn được gọi là bài toán phân loại. Phân loại đã và đang được áp dụng trong nhiều lĩnh vực khác nhau. Chẳng hạn, trong y tế hoạt động chẩn đoán bệnh của các bác sĩ xem một người có bệnh hay không có bệnh B, loại nào trong bệnh B thực chất là thực hiện bài toán phân loại. Trong lĩnh vực xã hội và an ninh, việc nhận dạng khuôn mặt, chữ ký, dấu vân tay của một người cũng chính là thực hiện bài toán phân loại.
+Nhận dạng thống kê (SR) giải quyết hai bài toán chính bao gồm nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} và không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)} \cite{Bishop:DeepLearning24,theodoridis2006pattern}. Nhận dạng không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)}  là việc chia dữ liệu thành các nhóm sao cho các phần tử trong cùng một nhóm đó có sự tương tự nhiều hơn so với các phần tử bên ngoài nhóm \cite{bezdek1984fcm,macqueen1967some}. Do đó, nó còn được gọi là bài toán phân tích chùm. Phân tích chùm là cơ sở của việc lưu trữ, trích xuất và xử lý dữ liệu lớn nên được rất nhiều nhà thống kê và công nghệ thông tin quan tâm.  Nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} là việc xếp một phần tử vào một lớp trong các lớp đã biết một cách thích hợp \cite{Bishop:DeepLearning24,webb2003statistical}. Do đó, nó còn được gọi là bài toán phân loại. Phân loại đã và đang được áp dụng trong nhiều lĩnh vực khác nhau. Chẳng hạn, trong y tế hoạt động chẩn đoán bệnh của các bác sĩ xem một người có bệnh hay không có bệnh B, loại nào trong bệnh B thực chất là thực hiện bài toán phân loại. Trong lĩnh vực xã hội và an ninh, việc nhận dạng khuôn mặt, chữ ký, dấu vân tay của một người cũng chính là thực hiện bài toán phân loại.
 
 Dữ liệu cho bài toán SR có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất (PDF). Bài toán SR cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu tiên phong \cite{zha2025data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu khoảng đã được đề xuất và phát triển \cite{maia2011holt}. Khi dữ liệu lớn và phức tạp như hình ảnh, đối tượng hình ảnh có thể được xem là một PDF trong một số phương pháp biểu diễn \cite{nguyen2024new}, do đó nhận dạng thống kê cho các PDF được đề xuất. 
 
@@ -1011,12 +1011,12 @@ Ba hạt nhân cơ bản cho khoảng cách giữa $f_1(x)$ và $f_2(x)$ là
 	K_L(f_1\,;  f_2) =\displaystyle \int_\Omega f_1(x)f_2(x)\,\mathrm{d}x,
 	$
 	
-	\item Hạt nhân Bhattacharyya \index{Hạt nhân Bhattacharyya}, 
+	\item Hạt nhân Bhattacharyya \index{hạt nhân Bhattacharyya}, 
 	$
 	K_{BC}(f_1\,;  f_2) =\displaystyle \int_\Omega \sqrt{f_1(x) f_2(x)}\,\mathrm{d}x,
 	$
 	
-	\item Hạt nhân $\chi^2$\index{Hạt nhân $\chi^2$ (Chi-squared kernel)}, 
+	\item Hạt nhân $\chi^2$\index{hạt nhân $\chi^2$ (Chi-squared kernel)}, 
 	$
 	K_{\chi^2}(f_1\,;  f_2) =\displaystyle \int_\Omega \frac{2f_1(x)f_2(x)}{f_1(x) + f_2(x)}\,\mathrm{d}x.
 	$
@@ -1067,7 +1067,7 @@ Chú thích: \footnotemark[1]: tổng khoảng cách nhỏ nhất; \footnotemark
 %\end{figure}
 
 
-Khi cần tính khoảng cách từ hợp hai chùm PDF $\mathcal{F}\cup\mathcal{G}$ đến một chùm PDF $\mathcal{H}$, ta cũng có thể sử dụng công thức biến đổi theo Bảng~\ref{tab:lienketchum}. Ví dụ~\ref{VD:dist} cung cấp hướng dẫn tính toán các liên kết $\Delta$ được trình bày ở Phụ lục B, tr.~\pageref{phulucB}.
+Khi cần tính khoảng cách từ hợp hai chùm PDF $\mathcal{F}\cup\mathcal{G}$ đến một chùm PDF $\mathcal{H}$, ta cũng có thể sử dụng công thức biến đổi theo Bảng~\ref{tab:lienketchum}. Ví dụ~\ref{VD:dist} cung cấp hướng dẫn tính toán các liên kết\index{liên kết (linkage)} $\Delta$ được trình bày ở Phụ lục B, tr.~\pageref{phulucB}.
 
 \begin{table}[H]
 	\centering
@@ -1302,9 +1302,9 @@ Giải thuật HCF luôn hội tụ sau $(n-1)$-bước hợp nhất và tạo t
 }
 
 
-\vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Ta sử dụng lại dãy các PDF trong Ví dụ~\ref{vdu:KCF}.  Phân cấp thứ bậc với khoảng cách $D(f_1\,;f_2)=\mathcal{L}_2$ và liên kết $\Delta_{\max}(\mathcal{F}_1\,;\mathcal{F}_2)$ là liên kết đủ.
+\vdu{[Phân cấp thứ bậc hàm Gauss $1$-chiều]\label{VD:thubac} Ta sử dụng lại dãy các PDF trong Ví dụ~\ref{vdu:KCF}.  Phân cấp thứ bậc với khoảng cách $D(f_1\,;f_2)=\mathcal{L}_2$ và liên kết\index{liên kết (linkage)} $\Delta_{\max}(\mathcal{F}_1\,;\mathcal{F}_2)$ là liên kết đủ.
 
-Ta có kết quả phân cấp thứ bậc tích tụ bởi Hình~\ref{figs:thubac} và bài giải chi tiết được phân tích trong Phụ lục B~(tr. \pageref{phulucB}).  Quá trình phân cấp được thực hiện với hai phương pháp liên kết đủ liên kết Ward. Nhìn Hình~\ref{figs:thubac}, ta thấy phương pháp liên kết đủ có xu hướng tạo ra các chùm nhỏ, chặt chẽ và nhạy cảm với nhiễu ở biên. Ngược lại, liên kết Ward cho kết quả các chùm có tính đồng nhất cao hơn về phân bố, làm cây phân cấp cân đối.
+Ta có kết quả phân cấp thứ bậc tích tụ bởi Hình~\ref{figs:thubac} và bài giải chi tiết được phân tích trong Phụ lục B~(tr. \pageref{phulucB}).  Quá trình phân cấp được thực hiện với hai phương pháp liên kết đủ và liên kết Ward. Nhìn Hình~\ref{figs:thubac}, ta thấy phương pháp liên kết đủ có xu hướng tạo ra các chùm nhỏ, chặt chẽ và nhạy cảm với nhiễu ở biên. Ngược lại, liên kết Ward cho kết quả các chùm có tính đồng nhất cao hơn về phân bố, làm cây phân cấp cân đối.
 
 	\begin{figure}[H]
 	     \centering
@@ -1374,14 +1374,14 @@ Nhiều nghiên cứu tổng quát hóa tham số $m$ đã được đặt ra sa
 	\label{fig:phanvung}
 		\begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it 
-		Chú thích: Giá trị $\mu_{1j}$ tại trục tung biểu diễn mức độ phân vùng tại chùm thứ $1$ theo khoảng cách $ D^2_{1j} = \mathcal{L}^2_1(f_1\,;f_j)$ với các giá trị $m=\{1{,}1; 1{,}5; 2{,}0; 3{,}0; 5{,}0; 10{,}0\}$. Nét đậm hơn thể hiện $m=2$.
+		Chú thích: Giá trị $\mu_{1j}$ tại trục tung biểu diễn mức độ phân vùng\index{mức độ phân vùng (membership partition)} tại chùm thứ $1$ theo khoảng cách $ D^2_{1j} = \mathcal{L}^2_1(f_1\,;f_j)$ với các giá trị $m=\{1{,}1; 1{,}5; 2{,}0; 3{,}0; 5{,}0; 10{,}0\}$. Nét đậm hơn thể hiện $m=2$.
 		Nguồn: Minh họa của tác giả.
 	\end{minipage}
 \end{figure}
 
 %Luận văn này, chúng tôi chọn cố định $m=2$.
 
-Thuật toán phân chùm mờ FCF được thực hiện qua hai bước cập nhật PDF trọng tâm và cập nhật ma trận phân vùng \cite{nguyentrang2017fuzzy,bezdek1984fcm} (Thuật toán~\ref{alg:FCF}). Kết thúc thuật toán, ta nhận được ma trận phân vùng $\bm U$ và các PDF trọng tâm  $\Theta$, trong đó tiêu chuẩn dừng cho FCF là chuẩn của hàm mục tiêu tại hai vòng lặp liên tiếp phải thấp hơn ngưỡng dương $\varepsilon$ cho trước, tức là $\Vert J_{FCF}^{(t)}-J_{FCF}^{(t-1)}\Vert<\varepsilon$. Cuối cùng, ta có thể giải mờ theo quy tắc $c_i = \arg\max_i\mu_{ij}$. Tức là một PDF $f_j(x)$ sẽ được xếp vào chùm $c_i$ khi và chỉ khi nó có mức độ phân vùng tại chùm đó là cao nhất.
+Thuật toán phân chùm mờ FCF được thực hiện qua hai bước cập nhật PDF trọng tâm và cập nhật ma trận phân vùng \cite{nguyentrang2017fuzzy,bezdek1984fcm} (Thuật toán~\ref{alg:FCF}). Kết thúc thuật toán, ta nhận được ma trận phân vùng $\bm U$ và các PDF trọng tâm  $\Theta$, trong đó tiêu chuẩn dừng cho FCF là chuẩn của hàm mục tiêu tại hai vòng lặp liên tiếp phải thấp hơn ngưỡng dương $\varepsilon$ cho trước, tức là $\Vert J_{FCF}^{(t)}-J_{FCF}^{(t-1)}\Vert<\varepsilon$. Cuối cùng, ta có thể giải mờ theo quy tắc $c_i = \arg\max_i\mu_{ij}$. Tức là một PDF $f_j(x)$ sẽ được xếp vào chùm $c_i$ khi và chỉ khi nó có mức độ phân vùng\index{mức độ phân vùng (membership partition)} tại chùm đó là cao nhất.
 
 \vdu{[Phân chùm mờ hàm Gauss $1$-chiều]\label{VD:FCF} Ta sử dụng lại dữ liệu PDF trong Ví dụ~\ref{vdu:KCF}. Phân tích $\mathcal{F}$ thành ba chùm, biết $m=2$, tiêu chuẩn dừng $\varepsilon=10^{-3}$ và khoảng cách là $\mathcal{L}^2_2$. Ta có kết quả sau khi thực hiện các vòng lặp được giải chi tiết ở Phụ lục (tr. \pageref{phulucB}).
 }
@@ -1394,7 +1394,7 @@ Thuật toán phân chùm mờ FCF được thực hiện qua hai bước cập 
 
 
 \chy{
-	Dựa vào mức độ phân vùng $\mu_{ij}$, ta nhận thấy được mức độ tin cậy để một PDF $f_j(x)$ xếp vào chùm $c_i$. Nếu phân vùng $\mu_{ij}$ tại chùm $c_i$ này lớn, ta có thể chắc chắn vào kết quả phân bổ. Ngược lại, nếu giá trị này không cao, ta biết được PDF này có khả năng thuộc vào một chùm khác, hoặc một chùm mới.
+	Dựa vào mức độ phân vùng\index{mức độ phân vùng (membership partition)} $\mu_{ij}$, ta nhận thấy được mức độ tin cậy để một PDF $f_j(x)$ xếp vào chùm $c_i$. Nếu phân vùng $\mu_{ij}$ tại chùm $c_i$ này lớn, ta có thể chắc chắn vào kết quả phân bổ. Ngược lại, nếu giá trị này không cao, ta biết được PDF này có khả năng thuộc vào một chùm khác, hoặc một chùm mới.
 	}
 
 
@@ -1580,12 +1580,12 @@ Khi đó, hàm phân lớp tương ứng đối với PDF mới $h$ là
 
 
 
-\subsection{Phương pháp Na\"{\i}ve Bayes\index{phương pháp Na\"{\i}ve Bayes (Na\"{\i}ve Bayes method)}}
+\subsection{Phương pháp Na\"{\i}ve Bayes}
 
 
 \subsubsection{a.\qquad Thuật toán phân lớp}
 
-Phương pháp Na\"{\i}ve  Bayes đã được nhiều nhà thống kê quan tâm cho dữ liệu PDF bởi \cite{ren2009naive}. 
+Phương pháp Na\"{\i}ve  Bayes \index{phương pháp Na\"{\i}ve Bayes (Na\"{\i}ve Bayes method)} đã được nhiều nhà thống kê quan tâm cho dữ liệu PDF bởi \cite{ren2009naive}. 
 Cho tập huấn luyện gồm các PDF và nhãn của từng hàm
 $
 \mathcal{D} = \{(f_j\,; y_j)\}$ với $j=1\,,2\,,\ldots\,,n$, trong đó $f_j \in \mathcal{F}$ và $y_j \in \{-1\,; 1\}$.
@@ -1778,7 +1778,7 @@ Tuy nhiên, quá trình thu thập và xử lý loại dữ liệu này thườn
 \subsection{Phương pháp phân tích chùm hàm mật độ xác suất}
 
 
-Phân tích chùm đóng vai trò quan trọng trong lĩnh vực SR, đặc biệt khi mục tiêu là khám phá cấu trúc tiềm ẩn trong dữ liệu mà không cần thông tin gán nhãn trước. Nói cách khác, đây là một trong những nhánh chính của nhận dạng không được giám sát \cite{jain2010data,saxena2017review,dinh2025categorical}. Nó tập trung vào việc phát hiện các nhóm tự nhiên trong tập dữ liệu thông qua độ tương tự giữa các mẫu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}.
+Phân tích chùm đóng vai trò quan trọng trong lĩnh vực SR, đặc biệt khi mục tiêu là khám phá cấu trúc tiềm ẩn trong dữ liệu mà không cần thông tin gán nhãn trước. Nói cách khác, đây là một trong những nhánh chính của nhận dạng không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)}  \cite{jain2010data,saxena2017review,dinh2025categorical}. Nó tập trung vào việc phát hiện các nhóm tự nhiên trong tập dữ liệu thông qua độ tương tự giữa các mẫu đầu vào \cite{Bishop:DeepLearning24,webb2003statistical}.
 
 Ví dụ, trong y học, phương pháp này được sử dụng để khoanh vùng khối u trong hình ảnh MRI; hoặc trong khoa học xã hội, nó hỗ trợ tổng hợp và nhóm các ý kiến, quan điểm theo từng chủ đề khác nhau trong các báo cáo định tính. Như vậy, đầu ra của phân tích chùm chính là các nhãn được gán cho dữ liệu ban đầu, thể hiện mối quan hệ giữa các phần tử trong không gian đặc trưng.
 
@@ -1848,7 +1848,7 @@ Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ nh�
 
 
 
-Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có kích thước tương đương nhau \cite{askari2021fuzzy}, điều này dẫn đến các quyết định phân chùm sai lệch khi dữ liệu thực tế có sự mất cân bằng đáng kể. Theo Xiong (2006) \cite{xiong2006k}, thuật toán KCF có xu hướng ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều, ngay cả khi bản chất phân bố thực tế không như vậy, dẫn đến kết quả bị lệch, chùm nhỏ dễ bị hút vào chùm lớn. Hiện tượng này được gọi là “hiệu ứng đồng nhất”, xuất phát trực tiếp từ đặc tính của hàm mục tiêu. Tương tự, trong trường hợp của KCF, FCF cũng chịu ảnh hưởng của này. Để chứng minh, ta xét hai PDF trọng tâm $\theta_1$ và $\theta_2$ trong bài toán hai chùm được tính theo \eqref{trongtamFCF}, với mức độ phân vùng giản hóa thành $\mu_{ij} = u$ nếu $f_j \in c_i$ và $(1 - u)$ cho các trường hợp còn lại, ta có
+Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có kích thước tương đương nhau \cite{askari2021fuzzy}, điều này dẫn đến các quyết định phân chùm sai lệch khi dữ liệu thực tế có sự mất cân bằng đáng kể. Theo Xiong (2006) \cite{xiong2006k}, thuật toán KCF có xu hướng ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều, ngay cả khi bản chất phân bố thực tế không như vậy, dẫn đến kết quả bị lệch, chùm nhỏ dễ bị hút vào chùm lớn. Hiện tượng này được gọi là “hiệu ứng đồng nhất”, xuất phát trực tiếp từ đặc tính của hàm mục tiêu. Tương tự, trong trường hợp của KCF, FCF cũng chịu ảnh hưởng của này. Để chứng minh, ta xét hai PDF trọng tâm $\theta_1$ và $\theta_2$ trong bài toán hai chùm được tính theo \eqref{trongtamFCF}, với mức độ phân vùng\index{mức độ phân vùng (membership partition)} giản hóa thành $\mu_{ij} = u$ nếu $f_j \in c_i$ và $(1 - u)$ cho các trường hợp còn lại, ta có
 \begin{align*}
 	\theta_1(x) &= \frac{u^m \sum_{f_j \in c_1} f_j(x) + (1-u)^m \sum_{f_j(x) \in c_2} f_j(x)}{\#c_1u^m + \#c_2(1-u)^m},\\
 	\theta_2(x) &= \frac{(1-u)^m \sum_{f_j(x) \in c_1} f_j(x) + u^m \sum_{f_j \in c_2} f_j}{\#c_1(1-u)^m + \#c_2u^m}.
@@ -1972,7 +1972,7 @@ Khi mức độ mất cân bằng tăng, phần đóng góp của chùm lớn v�
 	\end{minipage}
 \end{figure}
 
-Để mô tả các đường cong mức độ phân vùng $\bm \mu_1$ trong trường hợp phân tích chùm nhị phân, luận văn này mô phỏng trực quan thuật toán IFCF trong môi trường khoảng cách chuẩn hóa $D^2\in[0\,;1]$, với chùm $1$ tại gốc và chùm $2$ tại $D^2=1$ đồng thời với các tham số mờ $m$ khác nhau. Hình~\ref{fig:ifcm_m} biểu diễn kết quả cho chùm thứ $1$.
+Để mô tả các đường cong mức độ phân vùng\index{mức độ phân vùng (membership partition)} $\bm \mu_1$ trong trường hợp phân tích chùm nhị phân, luận văn này mô phỏng trực quan thuật toán IFCF trong môi trường khoảng cách chuẩn hóa $D^2\in[0\,;1]$, với chùm $1$ tại gốc và chùm $2$ tại $D^2=1$ đồng thời với các tham số mờ $m$ khác nhau. Hình~\ref{fig:ifcm_m} biểu diễn kết quả cho chùm thứ $1$.
 
 Hình~\ref{fig:ifcm_m} minh họa kết quả của IFCF trong các môi trường có mức độ mất cân bằng khác nhau $IR=\{1\,;5\,;10\,;20\}$, cùng với các trọng số tương ứng $\omega_i$ giữa hai chùm. Có thể thấy rằng khi $IR=1$, các đường cong phân hoạch $\bm\mu_1$ đối xứng quanh khoảng cách $D^2$, phản ánh trạng thái cân bằng hoàn toàn giữa hai chùm. 
 Tuy nhiên, khi $IR$ tăng dần, chùm lớn bắt đầu chiếm ưu thế rõ rệt và các đường cong phân hoạch bị lệch về phía chùm đó, cho thấy ảnh hưởng mạnh của hiện tượng mất cân bằng lên ranh giới phân tách. Bên cạnh đó, sự thay đổi của tham số mờ $m$ trong khoảng $1{,}1\div10{,}0$ cũng minh họa vai trò quan trọng của nó trong việc điều chỉnh độ mờ của phân vùng: các giá trị $m$ thấp làm cho ranh giới giữa các chùm trở nên sắc nét hơn, trong khi các giá trị cao lại tạo nên vùng chuyển tiếp mềm và mượt hơn. Tóm lại, Thuật toán~\ref{alg:IFCF} trình bày chi tiết quy trình thực hiện phương pháp IFCF, qua đó cho thấy cơ chế thích ứng của mô hình trước các mức mất cân bằng khác nhau trong dữ liệu.
@@ -2446,7 +2446,7 @@ Thông thường, việc đánh giá kết quả phân tích chùm được chia
 \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
 	\item Chỉ số $Silhouette$ $S = \mathtt{mean}(s(f_j))$ đo mức độ phù hợp của một PDF $f_j$ với chùm mà nó được gán nhãn so với chùm gần nhất khác, trong đó $$s(f_j) = \frac{b(f_j) - a(f_j)}{\max \{ a(f_j)\,; b(f_j) \}},$$ với $	a(f_j) = \frac{1}{\#c_i - 1} \sum_{\substack{f \in c_i \\ f \ne f_j}} D(f_j\,; f)	$ là khoảng cách trung bình giữa $f_j$ và tất cả các PDF khác trong chùm $c_i$ chứa nó và $	b(f_j) = \min\limits_{j \ne i} \frac{1}{\#c_j} \sum_{f \in c_j} D(f_j\,; f)$ là khoảng cách trung bình giữa $f_j$ và các PDF trong chùm gần nhất $c_j$ với $j \ne i$.
 	
-	\item Chỉ số $Dunn$ đánh giá mức độ tách biệt giữa các chùm, được định nghĩa bởi $${Dunn} = \frac{ \min_{i \ne j} \Delta_{\min}(c_i\,; c_j)}{ \max_{m}\Delta(c_m)},$$ trong đó $\Delta_{\min}(c_i\,;  c_j) = \min_{\substack{f \in c_i \\ g \in c_j}} D(f\,;  g)$ là liên kết nhỏ nhất giữa hai chùm $c_i$ và $c_j$ và $\Delta(c_m) = \max_{f\,;  g \in c_m} D(f\,;  g)$ là đường kính lớn nhất của chùm $c_m$.
+	\item Chỉ số $Dunn$ đánh giá mức độ tách biệt giữa các chùm, được định nghĩa bởi $${Dunn} = \frac{ \min_{i \ne j} \Delta_{\min}(c_i\,; c_j)}{ \max_{m}\Delta(c_m)},$$ trong đó $\Delta_{\min}(c_i\,;  c_j) = \min_{\substack{f \in c_i \\ g \in c_j}} D(f\,;  g)$ là liên kết\index{liên kết (linkage)} nhỏ nhất giữa hai chùm $c_i$ và $c_j$ và $\Delta(c_m) = \max_{f\,;  g \in c_m} D(f\,;  g)$ là đường kính lớn nhất của chùm $c_m$.
 	
 	\item Chỉ số Davies--Bouldin đo mức độ tương đồng giữa các chùm, được định nghĩa bởi $$DBI = \frac{1}{c}\sum_{i=1}^{c} \max_{j \ne i}\left\{\frac{S_i + S_j}{D(\theta_i\,;  \theta_j)}\right\},$$	trong đó $S_i = \frac{1}{\#c_i} \sum_{f \in c_i} D(f\,;  \theta_i)$	là độ phân tán trung bình của chùm $c_i$ với $\theta_i$ là trọng tâm của chùm $c_i$, $D(\theta_i, \theta_j)$ là khoảng cách giữa hai trọng tâm $\theta_i$ và $\theta_j$ và $c$ là tổng số chùm.
 	
@@ -2472,7 +2472,7 @@ Ta cũng có thể khảo sát và chọn số chùm tối ưu qua các CVI này
 Bên cạnh đó, hệ số tương tự chùm được trình bày trong Bảng~\ref{tab:chumham} cũng được xem là một chỉ số đánh giá bên ngoài, giúp định lượng mức độ tương tự giữa hai chùm PDF \cite{vovan2018similar}. Thông qua việc kết hợp các chỉ số này, có thể đánh giá toàn diện hơn về tính ổn định và độ chính xác của kết quả phân tích chùm. Trong phạm vi luận văn này, các thuật toán được thống nhất sử dụng khoảng cách $\mathcal{L}_2$ để đảm bảo tính nhất quán trong so sánh và đánh giá. 
 
 \chy{
-	Các chỉ số đánh giá nội chùm phụ thuộc vào khoảng cách và liên kết chùm (Chương~\ref{chapter_1}), dẫn đến một số sai lệch khi ta thiết kế thuật toán phân chùm theo các loại khoảng cách khác nhau. Tức là, cùng một cấu trúc dữ liệu nhưng với các loại khoảng cách khác nhau, giá trị của các chỉ số đánh giá nội chùm có thể thay đổi đáng kể.
+	Các chỉ số đánh giá nội chùm phụ thuộc vào khoảng cách và liên kết\index{liên kết (linkage)} chùm (Chương~\ref{chapter_1}), dẫn đến một số sai lệch khi ta thiết kế thuật toán phân chùm theo các loại khoảng cách khác nhau. Tức là, cùng một cấu trúc dữ liệu nhưng với các loại khoảng cách khác nhau, giá trị của các chỉ số đánh giá nội chùm có thể thay đổi đáng kể.
 }
 
 
@@ -2630,7 +2630,7 @@ Ngược lại, thuật toán IFCF duy trì độ ổn định ngay cả khi $IR
 
 
 \textbf{$\blacktriangleright$ Chú ý.}
-Thuật toán IFCF cải tiến hàm mục tiêu giúp trung hòa đóng góp của các chùm lớn hơn, từ đó giảm "hiệu ứng đồng nhất". Tuy nhiên, trong quá trình lặp, giả sử hai trọng tâm $\Theta$ được xác định, khi đó với bất kỳ PDF $j$ thuộc chùm $c_1$, các mức độ phân vùng được cập nhật theo Công thức~\eqref{eq:ifcf_u_final} và điều kiện $\sum_{j=1}^c u_{ij}=1$, có thể được viết lại thành
+Thuật toán IFCF cải tiến hàm mục tiêu giúp trung hòa đóng góp của các chùm lớn hơn, từ đó giảm "hiệu ứng đồng nhất". Tuy nhiên, trong quá trình lặp, giả sử hai trọng tâm $\Theta$ được xác định, khi đó với bất kỳ PDF $j$ thuộc chùm $c_1$, các mức độ phân vùng\index{mức độ phân vùng (membership partition)} được cập nhật theo Công thức~\eqref{eq:ifcf_u_final} và điều kiện $\sum_{j=1}^c u_{ij}=1$, có thể được viết lại thành
 \begin{align*}
 	\frac{1}{1 + \left(\frac{\omega_2}{\omega_1}\right)^{\frac{1}{m-1}}
 		\left(\frac{\mathcal{L}^2_2(\theta_1\,;f_j)}{\mathcal{L}^2_2(\theta_2\,;f_j)}\right)^{\frac{1}{m-1}}}
@@ -2642,7 +2642,7 @@ Thuật toán IFCF cải tiến hàm mục tiêu giúp trung hòa đóng góp c�
 
 Khi $\omega_1 \to \infty$, ta có $
 \lim_{\omega_1 \to \infty} \mu_{i1} = 1$ và
-$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$ Điều này cho thấy khi tỷ lệ  $IR$ tăng đến vô cùng, mức độ phân vùng mờ cho chùm lớn sẽ tiến về 1 và chùm nhỏ sẽ tiến về 0. Hiện tượng này được gọi là phân cực trong các mức độ phân vùng. Ta vẫn chưa có cơ chế phát triển nào cho hiên tượng này mặt dù đã có cải tiến.
+$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$ Điều này cho thấy khi tỷ lệ  $IR$ tăng đến vô cùng, mức độ phân vùng\index{mức độ phân vùng (membership partition)} mờ cho chùm lớn sẽ tiến về 1 và chùm nhỏ sẽ tiến về 0. Hiện tượng này được gọi là phân cực trong các mức độ phân vùng\index{mức độ phân vùng (membership partition)}. Ta vẫn chưa có cơ chế phát triển nào cho hiên tượng này mặt dù đã có cải tiến.
 
 
 
@@ -2663,7 +2663,7 @@ $\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$ Điều này cho thấy khi tỷ lệ
 \subsection{Phương pháp phân loại hàm mật độ xác suất}
 
 
-Phương pháp phân loại là một nhánh của nhận dạng có giám sát, phát triển với mục tiêu thành lập quy tắc quy nạp có chức năng phân tách được các lớp quan tâm với sai lầm thực nghiệm tối tiểu.  Ta giả sử tồn tại một không gian đầu vào $\mathcal{F}$ và tập nhãn rời rạc ${Y} = \{1\,,2\,, \ldots\,, C\}$. Cặp dữ liệu $(f\,; y)$ là biến ngẫu nhiên có PDF chung $P_{\mathcal{F}\,;Y}$ trên $\mathcal{F} \times {Y}$.  Mục tiêu của bài toán là tìm một ánh xạ phân loại $h : \mathcal{F} \to {Y}$ thuộc không gian giả thuyết $\mathcal{H}$ sao cho tối tiểu hóa giá trị kỳ vọng của hàm mất mát\index{hàm mất mát (loss function)} $\ell : {Y} \times {Y} \to \mathbb{R}_{\ge 0}$, tức là $
+Phương pháp phân loại là một nhánh của nhận dạng có giám sát\index{nhận dạng được giám sát (supervised recognition)}, phát triển với mục tiêu thành lập quy tắc quy nạp có chức năng phân tách được các lớp quan tâm với sai lầm thực nghiệm tối tiểu.  Ta giả sử tồn tại một không gian đầu vào $\mathcal{F}$ và tập nhãn rời rạc ${Y} = \{1\,,2\,, \ldots\,, C\}$. Cặp dữ liệu $(f\,; y)$ là biến ngẫu nhiên có PDF chung $P_{\mathcal{F}\,;Y}$ trên $\mathcal{F} \times {Y}$.  Mục tiêu của bài toán là tìm một ánh xạ phân loại $h : \mathcal{F} \to {Y}$ thuộc không gian giả thuyết $\mathcal{H}$ sao cho tối tiểu hóa giá trị kỳ vọng của hàm mất mát\index{hàm mất mát (loss function)} $\ell : {Y} \times {Y} \to \mathbb{R}_{\ge 0}$, tức là $
 h^* = \arg\min_{h \in \mathcal{H}} \mathbb{E}{(f\,;y)\sim P_{\mathcal{F},Y}} \left[\ell(h(f), y)\right].$ Tuy nhiên, do PDF thực $P_{\mathcal{F}\,;{Y}}$ là chưa biết, ta cần tiếp cận qua một tập huấn luyện $\mathcal{D}_n = \{(f_1\,; y_1)\,;(f_2\,;y_2)\,; \ldots\,; (f_n\,; y_n)\} \subset \mathcal{F} \times {Y}$. Vì vậy, ta giải bài toán $
 \hat{h}_n = \arg\min{h \in \mathcal{H}} \frac{1}{n} \sum_{j=1}^n \ell(h(f_j), y_j).
 $
@@ -2738,7 +2738,7 @@ Phân loại một PDF mới  $h(x)$ vào lớp $c_i$ bằng quy tắc Bayes n�
 		$$
 		\State Tính khoảng cách $
 		D_{ij} = \mathcal{L}_2(\theta_i^{(t)}(x), f^{(train)}_j(x))$
-		\State Cập nhật mức độ phân vùng
+		\State Cập nhật mức độ phân vùng\index{mức độ phân vùng (membership partition)}
 		$$
 		\mu_{ij}^{(t)} =
 		\frac{1}{
@@ -3082,7 +3082,7 @@ Trong cả ba chỉ số đánh giá, xác suất phân loại dựa vào tiên 
 
 \textbf{$\blacktriangleright$ Chú ý.} Mô hình Bayes-IFCF được thiết lập để giải quyết vấn đề phân loại trong điều kiện mất cân bằng dữ liệu nghiêm trọng. Phương pháp này đạt được sự vượt trội bằng cách sử dụng kết quả từ thuật toán phân chùm IFCF, đuợc chứng minh là hiệu quả hơn hẳn so với các giả định tiên nghiệm tĩnh truyền thống như phân bố đều (Bayes-U), Laplace (Bayes-L), hay Jeffreys (Bayes-J).
 
-Tuy nhiên, cách hình thành mô hình Bayes-IFCF vẫn bộc lộ một hạn chế đáng chú ý. Cụ thể, việc kết hợp trực tiếp mức độ phân vùng với hàm khoảng cách giúp tăng khả năng nhận dạng trong thực nghiệm, song lại khiến diễn giả xác suất hậu nghiệm trở nên không rõ ràng. Khi hệ số thành viên được dùng như xác suất tiên nghiệm và được nhân tiếp với biến đổi của khoảng cách, nó không còn phản ánh niềm tin về lớp một cách thuần túy, mà trở thành một đại lượng mang tính kinh nghiệm. Dẫu vậy, trong các tình huống mất cân bằng nghiêm trọng, cách tiếp cận này vẫn cho thấy hiệu quả thực tiễn.
+Tuy nhiên, cách hình thành mô hình Bayes-IFCF vẫn bộc lộ một hạn chế đáng chú ý. Cụ thể, việc kết hợp trực tiếp mức độ phân vùng\index{mức độ phân vùng (membership partition)} với hàm khoảng cách giúp tăng khả năng nhận dạng trong thực nghiệm, song lại khiến diễn giả xác suất hậu nghiệm trở nên không rõ ràng. Khi hệ số thành viên được dùng như xác suất tiên nghiệm và được nhân tiếp với biến đổi của khoảng cách, nó không còn phản ánh niềm tin về lớp một cách thuần túy, mà trở thành một đại lượng mang tính kinh nghiệm. Dẫu vậy, trong các tình huống mất cân bằng nghiêm trọng, cách tiếp cận này vẫn cho thấy hiệu quả thực tiễn.
 
 
 
@@ -3636,7 +3636,7 @@ Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có n
 \textit{$\circledast$ Trên phương diện ứng dụng}, các hướng mở rộng được định hướng nhằm tăng tính thực tiễn và khả năng triển khai của mô hình trong các lĩnh vực khác nhau.
 \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]	
 	\item Phát triển các kỹ thuật trích xuất đặc trưng tiên tiến hơn để biểu diễn các đặc tính hình ảnh phức tạp như kết cấu\index{đặc trưng kết cấu (texture feature)} và hình dạng\index{đặc trưng hình dạng (shape feature)} thành các PDF. Đồng thời, nên mở rộng việc trích xuất đặc trưng mật độ để xử lý dữ liệu hình ảnh đa kênh màu.
-	\item Xây dựng cơ chế xác định siêu tham số tối ưu cho các thuật toán phân chùm PDF. Song song đó, phát triển các công cụ giải thích-AI\index{giải thích AI (XAI)} chuyên biệt cho các mô hình SR cho PDF nhằm tăng tính minh bạch và khả năng diễn giải, giúp người dùng hiểu rõ lý do mô hình phân loại một mẫu vào lớp thiểu số.
+	\item Xây dựng cơ chế xác định siêu tham số tối ưu cho các thuật toán phân chùm PDF. Song song đó, phát triển các công cụ giải thích-AI\index{giải thích-AI (XAI)} chuyên biệt cho các mô hình SR cho PDF nhằm tăng tính minh bạch và khả năng diễn giải, giúp người dùng hiểu rõ lý do mô hình phân loại một mẫu vào lớp thiểu số.
 	\item Mở rộng việc áp dụngo SR cho dữ liệu PDF đa chiều vốn xuất hiện ngày càng nhiều trong các nghiên cứu về mối tương quan phức tạp giữa các biến.
 \end{enumerate}
 
@@ -3731,7 +3731,7 @@ Phần này cung cấp lý thuyết và các thuật toán của luận văn.
 	\fontsize{11pt}{14pt}\selectfont
 	\caption{Giải thuật phân chùm thứ bậc tích tụ (HCF)}\label{alg:HCF}
 	\begin{algorithmic}[1]
-		\Procedure{HCF}{$\mathcal{F}\,;\Delta$}\Comment{Cho trước liên kết}
+		\Procedure{HCF}{$\mathcal{F}\,;\Delta$}\Comment{Cho trước liên kết\index{liên kết (linkage)}}
 		\State $t \gets 0$
 		\State Khởi tạo: $\mathcal{F}^{(t=0)} = \{\{f_1\}\,;\{f_2\}\,;\ldots\,;\{f_n\}\}$
 		\While{$n - t > 1$}
@@ -3820,8 +3820,8 @@ conda install environment.yml
 
 
 
-\vdu{[Liên kết các chùm hàm mật độ xác suất]\label{VD:dist} 
-Giả sử ta có ba chùm PDF Gauss $\mathcal{F}\,;\mathcal{G}$ và $\mathcal{H}$. Tính các liên kết $\Delta(\mathcal{F}\,;\mathcal{G})$ và $\Delta(\mathcal{F}\cup\mathcal{G}\,;\mathcal{H})$ biết khoảng cách giữa hai PDF là $\mathcal{L}_2$ và các chùm
+\vdu{[Liên kết\index{liên kết (linkage)} các chùm hàm mật độ xác suất]\label{VD:dist} 
+Giả sử ta có ba chùm PDF Gauss $\mathcal{F}\,;\mathcal{G}$ và $\mathcal{H}$. Tính các liên kết\index{liên kết (linkage)} $\Delta(\mathcal{F}\,;\mathcal{G})$ và $\Delta(\mathcal{F}\cup\mathcal{G}\,;\mathcal{H})$ biết khoảng cách giữa hai PDF là $\mathcal{L}_2$ và các chùm
 \begin{align*}
 \mathcal{F} &= \{f_1=\mathcal{N}(0{,}30\,;1)\,; f_2=\mathcal{N}(1{,}0\,;1{,}0)\}, \\
 \mathcal{G} &= \{g_1=\mathcal{N}(4{,}0\,;1{,}0)\,; g_2=\mathcal{N}(5{,}5\,;1{,}0)\,; g_3=\mathcal{N}(4{,}8\,;1{,}0)\},\\
@@ -3849,7 +3849,7 @@ Giả sử ta có ba chùm PDF Gauss $\mathcal{F}\,;\mathcal{G}$ và $\mathcal{H
 		h_2     & 0{,}75  & 0{,}75  & 0{,}74  & 0{,}67  & 0{,}72  & 0{,}38  &         
 	\end{array}
 	$$
-	Từ đây, ta có thể dễ dàng tính được các liên kết $\Delta(\mathcal{F}\,; \mathcal{G}) $ thông qua ma trận này. Ta có,
+	Từ đây, ta có thể dễ dàng tính được các liên kết\index{liên kết (linkage)} $\Delta(\mathcal{F}\,; \mathcal{G}) $ thông qua ma trận này. Ta có,
 	{\small
 \begin{align*}
 	\Delta_{\min}(\mathcal{F}\,; \mathcal{G}) 
@@ -3907,7 +3907,7 @@ $$
 \end{array}
 $$
 
-Ta thấy khoảng cách $D(f_1\,;f_4) = D(f_5\,;f_7)  = 0{,}26$ là khoảng cách nhỏ nhất nên ta chọn một trong hai. Trường hợp này, ta chọn PDF $f_1$ và $f_4$ xếp vào một chùm $\{f_1\,;f_4\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_1\,;f_4\}$ với các PDF khác. Ta có
+Ta thấy khoảng cách $D(f_1\,;f_4) = D(f_5\,;f_7)  = 0{,}26$ là khoảng cách nhỏ nhất nên ta chọn một trong hai. Trường hợp này, ta chọn PDF $f_1$ và $f_4$ xếp vào một chùm $\{f_1\,;f_4\}$. Tiến hành tính toán liên kết\index{liên kết (linkage)} đủ giữa chùm $\{f_1\,;f_4\}$ với các PDF khác. Ta có
 \begin{align*}
 	\Delta(\{f_1\,;f_4\}\,; f_2)=\max\{D(f_1\,;f_2)\,; D(f_4\,;f_2)\} = \max\{0{,}74\,;0{,}71\} = 0{,}74,\\
 	\Delta(\{f_1\,;f_4\}\,; f_3)=\max\{D(f_1\,;f_3)\,; D(f_4\,;f_3)\} = \max\{0{,}75\,;0{,}75\} = 0{,}75,\\
@@ -3932,7 +3932,7 @@ $$
 $$
 
 
-Tiếp theo, ta thấy $D(f_5\,;f_7) = 0{,}26$ là cách nhỏ nhất nên ta xếp hai PDF này thành một chùm mới $\{f_5\,;f_7\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_5\,;f_7\}$ với các PDF khác. Ta có
+Tiếp theo, ta thấy $D(f_5\,;f_7) = 0{,}26$ là cách nhỏ nhất nên ta xếp hai PDF này thành một chùm mới $\{f_5\,;f_7\}$. Tiến hành tính toán liên kết\index{liên kết (linkage)} đủ giữa chùm $\{f_5\,;f_7\}$ với các PDF khác. Ta có
 \begin{align*}
 	\Delta(\{f_5\,;f_7\}\,; \{f_1\,;f_4\})&=\max\{D(f_5\,;f_1)\,; D(f_5\,;f_4)\,; D(f_7\,;f_1)\,; D(f_7\,;f_4)\} =0,75,\\
 	\Delta(\{f_5\,;f_7\}\,; f_2)&=\max\{D(f_5\,;f_2)\,; D(f_7\,;f_2)\} = 0{,}49,\\
@@ -3954,7 +3954,7 @@ $$
 \end{array}
 $$
 
-Tiếp theo, ta thấy $D(f_3\,;f_6) = 0{,}38$ là cách nhỏ nhất nên ta xếp hai PDF này thành một chùm mới $\{f_3\,;f_6\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_3\,;f_6\}$ với các PDF khác. Ta có
+Tiếp theo, ta thấy $D(f_3\,;f_6) = 0{,}38$ là cách nhỏ nhất nên ta xếp hai PDF này thành một chùm mới $\{f_3\,;f_6\}$. Tiến hành tính toán liên kết\index{liên kết (linkage)} đủ giữa chùm $\{f_3\,;f_6\}$ với các PDF khác. Ta có
 \begin{align*}
 	\Delta(\{f_3\,;f_6\}\,; \{f_1\,;f_4\})&=\max\{D(f_3\,;f_1)\,; D(f_3\,;f_4)\,; D(f_6\,;f_1)\,; D(f_6\,;f_4)\} =0{,}75,\\
 	\Delta(\{f_3\,;f_6\}\,; \{f_5\,;f_7\})&=\max\{D(f_3\,;f_5)\,; D(f_3\,;f_7)\,; D(f_6\,;f_5)\,; D(f_6\,;f_7)\} =0{,}75,\\
@@ -3975,7 +3975,7 @@ $$
 \end{array}
 $$
 
-Tiếp theo, ta thấy $D(\{f_5\,;f_7\}\,;f_2) = 0{,}49$ là cách nhỏ nhất nên ta xếp PDF $f_2$ này vào chùm $\{f_5\,;f_7\}$. Tiến hành tính toán liên kết đủ giữa chùm $\{f_2\,;f_5\,;f_7\}$ với các PDF khác. Ta có
+Tiếp theo, ta thấy $D(\{f_5\,;f_7\}\,;f_2) = 0{,}49$ là cách nhỏ nhất nên ta xếp PDF $f_2$ này vào chùm $\{f_5\,;f_7\}$. Tiến hành tính toán liên kết\index{liên kết (linkage)} đủ giữa chùm $\{f_2\,;f_5\,;f_7\}$ với các PDF khác. Ta có
 \begin{align*}
 	\Delta(\{f_2\,; f_5\,; f_7\}\,; \{f_1\,; f_4\}) &= \max\{ D(f_2\,; \{f_1\,;f_4\}), D(f_5\,; \{f_1\,;f_4\}), D(f_7\,; \{f_1\,;f_4\}) \} = 0{,}75, \\
 	\Delta(\{f_2\,; f_5\,; f_7\}\,; \{f_3\,; f_6\}) &= \max\{ D(f_2\,; \{f_3\,;f_6\}), D(f_5\,; \{f_3\,;f_6\}), D(f_7\,; \{f_3\,;f_6\}) \} = 0{,}75.
