@@ -1,0 +1,50 @@
+\documentclass[14pt]{extarticle}
+\usepackage[utf8]{vietnam}
+
+\usepackage{xcolor}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{CTUblue}{rgb}{0.121568627450, 0.3607843137254902, 0.6627450980392157}
+\definecolor{CTUcyan}{rgb}{0, 0.6862745098039216, 0.9372549019607843}
+\usepackage[pdftex,active,tightpage]{preview} 
+\setlength\PreviewBorder{0mm}
+\usepackage{gantt}
+%\usepackage{pgfgantt}
+
+\begin{document}
+	\begin{preview}
+		
+		\begin{gantt}{9}{16}  % 16 tháng từ 5/2024 đến 8/2025
+			\begin{ganttitle}
+				\titleelement{\textbf{\color{CTUblue} Năm 2024}}{8}
+				\titleelement{\textbf{\color{CTUblue} Năm 2025}}{8}
+			\end{ganttitle}
+			\begin{ganttitle}
+				\titleelement{\textbf{5}}{1}
+				\titleelement{\textbf{6}}{1}
+				\titleelement{\textbf{7}}{1}
+				\titleelement{\textbf{8}}{1}
+				\titleelement{\textbf{9}}{1}
+				\titleelement{\textbf{10}}{1}
+				\titleelement{\textbf{11}}{1}
+				\titleelement{\textbf{12}}{1}
+				\titleelement{\textbf{1}}{1}   % Tháng 1 của 2025
+				\titleelement{\textbf{2}}{1}
+				\titleelement{\textbf{3}}{1}
+				\titleelement{\textbf{4}}{1}
+				\titleelement{\textbf{5}}{1}
+				\titleelement{\textbf{6}}{1}
+				\titleelement{\textbf{7}}{1}
+				\titleelement{\textbf{8}}{1}
+			\end{ganttitle}
+			
+			\ganttbar[color=white]{{Thu thập tài liệu}}{0}{5}  % 5/2024 - 9/2024
+			\ganttbarcon[color=white]{{Viết và báo cáo đề cương}}{4}{2}  % 9/2024 - 10/2024
+			\ganttbarcon[color=CTUblue]{{\color{CTUblue}\bf Viết chương 1}}{5}{3}  % 10/2024 - 12/2024
+			\ganttbarcon[color=CTUblue]{{\color{CTUblue}\bf Viết chương 2}}{8}{3}  % 01/2025 - 03/2025
+			\ganttbarcon[color=CTUblue]{{\color{CTUblue}\bf Viết chương 3}}{11}{3}  % 04/2025 - 06/2025
+			\ganttbarcon[color=white]{{Hoàn chỉnh luận văn}}{13}{2}  % 6/2025 - 7/2025
+			\ganttbarcon[color=white]{{Chuẩn bị và báo cáo}}{14}{2}  % 7/2025 - 8/2025
+		\end{gantt}
+	\end{preview}
+\end{document}

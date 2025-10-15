@@ -1,0 +1,41 @@
+\documentclass[margin=3mm]{standalone}
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+\definecolor{CTUblue}{rgb}{0.121568627450, 0.3607843137254902, 0.6627450980392157}
+\definecolor{CTUcyan}{rgb}{0, 0.6862745098039216, 0.9372549019607843}
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, quotes}
+
+\begin{document}
+	\begin{tikzpicture}[
+		node distance = 12mm and 14mm,
+		box/.style = {draw, minimum size=3em, align=center, rounded corners},
+		every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt},
+		every edge quotes/.append style = {font=\footnotesize, fill=white, 
+			anchor=center, align=center, sloped},
+		]
+		
+		% nền
+		\fill[white] (-8,-3) rectangle (9, 1);
+		
+		% các nút chính (bỏ "Kiến thức chuẩn bị")
+		\scoped[nodes=box, fill=white]
+		{
+			\node (C2)[ fill=CTUblue,text=white] {Chap 1. Nhận dạng PDF};
+			\node (C3) [below left=of C2, fill=CTUblue,text=white] {Chap 2. Nhận dạng PDF\\mất cân bằng};
+			\node (add) [below right=of C2, fill=CTUblue,text=white] {Chap 3. Nhận dạng hình ảnh\\ mất cân bằng};
+		}
+		
+		% các cạnh
+		\path 
+		(C2) edge ["Cải tiến\\thuật toán"] (C3)
+		(C2) edge ["So sánh"] (add)
+		(C3) edge ["Áp dụng"] (add);
+		
+	\end{tikzpicture}
+\end{document}
