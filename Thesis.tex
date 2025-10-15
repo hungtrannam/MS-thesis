@@ -448,7 +448,7 @@ f(x)=\frac{\mathrm{d}P}{\mathrm{d}\mu}(x)=\left\{
 
 }
 
-\tch{\label{tc1} Một PDF các tính chất
+\tch{\label{tc1} Một PDF có các tính chất như sau:
 \begin{enumerate}
     \item PDF liên tục $f(x)$ là hàm không âm, $f(x)\ge0\,; \forall x\in\Omega$;
     \item Tích phân $f(x)$ trên toàn miền $\Omega$ bằng $1$;
@@ -1192,10 +1192,10 @@ Phân tích chùm KCF là bài toán tối tiểu đơn mục tiêu cho tổng c
 Ta cũng có $\mu_{ij}$ là biến tiềm ẩn thể hiện mức độ thành viên của PDF $f_j(x)$ thỏa $\mu_{ij}= \bm 1_{\{j\in c_i\}}$. Tức là $\mu_{ij} =1$ nếu PDF $f_j$ thuộc chùm $c_i$ và $\mu_{ij}=0$ nếu ngược lại. 
 
 \chm{
-Điều kiện $\sum_{i} \mu_{ij} = 1$ đảm bảo rằng mỗi hàm $f_j$ được gán vào đúng một chùm duy nhất. Mà tập tất cả các ma trận $U$ là hữu hạn và việc cố định $U$ biến hàm mục tiêu~\ref{Jk} trở thành hàm tuyến tính theo $U$.
+Điều kiện $\sum_{i} \mu_{ij} = 1$ đảm bảo rằng mỗi hàm $f_j$ được gán vào đúng một chùm duy nhất. Mà tập tất cả các ma trận $U$ là hữu hạn và việc cố định $U$ biến hàm mục tiêu\index{hàm mục tiêu (Objective function)}~\ref{Jk} trở thành hàm tuyến tính theo $U$.
 Đặc biệt, với $\theta_i$ cố định, giá trị $J$ được tối thiểu khi gán $f_j$ vào chùm $c_i$ sao cho $D^2(f_j\,; \theta_i)$ nhỏ nhất, tức là
 $
-\mu_{ij} = \bm {1}_\{i = \arg\min_s D^2(f_j\,; \theta_s)\}.
+\mu_{ij} = \bm {1}_{\{i = \arg\min_s D^2(f_j\,; \theta_s)\}}.
 $
 }
 
@@ -1209,7 +1209,7 @@ $$
 }
 
 
-\chm{Từ hàm mục tiêu~\ref{Jk}, ta cố định $\mu_{ij}$ và đổi thứ tự tổng và tích phân của hàm mục tiêu $J$, ta có
+\chm{Từ hàm mục tiêu\index{hàm mục tiêu (Objective function)}~\ref{Jk}, ta cố định $\mu_{ij}$ và đổi thứ tự tổng và tích phân của hàm mục tiêu\index{hàm mục tiêu (Objective function)} $J$, ta có
 $
 J(\mathcal{F}\,;c)=\int_{\Omega}\sum_{i=1}^c\sum_{j=1}^n \mu_{ij}\big(\theta_i(x)-f_j(x)\big)^2\,\mathrm{d}x.$ 
 Lấy đạo hàm của $J$ theo $\theta_i(x)$ ta có
@@ -1219,7 +1219,7 @@ $
 Cho đạo hàm bằng $0$ ta suy ra được điều phải chứng minh. 
 }
 
-Tóm lại, PDF đại diện tối ưu để cực tiểu hàm mục tiêu là  PDF trọng tâm~\eqref{daidien} của các PDF trong các chùm. Hơn nữa,
+Tóm lại, PDF đại diện tối ưu để cực tiểu hàm mục tiêu\index{hàm mục tiêu (Objective function)} là  PDF trọng tâm~\eqref{daidien} của các PDF trong các chùm. Hơn nữa,
 vì mỗi PDF trọng tâm~\eqref{daidien} được đại diện trừu tượng bằng trung bình có trọng số của từng chùm, nên kết quả trọng tâm này có thể không đồng nhất với bất kỳ đối tượng nào trong chùm PDF. Thay vào đó, nó có thể nằm bất kỳ trong không gian, đóng vai trò như một đối tượng tham chiếu để các PDF khác so sánh \cite{watson2023philosophy}.
 
 Một PDF mới $ h(x) $ được gán vào chùm $ c_i $ nếu $
@@ -1232,11 +1232,11 @@ $. Hơn nữa, vì ma trận phân vùng  $\mu_{ij}= \bm 1_{\{j\in c_i\}}$ nên 
 
 
 \bode{[Sự hội tụ của thuật toán KCF]
-	Sau mỗi bước lặp của thuật toán KCF, hàm mục tiêu $J^{(t)}$ luôn giảm tại hữu hạn bước lặp $t$.
+	Sau mỗi bước lặp của thuật toán KCF, hàm mục tiêu\index{hàm mục tiêu (Objective function)} $J^{(t)}$ luôn giảm tại hữu hạn bước lặp $t$.
 }
 
 \chm{
-	Gọi $\mathcal{Z}^{(t)} = \{c_1^{(t)}\,; \ldots\,; c_i^{(t)}\}$ là phân hoạch tại bước $t$, với PDF trọng tâm $\theta_i^{(t)}(x)$ và hàm mục tiêu $
+	Gọi $\mathcal{Z}^{(t)} = \{c_1^{(t)}\,; \ldots\,; c_i^{(t)}\}$ là phân hoạch tại bước $t$, với PDF trọng tâm $\theta_i^{(t)}(x)$ và hàm mục tiêu\index{hàm mục tiêu (Objective function)} $
 	J^{(t)}$. Khi trọng tâm $\theta_i^{(t)}$ cố định, mỗi hàm $f_j$ được gán vào chùm gần nhất. Khi đó, 
 	\begin{align}\label{eq:1}
 	\sum_{i=1}^k \sum_{f \in c_i^{(t+1)}} D^2(f\,; \theta_i^{(t)}) \leq J^{(t)}.
@@ -1347,9 +1347,9 @@ Giả sử $\mathcal{F}$-PDF chưa được gán nhãn, mục tiêu của bài t
 \end{align}
 
 
-Thuật toán phân tích chùm mờ cho phần tử rời rạc đã được chứng minh là tối ưu toàn cục bởi \cite{bezdek2013pattern, bezdek1980convergence, hathaway1988recent} qua định lý Zangwill \cite{zangwill1969nonlinear}. Đặc biệt, \cite{groll2005new} mới đây chứng minh sự hội tụ toàn cục qua thuật toán độ dốc\index{độ dốc (gradient method)}. Do đó, luận văn này chỉ giới thiệu Định lý~\ref{thanhlapMU_Theta} trình bày sự thành lập của ma trận phân vùng và PDF đại diện từ hàm mục tiêu $J$.
+Thuật toán phân tích chùm mờ cho phần tử rời rạc đã được chứng minh là tối ưu toàn cục bởi \cite{bezdek2013pattern, bezdek1980convergence, hathaway1988recent} qua định lý Zangwill \cite{zangwill1969nonlinear}. Đặc biệt, \cite{groll2005new} mới đây chứng minh sự hội tụ toàn cục qua thuật toán độ dốc\index{độ dốc (gradient method)}. Do đó, luận văn này chỉ giới thiệu Định lý~\ref{thanhlapMU_Theta} trình bày sự thành lập của ma trận phân vùng và PDF đại diện từ hàm mục tiêu\index{hàm mục tiêu (Objective function)} $J$.
 
-\dly{\label{thanhlapMU_Theta}Cho $\mathcal{F}$-PDF chứa $n>c$ các PDF và $m>1$. Xét $D^2_{ij} = D^2(\theta_i\,;f_j)$ với $ 1 \le j \le n$ và $1 \le i \le c$. Với mỗi $j$, xác định các tập $I_j = \{i\,|\,D^2_{ij} = 0\,; 1 \le i \le c\}$ và tập $I^c_j = \{1\,,2\,,ldots\,,c\} \setminus I_j$. Khi đó hàm mục tiêu \eqref{Jf} có thể đạt cực tiểu toàn cục khi và chỉ khi
+\dly{\label{thanhlapMU_Theta}Cho $\mathcal{F}$-PDF chứa $n>c$ các PDF và $m>1$. Xét $D^2_{ij} = D^2(\theta_i\,;f_j)$ với $ 1 \le j \le n$ và $1 \le i \le c$. Với mỗi $j$, xác định các tập $I_j = \{i\,|\,D^2_{ij} = 0\,; 1 \le i \le c\}$ và tập $I^c_j = \{1\,,2\,,ldots\,,c\} \setminus I_j$. Khi đó hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{Jf} có thể đạt cực tiểu toàn cục khi và chỉ khi
 \begin{align}
     &\theta^*_i(x) = \frac{\sum_{j=1}^n(\mu^*_{ij})^mf_j(x)}{\sum_{j=1}^n(\mu^*_{ij})^m} \text{ và}\label{trongtamFCF}\\
     &\begin{cases}\label{pvFCF1}
@@ -1381,7 +1381,7 @@ Nhiều nghiên cứu tổng quát hóa tham số $m$ đã được đặt ra sa
 
 %Luận văn này, chúng tôi chọn cố định $m=2$.
 
-Thuật toán phân chùm mờ FCF được thực hiện qua hai bước cập nhật PDF trọng tâm và cập nhật ma trận phân vùng \cite{nguyentrang2017fuzzy,bezdek1984fcm} (Thuật toán~\ref{alg:FCF}). Kết thúc thuật toán, ta nhận được ma trận phân vùng $\bm U$ và các PDF trọng tâm  $\Theta$, trong đó tiêu chuẩn dừng cho FCF là chuẩn của hàm mục tiêu tại hai vòng lặp liên tiếp phải thấp hơn ngưỡng dương $\varepsilon$ cho trước, tức là $\Vert J_{FCF}^{(t)}-J_{FCF}^{(t-1)}\Vert<\varepsilon$. Cuối cùng, ta có thể giải mờ theo quy tắc $c_i = \arg\max_i\mu_{ij}$. Tức là một PDF $f_j(x)$ sẽ được xếp vào chùm $c_i$ khi và chỉ khi nó có mức độ phân vùng\index{mức độ phân vùng (membership partition)} tại chùm đó là cao nhất.
+Thuật toán phân chùm mờ FCF được thực hiện qua hai bước cập nhật PDF trọng tâm và cập nhật ma trận phân vùng \cite{nguyentrang2017fuzzy,bezdek1984fcm} (Thuật toán~\ref{alg:FCF}). Kết thúc thuật toán, ta nhận được ma trận phân vùng $\bm U$ và các PDF trọng tâm  $\Theta$, trong đó tiêu chuẩn dừng cho FCF là chuẩn của hàm mục tiêu\index{hàm mục tiêu (Objective function)} tại hai vòng lặp liên tiếp phải thấp hơn ngưỡng dương $\varepsilon$ cho trước, tức là $\Vert J_{FCF}^{(t)}-J_{FCF}^{(t-1)}\Vert<\varepsilon$. Cuối cùng, ta có thể giải mờ theo quy tắc $c_i = \arg\max_i\mu_{ij}$. Tức là một PDF $f_j(x)$ sẽ được xếp vào chùm $c_i$ khi và chỉ khi nó có mức độ phân vùng\index{mức độ phân vùng (membership partition)} tại chùm đó là cao nhất.
 
 \vdu{[Phân chùm mờ hàm Gauss $1$-chiều]\label{VD:FCF} Ta sử dụng lại dữ liệu PDF trong Ví dụ~\ref{vdu:KCF}. Phân tích $\mathcal{F}$ thành ba chùm, biết $m=2$, tiêu chuẩn dừng $\varepsilon=10^{-3}$ và khoảng cách là $\mathcal{L}^2_2$. Ta có kết quả sau khi thực hiện các vòng lặp được giải chi tiết ở Phụ lục (tr. \pageref{phulucB}).
 }
@@ -1554,7 +1554,7 @@ Lấy đạo hàm theo $\bm{w}$ và đặt $\nabla_{\bm{w}} \mathcal{L} = 0$. Ta
 \dly{\ref{eq:svm-dual} là bài toán tối ưu lồi nghiêm ngặt trên đa diện lồi compact, do đó tồn tại duy nhất nghiệm vector $\boldsymbol{\alpha}^{*}\in\mathbb{R}^{n}$.}
 
 
-\chm{Ma trận Gram $\bm{G}_{jk} = y_j y_k K(f_j\,; f_k)$ là xác định dương do $K$ là kernel thỏa mãn điều kiện Mercer. Hàm mục tiêu là hiệu của một hàm tuyến tính và một dạng toàn phương xác định dương nên lồi nghiêm ngặt. Nhờ đó, tồn tại nghiệm cực đại duy nhất theo định lý Weierstrass.}
+\chm{Ma trận Gram $\bm{G}_{jk} = y_j y_k K(f_j\,; f_k)$ là xác định dương do $K$ là kernel thỏa mãn điều kiện Mercer. hàm mục tiêu\index{hàm mục tiêu (Objective function)} là hiệu của một hàm tuyến tính và một dạng toàn phương xác định dương nên lồi nghiêm ngặt. Nhờ đó, tồn tại nghiệm cực đại duy nhất theo định lý Weierstrass.}
 
 %\begin{theorem}[Điều kiện KKT cho máy véc-tơ hỗ trợ lề mềm]
 %	Với mọi $j = 1,\dots,n$, nghiệm $(\bm{\alpha}^*, \bm{\xi}^*, \bm\mu^*)$ thoả điều kiện KKT bao gồm
@@ -1814,11 +1814,11 @@ Trong lĩnh vực này, đã có nhiều công trình nghiên cứu chuyên sâu
 	\label{tab:in_clustering_summary}
 \begin{minipage}{\textwidth}
 			\fontsize{11pt}{14pt}\selectfont\it
-	Chú thích:	Đối với hàm mục tiêu, SSE: sai số của bình phương tối tiểu; VCC: tiêu chuẩn tỷ lệ phương sai (chỉ số Calinski--Harabasz); CSB: hợp của độ đo tương đồng và cân bằng; FSF: tỷ lệ giữa SSE và sự phân biệt giữa các chùm. Đối với phương pháp tối ưu, DE:  tiến hóa vi phân; aeDE: tiến hóa vi phân ưu tú thích nghi; GA: giải thuật di truyền. Ở cột cuối, dấu $\checkmark$ có nghĩa là tự động toàn bộ thuật toán. Nguồn: Tác giả tổng hợp.
+	Chú thích:	Đối với hàm mục tiêu\index{hàm mục tiêu (Objective function)}, SSE: sai số của bình phương tối tiểu; VCC: tiêu chuẩn tỷ lệ phương sai (chỉ số Calinski--Harabasz); CSB: hợp của độ đo tương đồng và cân bằng; FSF: tỷ lệ giữa SSE và sự phân biệt giữa các chùm. Đối với phương pháp tối ưu, DE:  tiến hóa vi phân; aeDE: tiến hóa vi phân ưu tú thích nghi; GA: giải thuật di truyền. Ở cột cuối, dấu $\checkmark$ có nghĩa là tự động toàn bộ thuật toán. Nguồn: Tác giả tổng hợp.
 \end{minipage}
 \end{table}
 
-Nhìn chung, các nghiên cứu từ các tác giả trong nước cho thấy xu hướng phát triển mạnh mẽ cả về chiều sâu lý thuyết lẫn chiều rộng ứng dụng. Cụ thể, các hàm mục tiêu truyền thống như SSE và VCC đã dần được mở rộng và tinh chỉnh thành những biến thể phức tạp hơn, chẳng hạn như CSB và FSF, cho phép đánh giá chất lượng kết quả phân tích chùm một cách đa chiều và sâu sắc hơn. Đáng chú ý, nghiên cứu của Thao Nguyen-Trang đã sử dụng FSF \cite{nguyen2023globally} hoặc CSB \cite{nguyen2023balance} làm hàm mục tiêu phân chùm, qua đó thể hiện nỗ lực đào sâu vào nội hàm và bản chất tối ưu của thuật toán.
+Nhìn chung, các nghiên cứu từ các tác giả trong nước cho thấy xu hướng phát triển mạnh mẽ cả về chiều sâu lý thuyết lẫn chiều rộng ứng dụng. Cụ thể, các hàm mục tiêu\index{hàm mục tiêu (Objective function)} truyền thống như SSE và VCC đã dần được mở rộng và tinh chỉnh thành những biến thể phức tạp hơn, chẳng hạn như CSB và FSF, cho phép đánh giá chất lượng kết quả phân tích chùm một cách đa chiều và sâu sắc hơn. Đáng chú ý, nghiên cứu của Thao Nguyen-Trang đã sử dụng FSF \cite{nguyen2023globally} hoặc CSB \cite{nguyen2023balance} làm hàm mục tiêu\index{hàm mục tiêu (Objective function)} phân chùm, qua đó thể hiện nỗ lực đào sâu vào nội hàm và bản chất tối ưu của thuật toán.
 Hơn nữa, giai đoạn năm 2019 đánh dấu bước chuyển quan trọng khi các mô hình phân chùm bắt đầu mở rộng từ dạng cứng \cite{pham2019new} sang các phương pháp tổng quát hơn như mờ \cite{phamtoan2022automatic}, khả dĩ \cite{tran2024new} và bán giám sát \cite{nguyen2024new} sử dụng một phần dữ liệu có nhãn để cải thiện độ chính xác của quá trình phân chùm. Sự xuất hiện của hướng tiếp cận này cho thấy bước tiến rõ rệt trong việc kết hợp các phương pháp khác nhau.
 
 Ở bình diện quốc tế, hai công trình tiêu biểu thể hiện hai hướng tiếp cận khác nhau trong nghiên cứu phân tích chùm. Cụ thể, Chen \& Hung (2020) \cite{chen2021jackknife} tập trung vào việc sử dụng tiêu chuẩn thông tin để tự động phát hiện cấu trúc chùm và xác định số chùm tối ưu, hướng đến việc giảm sự phụ thuộc vào tham số người dùng. Ngược lại, Tavakkol \& Son (2021) \cite{tavakkol2021fuzzy} lại khai thác không gian hạt nhân nhằm xử lý hiệu quả các chùm có hình dạng bất quy tắc và ranh giới phức tạp.
@@ -1837,7 +1837,7 @@ Trong lĩnh vực phân tích chùm dữ liệu rời rạc, thuật toán phân
 
 
 
-Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ nhỏ sao cho $\#c_1 = IR \cdot \#c_2$ với $IR \in \mathbb{N}_{>0}$. Khi $IR$ tăng, hàm tỷ số giữa $\#c_1$ và tổng số phần tử trong dữ liệu được biểu diễn bởi $k(x) = 1-1/(x + 1)$. Trong Hình~\ref{fig:dominant_ratio_IR}, hàm $k(x)$ là một đường cong tăng đơn điệu, trong khi đạo hàm của nó giảm dần. Nghĩa là việc chỉ số hóa kích thước chùm thông qua trọng số lớp dần trở nên bão hòa. 
+Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ nhỏ sao cho $\#c_1 = IR \cdot \#c_2$ với $IR \in \mathbb{N}_{>0}$. Khi $IR$ tăng, hàm tỷ số giữa $\#c_1$ và tổng số phần tử trong dữ liệu được biểu diễn bởi $k(x) = 1-\frac{1}{x+1}$. Trong Hình~\ref{fig:dominant_ratio_IR}, hàm $k(x)$ là một đường cong tăng đơn điệu, trong khi đạo hàm của nó giảm dần. Nghĩa là việc chỉ số hóa kích thước chùm thông qua trọng số lớp dần trở nên bão hòa. 
 
 \begin{figure}[H] 
 	\centering
@@ -1848,7 +1848,7 @@ Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ nh�
 
 
 
-Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có kích thước tương đương nhau \cite{askari2021fuzzy}, điều này dẫn đến các quyết định phân chùm sai lệch khi dữ liệu thực tế có sự mất cân bằng đáng kể. Theo Xiong (2006) \cite{xiong2006k}, thuật toán KCF có xu hướng ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều, ngay cả khi bản chất phân bố thực tế không như vậy, dẫn đến kết quả bị lệch, chùm nhỏ dễ bị hút vào chùm lớn. Hiện tượng này được gọi là “hiệu ứng đồng nhất”, xuất phát trực tiếp từ đặc tính của hàm mục tiêu. Tương tự, trong trường hợp của KCF, FCF cũng chịu ảnh hưởng của này. Để chứng minh, ta xét hai PDF trọng tâm $\theta_1$ và $\theta_2$ trong bài toán hai chùm được tính theo \eqref{trongtamFCF}, với mức độ phân vùng\index{mức độ phân vùng (membership partition)} giản hóa thành $\mu_{ij} = u$ nếu $f_j \in c_i$ và $(1 - u)$ cho các trường hợp còn lại, ta có
+Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có kích thước tương đương nhau \cite{askari2021fuzzy}, điều này dẫn đến các quyết định phân chùm sai lệch khi dữ liệu thực tế có sự mất cân bằng đáng kể. Theo Xiong (2006) \cite{xiong2006k}, thuật toán KCF có xu hướng ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều, ngay cả khi bản chất phân bố thực tế không như vậy, dẫn đến kết quả bị lệch, chùm nhỏ dễ bị hút vào chùm lớn. Hiện tượng này được gọi là “hiệu ứng đồng nhất”, xuất phát trực tiếp từ đặc tính của hàm mục tiêu\index{hàm mục tiêu (Objective function)}. Tương tự, trong trường hợp của KCF, FCF cũng chịu ảnh hưởng của này. Để chứng minh, ta xét hai PDF trọng tâm $\theta_1$ và $\theta_2$ trong bài toán hai chùm được tính theo \eqref{trongtamFCF}, với mức độ phân vùng\index{mức độ phân vùng (membership partition)} giản hóa thành $\mu_{ij} = u$ nếu $f_j \in c_i$ và $(1 - u)$ cho các trường hợp còn lại, ta có
 \begin{align*}
 	\theta_1(x) &= \frac{u^m \sum_{f_j \in c_1} f_j(x) + (1-u)^m \sum_{f_j(x) \in c_2} f_j(x)}{\#c_1u^m + \#c_2(1-u)^m},\\
 	\theta_2(x) &= \frac{(1-u)^m \sum_{f_j(x) \in c_1} f_j(x) + u^m \sum_{f_j \in c_2} f_j}{\#c_1(1-u)^m + \#c_2u^m}.
@@ -1881,7 +1881,7 @@ Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có k
   Ta biết trong tỷ lệ trên, $p$ có bậc của tử nhỏ hơn bật của mẫu, nên giới hạn của nó là $0$, từ đó ta có
   $ \lim_{\#c_1 \to \infty} \mathcal{L}^2_2(\theta_1\,;\theta_2) = 0 $. Điều này chứng minh rằng FCF và KCF có xu hướng làm cho các trọng tâm chùm cuối cùng $\Theta$ dịch chuyển gần nhau hơn so với các trọng tâm thực tế $\widehat{\Theta}$. Kết quả là, các chỉ số đánh giá phân chùm truyền thống sẽ ưu tiên gộp chùm thiểu số và chùm lân cận thành một chùm duy nhất.
 
-Hình~\ref{fig:IR_STD} minh họa ảnh hưởng đồng thời của $IR$ và mức nhiễu dữ liệu lên kết quả xác định trọng tâm trong thuật toán FCF. Cụ thể, các dòng từ $1\div4$ thể hiện sự gia tăng dần của $IR$, cho thấy FCF có xu hướng tạo ra các phân vùng đồng đều hơn về số lượng PDF trong mỗi chùm. Đây chính là biểu hiện rõ của ``hiệu ứng đồng nhất''. 
+Hình~\ref{fig:IR_STD} minh họa ảnh hưởng đồng thời của $IR$ và mức nhiễu dữ liệu lên kết quả xác định trọng tâm trong thuật toán FCF. Cụ thể, các dòng từ $1\div4$ thể hiện sự gia tăng dần của $IR$, cho thấy FCF có xu hướng tạo ra các phân vùng đồng đều hơn về số lượng PDF trong mỗi chùm. Đây chính là biểu hiện rõ của ``hiệu ứng đồng nhất''\index{hiệu ứng đồng nhất (uniform effect)}. 
 Ngược lại, các cột trong hình mô tả mức độ nhiễu khác nhau của dữ liệu, FCF cho thấy các PDF biên của chùm nhỏ hơn bị kéo lệch về phía chùm lớn khi phân bố dữ liệu trở nên rối loạn.
 Trong phạm vi của luận văn này, “hiệu ứng đồng nhất” được xem là vấn đề trung tâm và được đề cập, phân tích cũng như giải quyết lần đầu tiên đối với đối tượng là các PDF, trong khi “hiệu ứng xi-phông” được bỏ qua do mức độ ưu tiên thấp hơn trong bối cảnh nghiên cứu hiện tại.
 
@@ -1949,7 +1949,7 @@ Trong phạm vi của luận văn này, “hiệu ứng đồng nhất” đư�
 
 
 
-Cho tập $\mathcal{F}$-PDF, trong đó mỗi $f_j$ là một đối tượng trong tập $\mathcal{F}$ với $j=1\,,2\,,\ldots\,,n$. Cho trước $c$ là số chùm với $i=1\,;\ldots\,;c$. Gọi $\bm U=[\mu_{ij}]\in\mathbb{R}^{n\times c}$ là ma trận phân vùng và $\Theta=\{\theta_1\,;\ldots\,;\theta_c\}$ là các trọng tâm chùm. Giả sử tham số mờ $m>1$. Hàm mục tiêu của IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất''.
+Cho tập $\mathcal{F}$-PDF, trong đó mỗi $f_j$ là một đối tượng trong tập $\mathcal{F}$ với $j=1\,,2\,,\ldots\,,n$. Cho trước $c$ là số chùm với $i=1\,;\ldots\,;c$. Gọi $\bm U=[\mu_{ij}]\in\mathbb{R}^{n\times c}$ là ma trận phân vùng và $\Theta=\{\theta_1\,;\ldots\,;\theta_c\}$ là các trọng tâm chùm. Giả sử tham số mờ $m>1$. hàm mục tiêu\index{hàm mục tiêu (Objective function)} của IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất''\index{hiệu ứng đồng nhất (uniform effect)}.
 \begin{align}
 	\tag{IFCF}\label{eq:IFCF}
 \text{Minimise}\,&:\, J(\bm U\,;\Theta\,|\, \mathcal{F}\,;c\,;m) = 
@@ -1959,7 +1959,7 @@ Cho tập $\mathcal{F}$-PDF, trong đó mỗi $f_j$ là một đối tượng tr
 trong đó $\omega_i^{(t)}=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ của chùm thứ $i$ với $i=1\,,2\,,\ldots\,,c$, thỏa mãn $\sum_{i=1}^c\omega_i=1$ với $\mu^{(t-1)}_{ij}$ là ma trận phân vùng tại vòng lặp thứ $(t-1)$.
 
 \chy{
-Khi mức độ mất cân bằng tăng, phần đóng góp của chùm lớn vào hàm mục tiêu sẽ dần lấn át ảnh hưởng của các chùm nhỏ hơn. Để khắc phục, thành phần của hàm mục tiêu IFCF được hiệu chỉnh bằng cách chia cho hệ số $\tfrac{1}{\omega_i}$, với $\omega_i \in (0\,;1]$, nhằm giảm tỷ lệ đóng góp tương ứng theo kích thước của từng chùm. Khi đó, các chùm lớn phải chịu tổn thất cao hơn trong quá trình tối ưu hóa, nhằm hạn chế chi phối tổng thể mà không làm sai lệch trọng tâm và tính ổn định. Đặc biệt, khi tất cả các $\omega_i = 1$, công thức IFCF sẽ trở về dạng gốc của FCF đề cập ở Tiểu mục~\ref{sec:FCF}.
+Khi mức độ mất cân bằng tăng, phần đóng góp của chùm lớn vào hàm mục tiêu\index{hàm mục tiêu (Objective function)} sẽ dần lấn át ảnh hưởng của các chùm nhỏ hơn. Để khắc phục, thành phần của hàm mục tiêu\index{hàm mục tiêu (Objective function)} IFCF được hiệu chỉnh bằng cách chia cho hệ số $\tfrac{1}{\omega_i}$, với $\omega_i \in (0\,;1]$, nhằm giảm tỷ lệ đóng góp tương ứng theo kích thước của từng chùm. Khi đó, các chùm lớn phải chịu tổn thất cao hơn trong quá trình tối ưu hóa, nhằm hạn chế chi phối tổng thể mà không làm sai lệch trọng tâm và tính ổn định. Đặc biệt, khi tất cả các $\omega_i = 1$, công thức IFCF sẽ trở về dạng gốc của FCF đề cập ở Tiểu mục~\ref{sec:FCF}.
 	}
 
 \begin{figure}[H]
@@ -1999,7 +1999,7 @@ Tuy nhiên, khi $IR$ tăng dần, chùm lớn bắt đầu chiếm ưu thế rõ
 
 
 %
-%Hàm mục tiêu của IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất'' và hiệu chỉnh biên \index{hiệu chỉnh biên (edge modification)} giảm ``hiệu ứng xi-phông''.
+%hàm mục tiêu\index{hàm mục tiêu (Objective function)} của IFCF là tổng của hai phần bao gồm trọng số $1/\omega_i$ giảm ``hiệu ứng đồng nhất''\index{hiệu ứng đồng nhất (uniform effect)} và hiệu chỉnh biên \index{hiệu chỉnh biên (edge modification)} giảm ``hiệu ứng xi-phông''.
 %\begin{align}
 %	\tag{IFCF}\label{eq:EMIFCF}
 %\text{Minimise}\,&:\, J(\bm U\,;\Theta\,|\, \mathcal{F}\,;c\,;m\,;\delta') = 
@@ -2016,7 +2016,7 @@ Tuy nhiên, khi $IR$ tăng dần, chùm lớn bắt đầu chiếm ưu thế rõ
 %Khi $\omega_i= \bm 1$ và $\delta'=0$ thì thuật toán trở thành FCF. 
 %
 %\chy{
-%Khi mất cân bằng tăng, đóng góp của chùm lớn hơn vào hàm mục tiêu sẽ lấn át chùm nhỏ hơn. Do đó, thành phần $IFCF$ chia cho $\tfrac{1}{\omega_i}$, với $\omega_i\in(0\,;1)$ sẽ giảm một tỷ lệ kích thước chùm cho cả hai bên. Khi đó, chùm lớn phải chịu tổn thất lớn hơn  để giảm đóng góp hàm mục tiêu mà không làm sai lệch trọng tâm và tính ổn định.
+%Khi mất cân bằng tăng, đóng góp của chùm lớn hơn vào hàm mục tiêu\index{hàm mục tiêu (Objective function)} sẽ lấn át chùm nhỏ hơn. Do đó, thành phần $IFCF$ chia cho $\tfrac{1}{\omega_i}$, với $\omega_i\in(0\,;1)$ sẽ giảm một tỷ lệ kích thước chùm cho cả hai bên. Khi đó, chùm lớn phải chịu tổn thất lớn hơn  để giảm đóng góp hàm mục tiêu\index{hàm mục tiêu (Objective function)} mà không làm sai lệch trọng tâm và tính ổn định.
 %
 %Tuy nhiên, việc chuẩn hoá kích thước chùm không phân biệt được mức độ khó của từng hàm mật độ tại các biên của chùm, nơi khởi phát hiệu ứng xi phong. Do đó, số hạng EM tim kiếm các hàm biên thông qua hệ số $
 %\mu_{ij}\bigl(1-\mu_{ij}^{\,m-1}\bigr)
@@ -2070,7 +2070,7 @@ Ta định nghĩa toán tử $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \math
 		\label{eq:subprob}
 	\end{align}
 	
-	Với $m>1$, ta nhận được hàm $t\mapsto t^m$ lồi nghiêm ngặt trên $\mathbb R_{>0}$. Khi đó, hàm mục tiêu $\phi_j$ là tổng các hàm lồi nghiêm ngặt theo từng biến. Miền khả thi là một đơn hình đóng và bị chặn, do đó nghiệm tối ưu tồn tại duy nhất. Hơn nữa, ma trận Hessian là xác định dương, với các phần tử trong ma trận
+	Với $m>1$, ta nhận được hàm $t\mapsto t^m$ lồi nghiêm ngặt trên $\mathbb R_{>0}$. Khi đó, hàm mục tiêu\index{hàm mục tiêu (Objective function)} $\phi_j$ là tổng các hàm lồi nghiêm ngặt theo từng biến. Miền khả thi là một đơn hình đóng và bị chặn, do đó nghiệm tối ưu tồn tại duy nhất. Hơn nữa, ma trận Hessian là xác định dương, với các phần tử trong ma trận
 \begin{align*}
 	\begin{cases}
 		\frac{\partial^2 \phi_j}{\partial \mu_{ij}^2}=m(m-1)(\delta_{ij})\mu_{ij}^{m-2}>0, & \text{ khi } s= i\\
@@ -2237,7 +2237,7 @@ Ta định nghĩa toán tử $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \math
 }
 
 \chm{
-	Giữ $\bm U$ cố định và lấy đạo hàm của hàm mục tiêu \eqref{eq:IFCF} cho $\psi_i=\sum_{i=1}^c \psi_i(\theta_i)$ với các $\psi_i(\theta_i)=\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,\mathcal{L}_2^2(\theta_i,f_j)$ theo $\theta_i$, ta có
+	Giữ $\bm U$ cố định và lấy đạo hàm của hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF} cho $\psi_i=\sum_{i=1}^c \psi_i(\theta_i)$ với các $\psi_i(\theta_i)=\psi_i(\theta_i)=\sum_{j=1}^n \frac{1}{\omega_i}\,(\mu_{ij})^{m}\,\mathcal{L}_2^2(\theta_i,f_j)$ theo $\theta_i$, ta có
 	\begin{align}\label{eq:théta}
 	\nabla_{\theta_i}\psi_i(\theta_i)
 	=
@@ -2256,7 +2256,7 @@ Ta định nghĩa toán tử $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \math
 Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2$, $D^2_H$, hoặc $W^2_2$, trong khi với các khoảng cách khác như $D_{BC}$, $D_{KL}$, hoặc $D_{JS}$ có thể không duy nhất nghiệm toàn cục. Bổ đề~\ref{lem:Hellinger} chứng minh công thức thành lập trọng tâm đối với khoảng cách $D^2_H$.
 
 \bode{[Cập nhật trọng tâm $\Theta$ với $D^2_H$]\label{lem:Hellinger}
-	Với $\bm U$ cố định, bài toán tối thiểu hoá hàm mục tiêu \eqref{eq:IFCF} theo $\Theta$ có thể tách được theo từng $\theta_i$ và là lồi nghiêm ngặt trong biến $\sqrt{\theta_i}$. 
+	Với $\bm U$ cố định, bài toán tối thiểu hoá hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF} theo $\Theta$ có thể tách được theo từng $\theta_i$ và là lồi nghiêm ngặt trong biến $\sqrt{\theta_i}$. 
 	Tồn tại duy nhất nghiệm cực tiểu $\Theta^*=G(\bm U)$ khi khoảng cách $D^2=D_H^2$, trong đó 
 	\begin{align}
 		\theta_i(x)
@@ -2309,7 +2309,7 @@ Tổng thể, Bảng~\ref{tab:KCTT} và Hình~\ref{fig:trongtam_3KC} thể hiệ
 \begin{table}[H]
 	\centering
 	\fontsize{11pt}{14pt}\selectfont
-	\caption{Tổng kết các công thức trọng tâm theo khoảng cách khác nhau đối với hàm mục tiêu \eqref{eq:IFCF}}\label{tab:KCTT}
+	\caption{Tổng kết các công thức trọng tâm theo khoảng cách khác nhau đối với hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF}}\label{tab:KCTT}
 	\begin{tabular*}{\textwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}}
 		\toprule
 	\textbf{Công thức khoảng cách} & \textbf{Trọng tâm $\theta$} \\
@@ -2330,7 +2330,7 @@ $D_H^2(f\,;\theta)=\frac{1}{2}\displaystyle\int \big(\sqrt{f(x)}-\sqrt{\theta(x)
 	\centering
 	\includegraphics[width=\linewidth]{C2_hamtrongtam}
 
-	\caption[Minh họa các công thức trọng tâm theo khoảng cách đối với \eqref{eq:IFCF}]{Minh họa các công thức trọng tâm theo khoảng cách đối với hàm mục tiêu \eqref{eq:IFCF}}\label{fig:trongtam_3KC}
+	\caption[Minh họa các công thức trọng tâm theo khoảng cách đối với \eqref{eq:IFCF}]{Minh họa các công thức trọng tâm theo khoảng cách đối với hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF}}\label{fig:trongtam_3KC}
 \begin{minipage}{\textwidth}
 		\fontsize{11pt}{14pt}\selectfont\it
 		Chú thích: Trọng tâm (nét liền) của ba PDF (nét đứt) qua các loại khoảng cách (a) $\mathcal{L}_2$, (b) Hellinger và (c) $2$-Wasserstein. Nguồn: Minh họa của tác giả.
@@ -2338,7 +2338,7 @@ $D_H^2(f\,;\theta)=\frac{1}{2}\displaystyle\int \big(\sqrt{f(x)}-\sqrt{\theta(x)
 \end{figure}
 
 
-Tuy nhiên, hai Bổ đề \ref{lem1} và \ref{lem2} chỉ là điều kiện cần để $(\bm\mu^*\,;\Theta^*)$ là một cực tiểu toàn cục của hàm mục tiêu \eqref{eq:IFCF}. Từ đây, bài toán cần giải quyết câu hỏi liệu dãy $\{T_{IFCF}^{(t)}(\bm\mu^{(0)})\}$ có hội tụ về $\bm\mu^*$ hay không. Điều kiện đủ cho định lý Zangwill là tính com-pắc của một tập con $\bm U \times \mathbb{R}^{cd}$
+Tuy nhiên, hai Bổ đề \ref{lem1} và \ref{lem2} chỉ là điều kiện cần để $(\bm\mu^*\,;\Theta^*)$ là một cực tiểu toàn cục của hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF}. Từ đây, bài toán cần giải quyết câu hỏi liệu dãy $\{T_{IFCF}^{(t)}(\bm\mu^{(0)})\}$ có hội tụ về $\bm\mu^*$ hay không. Điều kiện đủ cho định lý Zangwill là tính com-pắc của một tập con $\bm U \times \mathbb{R}^{cd}$
 chứa tất cả các dãy sinh bởi $T_{IFCF}$. 
 
 
@@ -2362,7 +2362,7 @@ Ba Định lý~\ref{theo3}, \ref{theo1} và \ref{theo2} là một phần của c
 }
 
 \chm{
-	Đầu tiên, vì các ánh xạ $\{y \mapsto D^2_{y}\}$, $\{y \mapsto 1 - y\}$ và $\{y \mapsto y^m\}$ đều liên tục và $J_{IFCF}$ là tổng các tích của các hàm này. Do đó, hàm mục tiêu \eqref{eq:IFCF} liên tục trên $\bm U\times\mathbb{R}^{cd}$. Tiếp theo, giả sử $(\bm\mu\,; \Theta) \notin S_{IFCF}$. Từ \eqref{TO} suy ra 
+	Đầu tiên, vì các ánh xạ $\{y \mapsto D^2_{y}\}$, $\{y \mapsto 1 - y\}$ và $\{y \mapsto y^m\}$ đều liên tục và $J_{IFCF}$ là tổng các tích của các hàm này. Do đó, hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF} liên tục trên $\bm U\times\mathbb{R}^{cd}$. Tiếp theo, giả sử $(\bm\mu\,; \Theta) \notin S_{IFCF}$. Từ \eqref{TO} suy ra 
 	\begin{align*}
 		\begin{array}{lll}
 			J_{IFCF}(T_{IFCF}(\bm\mu\,; \Theta)) & = J_{IFCF}\left(T_2\circ T_1(\bm\mu\,; \Theta)\right) &  \\
@@ -2388,7 +2388,7 @@ Ba Định lý~\ref{theo3}, \ref{theo1} và \ref{theo2} là một phần của c
 }
 
 \dly{[Định lý hội tụ cho $J_{IFCF}$]\label{theo4}
-	Xét tập $\mathcal{F}$-PDF $\mathcal{F} = \{f_1\,;f_2\,;\ldots\,;f_n\}$, cho hàm mục tiêu $J_{IFCF}(\bm U\,;\Theta)$ có dạng \eqref{eq:IFCF}, trong đó ma trận phân vùng $\bm U$ thỏa mãn \eqref{c1_pro} và các trọng tâm chùm $\Theta=\{\theta_1\,;\theta_2\,;\ldots\,;\theta_c\}$. Nếu $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \mathbb{R}^{cd} \times \bm U$ là một toán tử lặp Picard của $J_{IFCF}$ và với mọi $t$ sao cho $D^2(\theta_i^{(t)}\,;f_j)>0$, thì với mọi $(\bm\mu^{(0)}\,;\Theta^{(0)})\in \bm U\times [\mathrm{conv}(\mathcal{F})]^c$, hoặc
+	Xét tập $\mathcal{F}$-PDF $\mathcal{F} = \{f_1\,;f_2\,;\ldots\,;f_n\}$, cho hàm mục tiêu\index{hàm mục tiêu (Objective function)} $J_{IFCF}(\bm U\,;\Theta)$ có dạng \eqref{eq:IFCF}, trong đó ma trận phân vùng $\bm U$ thỏa mãn \eqref{c1_pro} và các trọng tâm chùm $\Theta=\{\theta_1\,;\theta_2\,;\ldots\,;\theta_c\}$. Nếu $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \mathbb{R}^{cd} \times \bm U$ là một toán tử lặp Picard của $J_{IFCF}$ và với mọi $t$ sao cho $D^2(\theta_i^{(t)}\,;f_j)>0$, thì với mọi $(\bm\mu^{(0)}\,;\Theta^{(0)})\in \bm U\times [\mathrm{conv}(\mathcal{F})]^c$, hoặc
 	\begin{enumerate}
 		\item Dãy $\{(J_{IFCF})^{(t)}(\bm\mu^{(0)}\,; \Theta^{(0)})\}$ dừng tại giá trị cực tiểu địa phương $(\mu_{ij}^*\,; \Theta^*)$ của $J_{IFCF}$; hoặc
 		\item Dãy $\{(J_{IFCF})^{(t)}(\bm\mu^{(0)}\,; \Theta^{(0)})\}$ chứa một dãy con sao cho $\{(J_{IFCF})^{(t_k)}(\bm\mu^{(0)}\,; \Theta^{(0)})\}\to (\bm\mu^*\,; \Theta^*)$ là giá trị cực tiểu địa phương của $J_{IFCF}$ khi $t_k\to\infty$.
@@ -2396,7 +2396,7 @@ Ba Định lý~\ref{theo3}, \ref{theo1} và \ref{theo2} là một phần của c
 }
 
 \chm{
-	Do hàm mục tiêu $J_{IFCF}$ liên tục trên $\bm U\times \mathbb{R}^{cd}$, Định lý~\ref{theo1} chỉ ra rằng $J_{IFCF}$ là một hàm Zangwill giảm cho tập nghiệm $\{T_{IFCF}\,;S_{IFCF}\}$ trong đó $S_{IFCF}$ là tập các cực tiểu nghiêm ngặt của $J_{IFCF}$. Định lý~\ref{theo2} khẳng định $T_{IFCF}$ liên tục trên $\bm U\times [\mathrm{conv}(\mathcal{F})]^c$ và theo Định lý~\ref{theo3}, toán tử dãy lặp $J_{IFCF}$ luôn nằm trong một tập con com-pắc của miền xác định. Kết quả này suy ra trực tiếp từ định lý Zangwill.
+	Do hàm mục tiêu\index{hàm mục tiêu (Objective function)} $J_{IFCF}$ liên tục trên $\bm U\times \mathbb{R}^{cd}$, Định lý~\ref{theo1} chỉ ra rằng $J_{IFCF}$ là một hàm Zangwill giảm cho tập nghiệm $\{T_{IFCF}\,;S_{IFCF}\}$ trong đó $S_{IFCF}$ là tập các cực tiểu nghiêm ngặt của $J_{IFCF}$. Định lý~\ref{theo2} khẳng định $T_{IFCF}$ liên tục trên $\bm U\times [\mathrm{conv}(\mathcal{F})]^c$ và theo Định lý~\ref{theo3}, toán tử dãy lặp $J_{IFCF}$ luôn nằm trong một tập con com-pắc của miền xác định. Kết quả này suy ra trực tiếp từ định lý Zangwill.
 }
 %
 
@@ -2571,7 +2571,7 @@ Các thuật toán phân chùm được triển khai với nhiều loại khoả
 Rõ ràng, khi $IR$ tăng từ $10\div 50$, hầu hết các chỉ số đánh giá như $ARI$, $NMI$, $Dunn$ và $Silhouette$ đều giảm đáng kể. Ở mức $IR = 10$, các phương pháp đạt giá trị rất cao, với $ARI = 0{,}93$ và $NMI = 0{,}86$, phản ánh khả năng tách chùm tốt và ổn định. Tuy nhiên, khi $IR \ge 30$, các chỉ số này nhanh chóng suy giảm gần về $0{,}00$, cho thấy mô hình bắt đầu suy yếu. Đồng thời, thời gian tính toán và số vòng lặp hội tụ tăng lên rõ rệt theo $IR$, thể hiện rằng bài toán trở nên phức tạp hơn khi mức mất cân bằng dữ liệu tăng cao.
 Ngoài ra, các khoảng cách $\mathcal{L}_2$, $D_{BC}$, $D^2_H$ và $D_{JS}$ cho kết quả gần tương đương nhau ở các mức $IR$ thấp. Tuy nhiên, khi $IR$ tăng, $D^2_H$ và $D_{JS}$ cho thấy tính ổn định cao hơn, duy trì giá trị $ARI$ và $NMI$ cao hơn so với $\mathcal{L}_2$ và đặc biệt là $W^2_2$. Ngược lại, khoảng cách $W^2_2$ thể hiện hiệu năng yếu hơn cả về chỉ số nội bộ lẫn chỉ số bên ngoài, đồng thời đòi hỏi chi phí tính toán cao hơn đáng kể.
 
-Phân tích thống kê sâu hơn bằng phép kiểm định Friedman ($\chi^2 = 14\div15$, $p < 0{,}02$) cho thấy sự khác biệt giữa các loại khoảng cách là có ý nghĩa thống kê. Kết quả này khẳng định rằng lựa chọn độ đo thích hợp có ảnh hưởng trực tiếp đến chất lượng phân tích chùm.
+Phân tích thống kê sâu hơn bằng phép kiểm định Friedman\index{kiểm định Friedman (Friedman test)} ($\chi^2 = 14\div15$, $p < 0{,}02$) cho thấy sự khác biệt giữa các loại khoảng cách là có ý nghĩa thống kê. Kết quả này khẳng định rằng lựa chọn độ đo thích hợp có ảnh hưởng trực tiếp đến chất lượng phân tích chùm.
 
 \begin{figure}[H]
 	\centering
@@ -2630,7 +2630,7 @@ Ngược lại, thuật toán IFCF duy trì độ ổn định ngay cả khi $IR
 
 
 \textbf{$\blacktriangleright$ Chú ý.}
-Thuật toán IFCF cải tiến hàm mục tiêu giúp trung hòa đóng góp của các chùm lớn hơn, từ đó giảm "hiệu ứng đồng nhất". Tuy nhiên, trong quá trình lặp, giả sử hai trọng tâm $\Theta$ được xác định, khi đó với bất kỳ PDF $j$ thuộc chùm $c_1$, các mức độ phân vùng\index{mức độ phân vùng (membership partition)} được cập nhật theo Công thức~\eqref{eq:ifcf_u_final} và điều kiện $\sum_{j=1}^c u_{ij}=1$, có thể được viết lại thành
+Thuật toán IFCF cải tiến hàm mục tiêu\index{hàm mục tiêu (Objective function)} giúp trung hòa đóng góp của các chùm lớn hơn, từ đó giảm "hiệu ứng đồng nhất". Tuy nhiên, trong quá trình lặp, giả sử hai trọng tâm $\Theta$ được xác định, khi đó với bất kỳ PDF $j$ thuộc chùm $c_1$, các mức độ phân vùng\index{mức độ phân vùng (membership partition)} được cập nhật theo Công thức~\eqref{eq:ifcf_u_final} và điều kiện $\sum_{j=1}^c u_{ij}=1$, có thể được viết lại thành
 \begin{align*}
 	\frac{1}{1 + \left(\frac{\omega_2}{\omega_1}\right)^{\frac{1}{m-1}}
 		\left(\frac{\mathcal{L}^2_2(\theta_1\,;f_j)}{\mathcal{L}^2_2(\theta_2\,;f_j)}\right)^{\frac{1}{m-1}}}
@@ -2716,7 +2716,7 @@ Trong các phương pháp thống kê, Bayesian truyền thống là một phư�
 
 Cho dữ liệu huấn luyện gồm $N$-PDF có các đối tượng $f_j$ và dữ liệu kiểm tra gồm $n$-PDF mới cần phân loại.  Giả sử $c$ lớp $c_i$, trong đó lớp $c_i$ chứa $n_j$ đối tượng PDF. Xác suất tiên nghiệm $q_{ij}$ (hay $u_i$) được xác định thông qua mối quan hệ mờ giữa đối tượng PDF cần phân loại $h(x)$ và các lớp trong tập huấn luyện, sử dụng kỹ thuật phân tích chùm mở IFCF (Thuật toán~\ref{alg:IFCF}). Tiên nghiệm IFCF là phương pháp tiên nghiệm động giống với Bayes-FCM \cite{vovan2023multi,vovan2025classifying} nhưng dành cho dữ liệu được xác định là có mất cân bằng cao hơn. 
 
-Phân loại một PDF mới  $h(x)$ vào lớp $c_i$ bằng quy tắc Bayes nếu nó có xác suất hậu nghiệm đối với lớp đó là cao nhất, tức là $$c_i = \arg\max_{i}\left\{\frac{\bm U^{(test)}_{ij} \exp(-\bm D^{(test)}_{ij}/\tau)}{\displaystyle\sum_s\bm U^{(test)}_{sj} \exp(-\bm D^{(test)}_{sj}/\tau)}\right\},$$ trong đó khoảng cách $D$ được chuẩn hóa với $\tau=\frac{1}{n_{test}}\sum_iD_{ij}$ . Nguyên tắc này chỉ định rằng một PDF được gán vào một lớp cụ thể nếu nó đồng thời sở hữu giá trị cao nhất đối với xác suất tiên nghiệm và độ đo tương đồng đối với lớp đó. Mã giả của thuật toán đề nghị được trình bày trong Thuật toán~\ref{alg:IFCF_QB}.
+Phân loại một PDF mới  $h(x)$ vào lớp $c_i$ bằng quy tắc Bayes nếu nó có xác suất hậu nghiệm đối với lớp đó là cao nhất, tức là $$c_i = \arg\max_{i}\left\{\frac{\bm U^{(test)}_{ij} \exp\left (-\bm D^{(test)}_{ij}/\tau\right )}{\displaystyle\sum_s\bm U^{(test)}_{sj} \exp\left (-\bm D^{(test)}_{sj}/\tau\right )}\right\},$$ trong đó khoảng cách $D$ được chuẩn hóa với $\tau=\frac{1}{n_{test}}\sum_iD_{ij}$ . Nguyên tắc này chỉ định rằng một PDF được gán vào một lớp cụ thể nếu nó đồng thời sở hữu giá trị cao nhất đối với xác suất tiên nghiệm và độ đo tương đồng đối với lớp đó. Mã giả của thuật toán đề nghị được trình bày trong Thuật toán~\ref{alg:IFCF_QB}.
 
 
 \begin{algorithm}
@@ -2833,7 +2833,7 @@ Từ ma trận nhầm lẫn, ta định nghĩa các chỉ số phổ biến khá
 }
 
 \textbf{$\blacktriangleright$ Chú ý.} 
-Các chỉ số đánh giá định lượng hình thức, nhưng không phải chất lượng và tính tin cậy. Ma trận nhầm lẫn cung cấp thông tin về số lượng dự đoán đúng/sai tại một ngưỡng, nhưng không đánh giá tính hợp lý của bằng chứng nó nhận biết. Ian van der Linde (2025) nhấn mạnh \emph{một mô hình có thể dự đoán đúng và có bằng chứng nhưng dựa trên đặc trưng hoặc bằng chứng không liên quan sẽ dẫn đến kết quả dù đúng nhưng không thể coi là quy luật tổng quát} \cite{van2025confusion}.  
+Các chỉ số đánh giá định lượng hình thức, nhưng không phải chất lượng và tính tin cậy. Ma trận nhầm lẫn cung cấp thông tin về số lượng dự đoán đúng/sai tại một ngưỡng, nhưng không đánh giá tính hợp lý của bằng chứng nó nhận biết. Ian van der Linde (2025) nhấn mạnh \emph{``một mô hình có thể dự đoán đúng và có bằng chứng nhưng dựa trên đặc trưng hoặc bằng chứng không liên quan sẽ dẫn đến kết quả dù đúng nhưng không thể coi là quy luật tổng quát''} \cite{van2025confusion}.  
 
 Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, cần kết hợp nhiều thước đo. Quan trọng hơn, việc tối ưu hiệu năng đi kèm với chú trọng giải thích lý do dự đoán \cite{erasmus2021interpretability,herm2023stop}, thông qua giải thích-AI (XAI)\index{giải thích-AI (XAI)}, tương tác người dùng và tiêu chuẩn đánh giá phù hợp, sẽ nâng cao độ tin cậy và giá trị ứng dụng thực tiễn của mô hình.
 
@@ -3048,7 +3048,7 @@ $$
 \end{bmatrix}_{3\times 20}.
 $$
 
-Vì vậy, ta có thể tính được xác suất hậu nghiệm của các PDF kiểm tra với $\tau = \texttt{mean}(D_{ij})$ là $$\footnotesize\mathbb{P}(c=c_i\,;f=f^{(test)}_j)=\frac{\bm U_{ij} \exp(-\bm D_{ij}/\tau)}{\sum_s\bm U_{sj} \exp(-\bm D_{sj}/\tau)}= \begin{bmatrix}
+Vì vậy, ta có thể tính được xác suất hậu nghiệm của các PDF kiểm tra với $\tau = \texttt{mean}(D_{ij})$ là $$\footnotesize\mathbb{P}(c=c_i\,;f=f^{(test)}_j)=\frac{ \mu_{ij} \exp(- D_{ij}/\tau)}{\sum_s \mu_{sj} \exp(- D_{sj}/\tau)}= \begin{bmatrix}
 	0{,}06 & 0{,}13 & 0{,}10 & \cdots & 0{,}13 & 0{,}10\\
 	0{,}89 & 0{,}74 & 0{,}00 & \cdots & 0{,}74 & 0{,}00\\
 	0{,}06 & 0{,}13 & 0{,}00 & \cdots & 0{,}13 & 0{,}00
@@ -3446,17 +3446,17 @@ Hình~\ref{fig:APP} cho thấy kết quả phân tích chùm BKIFF với số ch
 	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k2}
-		\caption{$k=2$}
+		\caption{$c=2$}
 	\end{subfigure}
 	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k3}
-		\caption{$k=3$}
+		\caption{$c=3$}
 	\end{subfigure}
 	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
 		\includegraphics[width=.9\linewidth]{BKIFF_k4}
-		\caption{$k=4$}
+		\caption{$c=4$}
 	\end{subfigure}\hfil\\
 	\begin{subfigure}[h]{0.32\linewidth}
 		\centering
@@ -3623,7 +3623,7 @@ Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có n
 \textit{$\circledast$ Về mặt lý thuyết}, các hướng phát triển tiếp theo được định hình nhằm mở rộng và hoàn thiện khung phương pháp luận cho bài toán SR với đối tượng PDF.
 
 \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
-	\item {Phát triển các mô hình SR kết hợp} để đồng thời giải quyết hai hiệu ứng “đồng nhất” và “xi phông”. Thuật toán đề nghị IFCF trong luận văn đã góp phần giảm thiểu “hiệu ứng đồng nhất”. Tuy nhiên, các thuật toán phân chùm vẫn phải đối mặt với “hiệu ứng xi phông”, trong đó các phần tử biên của lớp nhỏ có xu hướng bị kéo lệch về chùm lớn hơn.
+	\item {Phát triển các mô hình SR kết hợp} để đồng thời giải quyết hai hiệu ứng “đồng nhất” và “xi phông”. Thuật toán đề nghị IFCF trong luận văn đã góp phần giảm thiểu “hiệu ứng đồng nhất”. Tuy nhiên, các thuật toán phân chùm vẫn phải đối mặt với “hiệu ứng xi phông”\index{hiệu ứng xi-phông (siphon effect)}, trong đó các phần tử biên của lớp nhỏ có xu hướng bị kéo lệch về chùm lớn hơn.
 	
 	\item {Thiết lập các điều kiện và chứng minh tính hội tụ nghiêm ngặt} khi sử dụng các $f$-phân kỳ. Hiện nay, cơ sở toán học cho việc phân tích chùm với các phân kỳ này vẫn còn là một khoảng trống kiến thức cần được nghiên cứu và hoàn thiện trong tương lai.
 	
@@ -3662,7 +3662,7 @@ Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có n
 %\bibliographystyle{apacite}
 
 {\begin{spacing}{1}
-		\fontsize{11}{12pt}\selectfont
+		\fontsize{12}{13pt}\selectfont
 		\bibliographystyle{apalike}
 \bibliography{Tailieu}
 \end{spacing}
