@@ -1,0 +1,135 @@
+\documentclass[margin=3mm]{standalone}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\usepackage{scrextend}
+\changefontsizes{13pt}
+\usepackage[utf8]{vietnam}
+\usepackage{xcolor}
+\usepackage{times}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
+
+\begin{document}
+	
+	\begin{tikzpicture}[
+		node distance = 10mm and 5mm,
+		box/.style = {
+			draw, rounded corners, align=center, minimum width=3.5cm, 
+			text width=3.5cm, inner sep=4pt, line width=1pt, fill=white
+		},
+		titlebox/.style = {
+			draw, rounded corners, fill=CTUblue, text=white, 
+			font=\bfseries, align=center, minimum width=5cm, line width=1pt
+		},
+		arrow/.style = {
+			-{Stealth[scale=1]}, line width=1pt, shorten >=2pt, shorten <=2pt
+		},
+		font=\normalsize
+		]
+		
+		% --- Các nút chính ---
+		\node[titlebox] (AI) {Trí tuệ nhân tạo (AI)};
+		\node[titlebox, below=of AI] (SR) {Nhận dạng thống kê (SR)};
+		\node[box, below left=of SR] (supervised) {Nhận dạng được giám sát};
+		\node[box, below right=of SR] (unsupervised) {Nhận dạng không giám sát};
+		
+		% --- Mũi tên ---
+		\draw[arrow] (AI) -- (SR);
+		\draw[arrow] (SR) -- (supervised);
+		\draw[arrow] (SR) -- (unsupervised);
+		
+		% --- Groupplot nằm dưới hai hướng ---
+		\node[below=3cm of SR, anchor=north] (groupplots) {
+			\begin{tikzpicture}
+				\begin{groupplot}[
+					group style={
+						group size=2 by 1,
+						horizontal sep=5cm
+					},
+					axis lines = left,
+					width=5.5cm,
+					height=5cm,
+					clip mode=individual,
+					title style={yshift=1mm, font=\bfseries\sffamily}
+					]
+					% --- Nhận dạng có giám sát ---
+					\nextgroupplot[]
+					\addplot [CTUblue, only marks, mark=*, mark size=3] table {
+						x y
+						2 3
+						3 5
+						4 5
+						3 8
+						5 9
+						3 2
+						5 6
+						6 6
+						7 9
+						10 4
+						11 5
+						9 4
+					};
+					\addplot+[CTUblue, only marks, mark=*, mark size=3] table {
+						x y
+						20 10
+						21 12
+						24 12
+						25 13
+						27 14
+						22 13
+						23 15
+						25 10
+						15 14
+					};
+					\draw [CTUblue, dashed, line width=1.pt] (4,14) -- (25,2);
+					
+					% --- Nhận dạng không giám sát ---
+					\nextgroupplot[]
+					\addplot [CTUblue, only marks, mark=*, mark size=3] table {
+						x y
+						2 3
+						3 5
+						4 5
+						3 8
+						5 9
+						3 2
+						5 6
+						6 6
+						7 9
+						10 4
+						11 5
+						9 4
+					};
+					\addplot+[CTUblue, only marks, mark=*, mark size=3] table {
+						x y
+						20 10
+						21 12
+						24 12
+						25 13
+						27 14
+						22 13
+						23 15
+						25 10
+						15 14
+					};
+					\coordinate (c2) at (23,12);
+					\draw [CTUblue, dashed, line width=1.pt] (6,6) circle[radius=5];
+				\end{groupplot}
+				\draw [CTUblue, dashed, line width=1.pt] (c2) circle[radius=1cm];
+			\end{tikzpicture}
+		};
+		
+		% --- Khung bao toàn bộ (cả hai hướng + groupplots) ---
+		\node[
+		draw=CTUblue, rounded corners, inner sep=12pt, line width=1pt,
+		fit=(supervised)(unsupervised)(groupplots),
+		] {};
+		
+	\end{tikzpicture}
+	
+\end{document}

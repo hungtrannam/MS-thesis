@@ -1,5 +1,8 @@
 \documentclass[margin=3mm]{standalone}
 \usepackage[utf8]{vietnam}
+
+\usepackage{scrextend}
+\changefontsizes{13pt}
 \usepackage{xcolor}
 \usepackage{times}
 %\usepackage{helvet}
@@ -13,15 +16,15 @@
 
 \begin{document}
 	\begin{tikzpicture}[
-		node distance = 12mm and 14mm,
-		box/.style = {draw, minimum size=3em, align=center, rounded corners},
-		every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt},
+		node distance = 20mm and 8mm,
+		box/.style = {draw, minimum size=3em, align=center, rounded corners,line width=1pt},
+		every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt,line width = 1pt},
 		every edge quotes/.append style = {font=\footnotesize, fill=white, 
 			anchor=center, align=center, sloped},
 		]
 		
 		% nền
-		\fill[white] (-8,-3) rectangle (9, 1);
+		\fill[white] (-7,-4) rectangle (7.5, 1);
 		
 		% các nút chính (bỏ "Kiến thức chuẩn bị")
 		\scoped[nodes=box, fill=white]

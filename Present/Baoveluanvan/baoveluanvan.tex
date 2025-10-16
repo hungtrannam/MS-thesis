@@ -1,4 +1,8 @@
-\documentclass[13pt,oneside, aspectratio=169]{beamer}
+\documentclass[oneside, aspectratio=169]{beamer}
+
+\usepackage{scrextend}
+\changefontsizes{13pt}
+
 \usepackage[utf8]{vietnam}
 %\usepackage[linesnumbered, commentsnumbered]{algorithm2e}
 \usepackage{appendixnumberbeamer}
@@ -77,14 +81,14 @@
 %\titlegraphic{
 	%	\includegraphics[width=1cm]{Logo Đại Học Văn Lang H.png}
 	%}
-\title[]{\textbf{Nhận dạng thống kê cho hàm mật độ xác suất mất~cân~bằng\\ và ứng dụng cho ảnh}}
-\subtitle{Báo cáo bảo vệ luận văn tốt nghiệp thạc sĩ}
-\author[HUNG Tran-Nam]{Trần Nam Hưng\inst{1}}
-\institute[CTU]{
+\title[]{\textbf{\normalsize Nhận dạng thống kê cho hàm mật độ xác suất mất~cân~bằng\\ và ứng dụng cho ảnh}}
+\subtitle{\normalsize Báo cáo bảo vệ luận văn tốt nghiệp thạc sĩ}
+\author[HUNG Tran-Nam]{\normalsize Trần Nam Hưng\inst{1}}
+\institute[CTU]{\footnotesize
 	\inst{1} Khoa Khoa học Tự nhiên, Trường Đại học Cần Thơ
 }
 
-\date[Oct 26, 2025]{Ngày 26 tháng 10 năm 2025}
+\date[Oct 26, 2025]{\footnotesize Ngày 26 tháng 10 năm 2025}
 
 %\AtBeginSection[ ]
 %{	
@@ -112,8 +116,8 @@
 		
 		\begin{frame}{}
 			\vspace{3em}
-{\Large\bf\color{white} Mục lục}
-\large\color{white} \tableofcontents
+{\large\bf\color{white} Mục lục}
+\normalsize\color{white} \tableofcontents
 		\end{frame}
 	}
 
@@ -121,15 +125,46 @@
 
 
 \begin{frame}{1. Lý do chọn đề tài}
+	\textbf{1.1. Lý do chọn đề tài}
+	
+	
+	
+	
+	
+	\textbf{1.2. Mục đích nghiên cứu}
+	\begin{description}
+		\item[Xây dựng] thuật toán phân loại và phân tích chùm cho dữ liệu PDF mất cân bằng;
+		\item[Áp dụng] hai thuật toán trên cho dữ liệu hình ảnh khi các đặc trưng của nó được trích xuất và đại diện bởi các PDF để nhận dạng. 
+	\end{description}
 	
 \end{frame}
 
 \begin{frame}{2. Đối tượng và phạm vi}
 	
+	\textbf{2.1. Đối tượng nghiên cứu}
+	\begin{itemize}
+		\item[--] Thuật toán phân loại và phân tích chùm với dữ liệu mất cân bằng;
+		\item[--] Dữ liệu hình ảnh được trích xuất thành các đối tượng đại diện.
+	\end{itemize}
+	
+	\textbf{2.2. Phạm vi nghiên cứu}
+	
+	\begin{itemize}
+		\item[--] Các thuật toán phân tích chùm và phân loại cho PDF;
+		\item[--] Dữ liệu hình ảnh được trích xuất thành PDF đại diện;
+		\item[--] Vấn đề tính toán của các phương pháp phân loại, phân tích chùm. 
+	\end{itemize}
+	
 \end{frame}
 
 
 \begin{frame}{3. Phương pháp và cấu trúc}
+	
+	\begin{itemize}
+		\item[--] {\it Nghiên cứu lý thuyết:} Phân tích -- tổng kết, phân loại  -- hệ thống hóa kiến thức về lĩnh vực SR; So sánh đánh giá ưu điểm và nhược điểm của các thuật toán.
+		\item[--] {\it Thực nghiệm khoa học:} Thực hiện các ví dụ số minh họa lý thuyết trong môi trường mô phỏng nhằm đánh giá các mô hình SR qua nhiều tiêu chí cụ thể,   từ đó xử lý so sánh kết quả bằng các phân tích thống kê.
+	\end{itemize}
+	
 	\begin{figure}
 		\centering
 		\includegraphics[width=\textwidth]{Figs/mindchart}
@@ -224,14 +259,14 @@
 	
 
 {
-	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/thank2.pdf}}%
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/background.pdf}}%
 	\begin{frame}
 		\begin{center}\color{white}
-			\vspace{1.2cm}
+			\vspace{2cm}
 			
-			{\Large\color{white}\bf Chân thành cảm ơn quý Hội đồng!}
-			
-			
+			{\Large\color{CTUcyan}\bf Chân thành cảm ơn quý Hội đồng!}\\
+			[1em]
+			{\color{CTUcyan}\bf Trần Nam Hưng}	
 			\vspace{1cm}
 
 		\end{center}
