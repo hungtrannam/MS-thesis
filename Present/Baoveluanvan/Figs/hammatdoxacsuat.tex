@@ -1,0 +1,53 @@
+\documentclass[
+margin=2mm,
+]{standalone}
+
+\usepackage[utf8]{vietnam}
+\usepackage{pgfplots}
+\usepackage{scrextend}
+\changefontsizes{15pt}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+\usepackage{times}
+
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
+
+\begin{document}
+	
+	\begin{tikzpicture}[
+		node distance=2.5cm and 1cm,
+		box/.style = {draw=CTUcyan,line width=3pt, rounded corners, align=center,text width=2.5cm, inner sep=10pt,text=CTUblue,fill =white, font=\bfseries},
+			every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt, line width = 1pt},
+			every edge quotes/.append style = {
+				font=\footnotesize, fill=white, anchor=center, align=center, sloped
+			},
+		arrow/.style={
+			-{Stealth[length=2mm,width=2mm]},
+			line width=2pt, draw=CTUcyan,font=\small,
+		}
+		]
+		
+		% --- Các nút ---
+		\node[box] (X) {Biến ngẫu nhiên};
+		\node[box, below=of X] (F) {Hàm phân phối};
+		\node[box, below right=of F] (Q) {Hàm phân vị};
+		\node[box, below left=of F] (f) {Hàm mật~độ xác suất};
+		\node[box, below left=of f] (flt) {Liên tục};
+			\node[box, below right=of f] (frr) {Rời rạc};
+		
+		% --- Các mũi tên chính ---
+		\draw[arrow] (X) -- node[CTUcyan,above,sloped,align=center]{} (F);
+		\draw[arrow] (F) -- node[CTUcyan,above,sloped,align=center]{Nghịch đảo} (Q);
+			\draw[arrow] (F) -- node[CTUcyan,above,sloped,align=center]{Vi phân} (f);
+					\draw[arrow] (F) -- node[CTUcyan,above,sloped,align=center]{Vi phân} (f);
+				\draw[arrow] (f) -- node[CTUcyan,above,sloped,align=center]{Độ đo Lebesgue} (flt);
+								\draw[arrow] (f) -- node[CTUcyan,above,sloped,align=center]{Độ đo đếm} (frr);
+								
+			
+	\end{tikzpicture}
+	
+\end{document}

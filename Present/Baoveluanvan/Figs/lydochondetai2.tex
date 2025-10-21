@@ -1,0 +1,103 @@
+\documentclass[
+margin=2mm,
+varwidth=false,
+tikz,
+multi=false,
+convert=false,
+crop=true,
+width=16cm,
+height=9cm
+]{standalone}
+
+\usepackage[utf8]{vietnam}
+\usepackage{pgfplots}
+\usepackage{scrextend}
+\changefontsizes{15pt}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+\usepackage{times}
+
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
+
+\begin{document}
+	
+	
+	\begin{tikzpicture}[
+		node distance = 10mm and 10mm,
+		box/.style = {
+			draw=CTUcyan,line width=1.5pt, rounded corners, align=center, minimum width=4.5cm, 
+			text width=4cm, inner sep=4pt, fill=white,text=CTUcyan, font=\bfseries
+		},
+		titlebox/.style = {
+			draw=CTUcyan,line width=2pt, rounded corners, fill=CTUblue, text=white, 
+			font=\bfseries, align=center, minimum width=5cm
+		},
+		arrow/.style = {
+			-{Stealth[scale=1]}, line width=1pt, shorten >=2pt, shorten <=2pt
+		}
+		]
+		
+		% --- Các nút chính ---
+
+		\node[titlebox] (SR) {\Large Nhận dạng\\\Large thống kê (SR)};
+		
+		
+		% --- Ba plot minh họa ---
+		\node[below of = SR,yshift=-4cm] (plots) {
+			\begin{tikzpicture}
+				\begin{groupplot}[
+					group style={group size=3 by 1, horizontal sep=2.5cm},
+					width=5cm, height=4cm,
+					axis lines=box,
+					xtick=\empty, ytick=\empty
+					]
+					% scatter
+					\nextgroupplot[CTUcyan,title={\bf Dữ liệu rời rạc}]
+					\addplot[only marks, mark=*, mark size=2pt, color=CTUblue]
+					coordinates {(0.5,1.2) (1.0,1.8) (1.5,1.6) (2.0,2.5) (2.5,2.0)
+						(3.0,2.8) (3.5,2.4) (4.0,3.1)};
+					
+					% candlestick
+					\nextgroupplot[xmin=0, xmax=5, ymin=90, ymax=125, clip=false,CTUcyan,title={\bf Dữ liệu khoảng}]
+					\draw[black, line width=0.6pt] (axis cs:1,115) -- (axis cs:1,95);
+					\draw[black, line width=0.6pt] (axis cs:2,118) -- (axis cs:2,97);
+					\draw[black, line width=0.6pt] (axis cs:3,112) -- (axis cs:3,92);
+					\draw[black, line width=0.6pt] (axis cs:4,117) -- (axis cs:4,100);
+					\filldraw[fill=CTUcyan, draw=black, line width=0.4pt] (axis cs:0.8,100) rectangle (axis cs:1.2,110);
+					\filldraw[fill=CTUcyan, draw=black, line width=0.4pt] (axis cs:3.8,102) rectangle (axis cs:4.2,113);
+					\filldraw[fill=CTUblue, draw=black, line width=0.4pt] (axis cs:1.8,110) rectangle (axis cs:2.2,98);
+					\filldraw[fill=CTUblue, draw=black, line width=0.4pt] (axis cs:2.8,108) rectangle (axis cs:3.2,95);
+					
+					% Gaussian
+					\nextgroupplot[domain=-4:9, samples=80,CTUblue,line width=2pt,CTUcyan,title={\bf Dữ liệu hàm mật độ}]
+					\addplot[CTUblue, thick] {exp(-((x-0)^2)/2)/sqrt(2*pi)};
+					\addplot[CTUcyan, thick] {exp(-((x-3)^2)/1.5)/sqrt(2*pi)};
+					\addplot[CTUblue!60!black, thick, densely dotted] {exp(-((x-5)^2)/0.8)/sqrt(2*pi)};
+				\end{groupplot}
+			\end{tikzpicture}
+		};
+		
+		\node[
+		draw=CTUcyan, rounded corners, inner sep=8pt, line width=1.3pt,
+		fit=(plots),
+		label={[CTUblue]below:{}}
+		] (box2) {};
+		
+	
+		
+		% --- Mũi tên từ SR đến ba khung chính ---
+		\draw[arrow] (SR.south) -- (box2.north);
+
+		
+	\end{tikzpicture}
+	
+	
+	
+	
+	
+	
+\end{document}

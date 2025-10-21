@@ -1,0 +1,159 @@
+\documentclass[
+margin=2mm,
+]{standalone}
+
+\usepackage[utf8]{vietnam}
+\usepackage{times}
+\usepackage{pgfplots}
+\usepackage{scrextend}
+\changefontsizes{15pt}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
+
+\begin{document}
+	
+	\newcommand{\drawclusterfoci}{
+		% Define a, b
+		\def\a{0.6}
+		\def\b{0.45}
+		% Compute c = sqrt(a^2 - b^2)
+		\pgfmathsetmacro{\c}{sqrt(\a*\a - \b*\b)}         
+		\pgfmathsetmacro{\ccos}{\c * cos(60)}            
+		\pgfmathsetmacro{\csin}{\c * sin(60)}            
+		
+		% Draw ellipses with opacity
+		\fill[CTUcyan, opacity=0.5, rotate around={\c*60:(-1,1)}] (-1,1) ellipse ({\b} and {\a});
+		\fill[CTUcyan, opacity=0.5, rotate around={-\c*60:(1,1)}] (1,1) ellipse ({\b} and {\a});
+		\fill[CTUcyan, opacity=0.5] (0,-1) ellipse ({\b} and {\a});
+		
+		% Left cluster foci (rotated +60°)
+		\coordinate (L1) at ({-1 + \ccos}, {1 - \csin});
+		\coordinate (L2) at ({-1 - \ccos}, {1 + \csin});
+		
+		% Right cluster foci (rotated -60°)
+		\coordinate (R1) at ({1 + \ccos}, {1 + \csin});
+		\coordinate (R2) at ({1 - \ccos}, {1 - \csin});
+		
+		% Bottom cluster foci (vertical)
+		\coordinate (B1) at (0, {-1 - \c});
+		\coordinate (B2) at (0, {-1 + \c});
+		
+		% Draw foci points
+		\fill[CTUblue] (L1) circle (3pt);
+		\fill[CTUblue] (L2) circle (3pt);
+		\fill[CTUblue] (R1) circle (3pt);
+		\fill[CTUblue] (R2) circle (3pt);
+		\fill[CTUblue] (B1) circle (3pt);
+		\fill[CTUblue] (B2) circle (3pt);
+		
+		% Define centroids
+		\coordinate (C1) at (-1,1);
+		\coordinate (C2) at (1,1);
+		\coordinate (C3) at (0,-1);
+	}
+	
+	
+	% ---------- CENTROID LINKAGE ----------
+	\begin{tikzpicture}[scale=1.9]
+		\draw[CTUcyan, line width=2pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\draw[CTUblue, line width=3pt,  dash pattern=on 6pt off 4pt] (L1) -- (R2);
+		\draw[CTUblue, line width=3pt,  dash pattern=on 6pt off 4pt] (L1) -- (B2);
+		\draw[CTUblue, line width=3pt,  dash pattern=on 6pt off 4pt] (R2) -- (B2);
+		\node[align=left] at (0,-2.2) {
+			\large {{(a) Liên kết đơn (SLINK)}} 
+		};
+	\end{tikzpicture}
+	
+	
+	% ---------- COMPLETE (MAX) LINKAGE ----------
+	\begin{tikzpicture}[scale=1.9]
+		\draw[CTUcyan, line width=2pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\draw[CTUblue, line width=3pt, dash pattern=on 6pt off 4pt] (L2) -- (R1);
+		\draw[CTUblue, line width=3pt, dash pattern=on 6pt off 4pt] (L2) -- (B1);
+		\draw[CTUblue, line width=3pt, dash pattern=on 6pt off 4pt] (R1) -- (B1);
+		\node[align=left] at (0,-2.2) {
+			\large	{{(b) Liên kết đủ (CLINK)}}
+		};
+	\end{tikzpicture}
+	
+	
+	% ---------- CENTROID LINKAGE ----------
+	\begin{tikzpicture}[scale=1.9]
+		\draw[CTUcyan, line width=2pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\draw[CTUblue, line width=3pt,  dash pattern=on 6pt off 4pt] (C1) -- (C2) -- (C3) -- cycle;
+		\node[align=left] at (0,-2.2) {
+			\large	{{(c) Liên kết tâm (UPGMC)}} 
+		};
+	\end{tikzpicture}
+	
+	
+	% ---------- AVERAGE LINKAGE ----------
+	\begin{tikzpicture}[scale=1.9]
+		\draw[CTUcyan, line width=2pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfoci
+		\foreach \pL in {L1,L2}
+		\foreach \pR in {R1,R2}
+		\draw[CTUblue, line width=3pt,  dash pattern=on 6pt off 4pt] (\pL) -- (\pR);
+		\foreach \pL in {L1,L2}
+		\foreach \pB in {B1,B2}
+		\draw[CTUblue, line width=3pt, dash pattern=on 6pt off 4pt] (\pL) -- (\pB);
+		\foreach \pR in {R1,R2}
+		\foreach \pB in {B1,B2}
+		\draw[CTUblue, line width=3pt,  dash pattern=on 6pt off 4pt] (\pR) -- (\pB);
+		\node[align=left] at (0,-2.2) {
+			\large	{{(d) Liên kết trung bình (UPGMA)}}
+		};
+	\end{tikzpicture}
+	
+	
+	
+	\newcommand{\drawclusterfocii}{
+		\def\a{0.6}
+		\def\b{0.45}
+		\pgfmathsetmacro{\c}{sqrt(\a*\a - \b*\b)}         
+		\pgfmathsetmacro{\ccos}{\c * cos(60)}            
+		\pgfmathsetmacro{\csin}{\c * sin(60)}            
+		
+		% Draw ellipses with opacity
+		\fill[CTUcyan, opacity=0.5, rotate around={-\c*60:(1,1)}] (1,1) ellipse ({\b} and {\a});
+		\fill[CTUcyan, opacity=0.5] (0,-1) ellipse ({\b} and {\a});
+		
+		\coordinate (R1) at ({1 + \ccos}, {1 + \csin});
+		\coordinate (R2) at ({1 - \ccos}, {1 - \csin});
+		\coordinate (B1) at (0, {-1 - \c});
+		\coordinate (B2) at (0, {-1 + \c});
+		
+		\fill[CTUblue] (R1) circle (3pt);
+		\fill[CTUblue] (R2) circle (3pt);
+		\fill[CTUblue] (B1) circle (3pt);
+		\fill[CTUblue] (B2) circle (3pt);
+		
+		\coordinate (C2) at (1,1);
+		\coordinate (C3) at (0,-1);
+	}
+	
+	
+	% ---------- WARD'S METHOD ----------
+	\begin{tikzpicture}[scale=1.9]
+		\draw[CTUcyan, line width=2pt, rounded corners=2pt] (-1.8,-1.8) rectangle (1.8,1.8);
+		\drawclusterfocii
+		\coordinate (C) at (0,0);
+		\filldraw[CTUcyan] (C) +(-3pt,-3pt) rectangle +(3pt,3pt);
+		\foreach \p in {R1,R2,B1,B2} {
+			\draw[CTUblue, line width=3pt,   dash pattern=on 6pt off 4pt] (\p) -- (C);
+		}
+		\node[align=left] at (0,-2.2) {
+			\large	{{(e) Liên kết Ward}}
+		};
+	\end{tikzpicture}
+	
+\end{document}

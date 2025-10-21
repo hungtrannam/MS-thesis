@@ -1,8 +1,11 @@
 \documentclass[oneside, aspectratio=169]{beamer}
 
-\usepackage{scrextend}
-\changefontsizes{13pt}
-
+%\usepackage{scrextend}
+%\changefontsizes{13pt}
+\linespread{1.2} % Giãn dòng
+\setlength{\parskip}{\baselineskip} % Khoảng cách giữa các đoạn
+\usepackage[skip=6pt, indent=1cm]{parskip} % Tùy chỉnh cách đoạn và thụt đầu dòng
+\usepackage{setspace}
 \usepackage[utf8]{vietnam}
 %\usepackage[linesnumbered, commentsnumbered]{algorithm2e}
 \usepackage{appendixnumberbeamer}
@@ -25,7 +28,7 @@
 \definecolor{CTUcyan}{rgb}{0, 0.6862745098039216, 0.9372549019607843}
 \definecolor{CTUblue}{rgb}{0.121568627450, 0.3607843137254902, 0.6627450980392157}
 
-\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{amsfonts,amsmath,amssymb,bm}
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage{verbatim}
@@ -37,6 +40,16 @@
 \usetikzlibrary{arrows,shapes}
 \usepackage{multicol}
 \usepackage{animate}
+
+\newcommand{\bluenum}[1]{%
+	\tikz[baseline=(char.base)]{
+		\node[shape=circle, draw=none, fill=CTUblue, text=white,
+		inner sep=0.1pt, minimum size=12pt,
+		font=\bfseries\scriptsize] (char) {#1};
+	}%
+}
+
+
 
 
 
@@ -53,6 +66,8 @@
 	
 	\useinnertheme[shadow]{rounded}
 	\usefonttheme{serif}
+	\setbeamerfont{footnote}{size=\tiny} % hoặc \tiny, \footnotesize, \small, \normalsize
+	
 	\useinnertheme{circles}
 	\setbeamertemplate{navigation symbols}{}
 	\setbeamertemplate{caption}[numbered]
@@ -68,6 +83,14 @@
 	\setbeamercolor{block body}{bg=CTUblue!10}
 	\setbeamercolor{section in toc}{fg=white}
 	\setbeamercolor{subsection in toc}{fg=white}
+	
+	\setbeamertemplate{headline}{
+		\begin{tikzpicture}[remember picture, overlay]
+			% Thanh màu
+			\fill[CTUcyan] (current page.north west) rectangle ([xshift=.7\paperwidth,yshift=-0.1cm]current page.north west);
+			\fill[CTUblue] ([xshift=.7\paperwidth]current page.north west) rectangle ([xshift=\paperwidth,yshift=-0.1cm]current page.north west);
+		\end{tikzpicture}
+	}
 	%	
 }
 
@@ -76,19 +99,13 @@
 \beamertemplatenavigationsymbolsempty
 
 
-
-
-%\titlegraphic{
-	%	\includegraphics[width=1cm]{Logo Đại Học Văn Lang H.png}
-	%}
-\title[]{\textbf{\normalsize Nhận dạng thống kê cho hàm mật độ xác suất mất~cân~bằng\\ và ứng dụng cho ảnh}}
-\subtitle{\normalsize Báo cáo bảo vệ luận văn tốt nghiệp thạc sĩ}
-\author[HUNG Tran-Nam]{\normalsize Trần Nam Hưng\inst{1}}
-\institute[CTU]{\footnotesize
+\title[]{\textbf{\color{white} Nhận dạng thống kê cho hàm mật độ xác suất mất~cân~bằng\\ và ứng dụng cho ảnh}}
+\subtitle{\normalsize\color{white} Báo cáo bảo vệ luận văn tốt nghiệp thạc sĩ\\\rule{3cm}{2pt}}
+\author[HUNG Tran-Nam]{\color{white}\normalsize Trần Nam Hưng\inst{1}}
+\institute[CTU]{\color{white}\footnotesize
 	\inst{1} Khoa Khoa học Tự nhiên, Trường Đại học Cần Thơ
 }
-
-\date[Oct 26, 2025]{\footnotesize Ngày 26 tháng 10 năm 2025}
+\date[Oct 26, 2025]{\color{white}\footnotesize Ngày 26 tháng 10 năm 2025}
 
 %\AtBeginSection[ ]
 %{	
@@ -102,116 +119,451 @@
 
 \begin{document}
 	
-	{
-		\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/background.pdf}}%
-		\begin{frame}[plain]
-			\vspace{2cm}
-			\titlepage
-		\end{frame}
+{
+	\usebackgroundtemplate{
+		\includegraphics[width=\paperwidth,height=\paperheight]{BG/thank2.pdf}
 	}
+	\begin{frame}[plain]
+		\vspace{1.8cm}
+		{\color{white}
+		\titlepage
+		}
+	\end{frame}
+}
 	
 	{
 		\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/thank2.pdf}}%
-		
-		
-		\begin{frame}{}
+		\begin{frame}[plain]{}
 			\vspace{3em}
-{\large\bf\color{white} Mục lục}
-\normalsize\color{white} \tableofcontents
+\begin{center}
+	\large\bf\color{white} NỘI DUNG CHÍNH
+\end{center}
+\centering
+\begin{minipage}{.9\textwidth}
+	\begin{enumerate}
+		\item {\color{white} PHẦN MỞ ĐẦU}
+		\begin{enumerate}
+			\item {\color{white} Chương 1. Một số vấn đề liên quan đến hàm mật độ xác suất}
+			\item {\color{white} Chương 2. Nhận dạng thống kê cho dữ liệu mất cân bằng}
+			\item {\color{white} Chương 3. Ứng dụng cho dữ liệu hình ảnh}
+		\end{enumerate}
+		\item {\color{white} PHẦN NỘI DUNG}
+		\item {\color{white} PHẦN KẾT LUẬN}
+		\item {\color{white} TÀI LIỆU THAM KHẢO}
+	\end{enumerate}
+\end{minipage}
 		\end{frame}
 	}
 
-\section{Phần mở đầu}
+
+	{
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/thank2.pdf}}%
+	\begin{frame}[plain]{}
+		\vspace{1em}
+		\begin{center}
+			\large\bf\color{white} PHẦN MỞ ĐẦU
+		\end{center}
+		\centering
+		\begin{minipage}{.7\textwidth}
+			\color{white}
+			\begin{enumerate}
+				\item {\color{white} Lý do chọn đề tài}
+				\item {\color{white} Mục đích nghiên cứu}
+				\item {\color{white} Đối tượng nghiên cứu}
+				\item {\color{white} Phương pháp nghiên cứu và cấu trúc luận văn}
+			\end{enumerate}
+		\end{minipage}
+	\end{frame}
+}
 
 
-\begin{frame}{1. Lý do chọn đề tài}
-	\textbf{1.1. Lý do chọn đề tài}
+%
+\begin{frame}{1. Lý do chọn đề tài}{\textbf{\bluenum{1} SR là kiến thức nền tảng của AI dự đoán}}
 	
+	\begin{figure}
+		\centering
+		\includegraphics[width=.8\textwidth]{Figs/lydochondetai1}
+	\end{figure}
 	
+\end{frame}
+%
+\begin{frame}{1. Lý do chọn đề tài}{\textbf{\bluenum{2} SR cho các PDF là khách thể mới cần giải quyết}}
 	
-	
-	
-	\textbf{1.2. Mục đích nghiên cứu}
-	\begin{description}
-		\item[Xây dựng] thuật toán phân loại và phân tích chùm cho dữ liệu PDF mất cân bằng;
-		\item[Áp dụng] hai thuật toán trên cho dữ liệu hình ảnh khi các đặc trưng của nó được trích xuất và đại diện bởi các PDF để nhận dạng. 
-	\end{description}
+	\begin{figure}
+		\centering
+		\includegraphics[width=.8\linewidth]{Figs/lydochondetai2}
+	\end{figure}
 	
 \end{frame}
 
-\begin{frame}{2. Đối tượng và phạm vi}
+\begin{frame}{1. Lý do chọn đề tài}{\textbf{\bluenum{3} SR truyền thống cho PDF bị thiên lệch với mất cân bằng}}
 	
-	\textbf{2.1. Đối tượng nghiên cứu}
-	\begin{itemize}
-		\item[--] Thuật toán phân loại và phân tích chùm với dữ liệu mất cân bằng;
-		\item[--] Dữ liệu hình ảnh được trích xuất thành các đối tượng đại diện.
-	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=.8\textwidth]{Figs/lydochondetai3}
+	\end{figure}
 	
-	\textbf{2.2. Phạm vi nghiên cứu}
+\end{frame}
+
+
+
+
+\begin{frame}{1. Lý do chọn đề tài}{	``Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu ảnh''}
 	
-	\begin{itemize}
-		\item[--] Các thuật toán phân tích chùm và phân loại cho PDF;
-		\item[--] Dữ liệu hình ảnh được trích xuất thành PDF đại diện;
-		\item[--] Vấn đề tính toán của các phương pháp phân loại, phân tích chùm. 
-	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width =\linewidth]{Figs/lydochondetai}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{2. Mục đích nghiên cứu}
+	\textbf{\color{CTUcyan}2.1. Khoảng trống nghiên cứu}
 	
+	
+	
+	\textbf{\color{CTUcyan}2.2. Mục đích nghiên cứu}
+	
+	\begin{enumerate}
+		\item {\color{CTUblue}\it Xây dựng thuật toán} phân loại \& phân tích chùm PDF có mất cân bằng;
+		\item {\color{CTUblue}\it Áp dụng phân tích hình ảnh} với các đặc trưng của nó được trích xuất và đại diện bởi PDF để nhận dạng.
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{3. Đối tượng và phạm vi}
+	\begin{block}{Đối tượng nghiên cứu}
+		\begin{enumerate}
+			\item Thuật toán phân loại và phân tích chùm với dữ liệu mất cân bằng;
+			\item Dữ liệu hình ảnh được trích xuất thành các đối tượng đại diện.
+		\end{enumerate}
+		
+			\end{block}
+		
+\begin{block}{Phạm vi nghiên cứu}
+		
+		\begin{enumerate}
+			\item Các thuật toán phân tích chùm và phân loại cho PDF;
+			\item Dữ liệu hình ảnh được trích xuất thành PDF đại diện;
+			\item Vấn đề tính toán của các phương pháp SR.
+		\end{enumerate}
+		
+	\end{block}
 \end{frame}
 
 
 \begin{frame}{3. Phương pháp và cấu trúc}
 	
-	\begin{itemize}
-		\item[--] {\it Nghiên cứu lý thuyết:} Phân tích -- tổng kết, phân loại  -- hệ thống hóa kiến thức về lĩnh vực SR; So sánh đánh giá ưu điểm và nhược điểm của các thuật toán.
-		\item[--] {\it Thực nghiệm khoa học:} Thực hiện các ví dụ số minh họa lý thuyết trong môi trường mô phỏng nhằm đánh giá các mô hình SR qua nhiều tiêu chí cụ thể,   từ đó xử lý so sánh kết quả bằng các phân tích thống kê.
-	\end{itemize}
+	\begin{columns}   
+		\begin{column}{.6\textwidth}
+				\begin{block}{Phương pháp nghiên cứu}
+						\begin{enumerate}
+						\item {\it\color{CTUblue} Nghiên cứu lý thuyết:} Phân tích -- tổng~kết, phân loại  -- hệ thống hóa kiến thức về lĩnh vực SR; So sánh đánh giá ưu điểm và nhược điểm của các thuật toán.
+						\item {\it\color{CTUblue} Thực nghiệm khoa học:} Thực hiện các ví~dụ~số minh họa lý thuyết trong môi trường mô phỏng; xử lý so sánh kết quả bằng các phân tích thống kê.
+					\end{enumerate}
+				\end{block}
+		\end{column}
+		\begin{column}{.4\textwidth}
+					\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{Figs/mindchart}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+
+\end{frame}
+
+
+
+
+
+
+
+{
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/thank2.pdf}}%
+	\begin{frame}[plain]{}
+		\vspace{1em}
+		\begin{center}
+			\large\bf\color{white} PHẦN NỘI DUNG
+		\end{center}
+		\centering
+		\begin{minipage}{.7\textwidth}
+			\color{white}
+			\begin{enumerate}
+				\item {\color{white} Một số vấn đề liên quan đến hàm mật độ xác suất}
+				\item {\color{white} Nhận dạng thống kê cho hàm mật độ xác suất với dữ liệu mất cân bằng}
+				\item {\color{white} Ứng dụng cho dữ liệu hình ảnh}
+			\end{enumerate}
+		\end{minipage}
+	\end{frame}
+}
+
+\begin{frame}{1.1. Hàm mật độ xác suất (PDF)}
+\begin{columns}
+	\begin{column}{.5\textwidth}
+		
+	\end{column}
+	\begin{column}{.5\textwidth}
+			\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{Figs/hammatdoxacsuat}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{1.3. Hàm mật độ xác suất bổ sung}
+	
+	\begin{columns}
+		\begin{column}{.6\textwidth}
+			
+			\begin{definition}[PDF đại diện chùm]\footnotesize
+				Cho tập $\mathcal{F}$ gồm $n$-PDF với $n\ge 2$. Ta phân bổ $\mathcal{F}$ vào $c$-chùm, với $1<c\le n$. Khi đó, PDF đại diện của các chùm $c_i$ là 
+				\begin{align}\label{daidien}
+					\theta_i(x) = \frac{\sum_{j=1}^n\mu_{ij}\times f_j(x)}{\sum_{j=1}^n\mu_{ij}},
+				\end{align}
+				trong đó $\mu_{ij}$ là trọng số phân bổ một PDF $f_j(x)$ bất kỳ vào tập hợp hàm \footnote[frame]{\fullcite{nguyentrang2017fuzzy}}.
+			\end{definition}
+		\end{column}
+		\begin{column}{.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{Figs/daidienchum1}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{1.3. Hàm mật độ xác suất bổ sung (t.t.)}
+	
+	\begin{columns}
+		\begin{column}{.6\textwidth}
+			
+			\begin{definition}[PDF đại diện Gauss]\footnotesize
+		Một PDF đại diện Gauss có dạng phân phối chuẩn sao cho tổng khoảng cách giữa chúng đến các PDF khác là nhỏ nhất \cite{frechet1948elements,nguyen2023balance,nguyen2023globally}, tức là
+				$$\theta_i(x) = \arg\min_{\mathcal{N}(\mu\,;\sigma)}\sum_{j=1}^n\mu_{ij}D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x)),$$
+				trong đó $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa một PDF Gauss đến tất cả các PDF $f_j(x)$ khác trong tập hợp hàm\footnote[frame]{\fullcite{nguyen2023globally};\\\fullcite{nguyen2023balance}}.
+			\end{definition}
+		\end{column}
+		\begin{column}{.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\textwidth]{Figs/daidienchum2}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+	
+\end{frame}
+
+
+
+\begin{frame}{1.4. Độ đo khoảng cách hai PDF}
+	
+\end{frame}
+
+
+
+\begin{frame}{1.4. Độ đo khoảng cách hai PDF}{Ví dụ 1.1}
+			\begin{columns}
+				
+				\begin{column}{.5\textwidth}
+					
+					\begin{figure}
+						\centering
+						\includegraphics[width=\textwidth]{Figs/C1_Uniform.pdf}
+					\end{figure}
+					
+				\end{column}
+				
+				\begin{column}{.5\textwidth}
+					
+					\begin{table}
+						\centering\scriptsize
+						\begin{tabular}{llcccc}
+							\toprule
+							&                                 &    (a)     &    (b)    &    (c)     &    (d)     \\ \midrule
+							\multirow{3}{*}{Họ $\mathcal{L}_p$} & $\mathcal{L}_1$                 &   2{,}0   &  2{,}0   &   2{,}0   &   1{,}0   \\
+							& $\mathcal{L}_2$                 &   1{,}4   &  1{,}2   &   1{,}4   &   0{,}7   \\
+							& $D_O$             &   1{,}0   &  1{,}0   &   1{,}0   &   0{,}5   \\
+							& $CWD$                           &   1{,}0   &  1{,}0   &   1{,}0   &   0{,}5   \\ \midrule
+							\multirow{6}{*}{Họ  $f$}    & $D_{BC}$      &  $\infty$  & $\infty$  &  $\infty$  &   0{,}7   \\
+							& $D^2_H$         &   1{,}0   &  1{,}0   &   1{,}0   &   0{,}7   \\
+							& $D_M$                &   1{,}4   &  1{,}4   &   1{,}4   &   1{,}0   \\
+							& $D_{KL}$  &  27{,}6   &  27{,}3  &  27{,}6   &  13{,}5   \\
+							& $D_{JS}$   &  27{,}6   &  26{,}9  &  27{,}6   &  13{,}5   \\ \midrule
+							Họ Optimal                          & $W_2^2$      & \bf 3{,}0 & \bf 3{,}5 & \bf 6{,}0 & \bf 1{,}0 \\ \bottomrule
+						\end{tabular}
+					\end{table}
+					
+				\end{column}
+			\end{columns}
+			
+\end{frame}
+
+
+\begin{frame}{1.4. Độ đo khoảng cách chùm PDF}
+	
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=\textwidth]{Figs/mindchart}
+		\includegraphics[width=\linewidth]{Figs/C1_Linkage.pdf}
 	\end{figure}
-\end{frame}
-
-\section{Phần nội dung}
-
-\subsection{Vấn đề liên quan đến hàm mật độ xác suất}
-
-\begin{frame}{1.1. Hàm mật độ xác suất}
 	
-\end{frame}
-
-\begin{frame}{1.2. Hàm mật độ xác suất bổ sung}
 	
-\end{frame}
-
-\begin{frame}{1.3. Độ đo khoảng cách hàm mật độ xác suất}
-	
-\end{frame}
-
-
-
-\begin{frame}{1.4. Phân tích chùm hàm mật độ xác suất} 
-	
-\end{frame}
-
-
-\begin{frame}{1.5. Phân loại hàm mật độ xác suất} 
+	\begin{table}[H]
+		\centering\footnotesize
+		\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lll@{\extracolsep\fill}} 
+			\toprule
+			\bf Liên kết &\bf Ký hiệu & \bf                             $\Delta$                             \\ \midrule
+		(a)	Liên kết đơn\footnotemark[1] (SLINK)\cite{florek1951liaison}&$\Delta_{\min}$&$\min_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,;g)$\\
+		(b)	Liên kết đủ\footnotemark[2] (CLINK)\cite{sorensen1948method} &$\Delta_{\max}$& $\max_{f\in\mathcal{F}, g\in\mathcal{G}}D(f\,;g)$\\
+		(c)	Liên kết tâm (UPGMC)&$\Delta_{centroid}$&$D(\theta_{\mathcal{F}}\,;\theta_{\mathcal{G}})$\\
+		(d)	Liên kết trung bình (UPGMA)&$\Delta_{avg}$ & $\frac{1}{\#\mathcal{F}\#\mathcal{G}}\sum_{f\in\mathcal{F}, g\in\mathcal{G}}D(\mathcal{F}\,;\mathcal{G})$\\
+		(e)	Liên kết Ward \cite{ward1963hierarchical}&$\Delta_{Ward}$ &$\frac{\#\mathcal{F} \cdot \#\mathcal{G}}{\#\mathcal{F} + \#\mathcal{G}} D^2\big(\theta_{\mathcal{F}}\,;\theta_{\mathcal{G}}\big)
+			$\\ \bottomrule
+		\end{tabular*}
+	\end{table}
 	
 \end{frame}
 
 
 
+\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
+	
+\end{frame}
 
 
-\subsection{Nhận dạng thống kê mất cân bằng}
+\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm mờ (FCF)}
+	
+\end{frame}
+
+
+\begin{frame}{1.6. Phân loại hàm mật độ xác suất}{}
+	
+\end{frame}
+
+
+
+
+
+\subsection{2. Nhận dạng thống kê mất cân bằng}
 
 
 \begin{frame}{2.1. Giới thiệu dữ liệu hàm mật độ}
+
+\begin{figure}
+	\centering
+	\begin{subfigure}{\textwidth}
+		\centering
+		\includegraphics[width=.5\linewidth]{Figs/minami}
+	\end{subfigure}\\
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=.75\linewidth]{Figs/BOLD}
+	\end{subfigure}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=.9\linewidth]{Figs/Blood}
+	\end{subfigure}
+	\begin{subfigure}{.32\textwidth}
+		\centering
+		\includegraphics[width=.55\linewidth]{Figs/thao}
+	\end{subfigure}
+\end{figure}
+{\color{CTUblue}
+	$\Rightarrow$ Dữ liệu PDF cho ta thông tin mật độ, độ lệch, phân tán. Nó là một khách thể nghiên cứu.}
+
+\end{frame}
+
+
+
+\begin{frame}{2.2. Từ FCF đến IFCF}
+		\begin{columns}
+		\begin{column}{.3\textwidth}
+			\begin{figure}
+				\includegraphics[width=\textwidth]{Figs/FCF_IR10_STD0.8}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			Xét hai trọng tâm $\theta_1$ và $\theta_2$ và ma trận phân vùng $\mu_{1j}=u$ và $\mu_{2j}=(1-u)$. Ta có FCF
+			\begin{align*}
+				\theta_1(x) &= \frac{u^m \sum_{f_j \in c_1} f_j(x) + (1-u)^m \sum_{f_j(x) \in c_2} f_j(x)}{n_1u^m + n_2(1-u)^m},\\
+				\theta_2(x) &= \frac{(1-u)^m \sum_{f_j(x) \in c_1} f_j(x) + u^m \sum_{f_j \in c_2} f_j}{n_1(1-u)^m + n_2u^m}.
+			\end{align*}
+			Giả sử trọng tâm thực tế $\hat\theta_1=\frac1 {n_1}\sum_{f_j \in c_1} f_j(x)$ và $\hat\theta_2=\frac1 {n_2}\sum_{f_j \in c_2} f_j(x)$ thì $\lim\limits_{n_1\to\infty}\mathcal L_2^2=0$.
+		\end{column}
+	\end{columns}
+	
+{\color{CTUblue}
+			$\Rightarrow$ Cần thiết xây dựng thuật toán phân tích chùm mờ cho mất cân bằng cải tiến vượt qua hiệu ứng đồng nhất.}
 	
 \end{frame}
 
+
+
 \begin{frame}{2.2. Phân tích chùm mất cân bằng (IFCF)}
+\begin{block}{Hàm mục tiêu IFCF}
+		\begin{align}
+		\tag{IFCF}\label{eq:IFCF}
+		\text{Minimise}\,&:\, J(\bm U\,;\Theta\,|\, \mathcal{F}\,;c\,;m) = 
+		\sum_{j=1}^n \sum_{i=1}^c \frac{1}{\omega_i}\, \mu_{ij}^m \,D^2(f_j\,;\theta_i),\\
+		\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1\,,\quad \forall j \in {1\,,2\,, \ldots\,, n}, \tag{C1}\label{c1_pro} 
+	\end{align}
+\end{block}
+	trong đó $\omega_i^{(t)}=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ và $\mu^{(t-1)}_{ij}$ là ma trận phân vùng.
 	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.95\linewidth]{Figs/partition_m.pdf}
+\end{figure}
 \end{frame}
+
+
+
+\begin{frame}{2.2. Phân tích chùm mất cân bằng (IFCF)}
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\small
+			\begin{lemma}[Cập nhật ma trận phân vùng $\bm U$]\label{lem1}
+				Với $\Theta$ cố định, bài toán tối ưu hoá $J_{IFCF}$ theo $\bm U$ có nghiệm cực tiểu duy nhất $\bm U^*=F(\Theta)$ dưới các ràng buộc phân hoạch mờ \eqref{c1_pro}. Cụ thể,
+				\begin{align}
+					\mu_{ij} \;=\;
+					\frac{
+						\left (\frac{\omega_i}{\,D^2(\theta_i\,;f_j)}\right)^{\frac{1}{m-1}}
+					}{
+						\sum_{s=1}^c
+						\left(\frac{\omega_s}{\,D^2(\theta_s\,;f_j)}\right)^{\frac{1}{m-1}}
+					},
+					\label{eq:ifcf_u_final}
+				\end{align}
+				trong đó $1\le i\le c$ và $1\le j\le n$.
+			\end{lemma}
+			Ngoài ra, nếu $\exists i_0$ sao cho $D^2(\theta_{i_0}\,;f_j)=0$ thì nghiệm tối ưu cho cột $j$ là $\mu_{i_0 j}=1$ và $\mu_{s j}=0$, $\forall s\neq i_0$.
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\small
+			\begin{lemma}[Cập nhật trọng tâm $\Theta$ với $\mathcal{L}_2^2$]\label{lem2}
+				Với $\bm U$ cố định, bài toán tối thiểu hoá $J_{IFCF}$ theo $\Theta$ là phân tích được theo từng $\theta_i$ với $i =1\,,2\,,\ldots\,,c$ và lồi nghiêm ngặt. Tồn tại duy nhất nghiệm cực tiểu $\Theta^*=G(\bm U)$ khi khoảng cách $D^2=\mathcal{L}_2^2$, 
+				\begin{align}
+					\theta_i(x)
+					\;=\;
+					\frac{\sum_{j=1}^n (\mu_{ij})^{m}\,f_j(x)}
+					{\sum_{j=1}^n (\mu_{ij})^{m}}.
+					\label{eq:theta_update}
+				\end{align}
+			\end{lemma}
+		\end{column}
+	\end{columns}
+	{\color{CTUblue}
+		$\Rightarrow$ Thuật toán hội tụ qua các vòng lặp đối với $\mathcal{L}_2$ và $D_H^2$ (Định lý Zangwill).
+		}
+\end{frame}
+
 
 \begin{frame}{2.3. Phân tích chùm mất cân bằng (IFCF)}{Ví dụ số}
 	
@@ -227,7 +579,7 @@
 
 
 
-\subsection{Ứng dụng cho dữ liệu hình ảnh}
+\subsection{3. Ứng dụng cho dữ liệu hình ảnh}
 
 
 \begin{frame}{3.1. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ hình ảnh}
@@ -238,7 +590,52 @@
 	
 \end{frame}
 
-\section{Phần kết luận}
+
+
+
+
+
+{
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/thank2.pdf}}%
+	\begin{frame}[plain]{}
+		\vspace{1em}
+		\begin{center}
+			\large\bf\color{white} PHẦN KẾT LUẬN
+		\end{center}
+		\centering
+		\begin{minipage}{.7\textwidth}
+			\color{white}
+			\begin{enumerate}
+				\item {\color{white} Một số bàn luận}
+				\item {\color{white} Kết luận và kiến nghị}
+			\end{enumerate}
+		\end{minipage}
+	\end{frame}
+}
+
+\begin{frame}{Một số bàn luận}{Về thuật toán IFCF}
+				
+					\begin{figure}
+					\centering
+					\includegraphics[width=0.5\textheight]{Figs/C2_hamIR}
+				\end{figure}
+				
+			\begin{align*}
+				\frac{1}{1 + \left(\frac{\omega_2}{\omega_1}\right)^{\frac{1}{m-1}}
+					\left(\frac{\mathcal{L}^2_2(\theta_1\,;f_j)}{\mathcal{L}^2_2(\theta_2\,;f_j)}\right)^{\frac{1}{m-1}}}
+				+
+				\frac{1}{\left(\frac{\omega_1}{\omega_2}\right)^{\frac{1}{m-1}}
+					\left(\frac{\mathcal{L}^2_2(\theta_2\,;f_j)}{\mathcal{L}^2_2(\theta_1\,;f_j)}\right)^{\frac{1}{m-1}}+1}
+				= 1.
+			\end{align*}
+			Khi $\omega_1 \to \infty$, ta có $
+			\lim_{\omega_1 \to \infty} \mu_{i1} = 1$ và
+			$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$
+	
+	
+	
+\end{frame}
+
 
 \begin{frame}{Kết luận và kiến nghị} 
 	
@@ -250,30 +647,39 @@
 	\section{Tài liệu tham khảo}
 	
 	
-	\begin{frame}[allowframebreaks, noframenumbering]{Tài liệu tham khảo}\small
+	\begin{frame}[allowframebreaks, noframenumbering]{Tài liệu tham khảo}
 		\printbibliography
 	\end{frame}
 	
 
 	
 	
-
-{
-	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/background.pdf}}%
 	\begin{frame}
 		\begin{center}\color{white}
 			\vspace{2cm}
 			
-			{\Large\color{CTUcyan}\bf Chân thành cảm ơn quý Hội đồng!}\\
+			{\Large\color{CTUblue}\bf Chân thành cảm ơn quý Hội đồng!}\\
 			[1em]
-			{\color{CTUcyan}\bf Trần Nam Hưng}	
+			{\color{CTUcyan} Trần Nam Hưng}	
 			\vspace{1cm}
 
 		\end{center}
 		
 		
 	\end{frame}
+
+
+{
+	\usebackgroundtemplate{\includegraphics[width=\paperwidth]{BG/out.pdf}}%
+	\begin{frame}[plain]
+	\end{frame}
 }
+
+
+
+
+
+
 
 
 

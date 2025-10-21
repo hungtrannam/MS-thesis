@@ -267,7 +267,7 @@
 		$\bm1_{\{\cdot\}}$                                           & Hàm logic (bằng $1$ nếu thỏa điều kiện $\{\cdot\}$, ngược lại là $0$) \\
 		$\operatorname{sign}(\cdot) $                                  & Hàm xét dấu  (bằng $+1$ nếu thỏa điều kiện $(\cdot)$, ngược lại là $-1$)                    \\
 		$\ell(\cdot)$ & Hàm mất mát\\
-		$\mathcal{L}(\cdot)$ & Hàm L'Arange \\
+		$\mathcal{L}(\cdot)$ & Hàm L'Agrange \\
 		$\langle \cdot\,;\cdot\rangle$ & Tích trong của hai ma trận \\\bottomrule
 	\end{tabular*}
 	\begin{minipage}{\textwidth}
@@ -462,7 +462,7 @@ f(x)=\frac{\mathrm{d}P}{\mathrm{d}\mu}(x)=\left\{
 
 
 \chy{
-Các hàm phân phối $P$ và phân vị $F^{-1}$ đều không bảo toàn trong không gian vector Hilbert\index{không gian vector Hilbert (Hilbert vector space)}. Các giá trị của PDF liên tục thì có thể tùy ý, nhưng phải thỏa mãn Tính chất \ref{tc1}. Một xác suất tại điểm $x=x_0$ không được khảo sát trong PDF liên tục tuyệt đối mà ở một tập Borel thực như Tính chất \ref{tc1}.(3). Tức là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục. Ta có thể tổng quát hóa tập các PDF thành không gian con lồi của $\mathcal{L}^1(\Omega)$ và đóng trong tô-pô chuẩn $\mathcal{F}(\Omega) = \left\{f\,:\,\Omega\to \mathbb{R}^+\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$
+Các hàm phân phối $P$ và phân vị $F^{-1}$ đều không bảo toàn trong không gian vector Hilbert\index{không gian vector Hilbert (Hilbert vector space)}. Các giá trị của PDF liên tục thì có thể tùy ý, nhưng phải thỏa mãn Tính chất \ref{tc1}. Một xác suất tại điểm $x=x_0$ không được khảo sát trong PDF liên tục tuyệt đối mà ở một tập Borel thực như Tính chất \ref{tc1}. Tức là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục. Ta có thể tổng quát hóa tập các PDF thành không gian con lồi của $\mathcal{L}^1(\Omega)$ và đóng trong tô-pô chuẩn $\mathcal{F}(\Omega) = \left\{f\,:\,\Omega\to \mathbb{R}^+\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$
 }
 
 
@@ -819,12 +819,12 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 		\toprule
 		\bf Khoảng cách & \bf $D(f_1(x), f_2(x))$ & \bf $g(u)$ & \bf $h(u)$ & \bf Miền giá trị  \\ \midrule
 		$\mathcal{L}_1$ & $\displaystyle\int_{\Omega}|f_1(x) - f_2(x)|\mathrm{\,d}x$ & $|1-u|$ & $u$ & $[0\,;2]$ \\
-		Chernoff & $-\log\left(\displaystyle\int_{\Omega} f_1(x)^s f_2(x)^{1-s}\mathrm{\,d}x\right)$ & $-u^{1-s}$ & $-\log(-u)$ & $[0\,;+\infty)$ \\
+		Chernoff & $-\log\left(\displaystyle\int_{\Omega} f_1(x)^s f_2(x)^{1-s}\mathrm{\,d}x\right)$ & $u^{1-s}$ & $-\log(-u)$ & $[0\,;+\infty)$ \\
 		Matusita & $\left(\displaystyle\int_{\Omega}\left|f_1^{1/r}(x) - f_2^{1/r}(x)\right|^r\mathrm{\,d}x\right)^{1/r}$ & $\left|1-u^{1/r}\right|^{r}$ & $u^{1/r}$ & $[0\,; \sqrt{2}]$ \\
 		bình phương Hellinger & $\displaystyle\int_{\Omega}\left(\sqrt{f_1(x)}-\sqrt{f_2(x)}\right)^2\mathrm{\,d}x$ & $(\sqrt{u}-1)^2$ & $u$ & $[0\,;2]$ \\
 		thông tin Kullback&$\displaystyle\int_{\Omega} f_1(x)\log\frac{f_1(x)}{f_2(x)}\mathrm{\,d}x$ & $-\log(u)$ & $u$ & $[0\,;+\infty)$ \\
-		 Jensen-Shannon & $\frac{1}{2}\left(D_{KL}(f_1\,; f_2) + D_{KL}(f_2\,; f_1)\right)$ & $-(u+1)\log(\frac{u+1}{2})+u\log(u)$ & $\frac{1}{2}u$ & $[0\,;+\infty)$ \\
-	Bayes	Error &$1-\displaystyle\int_{\Omega} \min\{\pi f_1(x)\,;\pi(1-f_2(x))\}\mathrm{\,d}x$ &$-\min\{u\,;1-u\}$ & $u+1$ & $[0\,;1]$ \\
+		 Jensen-Shannon & $\frac{1}{2}\left(D_{KL}(f_1\,; \frac{f_1+f_2}{2}) + D_{KL}(f_2\,; \frac{f_1+f_2}{2})\right)$ & $u\log\left(\frac{2u}{1+u}\right)+\log\left(\frac{2}{1+u}\right)$ & $\frac{1}{2}u$ & $[0\,;+\infty)$ \\
+	Bayes	Error &$1-\displaystyle\int_{\Omega} \min\{\pi f_1(x)\,;\pi (1-f_2(x))\}\mathrm{\,d}x$ &$-\min\{u\,;1-u\}$ & $u+1$ & $[0\,;1]$ \\
 		\bottomrule
 	\end{tabular*}
 \begin{minipage}{\textwidth}
@@ -1122,7 +1122,7 @@ Bảng \ref{tab:chumham} cho thấy Affinity của Toussaint suy biến thành A
 
 \section{Phương pháp số xấp xỉ tích phân}
 
-Các tích phân trong lĩnh vực phân tích PDF cần xấp xỉ bằng phương pháp số. Luận văn này, chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann nhưng cũng không tốn quá nhiều tài nguyên như Monte Carlo hay Simpsons. Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
+Các tích phân trong lĩnh vực phân tích PDF cần xấp xỉ bằng phương pháp số. Luận văn này, chọn sử dụng phương pháp hình thang\index{phương pháp hình thang (trapezoidal method)} nhằm cải thiện độ chính xác so với tổng Riemann nhưng cũng không tốn quá nhiều tài nguyên như Monte Carlo hay Simpson. Một tích phân trên miền $\Omega \subset \mathbb{R}^d$ được xấp xỉ bằng công thức tổng quát
 $ \int_{\Omega}f(x)\mathrm{\,d}x = \lim_{h\to0}\sum_{i}h^d w_if(x_i)$. Khi đó, giả sử hàm $f\,:\,[a\,;b]\to \mathbb{R}$, ta chia đoạn $[a\,;b]$ thành $n$ phần bằng nhau với độ chia $h=(b-a)/n$, phương pháp hình thang một chiều xấp xỉ tích phân với mọi $x_i = a + ih$ và $i=0\,,1\,,\ldots\,,n$, tức là
 	$$
 	\int_a^b f(x)\, dx \approx \frac{h}{2} \left( f(x_0) + 2 \sum_{i=1}^{n-1} f(x_i) + f(x_n) \right).
@@ -1353,7 +1353,7 @@ Thuật toán phân tích chùm mờ cho phần tử rời rạc đã được c
 \begin{align}
     &\theta^*_i(x) = \frac{\sum_{j=1}^n(\mu^*_{ij})^mf_j(x)}{\sum_{j=1}^n(\mu^*_{ij})^m} \text{ và}\label{trongtamFCF}\\
     &\begin{cases}\label{pvFCF1}
-    	\mu^*_{ij} = \frac{({D^*}^2_{ij})^{-1/(m-1)}}{\sum_{s=1}^n({D^*}^2_{sj})^{-1/(m-1)}},& \text{ nếu } I_j\ne\emptyset,\\
+    	\mu^*_{ij} = \frac{({D}^2_{ij})^{1/(m-1)}}{\sum_{s=1}^n({D}^2_{sj})^{1/(m-1)}},& \text{ nếu } I_j\ne\emptyset,\\
     	\mu^*_{ij} = 0\,, \sum_{i\in I^c_j}\mu^*_{ij} =1\,, \forall i \in I^c_j\,, & \text{ nếu } I_j\ne\emptyset.
     \end{cases}
 \end{align}
@@ -1529,7 +1529,7 @@ $
 \mathcal{D} = \{(f_j\,; y_j)\}$ với $j=1\,,2\,,\ldots\,,n$, trong đó $f_j \in \mathcal{F}$ và $y_j \in \{-1\,; 1\}$.
 Bài toán máy vector hỗ trợ lề mềm được xây dựng từ nguyên lý cực tiểu hoá độ lớn vector trọng số $\bm{w}$ và cho phép sai số điều chỉnh được bởi các biến $\xi_j$, tức là
 \begin{align*}
-	\text{Maximise} & \;: \frac{1}{2} \|\bm{w}\|_{\mathcal{H}}^2 + C \sum_{j=1}^n \xi_j, \\
+	\text{Minimise} & \;: \frac{1}{2} \|\bm{w}\|_{\mathcal{H}}^2 + C \sum_{j=1}^n \xi_j, \\
 	\text{S.t.} & \;: y_j \left( \langle \bm{w}\,;\Phi(f_j) \rangle + b \right) \ge 1 - \xi_j, \\
 	&\quad \xi_j \ge 0, \quad j = 1\,,2\,, \ldots\,, n.
 \end{align*}
@@ -3437,7 +3437,7 @@ Kết quả này chứng minh IFCF là phương pháp hiệu quả để phân t
 
 \subsubsection{b.\quad Ví dụ~\ref{vdu:anh2}}
 
-Hình~\ref{fig:APP} cho thấy kết quả phân tích chùm BKIFF với số chùm $c$ tăng dần từ $2\div 10$ được áp dụng để phân đoạn ảnh Landsat của đảo Yam và vùng biển xung quanh, cho thấy mức độ chi tiết của việc tách lớp phủ đất tăng lên theo số chùm $c$.
+Hình~\ref{fig:APP} cho thấy kết quả của thuật toán đề nghị IFCF với số chùm $c$ tăng dần từ $2\div 10$ được áp dụng để phân đoạn ảnh Landsat của đảo Yam và vùng biển xung quanh, cho thấy mức độ chi tiết của việc tách lớp phủ đất tăng lên theo số chùm $c$.
 
 \begin{landscape}
 	
@@ -3497,7 +3497,7 @@ Hình~\ref{fig:APP} cho thấy kết quả phân tích chùm BKIFF với số ch
 
 \end{landscape}
 
-Kết quả là, trên $c = 2\div10$, quá trình phân đoạn BKIFF diễn ra đơn điệu và không tạo ra các hiện tượng nhiễu hạt muối tiêu. Ở $c = 2$, thuật toán phân tách cảnh thành vùng nước sâu và các vùng ven biển xung quanh. Khi chùm $c$ tăng dần về phía $3$, độ tương phản quang phổ giữa các rạn san hô và hòn đảo trở nên rõ ràng hơn, qua đó cho thấy các đường viền hiển thị sắc nét hơn.
+Kết quả là, trên $c = 2\div10$, quá trình phân đoạn IFCF diễn ra đơn điệu và không tạo ra các hiện tượng nhiễu hạt muối tiêu. Ở $c = 2$, thuật toán phân tách cảnh thành vùng nước sâu và các vùng ven biển xung quanh. Khi chùm $c$ tăng dần về phía $3$, độ tương phản quang phổ giữa các rạn san hô và hòn đảo trở nên rõ ràng hơn, qua đó cho thấy các đường viền hiển thị sắc nét hơn.
 Tiếp đến, trong khoảng $c = 4\div6$, hòn đảo trở nên nổi bật hơn, thể hiện rõ các khu vực cát nhẹ, thảm thực vật và các vùng biển khác nhau. Đồng thời, một lớp mới được hình thành để làm nổi bật sự khác biệt trong nước biển. Hơn nữa, ở các lớp vi mô $c = 7\div9$, các đặc điểm như bãi cát mỏng, chiếm chưa đến $0{,}5$\% tổng số pixel, vẫn được nhóm lại, cho thấy khả năng của thuật toán trong việc bảo tồn các dấu hiệu cường độ sáng nhỏ. Cuối cùng, ở $c = 10$, không có chùm nào bị phá vỡ, thể hiện tính nhất quán không gian nội tại của thuật toán.
 Tóm lại, số chùm trung bình $c$ từ $4\div6$ được xem là phù hợp nhất để cân bằng giữa khả năng phân biệt lớp phủ và khả năng khái quát hóa đối với Ví dụ~\ref{vdu:anh2}. Ngược lại, các giá trị $c$ cao hơn thích hợp hơn cho các nghiên cứu vi mô, nơi cần điều tra sâu và phân tích chi tiết hơn.
 

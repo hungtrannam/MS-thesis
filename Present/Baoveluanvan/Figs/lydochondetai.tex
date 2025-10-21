@@ -1,135 +1,211 @@
-\documentclass[margin=3mm]{standalone}
+\documentclass[
+margin=2mm,
+varwidth=false,
+tikz,
+multi=false,
+convert=false,
+crop=true,
+width=16cm,
+height=9cm
+]{standalone}
 
-\usepackage{pgfplots}
-\usepgfplotslibrary{groupplots}
-\pgfplotsset{compat=1.18}
-\usepackage{scrextend}
-\changefontsizes{13pt}
 \usepackage[utf8]{vietnam}
+\usepackage{pgfplots}
+\usepackage{scrextend}
+\changefontsizes{15pt}
+\pgfplotsset{compat=1.18}
 \usepackage{xcolor}
-\usepackage{times}
 \usepackage{tikz}
+\usepgfplotslibrary{groupplots}
 \usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+\usepackage{times}
 
 \definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
 \definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
 
+\newcommand{\bluenum}[1]{%
+	\tikz[baseline=(char.base)]{
+		\node[shape=circle, draw=none, fill=CTUblue, text=white,
+		inner sep=0.8pt, minimum size=13pt,
+		font=\bfseries\scriptsize] (char) {#1};
+	}%
+}
+
 \begin{document}
 	
-	\begin{tikzpicture}[
-		node distance = 10mm and 5mm,
-		box/.style = {
-			draw, rounded corners, align=center, minimum width=3.5cm, 
-			text width=3.5cm, inner sep=4pt, line width=1pt, fill=white
-		},
-		titlebox/.style = {
-			draw, rounded corners, fill=CTUblue, text=white, 
-			font=\bfseries, align=center, minimum width=5cm, line width=1pt
-		},
-		arrow/.style = {
-			-{Stealth[scale=1]}, line width=1pt, shorten >=2pt, shorten <=2pt
-		},
-		font=\normalsize
-		]
-		
-		% --- Các nút chính ---
-		\node[titlebox] (AI) {Trí tuệ nhân tạo (AI)};
-		\node[titlebox, below=of AI] (SR) {Nhận dạng thống kê (SR)};
-		\node[box, below left=of SR] (supervised) {Nhận dạng được giám sát};
-		\node[box, below right=of SR] (unsupervised) {Nhận dạng không giám sát};
-		
-		% --- Mũi tên ---
-		\draw[arrow] (AI) -- (SR);
-		\draw[arrow] (SR) -- (supervised);
-		\draw[arrow] (SR) -- (unsupervised);
-		
-		% --- Groupplot nằm dưới hai hướng ---
-		\node[below=3cm of SR, anchor=north] (groupplots) {
-			\begin{tikzpicture}
-				\begin{groupplot}[
-					group style={
-						group size=2 by 1,
-						horizontal sep=5cm
-					},
-					axis lines = left,
-					width=5.5cm,
-					height=5cm,
-					clip mode=individual,
-					title style={yshift=1mm, font=\bfseries\sffamily}
-					]
-					% --- Nhận dạng có giám sát ---
-					\nextgroupplot[]
-					\addplot [CTUblue, only marks, mark=*, mark size=3] table {
-						x y
-						2 3
-						3 5
-						4 5
-						3 8
-						5 9
-						3 2
-						5 6
-						6 6
-						7 9
-						10 4
-						11 5
-						9 4
-					};
-					\addplot+[CTUblue, only marks, mark=*, mark size=3] table {
-						x y
-						20 10
-						21 12
-						24 12
-						25 13
-						27 14
-						22 13
-						23 15
-						25 10
-						15 14
-					};
-					\draw [CTUblue, dashed, line width=1.pt] (4,14) -- (25,2);
-					
-					% --- Nhận dạng không giám sát ---
-					\nextgroupplot[]
-					\addplot [CTUblue, only marks, mark=*, mark size=3] table {
-						x y
-						2 3
-						3 5
-						4 5
-						3 8
-						5 9
-						3 2
-						5 6
-						6 6
-						7 9
-						10 4
-						11 5
-						9 4
-					};
-					\addplot+[CTUblue, only marks, mark=*, mark size=3] table {
-						x y
-						20 10
-						21 12
-						24 12
-						25 13
-						27 14
-						22 13
-						23 15
-						25 10
-						15 14
-					};
-					\coordinate (c2) at (23,12);
-					\draw [CTUblue, dashed, line width=1.pt] (6,6) circle[radius=5];
-				\end{groupplot}
-				\draw [CTUblue, dashed, line width=1.pt] (c2) circle[radius=1cm];
+	
+			\begin{tikzpicture}[
+				node distance = 10mm and 10mm,
+				box/.style = {
+					draw=CTUcyan,line width=1.5pt, rounded corners, align=center, minimum width=4.5cm, 
+					text width=4cm, inner sep=4pt, fill=white,text=CTUcyan, font=\bfseries
+				},
+				titlebox/.style = {
+					draw=CTUcyan,line width=2pt, rounded corners, fill=CTUblue, text=white, 
+					font=\bfseries, align=center, minimum width=5cm
+				},
+				arrow/.style = {
+					-{Stealth[scale=1]}, line width=1pt, shorten >=2pt, shorten <=2pt
+				}
+				]
+				
+				% --- Các nút chính ---
+				\node[titlebox] (AI) {Trí tuệ\\ nhân tạo (AI)};
+				\node[titlebox, below=of AI] (SR) {\Large Nhận dạng\\\Large thống kê (SR)};
+				
+				% --- Groupplot nhỏ bên trái ---
+				\node[left=2cm of SR] (groupplots) {
+					\begin{tikzpicture}
+						\begin{groupplot}[
+							group style={group size=2 by 1},
+							axis lines=box,
+							width=5cm, height=4cm,
+							xtick=\empty, ytick=\empty
+							]
+							\nextgroupplot[CTUcyan,title={\bf Có giám sát}]
+							\addplot [CTUblue, only marks, mark=*, mark size=3,opacity=0.8]
+							coordinates {(2,3) (3,5) (4,5) (3,8) (5,9) (3,2) (5,6) (6,6) (7,9) (10,4) (11,5) (9,4)};
+							\addplot [CTUcyan, only marks, mark=*, mark size=3,opacity=0.8]
+							coordinates {(20,10) (21,12) (24,12) (25,13) (27,14) (22,13) (23,15) (25,10) (15,14)};
+							\draw [CTUblue, dashed, line width=1pt] (axis cs:4,14) -- (axis cs:25,2);
+							
+							\nextgroupplot[CTUcyan,title={\bf Không giám sát}]
+							\addplot [CTUblue, only marks, mark=*, mark size=3,opacity=0.8]
+							coordinates {(2,3) (3,5) (4,5) (3,8) (5,9) (3,2) (5,6) (6,6) (7,9) (10,4) (11,5) (9,4)};
+							\addplot [CTUcyan, only marks, mark=*, mark size=3,opacity=0.8]
+							coordinates {(20,10) (21,12) (24,12) (25,13) (27,14) (22,13) (23,15) (25,10) (15,14)};
+							\draw [CTUblue, dashed, line width=1pt] (axis cs:6,6) circle[radius=6];
+							\draw [CTUcyan, dashed, line width=1pt] (axis cs:24,12) circle[radius=6];
+						\end{groupplot}
+					\end{tikzpicture}
+				};
+				
+				% --- Khung tổng ---
+				\node[
+				draw=CTUcyan, rounded corners, inner sep=8pt, line width=1.3pt,
+				fit=(groupplots),
+				label={[CTUblue]above:{\textbf{\bluenum{1} SR là kiến thức nền tảng của AI dự đoán}}}
+				] (box1) {};
+				
+
+				% --- Ba plot minh họa ---
+				\node[below of = SR,yshift=-4cm] (plots) {
+					\begin{tikzpicture}
+						\begin{groupplot}[
+							group style={group size=3 by 1, horizontal sep=2.5cm},
+							width=5cm, height=4cm,
+							axis lines=box,
+							xtick=\empty, ytick=\empty
+							]
+							% scatter
+							\nextgroupplot[CTUcyan,title={\bf Dữ liệu rời rạc}]
+							\addplot[only marks, mark=*, mark size=2pt, color=CTUblue]
+							coordinates {(0.5,1.2) (1.0,1.8) (1.5,1.6) (2.0,2.5) (2.5,2.0)
+								(3.0,2.8) (3.5,2.4) (4.0,3.1)};
+							
+							% candlestick
+							\nextgroupplot[xmin=0, xmax=5, ymin=90, ymax=125, clip=false,CTUcyan,title={\bf Dữ liệu khoảng}]
+							\draw[black, line width=0.6pt] (axis cs:1,115) -- (axis cs:1,95);
+							\draw[black, line width=0.6pt] (axis cs:2,118) -- (axis cs:2,97);
+							\draw[black, line width=0.6pt] (axis cs:3,112) -- (axis cs:3,92);
+							\draw[black, line width=0.6pt] (axis cs:4,117) -- (axis cs:4,100);
+							\filldraw[fill=CTUcyan, draw=black, line width=0.4pt] (axis cs:0.8,100) rectangle (axis cs:1.2,110);
+							\filldraw[fill=CTUcyan, draw=black, line width=0.4pt] (axis cs:3.8,102) rectangle (axis cs:4.2,113);
+							\filldraw[fill=CTUblue, draw=black, line width=0.4pt] (axis cs:1.8,110) rectangle (axis cs:2.2,98);
+							\filldraw[fill=CTUblue, draw=black, line width=0.4pt] (axis cs:2.8,108) rectangle (axis cs:3.2,95);
+							
+							% Gaussian
+							\nextgroupplot[domain=-4:9, samples=80,CTUblue,line width=2pt,CTUcyan,title={\bf Dữ liệu hàm mật độ}]
+							\addplot[CTUblue, thick] {exp(-((x-0)^2)/2)/sqrt(2*pi)};
+							\addplot[CTUcyan, thick] {exp(-((x-3)^2)/1.5)/sqrt(2*pi)};
+							\addplot[CTUblue!60!black, thick, densely dotted] {exp(-((x-5)^2)/0.8)/sqrt(2*pi)};
+						\end{groupplot}
+					\end{tikzpicture}
+				};
+				
+				\node[
+				draw=CTUcyan, rounded corners, inner sep=8pt, line width=1.3pt,
+				fit=(plots),
+				label={[CTUblue]below:{\textbf{\bluenum{2} SR cho các PDF là khách thể mới cần giải quyết}}}
+				] (box2) {};
+				
+				\node[right=of SR, xshift=1cm] (imbaplot) {
+					\begin{tikzpicture}
+						\begin{groupplot}[
+							group style={
+								group size=2 by 1,
+								horizontal sep=1cm
+							},
+							width=5cm, height=4cm,
+							axis lines=box,
+							xtick=\empty, ytick=\empty,
+							]
+							
+							% --- Plot 1: Scatter minh họa phân bố ---
+							\nextgroupplot[							CTUcyan,]
+							% nhóm đa số
+							\addplot[
+							only marks,
+							mark=*,
+							color=CTUblue,
+							mark size=3pt,
+							opacity=0.8
+							]
+							coordinates {
+								(1,1)(1.1,1)(1.2,1.2)(1.3,0.9)(1.5,1.1)(1.6,1.2)(1.4,1.3)
+								(1.2,0.8)(1.8,1)(2,1.2)(2.1,0.9)(2.3,1.1)(2.2,1.2)
+							};
+							
+							% nhóm thiểu số
+							\addplot[
+							only marks,
+							mark=*,
+							color=CTUcyan,
+							mark size=3pt
+							]
+							coordinates {
+								(2,3)(2.1,3.2)(2.9,3.1)
+							};
+							
+							% --- Plot 2: Histogram số lượng ---
+							\nextgroupplot[
+							ybar,
+							CTUcyan,
+							title={\bf Mất cân bằng},
+							bar width=1cm,
+							ymin=0, ymax=20,
+							xtick=\empty,
+							enlarge x limits=2,
+							nodes near coords,
+							]
+							\addplot[fill=CTUblue] coordinates {(1,13)};
+							\addplot[fill=CTUcyan] coordinates {(2,3)};
+							
+						\end{groupplot}
+					\end{tikzpicture}
+				};
+				
+				\node[
+				draw=CTUcyan, rounded corners, inner sep=8pt, line width=1.3pt,
+				fit=(imbaplot),
+				label={[CTUblue]above:{\parbox{10cm}{\centering\textbf{\bluenum{3} SR truyền thống cho PDF bị thiên lệch\\[2pt]với mất cân bằng}}}}
+				] (box3) {};
+				
+				
+
+				
+				% --- Mũi tên từ SR đến ba khung chính ---
+				\draw[arrow] (AI) -- (SR);
+				
+				\draw[arrow] (SR.west) -- (box1.east);
+				\draw[arrow] (SR.south) -- (box2.north);
+				\draw[arrow] (SR.east) -- (box3.west);
+				
 			\end{tikzpicture}
-		};
-		
-		% --- Khung bao toàn bộ (cả hai hướng + groupplots) ---
-		\node[
-		draw=CTUblue, rounded corners, inner sep=12pt, line width=1pt,
-		fit=(supervised)(unsupervised)(groupplots),
-		] {};
-		
-	\end{tikzpicture}
+
+
+	
+	
+
 	
 \end{document}

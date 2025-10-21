@@ -1,44 +1,50 @@
-\documentclass[margin=3mm]{standalone}
-\usepackage[utf8]{vietnam}
+\documentclass[
+margin=2mm,
+]{standalone}
 
+\usepackage[utf8]{vietnam}
+\usepackage{pgfplots}
 \usepackage{scrextend}
-\changefontsizes{13pt}
+\changefontsizes{15pt}
+\pgfplotsset{compat=1.18}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
 \usepackage{times}
-%\usepackage{helvet}
-%\renewcommand{\familydefault}{\sfdefault}
-\definecolor{CTUblue}{rgb}{0.121568627450, 0.3607843137254902, 0.6627450980392157}
-\definecolor{CTUcyan}{rgb}{0, 0.6862745098039216, 0.9372549019607843}
+
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
 
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, positioning, quotes}
 
 \begin{document}
-	\begin{tikzpicture}[
-		node distance = 20mm and 8mm,
-		box/.style = {draw, minimum size=3em, align=center, rounded corners,line width=1pt},
-		every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt,line width = 1pt},
-		every edge quotes/.append style = {font=\footnotesize, fill=white, 
-			anchor=center, align=center, sloped},
-		]
-		
-		% nền
-		\fill[white] (-7,-4) rectangle (7.5, 1);
-		
-		% các nút chính (bỏ "Kiến thức chuẩn bị")
-		\scoped[nodes=box, fill=white]
-		{
-			\node (C2)[ fill=CTUblue,text=white] {Chap 1. Nhận dạng PDF};
-			\node (C3) [below left=of C2, fill=CTUblue,text=white] {Chap 2. Nhận dạng PDF\\mất cân bằng};
-			\node (add) [below right=of C2, fill=CTUblue,text=white] {Chap 3. Nhận dạng hình ảnh\\ mất cân bằng};
-		}
-		
-		% các cạnh
-		\path 
-		(C2) edge ["Cải tiến\\thuật toán"] (C3)
-		(C2) edge ["So sánh"] (add)
-		(C3) edge ["Áp dụng"] (add);
-		
-	\end{tikzpicture}
+		\begin{tikzpicture}[
+			node distance = 3cm and 2mm,
+			box/.style = {draw=CTUcyan,line width=3pt, rounded corners, align=center, minimum width=6.5cm, 
+				text width=5cm, inner sep=4pt, fill=white,text=CTUcyan, font=\bfseries},
+			every edge/.style = {draw, thick, -{Stealth[scale=1]}, shorten >=.5pt, line width = 1pt},
+			every edge quotes/.append style = {
+				font=\normalfont, fill=white, anchor=center, align=center, sloped
+			}
+			]
+			
+			% --- Các nút ---
+			\scoped[nodes=box, fill=white]
+			{
+				\node (C1)[text=CTUblue] {Chương 1. Nhận~dạng PDF};
+				\node (C2)[below=of C1, text=CTUblue] {Chương 2. Nhận~dạng PDF\\mất cân bằng};
+				\node (C3)[below=of C2,text=CTUblue] {Chương 3.\\ Nhận~dạng hình ảnh\\mất cân bằng};
+			}
+			
+			% --- Các cạnh ---
+			\path[draw=CTUcyan,line width =2pt]
+			(C1) edge ["Cải tiến\\thuật toán"] (C2)
+			(C2) edge ["Áp dụng"] (C3)
+			(C1) edge [bend right=-65, "So sánh", looseness=1] (C3);
+			
+		\end{tikzpicture}
+	
 \end{document}
