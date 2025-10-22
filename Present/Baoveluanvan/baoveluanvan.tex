@@ -59,7 +59,7 @@
 	\setbeamertemplate{background canvas}{
 		\begin{tikzpicture}
 			\path (0,0) -- (\paperwidth,\paperheight);
-			\node[opacity=.1] at (0.5\paperwidth,0.45\paperheight)
+			\node[opacity=.05] at (0.5\paperwidth,0.45\paperheight)
 			{\includegraphics[width=6cm]{BG/CTU_logo_singlecolor}};
 		\end{tikzpicture}
 	}
@@ -77,6 +77,8 @@
 	\setbeamercolor{title}{fg=CTUblue}
 	
 	\setbeamercolor{block title}{bg=CTUblue, fg=white}
+	\setbeamerfont{block title}{size=\small,series=\bfseries}
+	
 	\setbeamerfont*{frametitle}{size=\large,
 		series=\bfseries,
 		parent=structure}
@@ -217,40 +219,54 @@
 
 \end{frame}
 
-\begin{frame}{2. Mục đích nghiên cứu}
-	\textbf{\color{CTUcyan}2.1. Khoảng trống nghiên cứu}
+\begin{frame}{2. Mục đích và phạm vi nghiên cứu}\footnotesize
 	
-	
-	
-	\textbf{\color{CTUcyan}2.2. Mục đích nghiên cứu}
-	
-	\begin{enumerate}
-		\item {\color{CTUblue}\it Xây dựng thuật toán} phân loại \& phân tích chùm PDF có mất cân bằng;
-		\item {\color{CTUblue}\it Áp dụng phân tích hình ảnh} với các đặc trưng của nó được trích xuất và đại diện bởi PDF để nhận dạng.
-\end{enumerate}
-
-\end{frame}
-
-
-\begin{frame}{3. Đối tượng và phạm vi}
-	\begin{block}{Đối tượng nghiên cứu}
-		\begin{enumerate}
-			\item Thuật toán phân loại và phân tích chùm với dữ liệu mất cân bằng;
-			\item Dữ liệu hình ảnh được trích xuất thành các đối tượng đại diện.
-		\end{enumerate}
+	\begin{columns}[t,onlytextwidth]
 		
+		% ===== CỘT TRÁI =====
+		\begin{column}{0.48\textwidth}
+			
+			\begin{block}{Khoảng trống nghiên cứu}
+				\begin{enumerate}
+					\item \textit{Khoảng trống lý thuyết:} Chưa xây dựng khung lý thuyết đầy đủ cho bài toán SR trên PDF mất cân bằng dữ liệu;
+					\item \textit{Khoảng trống thực nghiệm:} Chưa có nhiều thử nghiệm ứng dụng phân tích hình ảnh thông qua đại diện PDF cho bài toán SR mất cân bằng.
+				\end{enumerate}
 			\end{block}
+			
+						\begin{block}{Đối tượng nghiên cứu}
+				\begin{enumerate}
+					\item Thuật toán phân loại và phân tích chùm trong điều kiện dữ liệu mất cân bằng;
+					\item Dữ liệu hình ảnh được trích xuất và biểu diễn dưới dạng PDF đại diện.
+				\end{enumerate}
+			\end{block}
+			
+		\end{column}
 		
-\begin{block}{Phạm vi nghiên cứu}
+		% ===== CỘT PHẢI =====
+		\begin{column}{0.48\textwidth}
+			
+	\begin{block}{Mục đích nghiên cứu}
+	\begin{enumerate}
+		\item \textcolor{CTUblue}{\textit{Xây dựng thuật toán}} phân loại và phân tích chùm PDF có mất cân bằng;
+		\item \textcolor{CTUblue}{\textit{Áp dụng phân tích hình ảnh}} với các đặc trưng được trích xuất và đại diện bởi PDF để nhận dạng.
+	\end{enumerate}
+\end{block}
+			
+			\begin{block}{Phạm vi nghiên cứu}
+				\begin{enumerate}
+					\item Các thuật toán phân tích chùm và phân loại cho PDF;
+					\item Dữ liệu hình ảnh được trích xuất thành PDF đại diện;
+					\item Các vấn đề tính toán liên quan đến các phương pháp SR.
+				\end{enumerate}
+			\end{block}
+			
+		\end{column}
 		
-		\begin{enumerate}
-			\item Các thuật toán phân tích chùm và phân loại cho PDF;
-			\item Dữ liệu hình ảnh được trích xuất thành PDF đại diện;
-			\item Vấn đề tính toán của các phương pháp SR.
-		\end{enumerate}
-		
-	\end{block}
+	\end{columns}
+	
 \end{frame}
+
+
 
 
 \begin{frame}{3. Phương pháp và cấu trúc}
@@ -300,16 +316,20 @@
 	\end{frame}
 }
 
-\begin{frame}{1.1. Hàm mật độ xác suất (PDF)}
+\begin{frame}{1.1. Hàm mật độ xác suất (PDF)}\small
 \begin{columns}
-	\begin{column}{.5\textwidth}
-		
-	\end{column}
 	\begin{column}{.5\textwidth}
 			\begin{figure}
 			\centering
-			\includegraphics[width=\linewidth]{Figs/hammatdoxacsuat}
+			\includegraphics[width=.85\textheight]{Figs/hammatdoxacsuat}
 		\end{figure}
+
+	\end{column}
+	\begin{column}{.5\textwidth}
+			\begin{definition}[Dữ liệu PDF $1$-chiều]\label{dng:data1}
+			Dữ liệu PDF một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,;o_2\,;\ldots\,;o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,;u_j]$ là khoảng xác định của $o_j$ và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là PDF xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
+			$$\int_{x\in I_j}f_j(x)\mathrm{\,d}x=1 \text{ và } \int_{x \in\mathbb{R}\setminus I_j}f_j(x)\mathrm{\,d}x=0. $$
+		\end{definition}
 	\end{column}
 \end{columns}
 \end{frame}
@@ -368,7 +388,7 @@
 					
 					\begin{figure}
 						\centering
-						\includegraphics[width=\textwidth]{Figs/C1_Uniform.pdf}
+						\includegraphics[width=.9\textwidth]{Figs/C1_Uniform.pdf}
 					\end{figure}
 					
 				\end{column}
@@ -428,46 +448,129 @@
 
 \begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
 	
-	Phân tích chùm phân vùng giả sử $\mathcal{S}$ là tập các vector $d$-chiều $x_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với các PDF $f_j(x)$. Tập $\mathcal{F}$ gồm họ $n$-PDF trên $\Omega$. Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong $c$-chùm cho trước với $i=1\,,2\,,\ldots\,,c$ và $c\in\mathbb{N}$, thỏa mãn ba ràng buộc
-	\begin{enumerate}
+Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong $c$-chùm cho trước với $i=1\,,2\,,\ldots\,,c$ và $c\in\mathbb{N}$, thỏa mãn ba ràng buộc
+	\begin{enumerate}\footnotesize
 		\item Hợp tất cả các chùm $\bigcup_i c_i$ bằng $\mathcal{F}$;
 		\item Giao của mỗi chùm là rỗng, tức là $c_i\cap c_j =\emptyset$, với mỗi $i\ne j$;
 		\item Lực lượng của mỗi chùm là khác rỗng, tức là $|c_i|\ne \emptyset$.
 	\end{enumerate}
 	
-	Cho bảy PDF Gauss $1$-chiều $\mathcal{F}$ cho bởi Tai Vo-Van \& Pham-Gia, T., (2010) \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1$, với $i = 1\,;2\,;\ldots\,;7$ và các trung bình lần lượt là $\mu_i = \{0{,}3\,;4{,}0\,;9{,}1\,;1{,}0\,;5{,}5\,;8{,}0\,;4{,}8\}.$ Phân tích chùm KCF với $c=3$ và khoảng cách xét là $\mathcal{L}_2$.
 	
-	Ta có kết quả sau khi thực hiện các vòng lặp được giải chi tiết ở Phụ lục (tr. \pageref{phulucB}). Hình~\ref{figs:vdu:KCF}(a) cho thấy kết quả  PDF trọng tâm của ba chùm. Các khoảng cách khác cũng được khảo sát, tuy nhiên kết quả đều giống nhau.
+	Phân tích chùm KCF là bài toán tối tiểu đơn mục tiêu cho tổng các bình phương khoảng cách trong chùm các PDF. \cite{macqueen1967some,Tai2010,nguyen2024new}, tức là
+	\begin{align}\tag{KCF}\label{Jk}
+		\text{Minimise}\,&:\, J(\bm U\,; \Theta\,|\, \mathcal{F}\,;c) = \sum_{i=1}^{c}\sum_{f_j(x)\in c_i}\mu_{ij}{D}^2(\theta_i\,;{f}_j),
+	\end{align}
+{\footnotesize	trong đó hàm $\theta_i(x)$ là PDF trọng tâm của chùm thứ $c_i$ và $\mu_{ij} =1$ nếu PDF $f_j$ thuộc chùm $c_i$ và $\mu_{ij}=0$ nếu ngược lại. }
 	
+	
+\end{frame}
+
+\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
+		Cho bảy PDF Gauss $1$-chiều $\mathcal{F}$ cho bởi Tai Vo-Van \& Pham-Gia, T., (2010) \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1$, với $i = 1\,;2\,;\ldots\,;7$ và các trung bình lần lượt là $\mu_i = \{0{,}3\,;4{,}0\,;9{,}1\,;1{,}0\,;5{,}5\,;8{,}0\,;4{,}8\}.$ Phân tích chùm KCF với $c=3$ và khoảng cách xét là $\mathcal{L}_2$.
 	
 	\begin{figure}
 		\centering
 		\begin{subfigure}[b]{.45\textwidth}
 			\centering
-			\includegraphics[width=.6\linewidth]{Fig/KCF_L2}
-			\caption{}
+			\includegraphics[width=.6\linewidth]{Figs/KCF_L2}
+			\caption{Trọng tâm chùm}
 		\end{subfigure}
 		\begin{subfigure}[b]{.45\textwidth}
 			\centering
-			\includegraphics[width=\linewidth]{Fig/KCF_U}
-			\caption{}
+			\includegraphics[width=\linewidth]{Figs/KCF_U}
+			\caption{Ma trận phân vùng}
 		\end{subfigure}
-		
-		\caption{Kết quả trọng tâm và ma trận phân vùng của thuật toán KCF}\label{figs:vdu:KCF}
-		\begin{minipage}{\textwidth}
-			\fontsize{11pt}{14pt}\selectfont\it
-			Chú thích: Hình (a) PDF trọng tâm chùm bằng nét liền và dữ liệu PDF nét đứt ở các chùm và (b) ma trận phân vùng cứng của KCF. Nguồn: Minh họa của tác giả.
-		\end{minipage}
 	\end{figure}
-	F\end{frame}
-
-
-\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm mờ (FCF)}
 	
 \end{frame}
 
 
-\begin{frame}{1.6. Phân loại hàm mật độ xác suất}{}
+\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{.45\textwidth}
+			\centering
+			\includegraphics[width=.8\linewidth]{Figs/tree_L2_complete.pdf}
+			\caption{Liên kết đủ}
+		\end{subfigure}
+		\begin{subfigure}[b]{.45\textwidth}
+			\centering
+			\includegraphics[width=.8\linewidth]{Figs/tree_L2_ward.pdf}
+			\caption{Liên kết Ward}
+		\end{subfigure}
+		
+	\end{figure}
+{\color{CTUblue}\small Phương pháp liên kết đủ có xu hướng tạo ra các chùm nhỏ, có thứ tự. Ngược lại, liên kết Ward cho kết quả các chùm có tính đồng nhất cao hơn về phân bố, làm cây phân cấp cân đối.}
+
+\end{frame}
+
+
+
+\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm mờ (FCF)}
+\begin{columns}
+	\begin{column}{.5\textwidth}\footnotesize
+			Giả sử $\mathcal{F}$-PDF chưa được gán nhãn, mục tiêu của bài toán là tối tiểu hóa tổng trọng số các giá trị hàm thành viên $\bm\mu$ có trọng số và bình phương khoảng cách $D(\theta_i\,;f_j)$.
+		\begin{align}\tag{FCF}\label{Jf}
+			\text{Minimise}\,&:\, J(\bm U\,;\Theta\,|\, \mathcal{F}\,;c\,;m) = \sum_{i=1}^{c}\sum_{j=1}^{n}\mu_{ij}^m{D}^2(\theta_i\,;{f}_j),\\\nonumber
+			\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1,\quad \forall j \in \{1\,,2\,, \ldots\,, n\}, \tag{C1}\label{c1} \\
+			\,&\mu_{ij} \in [0\,;1],\quad \forall i \in \{1\,,2\,,\ldots\,,c\}, \forall j \in \{1\,,2\,,\ldots\,,n\}, \tag{C2}\label{c2} \\
+			\,&\sum_{j=1}^{n} \mu_{ij} > 0,\quad \forall i \in {1\,,2\,,\ldots\,,c}. \tag{C3}\label{c3}
+		\end{align}	
+	\end{column}
+	\begin{column}{.5\textwidth}
+		\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Figs/C1_phanvung.pdf}
+\end{figure}
+		\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{Figs/FCF_U9.pdf}
+\end{figure}
+	\end{column}
+\end{columns}
+	
+\end{frame}
+
+
+\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất FCF} {Ví dụ số}
+	
+	\begin{figure}
+		\centering
+		\begin{subfigure}{.32\textwidth}
+			\includegraphics[width=.8\textwidth]{Figs/FCF_V0}
+			\caption{Trọng tâm khởi tạo}
+		\end{subfigure}
+		\begin{subfigure}{.32\textwidth}
+			\includegraphics[width=.8\textwidth]{Figs/FCF_V1}
+			\caption{Trọng tâm vòng lặp $t=1$}
+		\end{subfigure}
+		\begin{subfigure}{.32\textwidth}
+			\includegraphics[width=.8\textwidth]{Figs/FCF_V2}
+			\caption{Trọng tâm vòng lặp $t=2$}
+		\end{subfigure}\\
+		\begin{subfigure}{.32\textwidth}
+			\includegraphics[width=.8\textwidth]{Figs/FCF_V3}
+			\caption{Trọng tâm vòng lặp $t=3$}
+		\end{subfigure}
+		\begin{subfigure}{.32\textwidth}
+			\includegraphics[width=.8\textwidth]{Figs/FCF_V4}
+			\caption{Trọng tâm vòng lặp $t=4$}
+		\end{subfigure}
+		\begin{subfigure}{.32\textwidth}
+			\includegraphics[width=.8\textwidth]{Figs/FCF_V9}
+			\caption{Trọng tâm vòng lặp $t=9$}
+		\end{subfigure}
+
+	\end{figure}
+	
+	\begin{figure}[H]
+				\includegraphics[width=\textwidth]{Figs/FCF_U9}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{1.6. Phân loại hàm mật độ xác suất}{Phương pháp Bayes}
 	
 \end{frame}
 
@@ -513,7 +616,7 @@
 				\includegraphics[width=\textwidth]{Figs/FCF_IR10_STD0.8}
 			\end{figure}
 		\end{column}
-		\begin{column}{.5\textwidth}
+		\begin{column}{.6\textwidth}
 			Xét hai trọng tâm $\theta_1$ và $\theta_2$ và ma trận phân vùng $\mu_{1j}=u$ và $\mu_{2j}=(1-u)$. Ta có FCF
 			\begin{align*}
 				\theta_1(x) &= \frac{u^m \sum_{f_j \in c_1} f_j(x) + (1-u)^m \sum_{f_j(x) \in c_2} f_j(x)}{n_1u^m + n_2(1-u)^m},\\
@@ -538,12 +641,13 @@
 		\sum_{j=1}^n \sum_{i=1}^c \frac{1}{\omega_i}\, \mu_{ij}^m \,D^2(f_j\,;\theta_i),\\
 		\text{s.t}\,&:\,\sum_{i=1}^{c} \mu_{ij} = 1\,,\quad \forall j \in {1\,,2\,, \ldots\,, n}, \tag{C1}\label{c1_pro} 
 	\end{align}
+	{\footnotesize	trong đó $\omega_i^{(t)}=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ và $\mu^{(t-1)}_{ij}$ là ma trận phân vùng.}
 \end{block}
-	trong đó $\omega_i^{(t)}=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ và $\mu^{(t-1)}_{ij}$ là ma trận phân vùng.
+
 	
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.95\linewidth]{Figs/partition_m.pdf}
+	\includegraphics[width=.9\linewidth]{Figs/partition_m.pdf}
 \end{figure}
 \end{frame}
 
@@ -590,8 +694,51 @@
 
 
 \begin{frame}{2.3. Phân tích chùm mất cân bằng (IFCF)}{Ví dụ số}
+		Giả sử dữ liệu được tạo theo công thức tổng quát về kỳ vọng và độ lệch chuẩn của mỗi chùm, cụ thể như sau:
+	\begin{align*}
+		\begin{array}{clll}
+			\text{Chùm } 1: & f(x\,\vert \,\mu\,;\sigma^2)\sim \mathcal{N}(\mu_1\,;\sigma_1^2)\,; 
+			\text{với } \mu_1 \sim \mathcal{N}(-5{,}0\,;1{,}0)\,;\;\sigma_1 = 2{,}0,\\
+			\text{Chùm } 2: & f(x\,\vert \,\mu\,;\sigma^2)\sim \mathcal{N}(\mu_2\,;\sigma_2^2)\,; 
+			\text{với } \mu_2 \sim \mathcal{N}(5{,}0\,;1{,}0)\,;\;\sigma_2 = 4{,}0.
+		\end{array}
+	\end{align*}
+
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{Figs/pdf_bandau}
+	\end{figure}
 \end{frame}
+
+\begin{frame}{2.3. Phân tích chùm mất cân bằng (IFCF)}{Kết quả các loại khoảng cách}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{Figs/eva_distances}	
+\begin{flushleft}\footnotesize
+	Chú thích: (a) ARI, (b) NMI, (c) $Silhouette$ và (d) thời gian tính toán.
+\end{flushleft}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{2.3. Phân tích chùm mất cân bằng (IFCF)}{ Kết quả các tham số mờ}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.7\linewidth]{Figs/figM}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{2.3. Phân tích chùm mất cân bằng (IFCF)}{ Kết quả thuật toán phân tích chùm}
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{Figs/eva_by_distance_wilcoxon}
+	\end{figure}
+\end{frame}
+
+
+
 
 \begin{frame}{2.4. Phân loại mất cân bằng (Bayes-IFCF)}
 	
@@ -605,12 +752,30 @@
 
 \subsection{3. Ứng dụng cho dữ liệu hình ảnh}
 
+\begin{frame}{3.1. Vấn đề trích xuất đặc trưng hình ảnh}{Ước lượng màu sắc vs ước lượng khối màu}
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/kde_image_density}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.5\linewidth]{Figs/kde_patches_density}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-\begin{frame}{3.1. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ hình ảnh}
+
+
+\begin{frame}{3.2. Phân tích chùm mất cân bằng (IFCF)}{Ví dụ hình ảnh}
 	
 \end{frame}
 
-\begin{frame}{3.2. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ hình ảnh}
+\begin{frame}{3.3. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ hình ảnh}
 	
 \end{frame}
 
@@ -637,33 +802,84 @@
 	\end{frame}
 }
 
-\begin{frame}{Một số bàn luận}{Về thuật toán IFCF}
+\begin{frame}{Một số bàn luận}{Về thuật toán phân tích chùm IFCF}
 				
-					\begin{figure}
-					\centering
-					\includegraphics[width=0.5\textheight]{Figs/C2_hamIR}
-				\end{figure}
+				\begin{columns}
+					\begin{column}{.4\textwidth}
+						\begin{figure}[H]
+							\centering
+							\includegraphics[width=\textwidth]{Figs/C2_hamIR}
+						\end{figure}
+					\end{column}
+					\begin{column}{.6\textwidth}\small
+							\begin{align*}
+							\frac{1}{1 + \left(\frac{\omega_2}{\omega_1}\right)^{\frac{1}{m-1}}
+								\left(\frac{\mathcal{L}^2_2(\theta_1\,;f_j)}{\mathcal{L}^2_2(\theta_2\,;f_j)}\right)^{\frac{1}{m-1}}}
+							+
+							\frac{1}{\left(\frac{\omega_1}{\omega_2}\right)^{\frac{1}{m-1}}
+								\left(\frac{\mathcal{L}^2_2(\theta_2\,;f_j)}{\mathcal{L}^2_2(\theta_1\,;f_j)}\right)^{\frac{1}{m-1}}+1}
+							= 1.
+						\end{align*}
+						Khi $\omega_1 \to \infty$, ta có $
+						\lim_{\omega_1 \to \infty} \mu_{i1} = 1$ và
+						$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$
+					\end{column}
+				\end{columns}
 				
-			\begin{align*}
-				\frac{1}{1 + \left(\frac{\omega_2}{\omega_1}\right)^{\frac{1}{m-1}}
-					\left(\frac{\mathcal{L}^2_2(\theta_1\,;f_j)}{\mathcal{L}^2_2(\theta_2\,;f_j)}\right)^{\frac{1}{m-1}}}
-				+
-				\frac{1}{\left(\frac{\omega_1}{\omega_2}\right)^{\frac{1}{m-1}}
-					\left(\frac{\mathcal{L}^2_2(\theta_2\,;f_j)}{\mathcal{L}^2_2(\theta_1\,;f_j)}\right)^{\frac{1}{m-1}}+1}
-				= 1.
-			\end{align*}
-			Khi $\omega_1 \to \infty$, ta có $
-			\lim_{\omega_1 \to \infty} \mu_{i1} = 1$ và
-			$\lim_{\omega_1 \to \infty} \mu_{i2} = 0.$
+					
+		
 	
 	
 	
 \end{frame}
 
-
-\begin{frame}{Kết luận và kiến nghị} 
+\begin{frame}{Một số bàn luận}{Về thuật toán phân loại Bayes-IFCF}
 	
 \end{frame}
+
+
+\begin{frame}{Kết luận và định hướng nghiên cứu}\footnotesize
+	
+	\begin{columns}[t,onlytextwidth]
+		
+		% ======== CỘT TRÁI ========
+		\begin{column}{0.48\textwidth}
+			
+			\begin{block}{\textbf{Kết luận}}
+				\begin{itemize}
+					\item \textbf{Phân tích chùm:} Đề xuất thuật toán mờ cải tiến \textit{IFCF} cho dữ liệu PDF mất cân bằng; được chứng minh hội tụ, tổng quát hơn các thuật toán hiện có.
+					\item \textbf{Phân loại:} Thiết lập thuật toán phân loại mới với \textit{tiên nghiệm động}, dựa trên IFCF và chỉ số hậu nghiệm mới; hiệu quả hơn các tiên nghiệm tĩnh truyền thống.
+					\item \textbf{Thực nghiệm:} Xây dựng quy trình trích xuất đặc trưng hình ảnh thành PDF và áp dụng hai thuật toán trên. Kết quả thực nghiệm cho thấy mô hình ổn định, chính xác, và hiệu quả tính toán cao.
+				\end{itemize}
+			\end{block}
+			
+		\end{column}
+		
+		% ======== CỘT PHẢI ========
+		\begin{column}{0.48\textwidth}\footnotesize
+			
+			\begin{block}{\textbf{Định hướng nghiên cứu}}
+				\textit{Về lý thuyết:}
+				\begin{itemize}
+					\item Phát triển mô hình SR kết hợp để xử lý hiệu ứng “đồng nhất” và “xi-phông”;
+					\item Chứng minh tính hội tụ nghiêm ngặt với các $f$-phân kỳ;
+					\item Phát triển học không giám sát trực tuyến cho PDF động.
+				\end{itemize}
+				
+				\textit{Về ứng dụng:}
+				\begin{itemize}
+					\item Mở rộng trích xuất đặc trưng phức tạp (kết cấu, hình dạng, đa kênh màu);
+					\item Tối ưu siêu tham số và phát triển công cụ XAI cho SR-PDF;
+					\item Áp dụng cho dữ liệu PDF đa chiều trong các miền nghiên cứu mới.
+				\end{itemize}
+			\end{block}
+			
+		\end{column}
+		
+	\end{columns}
+	
+\end{frame}
+
 
 
 
