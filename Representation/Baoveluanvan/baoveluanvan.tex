@@ -755,15 +755,17 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 \begin{frame}{3.1. Vấn đề trích xuất đặc trưng hình ảnh}{Ước lượng màu sắc vs ước lượng khối màu}
 	\begin{columns}
 		\begin{column}{.5\textwidth}
-			\begin{figure}[H]
+			\begin{figure}
 				\centering
 				\includegraphics[width=.8\linewidth]{Figs/kde_image_density}
+				\caption{Ước lượng màu sắc}
 			\end{figure}
 		\end{column}
 		\begin{column}{.5\textwidth}
-			\begin{figure}[H]
+			\begin{figure}
 				\centering
 				\includegraphics[width=.5\linewidth]{Figs/kde_patches_density}
+				\caption{Ước lượng khối màu}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -771,12 +773,146 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 
 
 
-\begin{frame}{3.2. Phân tích chùm mất cân bằng (IFCF)}{Ví dụ hình ảnh}
-	
+\begin{frame}{3.2. Phân tích chùm mất cân bằng (IFCF)}{Ví dụ hình ảnh dựa vào ước lượng màu sắc}
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			
+			\begin{figure}
+				\centering
+				\begin{subfigure}[b]{.4\linewidth}
+					\centering
+					\includegraphics[width=\textwidth]{Figs/D82.png}
+					\caption{}
+				\end{subfigure}
+				\begin{subfigure}[b]{.4\linewidth}
+					\centering
+					\includegraphics[width=\textwidth]{Figs/D102.png}
+					\caption{}
+				\end{subfigure}\hfill\\
+				\begin{subfigure}[b]{.3\linewidth}
+					\centering
+					\includegraphics[width=\textwidth]{Figs/EX2_IR_10}
+					\caption{}
+				\end{subfigure}
+				\begin{subfigure}[b]{.3\linewidth}
+					\centering
+					\includegraphics[width=\textwidth]{Figs/EX2_IR_50}
+					\caption{}
+				\end{subfigure}
+				\begin{subfigure}[b]{.3\linewidth}
+					\centering
+					\includegraphics[width=\textwidth]{Figs/EX2_IR_100}
+					\caption{}
+				\end{subfigure}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=\linewidth]{Figs/fig:U_ex3.pdf}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{3.3. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ hình ảnh}
+
+
+\begin{frame}{3.2. Phân tích chùm mất cân bằng (IFCF)}{Ví dụ hình ảnh dựa vào ước lượng màu sắc}
+
+		\begin{figure}
+			\centering
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k2}
+				\caption{$c=2$}
+			\end{subfigure}
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k3}
+				\caption{$c=3$}
+			\end{subfigure}
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k4}
+				\caption{$c=4$}
+			\end{subfigure}\hfil\\
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k5}
+				\caption{$c=5$}
+			\end{subfigure}
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k6}
+				\caption{$c=6$}
+			\end{subfigure}
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k7}
+				\caption{$c=7$}
+			\end{subfigure}\hfil\\
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k8}
+				\caption{$c=8$}
+			\end{subfigure}
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k9}
+				\caption{$c=9$}
+			\end{subfigure}
+			\begin{subfigure}[h]{0.32\linewidth}
+				\centering
+				\includegraphics[width=.8\linewidth]{Figs/BKIFF_k10}
+				\caption{$c=10$}
+			\end{subfigure}
+			\caption{Kết quả thuật toán đề nghị IFCF được áp dụng cho ảnh Landsat đối với Ví dụ~\ref{vdu:anh2}}\label{fig:APP}
+			\begin{minipage}{\textwidth}
+				\fontsize{11pt}{14pt}\selectfont\it
+				Nguồn: Minh họa của tác giả.
+			\end{minipage}
+		\end{figure}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{3.3. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ hình ảnh dựa vào ước lượng khối màu}
+	\begin{columns}
+		\begin{column}{.55\textwidth}
+			
+			\begin{figure}[H]
+				\centering
+				\begin{subfigure}{.48\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{Figs/Figure_1}
+					\caption{}
+				\end{subfigure}
+				\begin{subfigure}{.48\textwidth}
+					\centering
+					\includegraphics[width=.8\linewidth]{Figs/Figure_2}
+					\caption{}
+				\end{subfigure}
+			\end{figure}
+		\end{column}
+	\end{columns}
 	
+	\begin{table}[H]
+		\centering\scriptsize
+		\begin{tabular*}{\textwidth}{@{\extracolsep\fill}llccc@{\extracolsep\fill}}
+			\toprule
+			Phương pháp & $ACC$ & $GM$ & $F_1$-score & Thời gian (s) \\ 
+			\midrule
+			Bayes-IFCF & 1{,}0$\pm$0{,}00 & 1{,}0$\pm$0{,}00 & 1{,}0$\pm$0{,}00 & 0{,}04 \\
+			Bayes-FCF  & 0{,}84$\pm$0{,}12 & 0{,}37$\pm$0{,}49 & 0{,}79$\pm$0{,}16 & 0{,}14 \\
+			Bayes-U    & 0{,}75$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}67$\pm$0{,}00 & 0{,}00 \\
+			Bayes-L    & 0{,}50$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}38$\pm$0{,}00 & 0{,}00 \\
+			Bayes-J    & 0{,}50$\pm$0{,}00 & 0{,}00$\pm$0{,}00 & 0{,}38$\pm$0{,}00 & 0{,}00 \\
+			\bottomrule
+		\end{tabular*}
+	\end{table}
 \end{frame}
 
 
@@ -863,7 +999,6 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 				\begin{itemize}
 					\item Phát triển mô hình SR kết hợp để xử lý hiệu ứng “đồng nhất” và “xi-phông”;
 					\item Chứng minh tính hội tụ nghiêm ngặt với các $f$-phân kỳ;
-					\item Phát triển học không giám sát trực tuyến cho PDF động.
 				\end{itemize}
 				
 				\textit{Về ứng dụng:}
