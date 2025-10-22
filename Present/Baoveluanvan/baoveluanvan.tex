@@ -361,13 +361,6 @@
 \end{frame}
 
 
-
-\begin{frame}{1.4. Độ đo khoảng cách hai PDF}
-	
-\end{frame}
-
-
-
 \begin{frame}{1.4. Độ đo khoảng cách hai PDF}{Ví dụ 1.1}
 			\begin{columns}
 				
@@ -435,7 +428,38 @@
 
 \begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
 	
-\end{frame}
+	Phân tích chùm phân vùng giả sử $\mathcal{S}$ là tập các vector $d$-chiều $x_j$, trong đó $j=1\,,2\,,\ldots\,,n$. Mỗi đối tượng $o_j$ liên hệ với các PDF $f_j(x)$. Tập $\mathcal{F}$ gồm họ $n$-PDF trên $\Omega$. Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong $c$-chùm cho trước với $i=1\,,2\,,\ldots\,,c$ và $c\in\mathbb{N}$, thỏa mãn ba ràng buộc
+	\begin{enumerate}
+		\item Hợp tất cả các chùm $\bigcup_i c_i$ bằng $\mathcal{F}$;
+		\item Giao của mỗi chùm là rỗng, tức là $c_i\cap c_j =\emptyset$, với mỗi $i\ne j$;
+		\item Lực lượng của mỗi chùm là khác rỗng, tức là $|c_i|\ne \emptyset$.
+	\end{enumerate}
+	
+	Cho bảy PDF Gauss $1$-chiều $\mathcal{F}$ cho bởi Tai Vo-Van \& Pham-Gia, T., (2010) \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1$, với $i = 1\,;2\,;\ldots\,;7$ và các trung bình lần lượt là $\mu_i = \{0{,}3\,;4{,}0\,;9{,}1\,;1{,}0\,;5{,}5\,;8{,}0\,;4{,}8\}.$ Phân tích chùm KCF với $c=3$ và khoảng cách xét là $\mathcal{L}_2$.
+	
+	Ta có kết quả sau khi thực hiện các vòng lặp được giải chi tiết ở Phụ lục (tr. \pageref{phulucB}). Hình~\ref{figs:vdu:KCF}(a) cho thấy kết quả  PDF trọng tâm của ba chùm. Các khoảng cách khác cũng được khảo sát, tuy nhiên kết quả đều giống nhau.
+	
+	
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{.45\textwidth}
+			\centering
+			\includegraphics[width=.6\linewidth]{Fig/KCF_L2}
+			\caption{}
+		\end{subfigure}
+		\begin{subfigure}[b]{.45\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{Fig/KCF_U}
+			\caption{}
+		\end{subfigure}
+		
+		\caption{Kết quả trọng tâm và ma trận phân vùng của thuật toán KCF}\label{figs:vdu:KCF}
+		\begin{minipage}{\textwidth}
+			\fontsize{11pt}{14pt}\selectfont\it
+			Chú thích: Hình (a) PDF trọng tâm chùm bằng nét liền và dữ liệu PDF nét đứt ở các chùm và (b) ma trận phân vùng cứng của KCF. Nguồn: Minh họa của tác giả.
+		\end{minipage}
+	\end{figure}
+	F\end{frame}
 
 
 \begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm mờ (FCF)}
