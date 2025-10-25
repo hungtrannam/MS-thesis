@@ -101,8 +101,8 @@
 \beamertemplatenavigationsymbolsempty
 
 
-\title[]{\textbf{\color{white} Nhận dạng thống kê cho hàm mật độ xác suất mất~cân~bằng\\ và ứng dụng cho ảnh}}
-\subtitle{\normalsize\color{white} Báo cáo bảo vệ luận văn tốt nghiệp thạc sĩ\\\rule{3cm}{2pt}}
+\title[]{\textbf{\color{white} Báo cáo luận văn tốt nghiệp thạc sĩ}}
+\subtitle{\normalsize\color{white}Nhận dạng thống kê cho hàm mật độ xác suất mất~cân~bằng và ứng dụng cho ảnh \\\rule{3cm}{2pt}}
 \author[HUNG Tran-Nam]{\color{white}\normalsize Trần Nam Hưng\inst{1}}
 \institute[CTU]{\color{white}\footnotesize
 	\inst{1} Khoa Khoa học Tự nhiên, Trường Đại học Cần Thơ
@@ -144,12 +144,12 @@
 \begin{minipage}{.9\textwidth}
 	\begin{enumerate}
 		\item {\color{white} PHẦN MỞ ĐẦU}
-		\begin{enumerate}
+		\item {\color{white} PHẦN NỘI DUNG}
+			\begin{enumerate}
 			\item {\color{white} Chương 1. Một số vấn đề liên quan đến hàm mật độ xác suất}
 			\item {\color{white} Chương 2. Nhận dạng thống kê cho dữ liệu mất cân bằng}
 			\item {\color{white} Chương 3. Ứng dụng cho dữ liệu hình ảnh}
 		\end{enumerate}
-		\item {\color{white} PHẦN NỘI DUNG}
 		\item {\color{white} PHẦN KẾT LUẬN}
 		\item {\color{white} TÀI LIỆU THAM KHẢO}
 	\end{enumerate}
@@ -195,6 +195,8 @@
 		\centering
 		\includegraphics[width=.8\linewidth]{Figs/lydochondetai2}
 	\end{figure}
+	{\color{CTUblue}
+		$\Rightarrow$ Dữ liệu PDF cho ta thông tin mật độ, độ lệch, phân tán. Nó là một khách thể nghiên cứu.}
 	
 \end{frame}
 
@@ -334,7 +336,7 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{1.3. Hàm mật độ xác suất bổ sung}
+\begin{frame}{1.2. Hàm mật độ xác suất bổ sung}
 	
 	\begin{columns}
 		\begin{column}{.6\textwidth}
@@ -358,7 +360,7 @@
 \end{frame}
 
 
-\begin{frame}{1.3. Hàm mật độ xác suất bổ sung (t.t.)}
+\begin{frame}{1.2. Hàm mật độ xác suất bổ sung (t.t.)}
 	
 	\begin{columns}
 		\begin{column}{.6\textwidth}
@@ -381,7 +383,7 @@
 \end{frame}
 
 
-\begin{frame}{1.4. Độ đo khoảng cách hai PDF}{Ví dụ 1.1}
+\begin{frame}{1.3. Độ đo khoảng cách hai PDF}{Ví dụ 1.1}
 			\begin{columns}
 				
 				\begin{column}{.5\textwidth}
@@ -465,7 +467,7 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 	
 \end{frame}
 
-\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
+\begin{frame}{1.6. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
 		Cho bảy PDF Gauss $1$-chiều $\mathcal{F}$ cho bởi Tai Vo-Van \& Pham-Gia, T., (2010) \cite{Tai2010} có phương sai đồng nhất $\sigma_i^2 = 1$, với $i = 1\,;2\,;\ldots\,;7$ và các trung bình lần lượt là $\mu_i = \{0{,}3\,;4{,}0\,;9{,}1\,;1{,}0\,;5{,}5\,;8{,}0\,;4{,}8\}.$ Phân tích chùm KCF với $c=3$ và khoảng cách xét là $\mathcal{L}_2$.
 	
 	\begin{figure}
@@ -485,7 +487,7 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 \end{frame}
 
 
-\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
+\begin{frame}{1.6. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm không mờ (KCF \& HCF)}
 	
 	\begin{figure}[H]
 		\centering
@@ -507,7 +509,7 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 
 
 
-\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm mờ (FCF)}
+\begin{frame}{1.6. Phân tích chùm hàm mật độ xác suất} {Phân tích chùm mờ (FCF)}
 \begin{columns}
 	\begin{column}{.5\textwidth}\footnotesize
 			Giả sử $\mathcal{F}$-PDF chưa được gán nhãn, mục tiêu của bài toán là tối tiểu hóa tổng trọng số các giá trị hàm thành viên $\bm\mu$ có trọng số và bình phương khoảng cách $D(\theta_i\,;f_j)$.
@@ -533,7 +535,7 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 \end{frame}
 
 
-\begin{frame}{1.5. Phân tích chùm hàm mật độ xác suất FCF} {Ví dụ số}
+\begin{frame}{1.6. Phân tích chùm hàm mật độ xác suất FCF} {Ví dụ số}
 	
 	\begin{figure}
 		\centering
@@ -570,8 +572,11 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 \end{frame}
 
 
-\begin{frame}{1.6. Phân loại hàm mật độ xác suất}{Phương pháp Bayes}
-	
+\begin{frame}{1.7. Phân loại hàm mật độ xác suất}{Phương pháp Bayes}
+		\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{Figs/bayes1}
+	\end{figure}
 \end{frame}
 
 
@@ -602,9 +607,6 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 		\includegraphics[width=.55\linewidth]{Figs/thao}
 	\end{subfigure}
 \end{figure}
-{\color{CTUblue}
-	$\Rightarrow$ Dữ liệu PDF cho ta thông tin mật độ, độ lệch, phân tán. Nó là một khách thể nghiên cứu.}
-
 \end{frame}
 
 
@@ -741,10 +743,42 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 
 
 \begin{frame}{2.4. Phân loại mất cân bằng (Bayes-IFCF)}
-	
+\begin{columns}
+	\begin{column}{.6\textwidth}
+		\begin{figure}[H]
+			\includegraphics[width=.9\linewidth]{Figs/bayes2}
+		\end{figure}
+	\end{column}
+	\begin{column}{.4\textwidth}\footnotesize
+		Quy tắc Bayes cải tiến, xếp một PDF mới vào lớp $c_i$ nếu $$c_i = \arg\max_{i}\left\{\frac{\bm U^{(test)}_{ij} \exp\left (-\bm D^{(test)}_{ij}/\tau\right )}{\displaystyle\sum_s\bm U^{(test)}_{sj} \exp\left (-\bm D^{(test)}_{sj}/\tau\right )}\right\},$$ trong đó khoảng cách $D$ được chuẩn hóa với $\tau=\frac{1}{n_{test}}\sum_iD_{ij}$ . 
+		
+		Nguyên tắc này chỉ định rằng một PDF được gán vào một lớp cụ thể nếu nó đồng thời sở hữu giá trị cao nhất đối với xác suất tiên nghiệm và độ đo tương đồng đối với lớp đó.
+	\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{2.5. Phân loại mất cân bằng (Bayes-IFCF)}{Ví dụ số}
+	
+	\begin{figure}[H]
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=.45\linewidth]{Figs/vidu2_full}
+			\caption{$10:200:200$}
+		\end{subfigure}
+		\begin{subfigure}{.45\textwidth}
+			\centering
+			\includegraphics[width=.4\linewidth]{Figs/vidu2_test}
+			\caption{$2:10:8$}
+		\end{subfigure}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{Figs/CD_3metrics}
+		\begin{flushleft}\footnotesize
+			Chú thích: (a) ACC, (b) F1-score, (d) thời gian tính toán.
+		\end{flushleft}
+	\end{figure}
 	
 \end{frame}
 
@@ -969,9 +1003,6 @@ Bài toán phân tích chùm phân bổ PDF thứ $j$ vào chùm thứ $i$ trong
 	
 \end{frame}
 
-\begin{frame}{Một số bàn luận}{Về thuật toán phân loại Bayes-IFCF}
-	
-\end{frame}
 
 
 \begin{frame}{Kết luận và định hướng nghiên cứu}\footnotesize

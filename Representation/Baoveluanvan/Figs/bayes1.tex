@@ -1,0 +1,57 @@
+\documentclass[margin=2mm]{standalone}
+\usepackage[utf8]{vietnam}
+\usepackage{times}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{amsfonts,amsmath,amssymb,bm}
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
+
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+
+\begin{document}
+	\begin{tikzpicture}[
+		node distance=1.4cm and 1.4cm,
+		every node/.style={font=\normalsize, align=center},
+		box/.style={rectangle, rounded corners=3pt, draw=CTUcyan, thick, fill=CTUblue,
+			text width=4cm, minimum height=1cm, text=white},
+		cat/.style={rectangle, rounded corners=4pt, draw=CTUblue, thick,
+			fill=white, text width=3.6cm, text=black,
+			minimum height=1cm, font=\bfseries},
+		arrow/.style={-{Latex[length=2mm]}, thick, draw=CTUblue}
+		]
+		
+		% Root
+		\node[cat, text width=4cm,fill=CTUcyan!40] (root) {Ước lượng xác suất tiên nghiệm \\ $\mathbb{P}(Y=k)$};
+		
+		% Categories (left/right)
+		\node[cat, left=of root] (phi) {Không dựa vào dữ liệu};
+		\node[cat, right=of root] (du) {Dựa trên dữ liệu};
+		
+		% Phi dữ liệu branches
+		\node[box, above=of phi] (prior) {Dựa trên \\ kiến thức lịch sử};
+		\node[box, below=of phi] (uniform) {Giả định đều \\ $\mathbb{P}(Y=k)=1/K$};
+		
+		% Dựa trên dữ liệu branches
+		\node[box, above=of du] (freq) {Ước lượng từ dữ liệu \\ $\mathbb{P}(Y=k)=n_k/n$};
+		\node[box, below=of du] (smooth) {Điều chỉnh Laplace / Jeffreys \\ $\mathbb{P}(Y=k)=\dfrac{n_k+\alpha}{n+\alpha K}$};
+		\node[box, above right=of du, xshift=1cm] (fuzzy) {Tiên nghiệm mờ};
+		\node[box, below right=of du, xshift=1cm] (fuzzyimp) {Tiên nghiệm mờ cải tiến};
+		
+		% Connections
+		\draw[arrow] (root) -- (phi);
+		\draw[arrow] (root) -- (du);
+		
+		\draw[arrow] (phi) -- (prior);
+		\draw[arrow] (phi) -- (uniform);
+		
+		\draw[arrow] (du) -- (freq);
+		\draw[arrow] (du) -- (smooth);
+		\draw[arrow] (du) -- (fuzzy);
+		\draw[arrow] (du) -- (fuzzyimp);
+		\draw[arrow] (fuzzy) -- (fuzzyimp);
+		
+	\end{tikzpicture}
+\end{document}

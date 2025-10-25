@@ -1,0 +1,70 @@
+\documentclass[
+margin=2mm,
+]{standalone}
+
+\usepackage[utf8]{vietnam}
+\usepackage{times}
+\usepackage{pgfplots}
+\usepackage{scrextend}
+\changefontsizes{15pt}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart, fit}
+
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\usepackage{xcolor}
+\usepackage{bm}
+
+\definecolor{CTUblue}{rgb}{0.121568627450,0.3607843137,0.662745098}
+\definecolor{CTUcyan}{rgb}{0,0.6862745098,0.937254902}
+
+\begin{document}
+	\begin{tikzpicture}[
+		node distance=1.3cm and 2.2cm,
+		every node/.style={font=\normalsize, align=center},
+		process/.style={rectangle, rounded corners=3pt, draw=CTUcyan, line width=3pt, fill=CTUblue!90, text width=6cm, minimum height=0.9cm, text=white},
+		decision/.style={diamond, aspect=2, draw=CTUcyan, line width=3pt, fill=CTUcyan!40, text width=3cm, inner sep=2pt},
+		startstop/.style={ellipse, draw=CTUblue, line width=2pt, fill=CTUcyan!40, text width=4cm, minimum height=0.9cm},
+		arrow/.style={-{Latex[length=2mm]}, thick, draw=CTUblue}
+		]
+		
+		% ==== TRAINING PHASE ====
+		\node[startstop] (start) {Bắt đầu Bayes–IFCF};
+		\node[process, below=of start] (init) {Khởi tạo ngẫu nhiên ma trận phân vùng và tập PDF trọng tâm};
+		\node[decision, below=of init] (cond) {Hội tụ?};
+		\node[process, below left=1.1cm and -0.5cm of cond] (update1) {Cập nhật PDF trọng tâm };
+		\node[process, below=of update1] (update2) {Tính khoảng cách \\ $D_{ij}=\mathcal{L}_2(\theta_i^{(t)},f_j^{(train)})$};
+		\node[process, below=of update2] (update3) {Cập nhật mức độ phân vùng};
+		\node[process, below=of update3] (update4) {Cập nhật trọng số lớp \\ $\omega_i^{(t)}=\frac{1}{n_{train}}\sum_j \mu_{ij}^{(t)}$};
+		\node[process, below right=1.3cm and -0.5cm of cond] (store) {Lưu kết quả \\ $\Theta^*, \bm{\mu}^*$};
+		
+		% Loop arrows
+		\draw[arrow] (start) -- (init);
+		\draw[arrow] (init) -- (cond);
+		\draw[arrow] (cond) -- node[left]{Không} (update1);
+		\draw[arrow] (update1) -- (update2);
+		\draw[arrow] (update2) -- (update3);
+		\draw[arrow] (update3) -- (update4);
+		\draw[arrow] (update4) |- ++(0,-2) -| node[pos=0.25,right]{} (cond);
+		\draw[arrow] (cond) -- node[above]{Có} (store);
+		
+		% ==== TESTING PHASE ====
+		\node[startstop, right=2cm of store] (phase2) {Giai đoạn kiểm tra (Testing)};
+		\node[process, below=of phase2] (disttest) {Tính khoảng cách \\ $D_{ij}^{(test)}=\mathcal{L}_2(\theta_i^*,f_j^{(test)})$};
+		\node[process, below=of disttest] (assign) {Gán nhãn Bayes \\ 
+			$c_j^*=\arg\max_i \left\{
+			\frac{\mu_{ij}\exp(-D_{ij}^{(test)}/\tau)}
+			{\sum_s \mu_{sj}\exp(-D_{sj}^{(test)}/\tau)}
+			\right\}$};
+		\node[startstop, below=of assign] (end) {Xuất kết quả $c_j^*$};
+		
+		% Arrows between phases
+		\draw[arrow] (store) -- node[above]{} (phase2);
+		\draw[arrow] (phase2) -- (disttest);
+		\draw[arrow] (disttest) -- (assign);
+		\draw[arrow] (assign) -- (end);
+		
+	\end{tikzpicture}
+\end{document}

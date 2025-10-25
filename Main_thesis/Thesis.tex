@@ -2884,7 +2884,7 @@ Do vậy, để đánh giá mô hình một cách đầy đủ và tin cậy, c�
 Luận văn thực hiện các bước trong Thuật toán~\ref{alg:IFCF_QB} một cách tuần tự. Thuật toán gồm hai phần bao gồm tìm xác suất tiên nghiệm và phân lớp Bayes. Thuật toán tìm xác suất tiên nghiệm là IFCF (Thuật toán~\ref{alg:IFCF}) với khoảng cách tiêu chuẩn $\mathcal{L}^2_2$ và các tham số liên quan bao gồm $m = 2{,}0$, $c=3$ và khởi tạo bằng $k$-means++\index{$k$-means++}. Sau đó, phân lớp Bayes xác định các lớp mà tập kiểm tra thuộc về.
 
 \textbf{Bước 1. Tiền xử lý}. Trong bước này, luận văn chia dữ liệu thành hai tập hợp các PDF huấn luyện và kiểm tra. Tập huấn luyện có chức năng đào tạo các PDF để xác định tiên nghiệm cho tập kiểm tra. Tập kiểm tra được chia ngẫu nhiên như sau:
-Chọn cố định số lượng phần tử trong tập kiểm tra là $n_1 = 2\,; n_2= 10\,; n_3 = 8$. Mỗi PDF kiểm tra $f^{(test)}_j$ với $j = 1\,;\div\,;20$ được gán vào tập kiểm tra là tổ hợp $C_{n}^{n_i}$ với $i=1\div 3$ để mỗi lớp đều có PDF kiểm tra. Tập huấn luyện là phần còn lại sau khi đã chọn ngẫu nhiên kiểm tra.  Hình~\ref{fig:vidu2:lechgauss} thể hiện các PDF kiểm tra chọn ngẫu nhiên từ dữ liệu. Ta có số lượng tập huấn luyện và kiểm tra như sau:
+Chọn cố định số lượng phần tử trong tập kiểm tra là $n_1 = 2\,; n_2= 10\,; n_3 = 8$. Mỗi PDF kiểm tra $f^{(test)}_j$ với $j = 1\,;2\,;\ldots\,;20$ được gán vào tập kiểm tra là tổ hợp $C_{n}^{n_i}$ với $i=1\,;2\,; 3$ để mỗi lớp đều có PDF kiểm tra. Tập huấn luyện là phần còn lại sau khi đã chọn ngẫu nhiên kiểm tra.  Hình~\ref{fig:vidu2:lechgauss} thể hiện các PDF kiểm tra chọn ngẫu nhiên từ dữ liệu. Ta có số lượng tập huấn luyện và kiểm tra như sau:
 
 \begin{table}[H]
 	\centering
