@@ -1,0 +1,88 @@
+\documentclass[a4paper,oneside]{article} % Tài liệu dạng sách, in một mặt trên giấy A4
+%\documentclass[13pt,a4paper]{extarticle}
+
+% ====== GÓI CƠ BẢN ======
+\usepackage{scrextend}
+\changefontsizes{13pt}
+\usepackage{float,booktabs}
+\usepackage[utf8]{vietnam} % Hỗ trợ gõ và hiển thị tiếng Việt
+\usepackage[numbers,sort&compress]{natbib} % Gói trích dẫn tài liệu
+
+% ====== DÒNG VĂN BẢN ======
+\linespread{1.2} % Giãn dòng
+\setlength{\parskip}{\baselineskip} % Khoảng cách giữa các đoạn
+\usepackage[skip=6pt, indent=1cm]{parskip} % Tùy chỉnh cách đoạn và thụt đầu dòng
+\usepackage{setspace}
+
+
+% ====== CÀI ĐẶT LỀ TRANG ======
+\usepackage[top=2cm,bottom=2cm,right=2cm,left=3cm]{geometry} % Cài đặt lề văn bản và chiều cao phần đầu trang
+
+% ====== GÓI DANH SÁCH ======
+\usepackage{enumerate} % Tạo danh sách đánh số
+\usepackage{enumitem} % Tuỳ chỉnh kiểu danh sách
+
+% ====== CHÈN HÌNH ẢNH ======
+\usepackage{graphicx} % Gói chèn ảnh
+\graphicspath{{Figs/}} % Đặt thư mục chứa hình ảnh
+\usepackage{pdfpages}
+\usepackage{amsmath,amssymb,bm,cool,mathtools,amsfonts,mathptmx} % Các gói công thức Toán
+
+% ====== HYPERLINK ======
+\usepackage[hidelinks,unicode,pdfusetitle]{hyperref} % Tạo liên kết nhưng không đổi màu
+\hypersetup{
+	colorlinks=true,
+	citecolor=black,
+	linkcolor=black,
+	filecolor=black,      
+	urlcolor=black,
+} % Cấu hình màu liên kết cho in ấn
+
+
+% ====== THÔNG TIN LUẬN VĂN ======
+\newcommand{\university}{ĐẠI HỌC CẦN THƠ}
+\newcommand{\school}{Khoa Khoa học Tự nhiên}
+\newcommand{\nametitle}{Nhận dạng thống kê cho~hàm~mật~độ~xác~suất mất~cân~bằng và~ứng dụng cho dữ liệu ảnh}
+\newcommand{\MainAdvisor}{PGs. TS. Võ Văn Tài}
+\newcommand{\student}{Trần Nam Hưng}
+\newcommand{\studentid}{M1823002}
+\newcommand{\yeardone}{2025}
+\newcommand{\major}{Lý~thuyết Xác~suất và Thống~kê Toán~học}
+\newcommand{\city}{Cần Thơ}
+
+\begin{document}
+\begin{center}
+	\begin{tabular}{cc}
+		\bf   BỘ GIÁO DỤC VÀ ĐÀO TẠO     &   \bf  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\\
+ \bf ĐẠI HỌC CẦN THƠ           &     \bf   Độc lập -- Tự do -- Hạnh phúc\\
+ \rule{4cm}{1pt} &  \rule{4cm}{1pt}\\
+\end{tabular}\\
+\vspace{20pt}
+{\fontsize{14pt}{12pt}\selectfont\bf BẢN GIẢI TRÌNH CHỈNH SỬA LUẬN VĂN THẠC SĨ}\\
+{\it (Thông qua Hội đồng bảo vệ luận văn thạc sĩ ngày 26/10/2025)}\\
+\vspace{20pt}
+\end{center}
+	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}}
+	Họ và tên học viên: \selectfont\MakeUppercase\student &                      Mã số học viên: \studentid\\
+	Ngành: \major                       &                       Mã ngành: 8 46 01 06\\
+\end{tabular*}
+	Tên đề tài luận văn Thạc sĩ: \nametitle \\
+	Người hướng dẫn: \MainAdvisor, Khoa Khoa học Tự nhiên, Đại học Cần Thơ.
+	
+	\vspace{20pt}
+	Luận văn đã chỉnh sửa theo ý kiến đóng góp của Hội đồng như sau:
+	
+\begin{table}[H]\centering\footnotesize
+	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}p{0.5cm}p{7.5cm}p{7.5cm}@{\extracolsep\fill}}
+		\toprule
+		\bf TT &\bf	Nội dung góp ý, đề nghị chỉnh sửa &\bf	Nội dung đã chỉnh sửa\\
+		      &\it (Ghi cụ thể nội dung cần chỉnh sửa, mục, trang$\ldots$) &\\
+		1 &&\\
+		2 &&\\
+		\midrule
+		
+		
+	\end{tabular*}
+\end{table}
+	
+\end{document}
