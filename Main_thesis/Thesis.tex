@@ -254,6 +254,7 @@
 	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{\extracolsep\fill}}
 		\toprule
 		\bf Ký hiệu                                                  & \bf Mô tả                                                   \\ \midrule
+		$(\Omega\,;\mathcal{E}\,;\mathbb{P})$  & Không gian xác suất\\
 		$X\,;Y\,;Z\,;S$                                               & Biến ngẫu nhiên                                             \\
 		$Y$                                                           & Tập nhãn của dữ liệu (đối với bài toán phân loại)           \\
 		$ \bm D\,; \bm U\,; \bm U^\intercal $                         & Ma trận, ma trận chuyển vị                                  \\
@@ -328,7 +329,7 @@
 
 Nhận dạng thống kê (SR) giải quyết hai bài toán chính bao gồm nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} và không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)} \cite{Bishop:DeepLearning24,theodoridis2006pattern}. Nhận dạng không được giám sát\index{nhận dạng không được giám sát (unsupervised recognition)}  là việc chia dữ liệu thành các nhóm sao cho các phần tử trong cùng một nhóm đó có sự tương tự nhiều hơn so với các phần tử bên ngoài nhóm \cite{bezdek1984fcm,macqueen1967some}. Do đó, nó còn được gọi là bài toán phân tích chùm. Phân tích chùm là cơ sở của việc lưu trữ, trích xuất và xử lý dữ liệu lớn nên được rất nhiều nhà thống kê và công nghệ thông tin quan tâm.  Nhận dạng được giám sát\index{nhận dạng được giám sát (supervised recognition)} là việc xếp một phần tử vào một lớp trong các lớp đã biết một cách thích hợp \cite{Bishop:DeepLearning24,webb2003statistical}. Do đó, nó còn được gọi là bài toán phân loại. Phân loại đã và đang được áp dụng trong nhiều lĩnh vực khác nhau. Chẳng hạn, trong y tế hoạt động chẩn đoán bệnh của các bác sĩ xem một người có bệnh hay không có bệnh B, loại nào trong bệnh B thực chất là thực hiện bài toán phân loại. Trong lĩnh vực xã hội và an ninh, việc nhận dạng khuôn mặt, chữ ký, dấu vân tay của một người cũng chính là thực hiện bài toán phân loại.
 
-Dữ liệu cho bài toán SR có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất (PDF). Bài toán SR cho dữ liệu rời rạc đã được xem xét đầu tiên đã và đang được nghiên cứu tiên phong \cite{zha2025data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu khoảng đã được đề xuất và phát triển \cite{maia2011holt}. Khi dữ liệu lớn và phức tạp như hình ảnh, đối tượng hình ảnh có thể được xem là một PDF trong một số phương pháp biểu diễn \cite{nguyen2024new}, do đó nhận dạng thống kê cho các PDF được đề xuất. 
+Dữ liệu cho bài toán SR có thể là dữ liệu rời rạc, dữ liệu khoảng và hàm mật độ xác suất (PDF). Bài toán SR cho dữ liệu rời rạc đã được nghiên cứu và là tiên phong \cite{zha2025data,cortes1995support,bezdek1984fcm}. Trong thực tế, chúng ta cũng lưu trữ nhiều dữ liệu khoảng như nhiệt độ, lượng mưa, giá chứng khoán nên nhận dạng cho kiểu dữ liệu khoảng đã được đề xuất và phát triển \cite{maia2011holt}. Khi dữ liệu lớn và phức tạp như hình ảnh, đối tượng hình ảnh có thể được xem là một PDF trong một số phương pháp biểu diễn \cite{nguyen2024new}, do đó nhận dạng thống kê cho các PDF được đề xuất. 
 
 Xét về số lượng phần tử trong các nhóm/lớp, dữ liệu có thể được gọi là mất cân bằng và không mất cân bằng. Khi số lượng phần tử của các nhóm/lớp không có sự chênh lệch nhiều thì nó được gọi là không mất cân bằng. Tuy nhiên, trong nhận dạng dữ liệu của thực tế, nhiều trường hợp chúng ta gặp phải dữ liệu mất cân bằng.  Đó là kiểu dữ liệu có một hoặc một số ít nhóm/lớp chứa số lượng phần tử quá nhỏ so với các nhóm còn lại \cite{hu2024gat}. Chẳng hạn, trong tầm soát  ung thư, ca bị bệnh có thể ít hơn 1000 lần so với trường hợp không bị bệnh \cite{tang2008svms}. Trong trường hợp này, độ chính xác của các nhóm/lớp thiểu số là quan trọng hơn \cite{hu2024gat}, bởi vì việc tầm soát sai người mắc ung thư là khỏe mạnh gây ra tổn thất tính mạng lớn hơn nhiều so với tầm soát sai người không mắc. Trong khi đó, mô hình nhận dạng phải đối mặt với chênh lệch lớn về số lượng mẫu, nó dễ dàng bị thiên lệch về nhóm/lớp đa số, dẫn đến hiệu quả thấp trong việc nhận dạng các mẫu thiểu số \cite{nguyen2009learning}. Tức là, các thuật toán nhận dạng  truyền thống sẽ không phát huy hiệu quả.
 
@@ -385,8 +386,7 @@ Bài toán SR cho dữ liệu mất cân bằng với các phần tử rời r�
 		\chapter{MỘT SỐ VẤN ĐỀ LIÊN QUAN ĐẾN HÀM MẬT ĐỘ XÁC SUẤT}\label{chapter_1}
 	
 	\begin{quotation}\fontsize{12pt}{14pt}\selectfont
-		Chương~\ref{chapter_1} trình bày cơ sở lý thuyết và những tổng kết về hàm mật độ xác suất (PDF) được sử dụng cho hai chương tiếp theo. Cụ thể, các kiến thức chung về PDF và một số trường hợp PDF thông dụng được trình bày. Ngoài ra, ước lượng PDF và độ đo đánh giá sự tương tự chúng
-		được phân tích. Chương này này cũng trình bày các thuật toán phân tích chùm và phân loại cơ bản cho dữ liệu không mất cân bằng làm nền tảng để nghiên cứu dữ liệu mất cân bằng. Trong mỗi vấn đề, luận văn có sự phân tích, tổng kết và nhận xét để làm rõ bản chất, đặc biệt là ý nghĩa ứng dụng của nó.
+		Chương~\ref{chapter_1} trình bày cơ sở lý thuyết và những tổng kết về PDF được sử dụng cho hai chương tiếp theo. Cụ thể, các kiến thức chung về PDF và một số trường hợp PDF thông dụng được trình bày. Ngoài ra, ước lượng PDF và độ đo đánh giá sự tương tự của chúng	được phân tích. Chương này cũng trình bày các thuật toán phân tích chùm và phân loại cơ bản cho dữ liệu không mất cân bằng làm nền tảng để nghiên cứu dữ liệu mất cân bằng. Trong mỗi vấn đề, luận văn có sự phân tích, tổng kết và nhận xét để làm rõ bản chất, đặc biệt là ý nghĩa ứng dụng của nó.
 	\end{quotation}
 	
 \section{Hàm mật độ xác suất}
@@ -398,9 +398,9 @@ Các PDF là khách thể nghiên cứu của một số nhà thống kê hiện
 \dng{[Biến ngẫu nhiên] Một biến ngẫu nhiên $X$ trong không gian xác suất $(\Omega\,;\mathcal{E}\,;\mathbb{P})$ là một hàm Borel đo được từ $\Omega$ đến $\mathbb{R}$, cụ thể $X\,:\,(\Omega\,;\mathcal{E})\to(\mathbb{R}\,;\mathcal{B}(\mathbb{R}))$.
 }
 
-Tương tự, ta mở rộng biến ngẫu nhiên $d$-chiều cho vector  ${\bm X}=(X_1\,;X_2\,;\ldots\,;X_d)$ trong $\mathbb{R}^d$, với mỗi thành phần $X_i$ là biến ngẫu nhiên trên $(\Omega\,;\mathcal{E}\,;\mathbb{P})$, nhận giá trị trong $\mathbb{R}$ với $i=1\,,2\,,\ldots\,,d$.
+Tương tự, ta mở rộng cho biến ngẫu nhiên $d$-chiều cho vector ngẫu nhiên  ${\bm X}=(X_1\,;X_2\,;\ldots\,;X_d)$ trong $\mathbb{R}^d$, với mỗi thành phần $X_i$ là biến ngẫu nhiên trên $(\Omega\,;\mathcal{E}\,;\mathbb{P})$, nhận giá trị trong $\mathbb{R}$ với $i=1\,,2\,,\ldots\,,d$.
 
-\dng{[Biến ngẫu nhiên $d$-chiều] Biến ngẫu nhiên $d$-chiều là một hàm Bo-rel đo được từ không gian xác suất  đến không gian Euclid $\mathbb{R}^d$, tức là $\bm X\,:\,(\Omega\,;\mathcal{E})\to(\mathbb{R}^d\,;\mathcal{B}(\mathbb{R}^d))$.
+\dng{[Biến ngẫu nhiên $d$-chiều] Biến ngẫu nhiên $d$-chiều là một hàm Bo-rel đo được từ không gian xác suất  đến không gian Euclide $\mathbb{R}^d$, tức là $\bm X\,:\,(\Omega\,;\mathcal{E})\to(\mathbb{R}^d\,;\mathcal{B}(\mathbb{R}^d))$.
 }
 
 
@@ -411,10 +411,10 @@ $P(x) = P\{\omega\,:\,X(\omega)\le x\}$ với mọi $x \in\mathbb{R}$.
 }
 
 \tch{Phân phối $P$ thỏa các tính chất sau:
-\begin{enumerate}
+\begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
     \item $P$ không giảm,  tức là nếu $s_1\le s_2$ thì $P(s_1)\le P(s_2)$;
     \item $\lim_{x\to\infty} P(x)= 1$ và $\lim_{x\to-\infty} P(x)= 0$;
-    \item $P$ liên tục phải, tức là $\lim_{x\downarrow y }P(y) = P(x)$;
+    \item $P$ liên tục phải, tức là $\lim_{y\downarrow x }P(y) = P(x)$;
     \item Nếu  $P(x_-) = \lim_{y\uparrow x} P(y)$ thì $P(x_-) = \mathbb{P}(X < x)$;
     \item $\mathbb{P}(X=x)=P(x)-P(x_-)$.
 \end{enumerate}
@@ -427,44 +427,67 @@ $P(x) = P\{\omega\,:\,X(\omega)\le x\}$ với mọi $x \in\mathbb{R}$.
 }
 
 \tch{Hàm phân vị $F^{-1}$ thỏa các tính chất sau:
-	\begin{enumerate}
+	\begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
 		\item $F^{-1}$ không giảm, tức là nếu $s_1 \leq s_2$ thì $F^{-1}(s_1) \leq F^{-1}(s_2)$;
-		\item Nếu $P$ liên tục, $P(F^{-1}(s)) = s$ và $F^{-1}(P(x)) = x$;
-		\item Kỳ vọng và phương sai được biểu diễn qua $F^{-1}$ dưới công thức
-		$ \mathbb{E}(X)=\int^1_0 F^{-1}(s)\mathrm{\,d}s$ và $\mathrm{Var}(X) = \mathbb{E}^2\left(X-\mathbb{E}(X)\right)$;
-		\item Nếu $P$ đối xứng quanh $\mu$, ta có quan hệ đối xứng $ F^{-1}(1-s)=2\mu -F^{-1}(s)$.
+		\item Nếu $P$ liên tục và tăng nghiêm ngặt, $P(F^{-1}(s)) = s$ và $F^{-1}(P(x)) = x$;
+		\item Kỳ vọng và phương sai của biến ngẫu nhiên $X$ được biểu diễn qua hàm phân vị $F^{-1}$ lần lượt bằng công thức
+		$ \mathbb{E}(X)=\int^1_0 F^{-1}(s)\mathrm{\,d}s$ và $\mathrm{Var}(X) =\int^1_0 \left (F^{-1}(s)-\mathbb{E}(X)\right )^2\mathrm{\,d}s$;
+		\item Nếu $P$ đối xứng quanh kỳ vọng $ \mathbb{E}(X)$, ta có quan hệ đối xứng $ F^{-1}(1-s)=2\mu -F^{-1}(s)$.
 	\end{enumerate}
 }
 
 
 
 \dng{[Hàm mật độ xác suất]
-Họ các hàm phân phối $P: \mathbb{R}^d \to [0\,;\infty]$ là liên tục tuyệt đối trong $(\Omega\,;\mathcal{B})$-đo được với $\mu$ hoặc là độ đo Lebesgue hoặc độ đo đếm. Khi đó, một PDF trong không gian thực được định nghĩa là
-\begin{align*}
-f(x)=\frac{\mathrm{d}P}{\mathrm{d}\mu}(x)=\left\{
-	\begin{array}{ll}
-		f(s), & \text{nếu $\mu$ là độ đo Lebesgue},\\
-		\mathbb{P}(X = x) = p(x), & \text{nếu $\mu$ là độ đo đếm}.\\
-	\end{array}\right.
-\end{align*}
-
+	Giả sử $P$ là một độ đo xác suất trên không gian đo được $(\mathbb{R}^d, \mathcal{B})$, liên tục tuyệt đối theo một độ đo $\lambda$ hoặc độ đo Lebesgue hoặc độ đo đếm. 	
+	Theo định lý Radon--Nikodym, tồn tại một hàm $f : \mathbb{R}^d \to [0,\infty)$ sao cho
+	\[
+	\mathbb{P}(A) = \int_\Omega f(x)\, \mathrm{d}\lambda(x), \quad \forall \Omega \in \mathcal{B}.
+	\]
+	Hàm $f$ được gọi là PDF của $P$ theo $\lambda$, ký hiệu
+	\[
+	f(x) = \frac{\mathrm{d}P}{\mathrm{d}\lambda}(x) =
+	\begin{cases}
+		f(x), & \text{nếu $\lambda$ là độ đo Lebesgue (phân phối liên tục)},\\[4pt]
+		\mathbb{P}(X = x), & \text{nếu $\lambda$ là độ đo đếm (phân phối rời rạc).}
+	\end{cases}
+	\]
 }
 
+
 \tch{\label{tc1} Một PDF có các tính chất như sau:
-\begin{enumerate}
-    \item PDF liên tục $f(x)$ là hàm không âm, $f(x)\ge0\,; \forall x\in\Omega$;
-    \item Tích phân $f(x)$ trên toàn miền $\Omega$ bằng $1$;
-    \item Xác suất trên tập con Borel $A \subseteq \Omega$ được tính bằng tích phân $
-    \mathbb{P}(X \in A) = \int_A f(x) \,\mathrm{d}x
-    $;
-    \item Công thức xác suất trong tập Borel thực $$\mathbb{P}(a<x<b) = \mathbb{P}(a<x\le b) = \mathbb{P}(a\le x<b) = \mathbb{P}(a\le x \le b)=\int_a^b f(x)\mathrm{\,d}x.$$
-\end{enumerate}
+    \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
+    	\item Một PDF là hàm không âm, $f(x) \ge 0,\ \forall x \in \mathbb{R}^d$;
+    	\item Tích phân của $f(x)$ trên toàn không gian bằng $1$, tức là $
+    	\int_{\mathbb{R}^d} f(x)\, \mathrm{d}\lambda(x) = 1;
+    	$
+    	\item Với mọi tập Borel $A \subseteq \mathbb{R}^d$, xác suất để biến ngẫu nhiên $X$ nhận giá trị trong $A$ được cho bởi
+    	$
+    	\mathbb{P}(X \in A) = \int_A f(x)\, \mathrm{d}\lambda(x);
+    	$
+    	\item Trong trường hợp $\lambda$ là độ đo Lebesgue,
+    	\[
+    	\mathbb{P}(a < X < b) = \mathbb{P}(a \le X \le b) = \int_a^b f(x)\, \mathrm{d}x.
+    	\]
+    \end{enumerate}
 }
 
 
 
 \chy{
-Các hàm phân phối $P$ và phân vị $F^{-1}$ đều không bảo toàn trong không gian vector Hilbert\index{không gian vector Hilbert (Hilbert vector space)}. Các giá trị của PDF liên tục thì có thể tùy ý, nhưng phải thỏa mãn Tính chất \ref{tc1}. Một xác suất tại điểm $x=x_0$ không được khảo sát trong PDF liên tục tuyệt đối mà ở một tập Borel thực như Tính chất \ref{tc1}. Tức là xác suất tại điểm bất kì luôn bằng $0$ đối với biến ngẫu nhiên $X$ liên tục. Ta có thể tổng quát hóa tập các PDF thành không gian con lồi của $\mathcal{L}^1(\Omega)$ và đóng trong tô-pô chuẩn $\mathcal{F}(\Omega) = \left\{f\,:\,\Omega\to \mathbb{R}^+\vert \int_\Omega f(x)\mathrm{\,d}\mu(x)=1\right\}.$
+Các hàm phân phối $P$ và phân vị $F^{-1}$ đều không bảo toàn trong không gian vector Hilbert\index{không gian vector Hilbert (Hilbert vector space)}.
+Đối với phân phối liên tục tuyệt đối, một PDF $f$ có thể nhận các giá trị tùy ý trên $\mathbb{R}^d$, nhưng phải thỏa mãn các tính chất trong Tính chất~\ref{tc1}. 
+Một xác suất tại điểm $x=x_0$ không được khảo sát trong PDF liên tục, mà chỉ thông qua xác suất của các tập Borel  thực như Tính chất \ref{tc1}(iii). Nói cách khác, $\mathbb{P}(X = x_0) = 0\,; \forall\, x_0 \in \mathbb{R}^d$,
+đối với mọi biến ngẫu nhiên liên tục.
+Tập hợp tất cả các hàm mật độ xác suất có thể được xem là một tập con lồi và đóng trong không gian Banach $\mathcal{L}^1(\Omega)$, được ký hiệu bởi
+$
+\mathcal{F}(\Omega)
+= \left\{
+f : \Omega \to \mathbb{R}_{\ge0}
+\;\middle|\;
+\int_\Omega f(x)\,\mathrm{d}\lambda(x) = 1
+\right\}.
+$
 }
 
 
@@ -477,18 +500,18 @@ Các hàm phân phối $P$ và phân vị $F^{-1}$ đều không bảo toàn tro
 
 \dng{Hai tham số kỳ vọng và phương sai của biến ngẫu nhiên $X$ được định nghĩa bởi
 $
-		\mathbb{E}(X) = \int_{\Omega} x f(x) \mathrm{\,d}x <\infty \text{ và }
-		\mathrm{Var}(X) = \int_{\Omega} (x - \mathbb{E}(X))^2 f(x) \mathrm{\,d}x.
-$
+		\mathbb{E}(X) = \int_{\mathbb{R}^d} x f(x) \mathrm{\,d}x <\infty \text{ và }
+		\mathrm{Var}(X) = \int_{\mathbb{R}^d} (x - \mathbb{E}(X))^2 f(x) \mathrm{\,d}x
+$, với $x\in\mathbb{R}^d$.
 }
 
 
 
 
-\dng{Với các đối tượng PDF trong khoảng $I\ne0$, toán tử tổng và tích có hướng được thay thế bởi phép nhân điểm\index{phép nhân điểm (point-wise product)} và lũy thừa. Tức là, $$(f\oplus g)(x)=\frac{f(x)g(x)}{\int_I f(\xi)g(\xi)\mathrm{\,d}\xi} \text{ và }(\alpha\odot f)(x) = \frac{f^{\alpha}(x)}{\int_I f^{\alpha}(\xi)\mathrm{\,d}\xi} \text{ với }\alpha\in\mathbb{R}.$$}
+\dng{Với các đối tượng PDF trong khoảng $I\ne\emptyset$, toán tử tổng và tích có hướng được thay thế bởi phép nhân điểm\index{phép nhân điểm (point-wise product)} và lũy thừa. Tức là, $$(f\oplus g)(x)=\frac{f(x)g(x)}{\int_I f(\xi)g(\xi)\mathrm{\,d}\xi} \text{ và }(\alpha\odot f)(x) = \frac{f^{\alpha}(x)}{\int_I f^{\alpha}(\xi)\mathrm{\,d}\xi} \text{ với }\alpha\in\mathbb{R}.$$}
 
 \dng{[Dữ liệu PDF $1$-chiều]\label{dng:data1}
-Dữ liệu PDF một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,;o_2\,;\ldots\,;o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,;u_j]$ là khoảng xác định của $o_j$ và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là PDF xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
+Dữ liệu PDF là một bộ đối tượng không chắc chắn $o$ có dạng $(o_1\,;o_2\,;\ldots\,;o_n)$ \cite{gullo2008hierarchical}. Mỗi đối tượng $o_j$ chứa một cặp $(I_j\,;f_j)$ với mỗi $1\le j\le n$, trong đó $I_j=[l_j\,;u_j]$ là khoảng xác định của $o_j$ và $f\,:\,\mathbb{R}\to\mathbb{R}^+$ là PDF xếp các giá trị xác suất vào mỗi $x\in I_j$ sao cho 
 $$\int_{x\in I_j}f_j(x)\mathrm{\,d}x=1 \text{ và } \int_{x \in\mathbb{R}\setminus I_j}f_j(x)\mathrm{\,d}x=0. $$
 }
 
@@ -500,7 +523,7 @@ $$\int_{\bm x\in \bm R_j}f_j(\bm x)\mathrm{\,d}\bm x=1 \text{ và } \int_{x \in\
 
 
 
-Để minh họa và mô phỏng, luận văn này làm việc trên dữ liệu các PDF định nghĩa trên toàn không gian mẫu $I=\mathbb{R}$ hoặc $\bm R=\mathbb{R}^d$ và ký hiệu xuyên suốt là tập $\mathcal{F}=\{f_1(x)\,;f_2(x)\,,\ldots\,;f_n(x)\}$. Để đơn giản hóa, luận văn này giả định các đối tượng này là độc lập.
+Để minh họa và mô phỏng, luận văn này làm việc trên dữ liệu các PDF định nghĩa trên toàn không gian mẫu $I=\mathbb{R}$ hoặc $\bm R=\mathbb{R}^d$ và ký hiệu xuyên suốt là tập $\mathcal{F}=\{f_1(x)\,;f_2(x)\,,\ldots\,;f_n(x)\}$. Để đơn giản hóa, luận văn này giả định các đối tượng PDF trong các ví dụ số là độc lập và cùng phân phối.
 
 \subsection{Một số hàm mật độ xác suất thông dụng}
 
@@ -517,7 +540,7 @@ Các PDF cụ thể được nghiên cứu bởi các nhà khoa học thực ngh
 }
 
 
-Một PDF Gauss có dáng điệu hình cong đối xứng và miền xác định khắp không gian. Đặc trưng kỳ vọng chính là giá trị cực đại và xác định vị trí của nó trong không gian. Đặc trưng phương sai thể hiện độ phân tán hay độ cao của hàm. Giá trị của nó càng nhỏ thì PDF càng cao và hẹp. Thông thường, dữ liệu rời rạc thường được biến đổi thành dữ liệu PDF qua biểu diễn của PDF Gauss (khi ước lượng tham số) hoặc nhân-Gauss (khi ước lượng phi tham số). Hơn hết, định lý giới hạn trung tâm chứng minh tổng các biến ngẫu nhiên độc lập có phân phối xấp xỉ Gauss. Ta cũng thành lập được công thức tính xác suất khi $X\sim\mathcal{N}(\mu\,;\sigma^2)$ là $\mathbb{P}(a<X<b)=\varphi\left(\frac{b-\mu}{\sigma}\right)-\varphi\left(\frac{a-\mu}{\sigma}\right)$, trong đó hàm $\varphi(x) = \int_{0}^x\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)\mathrm{\,d}t$.
+Một PDF Gauss có dáng điệu hình cong đối xứng và miền xác định khắp không gian. Đặc trưng kỳ vọng chính là giá trị cực đại và xác định vị trí của nó trong không gian. Đặc trưng phương sai thể hiện độ phân tán hay độ cao của hàm. Giá trị của nó càng nhỏ thì PDF càng cao và hẹp. Thông thường, dữ liệu rời rạc thường được biến đổi thành dữ liệu PDF qua biểu diễn của PDF Gauss (khi ước lượng tham số) hoặc nhân-Gauss (khi ước lượng phi tham số). Hơn hết, định lý giới hạn trung tâm chứng minh tổng các biến ngẫu nhiên độc lập và có cùng phân phối xấp xỉ có phân phối Gauss. Ta cũng thành lập được công thức tính xác suất khi $X\sim\mathcal{N}(\mu\,;\sigma^2)$ là $\mathbb{P}(a<X<b)=\varphi\left(\frac{b-\mu}{\sigma}\right)-\varphi\left(\frac{a-\mu}{\sigma}\right)$, trong đó hàm Laplac\index{hàm Laplace (Laplace function)} $\varphi(x) = \int_{0}^x\frac{1}{\sqrt{2\pi}}\exp(-\xi^2/2)\mathrm{\,d}\xi$.
 
 
 \bode{[Tổng hai PDF Gauss]\label{ble:sum-Gauss}
@@ -528,14 +551,14 @@ Một PDF Gauss có dáng điệu hình cong đối xứng và miền xác đị
 }
 
 \bode{[Tích phân của hai PDF Gauss]\label{ble:tich-Gauss}
-	Cho hai PDF Gauss trên số thực gồm $\mathcal{N}(\mu_1\,;\sigma_1^2)$ và $\mathcal{N}(\mu_2\,;\sigma_2^2)$ với kỳ vọng $\mu_1, \mu_2 \in \mathbb{R}$ và phương sai $\sigma_1^2, \sigma_2^2 >0$. Khi đó, tích phân giữa hai PDF được xác định bởi
+	Cho hai PDF Gauss gồm $\mathcal{N}(\mu_1\,;\sigma_1^2)$ và $\mathcal{N}(\mu_2\,;\sigma_2^2)$ với kỳ vọng $\mu_1, \mu_2 \in \mathbb{R}$ và phương sai $\sigma_1^2, \sigma_2^2 >0$. Khi đó, tích giữa hai PDF được xác định bởi
 	$$
-	\int_{\Omega} \mathcal{N}(\mu_1\,;\sigma_1^2) \cdot \mathcal{N}(\mu_2\,;\sigma_2^2) \,\mathrm{d}x = \frac{1}{\sqrt{2\pi(\sigma_1^2 + \sigma_2^2)}} \exp\left(-\frac{(\mu_1 - \mu_2)^2}{2(\sigma_1^2 + \sigma_2^2)}\right).
+	\int_{\mathbb{R}} \mathcal{N}(\mu_1\,;\sigma_1^2) \cdot \mathcal{N}(\mu_2\,;\sigma_2^2) \,\mathrm{d}x = \frac{1}{\sqrt{2\pi(\sigma_1^2 + \sigma_2^2)}} \exp\left(-\frac{(\mu_1 - \mu_2)^2}{2(\sigma_1^2 + \sigma_2^2)}\right).
 	$$
 }
 
 \chm{
-	Ta tính tích phân 
+	Ta tính tích phân của tích này bởi
 	\begin{align*}
 		&\int_{-\infty}^{\infty} \mathcal{N}(x\,;\,\mu_1\,;\sigma_1^2) \cdot \mathcal{N}(x\,;\,\mu_2\,;\sigma_2^2)\,\mathrm{d}x\\ &=\int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{(x - \mu_1)^2}{2\sigma_1^2} - \frac{(x - \mu_2)^2}{2\sigma_2^2}\right)\,\mathrm{d}x\\
 		&= \int_{-\infty}^{\infty}\frac{1}{2\pi \sigma_1 \sigma_2} \exp\left(-\frac{1}{2} \underbrace{\left(\frac{1}{\sigma_1^2} + \frac{1}{\sigma_2^2} \right)}_{\coloneq1/\sigma^2} x^2 
@@ -551,17 +574,17 @@ Từ đây, ta suy ra được điều phải chứng minh.
 
 
 \dng{[PDF Gauss $d$-chiều]
-		Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo PDF Gauss (chuẩn) với hai tham số ${\bm\mu}$ và $\bm\Sigma$ (trong đó ${\bm\mu}\in\mathbb{R}^d$ và $\bm\Sigma$ thuộc đa tạp của ma trận đối xứng xác định dương) nếu nó có PDF là
+		Một vector ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo PDF Gauss (chuẩn) với hai tham số ${\bm\mu}$ và $\bm\Sigma$ (trong đó ${\bm\mu}\in\mathbb{R}^d$ là vectơ kỳ vọng và $\bm\Sigma$ là ma trận hiệp phương sai đối xứng xác định dương) nếu nó có PDF là
 		$$ \mathcal{N}(\bm x\,;\,{\bm\mu}\,;{\bm\Sigma}) = \frac{1}{(2\pi)^{d/2}|{\bm\Sigma}|^{1/2}}\exp\left(-\frac{1}{2}(\bm x-{\bm\mu})^\intercal{\bm\Sigma}^{-1}(\bm x-{\bm\mu})\right)\,,\bm x \in \mathbb{R}^d,	 $$
 		trong đó $|\bm\Sigma|$ là định thức của ma trận hiệp phương sai.
 	}
 	
 		
-	\dly{[Kỳ vọng và hiệp phương sai] Vector kỳ vọng và ma trận hiệp phương sai của biến ngẫu nhiên  $\bm X$ có PDF Gauss lần lượt là $\mathbb{E}(\bm{X})= \bm\mu$ và $\mathrm{Cov}(\bm{X}) = \bm{\Sigma}$.
+	\dly{[Kỳ vọng và hiệp phương sai] Vector kỳ vọng và ma trận hiệp phương sai của vector ngẫu nhiên  $\bm X$ có PDF Gauss lần lượt là $\mathbb{E}(\bm{X})= \bm\mu$ và $\mathrm{Cov}(\bm{X}) = \bm{\Sigma}$.
 	}
 	
 		\bode{[Tổng hai PDF Gauss $d$-chiều]\label{ble:sum-Gaussdimension}
-		Cho hai biến ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\bm\mu_1\,; \bm\Sigma_1)$ và $X_2 \sim \mathcal{N}(\bm\mu_2\,; \bm\Sigma_2)$. Khi đó $S = X_1 \pm X_2$ cũng là biến ngẫu nhiên có hàm mật độ Gauss, tức là
+		Cho hai vector ngẫu nhiên độc lập $X_1 \sim \mathcal{N}(\bm\mu_1\,; \bm\Sigma_1)$ và $X_2 \sim \mathcal{N}(\bm\mu_2\,; \bm\Sigma_2)$. Khi đó $S = X_1 \pm X_2$ cũng là vector ngẫu nhiên có hàm mật độ Gauss, tức là
 		$
 		S \sim \mathcal{N}(\bm\mu_1 \pm \bm\mu_2\,; \bm\Sigma_1 + \bm\Sigma_2).
 		$
@@ -570,7 +593,7 @@ Từ đây, ta suy ra được điều phải chứng minh.
 	\bode{[Tích phân của hai PDF Gauss $d$-chiều]\label{ble:tich-Gaussdimension}
 		Cho hai PDF Gauss $d$-chiều có dạng $\mathcal{N}(\bm\mu_1\,;\bm\Sigma_1)$ và $\mathcal{N}(\bm\mu_2\,;\bm\Sigma_2)$ với vector kỳ vọng $\bm\mu_1\,; \bm\mu_2 \in \mathbb{R}^d$ và ma trận hiệp phương sai $\bm\Sigma_1\,, \bm\Sigma_2$ xác định dương. Khi đó, tích phân giữa hai PDF này được xác định bởi
 \begin{align*}
-	\int_{\Omega} \mathcal{N}(\bm\mu_1\,; \bm\Sigma_1) 
+	\int_{\mathbb{R}^d} \mathcal{N}(\bm\mu_1\,; \bm\Sigma_1) 
 	\cdot \mathcal{N}(\bm\mu_2\,; \bm\Sigma_2)\,\mathrm{d}x 
 	&= \frac{1}{(2\pi)^{d/2}|\bm\Sigma_1 + \bm\Sigma_2|^{1/2}} \\
 	&\quad \times \exp\left( 
@@ -606,15 +629,23 @@ Từ đây, ta suy ra được điều phải chứng minh.
 
 Ngoài ra, các phát triển bất đối xứng của Gauss điển hình là hàm Gauss-lệch \cite{azzalini1985class} với PDF của nó được định nghĩa như sau:
 \dng{[PDF Gauss-lệch $1$-chiều]
-	Biến ngẫu nhiên liên tục $X$ tuân theo mật độ Gauss-lệch (chuẩn-lệch) \cite{azzalini1985class} với ba tham số $\mu$, $\sigma^2$ và $\alpha$ (trong đó $\mu\,,\alpha\in\mathbb{R}$ và $\sigma^2\in\mathbb{R}_{>0}$) nếu nó có PDF là
-	$$ \mathcal{SN}(x\,;\,\mu\,;\sigma^2\,;\alpha) = \frac{2}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\int^{\alpha(x-\mu)/\sigma}_{-\infty}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{t^2}{2}\right)\mathrm{\,d}t\,; x \in \mathbb{R}.	 $$
+	Một biến ngẫu nhiên liên tục $X$ tuân theo mật độ Gauss-lệch (chuẩn-lệch) \cite{azzalini1985class} với ba tham số $\mu$, $\sigma^2$ và $\alpha$ (trong đó $\mu\,,\alpha\in\mathbb{R}$ và $\sigma^2\in\mathbb{R}_{>0}$) nếu nó có PDF là
+	$$ \mathcal{SN}(x\,;\,\mu\,;\sigma^2\,;\alpha) = \frac{2}{\sqrt{2\pi\sigma^2}}
+	\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+	\Phi\!\left(\frac{\alpha(x-\mu)}{\sigma}\right)\,; x \in \mathbb{R},	 $$
+	trong đó $\Phi(\cdot)$ là hàm phân phối tích lũy của phân phối chuẩn tắc, tức là
+	$$
+	\Phi(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} 
+	\exp\!\left(-{\xi^2}/{2}\right) \mathrm{d}\xi.
+	$$
+	
 }
 
 Các PDF Gauss-lệch nhận thêm một tham số thể hiện mức độ lệch $\alpha$. Khi giá trị $\alpha$ càng lớn, độ lệch so với kỳ vọng $\mu$ càng lớn. Khi $\alpha = 0$, phân phối này trở về Gauss như Định nghĩa~\ref{dng:Gauss}.
 
 \dly{[Kỳ vọng và phương sai] Kỳ vọng và phương sai của biến ngẫu nhiên $X$ có PDF Gauss-lệch lần lượt là 
 	$	\mathbb{E}(X) = \mu + \sigma \delta \sqrt{\frac{2}{\pi}}$ và $\mathrm{Var}(X) = \sigma^2 \left(1 - \frac{2 \delta^2}{\pi}\right)
-		$, với $\delta=\frac{\alpha}{\sqrt{1 + \alpha^2}}$ nằm trong khoảng $(-1\,;1)$.
+		$, với $\delta=\frac{\alpha}{\sqrt{1 + \alpha^2}}\in(-1\,;1)$.
 }
 
 
@@ -623,7 +654,7 @@ Các PDF Gauss-lệch nhận thêm một tham số thể hiện mức độ lệ
 
 
 \dng{[PDF-đều $1$-chiều]
-	Biến ngẫu nhiên liên tục $X$ tuân theo hàm mật độ xác suất đều trên đoạn $[l\,;u]$ với $l < u$ và $l\,, u \in \mathbb{R}$ nếu nó có PDF là
+	Một biến ngẫu nhiên liên tục $X$ tuân theo hàm mật độ xác suất đều trên đoạn $[l\,;u]$ với $l < u$ và $l\,, u \in \mathbb{R}$ nếu nó có PDF là
 	$$
 	\mathcal	U(x\,;\,l\,; u) =
 	\begin{cases}
@@ -637,7 +668,7 @@ Các PDF Gauss-lệch nhận thêm một tham số thể hiện mức độ lệ
 }
 
 \dng{[PDF-đều $d$-chiều]
-	Biến ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo PDF-đều $d$-chiều trên hình hộp $[l_1\,; u_1] \times \cdots \times [l_d\,; u_d]$ với $l_i < u_i$ và $l_i\,, u_i \in \mathbb{R}$ nếu nó có PDF là
+	Vector ngẫu nhiên liên tục $d$-chiều $\bm X$ tuân theo PDF-đều $d$-chiều trên hình hộp $[l_1\,; u_1] \times \cdots \times [l_d\,; u_d]$ với $l_i < u_i$ và $l_i\,, u_i \in \mathbb{R}$ nếu nó có PDF là
 	$$
 	\mathcal	U(\bm x\,;\,\bm l\,; \bm u) =
 	\begin{cases}
@@ -647,7 +678,7 @@ Các PDF Gauss-lệch nhận thêm một tham số thể hiện mức độ lệ
 	$$
 }
 
-	\dly{[Kỳ vọng và hiệp phương sai] Vector kỳ vọng và ma trận hiệp phương sai của biến ngẫu nhiên $\bm X$ có PDF-đều lần lượt là $$\mathbb{E}(\bm X) = \frac{\bm{l} + \bm{u}}{2} \text{ và } \mathrm{Cov}(\bm X) = \mathrm{diag}\left(\frac{(u_1 - l_1)^2}{12}\,; \ldots\,; \frac{(u_d - l_d)^2}{12}\right).$$
+	\dly{[Kỳ vọng và hiệp phương sai] Vector kỳ vọng và ma trận hiệp phương sai của vector ngẫu nhiên $\bm X$ có PDF-đều lần lượt là $$\mathbb{E}(\bm X) = \frac{\bm{l} + \bm{u}}{2} \text{ và } \mathrm{Cov}(\bm X) = \mathrm{diag}\left(\frac{(u_1 - l_1)^2}{12}\,; \ldots\,; \frac{(u_d - l_d)^2}{12}\right).$$
 }
 
 \subsection{Một số hàm mật độ xác suất bổ sung}
@@ -658,13 +689,16 @@ Gần đây, các thuật toán phân tích chùm dựa vào trọng tâm đề 
     \begin{align}\label{daidien}
         \theta_i(x) = \frac{\sum_{j=1}^n\mu_{ij}\times f_j(x)}{\sum_{j=1}^n\mu_{ij}},
     \end{align}
-    trong đó $\mu_{ij}$ là trọng số phân bổ một PDF $f_j(x)$ bất kỳ vào chùm $c_i$ \cite{wald1950statistical}.
+    trong đó $\mu_{ij}$ là trọng số phân bổ một PDF $f_j(x)$ bất kỳ vào chùm $c_i$ theo \cite{wald1950statistical}, ta có $0\le\mu_{ij}\le1$.
 
 }
 
 
 
-Dựa vào định nghĩa trên, ta dễ dàng nhận được $\theta_i$ cũng là một PDF (Tính chất~\ref{tc1}). 
+Dựa vào định nghĩa trên, ta dễ dàng nhận được $\theta_i$ cũng là một PDF (theo Tính chất~\ref{tc1}). 
+
+\tch{Hàm đại diện được tính theo \eqref{daidien} là một hàm mật độ xác suất.}
+
 \chm{Các giá trị trọng số $0\le\mu_{ij}\le1$ nên các $\theta_i$ liên tục không âm và 
 $$\int_{\Omega}\theta_i(x)\mathrm{\,d}x=\int_{\Omega}\frac{\sum_{j=1}^n\mu_{ij}\times f_j(x)}{\sum_{j=1}^n\mu_{ij}}\mathrm{\,d}x = \frac{\sum_{j=1}^n\mu_{ij}\times \int_{\Omega}f_j(x)\mathrm{\,d}x }{\sum_{j=1}^n\mu_{ij}} = 1.$$}
 
@@ -677,9 +711,9 @@ $$\int_{\Omega}\theta_i(x)\mathrm{\,d}x=\int_{\Omega}\frac{\sum_{j=1}^n\mu_{ij}\
 \chm{Ta có
 	\begin{align*}
 		\mathbb{E}_{\theta_i}(X)
-		= \int_{\Omega} x\, \theta_i(x)\, \mathrm{d}x &= \int _{\Omega}x\, \frac{\sum_{j=1}^n \mu_{ij} f_j(x)}{\sum_{j=1}^n \mu_{ij}}\, \mathrm{d}x = \frac{1}{\sum_{j=1}^n \mu_{ij}} \sum_{j=1}^n \mu_{ij}\underbrace{ \int_{\Omega} x\, f_j(x)\, \mathrm{d}x}_{= \mathbb{E}_{f_j}(X)}.
+		= \int_{\mathbb{R}} x\, \theta_i(x)\, \mathrm{d}x &= \int _{\mathbb{R}}x\, \frac{\sum_{j=1}^n \mu_{ij} f_j(x)}{\sum_{j=1}^n \mu_{ij}}\, \mathrm{d}x = \frac{1}{\sum_{j=1}^n \mu_{ij}} \sum_{j=1}^n \mu_{ij} \int_{\mathbb{R}} x\, f_j(x)\, \mathrm{d}x.
 	\end{align*}
-	Từ đây, ta suy ra điều phải chứng minh.
+	Vì $\int_{\mathbb{R}} x\, f_j(x)\mathrm{d}x= \mathbb{E}_{f_j}(X)$ nên ta suy ra điều phải chứng minh.
 }
 
 
@@ -705,7 +739,7 @@ trong đó $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa m�
 	\caption{Minh họa hai PDF đại diện trong một tập hợp các PDF $\mathcal{F}$.}
 	\label{fig:hamdaidien}
 		    \begin{minipage}{\textwidth}
-		\fontsize{11pt}{14pt}\selectfont\it Chú thích: PDF thể hiện bằng đường thẳng in đậm cho ba PDF Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$ và (b) dựa vào vị trí tối ưu với khoảng cách $\mathcal{L}_2$. Nguồn: Minh họa của tác giả.
+		\fontsize{11pt}{14pt}\selectfont\it Chú thích: PDF thể hiện bằng đường thẳng in đậm là hàm PDF đại diện cho ba hàm PDF Gauss minh họa bằng nét đứt (a) dựa vào trọng số phân bổ đều giữa ba hàm $\mu_{ij}=1/3$ và (b) dựa vào vị trí tối ưu với khoảng cách $\mathcal{L}_2$.
 	\end{minipage}
 \end{figure}
 
@@ -714,13 +748,13 @@ trong đó $D(\mathcal{N}(\mu\,;\sigma)\,;f_j(x))$ là khoảng cách giữa m�
 
 
 
-Trong thực tế, ta cần phải ước lượng PDF dựa vào dữ liệu rời rạc, luận văn này sử dụng phương pháp ước lượng hàm hạt nhân để chuyển từ bài toán rời rạc sang PDF.
+Trong thực tế, ta cần phải ước lượng PDF dựa vào dữ liệu điểm vector, luận văn này sử dụng phương pháp ước lượng hàm hạt nhân để chuyển từ dữ liệu điểm vector sang dữ liệu PDF.
 \dng{[Ước lượng PDF bằng phương pháp hàm hạt nhân]
 	Giả sử ta có một tập dữ liệu rời rạc gồm $n$ quan sát ${\bm{x}_j}$, với $j = 1\,,2 \ldots\,,  n$ trong không gian $\mathbb{R}^d$. Mỗi điểm $\bm{x}_j = (x_{1j}\,;  x_{2j}\,;  \ldots\,;  x_{dj})^\intercal$. Khi đó, một PDF $\widehat f(\bm{x})$ tại điểm $\bm{x} = (x_1\,;  x_2\,;  \ldots\,;  x_d)^\intercal$ được ước lượng bằng phương pháp hạt nhân bởi công thức
 	$$
 	\widehat{f}(\bm{x}) = \frac{1}{n \prod_{i=1}^d {bw}_i} \displaystyle\sum_{j=1}^{n} \displaystyle\prod_{i=1}^{d} \kappa_i\left( \frac{x_i - x_{ij}}{{bw}_i} \right),
 	$$
-	trong đó $\kappa_i$ là hàm hạt nhân theo chiều thứ $i$ có tính chất $\kappa(\cdot) \ge 0$ và $\int \kappa(z)\mathrm{d}z = 1$ và tham số ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
+	trong đó $\kappa_i$ là hàm hạt nhân theo chiều thứ $i$ có tính chất $\kappa(x) \ge 0$ và $\int_{\mathbb{R}} \kappa(x)\mathrm{\,d}x = 1$ và tham số ${bw}_i > 0$ là tham số trơn ứng với chiều đó.
 }
 
 \chy{Khi tham số trơn $bw$ nhỏ, các PDF ước lượng sẽ kém trơn và có thể dao động mạnh. Ngược lại, nếu $bw$ lớn thì hàm trở nên trơn hơn nhưng có thể làm mất chi tiết quan trọng của phân phối gốc. Trong trường hợp đơn giản, có thể chọn cùng một hàm hạt nhân và cùng một tham số trơn cho tất cả các chiều, tức là $\kappa_i \equiv \kappa$ và ${bw}_i = {bw}$ với mọi $i=1\,,2\,,\ldots\,,d$. }
@@ -735,31 +769,27 @@ Trong thực tế, ta cần phải ước lượng PDF dựa vào dữ liệu r�
 	\centering\fontsize{11pt}{14pt}\selectfont
 \begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lllc@{\extracolsep\fill}} 
 		\toprule
-		\textbf{Tên hàm} & \textbf{$\kappa(z)$} & \textbf{Miền xác định} & \textbf{Khả vi}\\\midrule
+		\textbf{Tên hàm} & \textbf{$\kappa(x)$} & \textbf{Miền xác định} & \textbf{Khả vi}\\\midrule
 		Hình chữ nhật &
-		$ (1/2)\bm1_{\{|z| \leq 1\}}$ &
+		$ (1/2)\bm1_{\{|x| \leq 1\}}$ &
 		$[-1\,; 1]$ &  \\
 		Tam giác &
-		$ (1 - |z|) \bm1_{\{|z| \leq 1\}}$ &
+		$ (1 - |x|) \bm1_{\{|x| \leq 1\}}$ &
 		$[-1\,; 1]$ & $\mathcal{C}^0$ \\
 		Epanechnikov &
-		$ (3/4)(1 - z^2) \bm1_{\{|z| \leq 1\}}$ &
+		$ (3/4)(1 - x^2) \bm1_{\{|x| \leq 1\}}$ &
 		$[-1\,; 1]$ &  $\mathcal{C}^0$ \\
 		Gauss &
-		$ \frac{1}{\sqrt{2\pi}} \exp\left(-z^2/2\right)$ &
+		$ \frac{1}{\sqrt{2\pi}} \exp\left(-x^2/2\right)$ &
 	$(-\infty,\infty)$ &  $\mathcal{C}^\infty$  \\
 		Logistic &
-		$\frac{\exp(-z)}{1 + \exp(-z)^2}$ &
+		$\frac{\exp(-x)}{1 + \exp(-x)^2}$ &
 		$(-\infty,\infty)$ & $\mathcal{C}^\infty$\\
 		\bottomrule
 	\end{tabular*}
-	\begin{minipage}{\textwidth}
-		\fontsize{11pt}{14pt}\selectfont\it
-		Nguồn: Tác giả tổng hợp.
-	\end{minipage}
 \end{table}
 
-Hình~\ref{fig:kde}(a) so sánh các hàm hạt nhân khác nhau. Cùng tham số trơn $bw=1$, hàm Gauss cho đường trơn, còn hàm logistic dao động yếu và hàm Epanechnikov nổi bật rõ đỉnh. Hình~\ref{fig:kde}(b) giữ cố định nhân Gauss và thay băng thông. Rõ ràng, $bw$ nhỏ hơn làm đồ thị nhọn và chi tiết hơn và ngược lại.
+Hình~\ref{fig:kde}(a) so sánh các hàm hạt nhân khác nhau. Cùng tham số trơn $bw=1$, hàm Gauss cho đường trơn, còn hàm logistic dao động yếu và hàm Epanechnikov nổi bật rõ đỉnh. Hình~\ref{fig:kde}(b) giữ cố định nhân Gauss và thay băng thông bao gồm $\{0{,}2\,;0{,}5\,;1{,}0\}$. Rõ ràng, $bw$ nhỏ hơn làm đồ thị nhọn và chi tiết hơn và ngược lại.
 
 \begin{figure}[h]
 	\centering
@@ -794,10 +824,10 @@ Phần này giới thiệu một số độ đo đánh giá sự tương tự c�
  \dng{[Khoảng cách $\mathcal L_p$]\label{D} Cho hai PDF $f_1\,, f_2$ trên $\mathbb R^d$. Khoảng cách $\mathcal{L}_p$ được định nghĩa là$$ \mathcal L_p(f_1\,;f_2)=\left(\int_{\mathbb R^d}|f_1(x)-f_2(x)|^p\,\mathrm{d}x\right)^{1/p}\,, 1\le p<\infty .$$
 }
 	
-	Theo Định nghĩa \ref{D}, khoảng cách giữa hai PDF thỏa mãn các tiên đề của mê-tríc. Trong lý thuyết thống kê và thông tin, một mê-tríc được gọi là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}. Thực tế, ta thường sử dụng $p=1$ hoặc $p=2$ cho các tính toán. Ta cũng có mối quan hệ giữa hai PDF đối mới PDF trọng tâm bất kỳ trong mê-tríc. 
+	Theo Định nghĩa \ref{D}, khoảng cách giữa hai PDF thỏa mãn các tiên đề của mê-tríc. Trong lý thuyết thống kê và thông tin, một mê-tríc được gọi là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}. Thực tế, ta thường sử dụng $p=1$ hoặc $p=2$ cho các tính toán. Ta cũng có mối quan hệ giữa hai PDF đối với một PDF trọng tâm bất kỳ trong khoảng cách mê-tríc. 
 	
 		\bode{[Bất đẳng thức tam giác]\label{bode:bdttg}
-		Với mọi $f_j, f_k \in c_i$ trong không gian khoảng cách mê-tríc và trọng tâm chùm $\theta_i$, ta có bất đẳng thức tam giác $D(f_j, f_k) \leq D(f_j, \theta_i) + D(f_k, \theta_i).$
+		Với mọi PDF $f_j, f_k \in c_i$ trong không gian khoảng cách mê-tríc và PDF trọng tâm chùm $\theta_i$, ta có bất đẳng thức tam giác $D(f_j, f_k) \leq D(f_j, \theta_i) + D(f_k, \theta_i).$
 	}
 	
 		Tai Vo-Van (2019) \cite{vovan2019cluster} dựa trên khoảng cách $\mathcal L_p$ để giới thiệu độ rộng chùm.
@@ -831,14 +861,14 @@ Bảng~\ref{tab1:KC_PDF} làm rõ các công thức khoảng cách và độ đo
 	\end{tabular*}
 \begin{minipage}{\textwidth}
 	\fontsize{11pt}{14pt}\selectfont\it
-	Chú thích: trong khoảng cách Chernoff, $0\le r\le 1$ và trong khoảng cách Matusita, $r\ge2$. Nguồn: Tác giả tổng hợp.
+	Chú thích: trong khoảng cách Chernoff, $0\le r\le 1$ và trong khoảng cách Matusita, $r\ge2$. 
 \end{minipage}
 \end{table}
 
 
-Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Tương tự khoảng cách Matusita là tổng quát hóa của bình phương Hellinger khi $r=2$. Trong $\mathcal{L}_p$, chỉ có $\mathcal{L}_1$ là một $f$-phân kỳ và là Matusita với $r=1$. Đáng chú ý, Matusita cũng thỏa mãn tính chất mê-tríc.
+Nhìn vào Bảng \ref{tab1:KC_PDF}, có thể thấy khoảng cách Chernoff là một tổng quát hóa của khoảng cách Bhattacharyya khi chọn $s = 1/2$. Tương tự khoảng cách Matusita là tổng quát hóa của khoảng cách bình phương Hellinger khi $r=2$. Trong họ $\mathcal{L}_p$, chỉ có khoảng cách $\mathcal{L}_1$ là một $f$-phân kỳ và là khoảng cách Matusita với $r=1$. Đáng chú ý, khoảng cách Matusita cũng thỏa mãn tính chất mê-tríc.
 
-Hình~\ref{fig:dayKC} ghi nhận các giá trị khoảng cách giữa hai PDF $f_1\sim\mathcal{N}(0\,;1)$ và $f_2\sim \mathcal{N}(\mu\,;1)$, với $\mu$ trượt từ $-10$ đến $20$. Ta thấy khi hàm $f_2$ cách nhau quá xa hàm $f_1$, tức là $|\mu_2|\gg0$, tất cả loại khoảng cách hai PDF đều bão hòa và không đo được sự khác biệt. Lúc này hai PDF, về mặt không gian, rất xa nhau, nhưng khoảng cách không thể đo xa hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hai PDF.
+Hình~\ref{fig:dayKC} ghi nhận các giá trị khoảng cách giữa hai PDF $f_1\sim\mathcal{N}(0\,;1)$ và $f_2\sim \mathcal{N}(\mu\,;1)$, với $\mu$ trượt từ $-10$ đến $20$. Ta thấy khi hàm $f_2$ cách nhau quá xa hàm $f_1$, tức là $|\mu_2|\gg0$, tất cả loại khoảng cách hai PDF đều bão hòa và không đo được sự khác biệt. Lúc này hai PDF xét về mặt không gian thì rất xa nhau, nhưng khoảng cách không thể có giá trị lớn hơn nữa vì nó đã đạt đến ngưỡng lớn nhất. Đây là hạn chế không giữ được vị trí hình học đối với các khoảng cách hai PDF.
 
 \begin{figure}[h]
     \centering
@@ -868,7 +898,7 @@ Khoảng cách $p$-Wasserstein ($p\ge1$) giữa hai độ đo xác suất $\mu$ 
 $$
 }
 
-Khoảng cách $p$-Wasserstein  đo mức chênh lệch tối ưu giữa hai phân phối xác suất, xét trên tất cả các phép ghép cặp khả dĩ. Tức là nó tính đến công sức để di chuyển và tái sắp xếp khối lượng từ hàm này sang hàm kia. Ở đây, luận văn này sử dụng $p=2$ để tính toán đo độ khác biệt. Trong thực tế, ta tính toán cụ thể khoảng cách này bằng cách biểu diễn nó qua hàm phân vị được thể hiện bởi Định lý~\ref{dly:phanvi}.
+Khoảng cách $p$-Wasserstein  đo mức chênh lệch tối ưu giữa hai PDF, xét trên tất cả các cặp PDF có thể ghép cặp. Tức là nó tính đến công sức để di chuyển và tái sắp xếp khối lượng từ hàm này sang hàm kia. Ở đây, luận văn này sử dụng $p=2$ để tính toán đo độ khác biệt. Trong thực tế, ta tính toán cụ thể khoảng cách này bằng cách biểu diễn nó qua hàm phân vị được thể hiện bởi Định lý~\ref{dly:phanvi}.
 
 \dly{\label{dly:phanvi}
 	Khoảng cách $p$-Wasserstein giữa hai độ đo xác suất $\mu$ và $\nu$ có thể được biểu diễn dưới dạng phân vị trong trường hợp $1$-chiều bởi định nghĩa
@@ -1816,14 +1846,14 @@ Trong lĩnh vực này, đã có nhiều công trình nghiên cứu chuyên sâu
 	\label{tab:in_clustering_summary}
 \begin{minipage}{\textwidth}
 			\fontsize{11pt}{14pt}\selectfont\it
-	Chú thích:	Đối với hàm mục tiêu\index{hàm mục tiêu (Objective function)}, SSE: sai số của bình phương tối tiểu; VCC: tiêu chuẩn tỷ lệ phương sai (chỉ số Calinski--Harabasz); CSB: hợp của độ đo tương đồng và cân bằng; FSF: tỷ lệ giữa SSE và sự phân biệt giữa các chùm. Đối với phương pháp tối ưu, DE:  tiến hóa vi phân; aeDE: tiến hóa vi phân ưu tú thích nghi; GA: giải thuật di truyền. Ở cột cuối, dấu $\checkmark$ có nghĩa là tự động toàn bộ thuật toán. Nguồn: Tác giả tổng hợp.
+	Chú thích:	Đối với hàm mục tiêu\index{hàm mục tiêu (Objective function)}, SSE: sai số của bình phương tối tiểu; VCC: tiêu chuẩn tỷ lệ phương sai (chỉ số Calinski--Harabasz); CSB: hợp của độ đo tương đồng và cân bằng; FSF: tỷ lệ giữa SSE và sự phân biệt giữa các chùm. Đối với phương pháp tối ưu, DE:  tiến hóa vi phân; aeDE: tiến hóa vi phân ưu tú thích nghi; GA: giải thuật di truyền. Ở cột cuối, dấu $\checkmark$ có nghĩa là tự động toàn bộ thuật toán.
 \end{minipage}
 \end{table}
 
 Nhìn chung, các nghiên cứu từ các tác giả trong nước cho thấy xu hướng phát triển mạnh mẽ cả về chiều sâu lý thuyết lẫn chiều rộng ứng dụng. Cụ thể, các hàm mục tiêu\index{hàm mục tiêu (Objective function)} truyền thống như SSE và VCC đã dần được mở rộng và tinh chỉnh thành những biến thể phức tạp hơn, chẳng hạn như CSB và FSF, cho phép đánh giá chất lượng kết quả phân tích chùm một cách đa chiều và sâu sắc hơn. Đáng chú ý, nghiên cứu của Thao Nguyen-Trang đã sử dụng FSF \cite{nguyen2023globally} hoặc CSB \cite{nguyen2023balance} làm hàm mục tiêu\index{hàm mục tiêu (Objective function)} phân chùm, qua đó thể hiện nỗ lực đào sâu vào nội hàm và bản chất tối ưu của thuật toán.
 Hơn nữa, giai đoạn năm 2019 đánh dấu bước chuyển quan trọng khi các mô hình phân chùm bắt đầu mở rộng từ dạng cứng \cite{pham2019new} sang các phương pháp tổng quát hơn như mờ \cite{phamtoan2022automatic}, khả dĩ \cite{tran2024new} và bán giám sát \cite{nguyen2024new} sử dụng một phần dữ liệu có nhãn để cải thiện độ chính xác của quá trình phân chùm. Sự xuất hiện của hướng tiếp cận này cho thấy bước tiến rõ rệt trong việc kết hợp các phương pháp khác nhau.
 
-Ở bình diện quốc tế, hai công trình tiêu biểu thể hiện hai hướng tiếp cận khác nhau trong nghiên cứu phân tích chùm. Cụ thể, Chen \& Hung (2020) \cite{chen2021jackknife} tập trung vào việc sử dụng tiêu chuẩn thông tin để tự động phát hiện cấu trúc chùm và xác định số chùm tối ưu, hướng đến việc giảm sự phụ thuộc vào tham số người dùng. Ngược lại, Tavakkol \& Son (2021) \cite{tavakkol2021fuzzy} lại khai thác không gian hạt nhân nhằm xử lý hiệu quả các chùm có hình dạng bất quy tắc và ranh giới phức tạp.
+Ở các công bố quốc tế, hai công trình tiêu biểu thể hiện hai hướng tiếp cận khác nhau trong nghiên cứu phân tích chùm. Cụ thể, Chen \& Hung (2020) \cite{chen2021jackknife} tập trung vào việc sử dụng tiêu chuẩn thông tin để tự động phát hiện cấu trúc chùm và xác định số chùm tối ưu, hướng đến việc giảm sự phụ thuộc vào tham số người dùng. Ngược lại, Tavakkol \& Son (2021) \cite{tavakkol2021fuzzy} lại khai thác không gian hạt nhân nhằm xử lý hiệu quả các chùm có hình dạng bất quy tắc và ranh giới phức tạp.
 Mặc dù các mục tiêu khác nhau, điểm chung giữa chúng là sự mở rộng nền tảng của phân chùm truyền thống sang các dạng dữ liệu có cấu trúc cao hơn. Về mặt ứng dụng, thuật toán entropy-jackknife là phương pháp phân chùm cứng phù hợp cho dữ liệu hình ảnh, trong khi mô hình của Tavakkol \& Son lại thích hợp hơn cho dữ liệu PDF đa chiều và liên tục.
 
 
@@ -1850,7 +1880,7 @@ Giả sử hai chùm có số lượng phần tử $\#c_1$ lớn và $\#c_2$ nh�
 
 
 
-Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có kích thước tương đương nhau \cite{askari2021fuzzy}, điều này dẫn đến các quyết định phân chùm sai lệch khi dữ liệu thực tế có sự mất cân bằng đáng kể. Theo Xiong (2006) \cite{xiong2006k}, thuật toán KCF có xu hướng ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều, ngay cả khi bản chất phân bố thực tế không như vậy, dẫn đến kết quả bị lệch, chùm nhỏ dễ bị hút vào chùm lớn. Hiện tượng này được gọi là “hiệu ứng đồng nhất”, xuất phát trực tiếp từ đặc tính của hàm mục tiêu\index{hàm mục tiêu (Objective function)}. Tương tự, trong trường hợp của KCF, FCF cũng chịu ảnh hưởng của này. Để chứng minh, ta xét hai PDF trọng tâm $\theta_1$ và $\theta_2$ trong bài toán hai chùm được tính theo \eqref{trongtamFCF}, với mức độ phân vùng\index{mức độ phân vùng (membership partition)} giản hóa thành $\mu_{ij} = u$ nếu $f_j \in c_i$ và $(1 - u)$ cho các trường hợp còn lại, ta có
+Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có kích thước tương đương nhau \cite{askari2021fuzzy}, điều này dẫn đến các quyết định phân chùm sai lệch khi dữ liệu thực tế có sự mất cân bằng đáng kể. Theo Xiong (2006) \cite{xiong2006k}, thuật toán KCF có xu hướng ưu tiên chia dữ liệu thành các lớp có kích thước tương đối đồng đều, ngay cả khi bản chất phân bố thực tế không như vậy, dẫn đến kết quả bị lệch, chùm nhỏ dễ bị hút vào chùm lớn. Hiện tượng này được gọi là “hiệu ứng đồng nhất”, xuất phát trực tiếp từ đặc tính của hàm mục tiêu\index{hàm mục tiêu (Objective function)}. Tương tự như trong trường hợp của KCF, FCF cũng chịu ảnh hưởng của này. Để chứng minh, ta xét hai PDF trọng tâm $\theta_1$ và $\theta_2$ trong bài toán hai chùm được tính theo \eqref{trongtamFCF}, với mức độ phân vùng\index{mức độ phân vùng (membership partition)} giản hóa thành $\mu_{ij} = u$ nếu $f_j \in c_i$ và $(1 - u)$ cho các trường hợp còn lại, ta có
 \begin{align*}
 	\theta_1(x) &= \frac{u^m \sum_{f_j \in c_1} f_j(x) + (1-u)^m \sum_{f_j(x) \in c_2} f_j(x)}{\#c_1u^m + \#c_2(1-u)^m},\\
 	\theta_2(x) &= \frac{(1-u)^m \sum_{f_j(x) \in c_1} f_j(x) + u^m \sum_{f_j \in c_2} f_j}{\#c_1(1-u)^m + \#c_2u^m}.
@@ -1880,7 +1910,7 @@ Tuy nhiên, các thuật toán KCF và FCF giả định rằng các chùm có k
 \end{align*}
 
   
-  Ta biết trong tỷ lệ trên, $p$ có bậc của tử nhỏ hơn bật của mẫu, nên giới hạn của nó là $0$, từ đó ta có
+  Ta biết trong tỷ lệ trên, $p$ có bậc của tử nhỏ hơn bậc của mẫu, nên giới hạn của nó là $0$, từ đó ta có
   $ \lim_{\#c_1 \to \infty} \mathcal{L}^2_2(\theta_1\,;\theta_2) = 0 $. Điều này chứng minh rằng FCF và KCF có xu hướng làm cho các trọng tâm chùm cuối cùng $\Theta$ dịch chuyển gần nhau hơn so với các trọng tâm thực tế $\widehat{\Theta}$. Kết quả là, các chỉ số đánh giá phân chùm truyền thống sẽ ưu tiên gộp chùm thiểu số và chùm lân cận thành một chùm duy nhất.
 
 Hình~\ref{fig:IR_STD} minh họa ảnh hưởng đồng thời của $IR$ và mức nhiễu dữ liệu lên kết quả xác định trọng tâm trong thuật toán FCF. Cụ thể, các dòng từ $1\div4$ thể hiện sự gia tăng dần của $IR$, cho thấy FCF có xu hướng tạo ra các phân vùng đồng đều hơn về số lượng PDF trong mỗi chùm. Đây chính là biểu hiện rõ của ``hiệu ứng đồng nhất''\index{hiệu ứng đồng nhất (uniform effect)}. 
@@ -1938,10 +1968,6 @@ Trong phạm vi của luận văn này, “hiệu ứng đồng nhất” đư�
 						\caption{Tỷ lệ $IR$ $20:1$, tỷ lệ nhiễu $1{,}5:1$}
 	\end{subfigure}
 	\caption{Ảnh hưởng của dữ liệu PDF Gauss mất cân bằng lên thuật toán FCF ($m=2\,;c=2\,; D=\mathcal{L}^2_2$)}\label{fig:IR_STD}
-	\begin{minipage}{\textwidth}
-		\fontsize{11pt}{14pt}\selectfont\it
-		Nguồn: Minh họa của tác giả.	
-	\end{minipage}
 \end{figure}
 
 
@@ -1961,7 +1987,7 @@ Cho tập $\mathcal{F}$-PDF, trong đó mỗi $f_j$ là một đối tượng tr
 trong đó $\omega_i^{(t)}=\frac{1}{n}\sum_{j=1}^n \mu^{(t-1)}_{ij}$ là tỷ lệ kích thước mờ của chùm thứ $i$ với $i=1\,,2\,,\ldots\,,c$, thỏa mãn $\sum_{i=1}^c\omega_i=1$ với $\mu^{(t-1)}_{ij}$ là ma trận phân vùng tại vòng lặp thứ $(t-1)$.
 
 \chy{
-Khi mức độ mất cân bằng tăng, phần đóng góp của chùm lớn vào hàm mục tiêu\index{hàm mục tiêu (Objective function)} sẽ dần lấn át ảnh hưởng của các chùm nhỏ hơn. Để khắc phục, thành phần của hàm mục tiêu\index{hàm mục tiêu (Objective function)} IFCF được hiệu chỉnh bằng cách chia cho hệ số $\tfrac{1}{\omega_i}$, với $\omega_i \in (0\,;1]$, nhằm giảm tỷ lệ đóng góp tương ứng theo kích thước của từng chùm. Khi đó, các chùm lớn phải chịu tổn thất cao hơn trong quá trình tối ưu hóa, nhằm hạn chế chi phối tổng thể mà không làm sai lệch trọng tâm và tính ổn định. Đặc biệt, khi tất cả các $\omega_i = 1$, công thức IFCF sẽ trở về dạng gốc của FCF đề cập ở Tiểu mục~\ref{sec:FCF}.
+Khi mức độ mất cân bằng tăng, phần đóng góp của chùm lớn vào hàm mục tiêu\index{hàm mục tiêu (Objective function)} sẽ dần lấn át ảnh hưởng của các chùm nhỏ hơn. Để khắc phục, thành phần của hàm mục tiêu\index{hàm mục tiêu (Objective function)} IFCF được hiệu chỉnh bằng cách chia cho hệ số $\tfrac{1}{\omega_i}$, với $\omega_i \in (0\,;1]$, nhằm giảm tỷ lệ đóng góp tương ứng theo kích thước của từng chùm. Khi đó, các chùm lớn phải chịu tổn thất cao hơn trong quá trình tối ưu hóa, nhằm hạn chế chi phối tổng thể mà không làm sai lệch trọng tâm và tính ổn định. Khi tất cả các $\omega_i = 1$, công thức IFCF sẽ trở về dạng gốc của FCF đề cập ở Tiểu mục~\ref{sec:FCF}.
 	}
 
 \begin{figure}[H]
@@ -2255,7 +2281,7 @@ Ta định nghĩa toán tử $T_{IFCF}\,:\,\mathbb{R}^{cd} \times \bm U\to \math
 	$ xác định dương vì $\sum_j (\mu_{ij})^{m}>0$ và $\omega_i>0$. Do đó $\psi_i$ lồi nghiêm ngặt và nghiệm bậc nhất \eqref{eq:théta} là duy nhất, suy ra nghiệm toàn cục duy nhất $\Theta^*=G(\bm U)$.
 }
 
-Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2$, $D^2_H$, hoặc $W^2_2$, trong khi với các khoảng cách khác như $D_{BC}$, $D_{KL}$, hoặc $D_{JS}$ có thể không duy nhất nghiệm toàn cục. Bổ đề~\ref{lem:Hellinger} chứng minh công thức thành lập trọng tâm đối với khoảng cách $D^2_H$.
+Tuy nhiên, $	\nabla^2_{\theta_i}\psi_i(\theta_i)$ chỉ lồi nghiêm ngặt trong một số khoảng cách như $\mathcal{L}_2$, $D^2_H$, hoặc $W^2_2$, trong khi với các khoảng cách khác như $D_{BC}$, $D_{KL}$, hoặc $D_{JS}$ có thể không có duy nhất nghiệm toàn cục. Bổ đề~\ref{lem:Hellinger} chứng minh công thức thành lập trọng tâm đối với khoảng cách $D^2_H$.
 
 \bode{[Cập nhật trọng tâm $\Theta$ với $D^2_H$]\label{lem:Hellinger}
 	Với $\bm U$ cố định, bài toán tối thiểu hoá hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{eq:IFCF} theo $\Theta$ có thể tách được theo từng $\theta_i$ và là lồi nghiêm ngặt trong biến $\sqrt{\theta_i}$. 
@@ -2554,10 +2580,6 @@ Trong thực tế, ta nên sử dụng một cách có ý nghĩa song song cả 
 	\centering
 	\includegraphics[width=\linewidth]{pdf_bandau}
 	\caption{Dữ liệu  Gauss mô phỏng tại Ví dụ \ref{vdu:gauss1}}\label{fig:vdu:gauss1}
-	\begin{minipage}{\textwidth}
-		\fontsize{11pt}{14pt}\selectfont\it
-		Nguồn: Minh họa của tác giả.
-	\end{minipage}
 \end{figure}
 }
 
@@ -2669,6 +2691,7 @@ Phương pháp phân loại là một nhánh của nhận dạng có giám sát\
 h^* = \arg\min_{h \in \mathcal{H}} \mathbb{E}{(f\,;y)\sim P_{\mathcal{F},Y}} \left[\ell(h(f), y)\right].$ Tuy nhiên, do PDF thực $P_{\mathcal{F}\,;{Y}}$ là chưa biết, ta cần tiếp cận qua một tập huấn luyện $\mathcal{D}_n = \{(f_1\,; y_1)\,;(f_2\,;y_2)\,; \ldots\,; (f_n\,; y_n)\} \subset \mathcal{F} \times {Y}$. Vì vậy, ta giải bài toán $
 \hat{h}_n = \arg\min{h \in \mathcal{H}} \frac{1}{n} \sum_{j=1}^n \ell(h(f_j), y_j).
 $
+
 Trong thực tế, các quy luật đánh giá có bệnh B hay không dựa vào những dữ liệu cho trước chính là thực hiện bài toán phân loại. Hay phân biệt được hữu hạn các biểu cảm khuôn mặt dựa vào hình ảnh cũng phải thực hiện bài toán phân loại. Đầu ra của mô hình phân loại là ước tính hoặc dự đoán hữu hạn các nhãn cho trước (không đo được) với dữ liệu mới chưa được mô hình hóa \cite{Fillmore-Patrick_2025}. 
 
 Phương pháp phân loại cho PDF là một bài toán mới mẻ nên còn nhiều thách thức lớn cả bề sâu và bề rộng. Nhìn chung, hai phương pháp chính để phân loại là từ hai góc nhìn bao gồm ánh xạ PDF thành vector hữu hạn chiều thông qua các đặc trưng thống kê, hay xử lý trực tiếp trong không gian hàm. Cả hai hướng này đều có ưu và nhược điểm riêng, trong đó cách tiếp cận theo không gian hàm cho phép bảo toàn thông tin xác suất tốt hơn nhưng đòi hỏi chi phí tính toán lớn hơn. Bảng~\ref{tab:pdf_classification_summary} mô tả quá trình phát triển của lĩnh vực này. 
@@ -2700,7 +2723,7 @@ Phương pháp phân loại cho PDF là một bài toán mới mẻ nên còn nh
 \end{table}
 
 
-Trong bối cảnh này, các nghiên cứu trong nhước đã có nhiều đóng góp nổi bật. Chuỗi công trình gần đây tập trung cải tiến mô hình Bayes truyền thống để thích ứng với dữ liệu dạng PDF, mở rộng từ bài toán hai lớp sang đa lớp và từ dữ liệu đơn kênh sang hình ảnh đa kênh màu. Các thuật toán Bayes cải tiến chứng minh được tính ổn định và khả năng tổng quát hóa tốt. Đặc biệt, giai đoạn 2023--2025 đánh dấu bước trưởng thành quan trọng của hướng nghiên cứu này.
+Trong bối cảnh này, các nghiên cứu trong nước đã có nhiều đóng góp nổi bật. Chuỗi công trình gần đây tập trung cải tiến mô hình Bayes truyền thống để thích ứng với dữ liệu dạng PDF, mở rộng từ bài toán hai lớp sang đa lớp và từ dữ liệu đơn kênh sang hình ảnh đa kênh màu. Các thuật toán Bayes cải tiến chứng minh được tính ổn định và khả năng tổng quát hóa tốt. Đặc biệt, giai đoạn 2023--2025 đánh dấu bước trưởng thành quan trọng của hướng nghiên cứu này.
 
 
 
@@ -3127,11 +3150,11 @@ Tuy nhiên, cách hình thành mô hình Bayes-IFCF vẫn bộc lộ một hạn
 
 \section{Trích xuất đặc trưng của hình ảnh thành hàm mật độ xác~suất}
 
-Hình ảnh số được cấu thành từ các điểm ảnh, điểm ảnh lưu trữ thông tin về cường độ sáng hoặc vector màu. Kích thước hình ảnh thường được biểu diễn bởi số hàng và số cột của điểm ảnh, ví dụ $M\times N$ cho hình ảnh hai chiều, hoặc $M\times N\times 3$ cho ảnh màu RGB. Một điểm ảnh tại vị trí $(i,j)$ có thể được biểu diễn bằng giá trị $I(i,j)$ trong miền cường độ $[0\,;255]$ (với hình ảnh 8-bit), hoặc được chuẩn hóa về miền $[0\,;1]$ trong các xử lý số. Xử lý hình ảnh là cầu nối giữa toán học rời rạc, xác suất thống kê và trí tuệ nhân tạo, đóng vai trò nền tảng trong các lĩnh vực như thị giác máy tính, chẩn đoán y học hình ảnh và hệ thống tự động nhận dạng.
+Xử lý hình ảnh là cầu nối giữa toán học rời rạc, xác suất thống kê và trí tuệ nhân tạo, đóng vai trò nền tảng trong các lĩnh vực như thị giác máy tính, chẩn đoán y học hình ảnh và hệ thống tự động nhận dạng. Hình ảnh số được cấu thành từ các điểm ảnh, điểm ảnh lưu trữ thông tin về cường độ sáng hoặc vector màu. Kích thước hình ảnh thường được biểu diễn bởi số hàng và số cột của điểm ảnh, ví dụ $M\times N$ cho hình ảnh hai chiều, hoặc $M\times N\times 3$ cho ảnh màu RGB. Một điểm ảnh tại vị trí $(i,j)$ có thể được biểu diễn bằng giá trị $I(i,j)$ trong miền cường độ $[0\,;255]$ (với hình ảnh 8-bit), hoặc được chuẩn hóa về miền $[0\,;1]$ trong các xử lý số. 
 
 \subsection{Vấn đề trích xuất đặc trưng của hình ảnh}
 
-Trong xử lý hình ảnh, đặc trưng là những thông tin tóm tắt để mô hình SR phân biệt giữa các lớp hoặc đối tượng. Có thể phân chia đặc trưng thành hai loại bao gồm thủ công dùng cho thống kê và học được dùng cho máy học/học sâu \cite{nanni2017handcrafted}. Trong thống kê cổ điển, đặc trưng thường được tính toán trực tiếp từ phân bố cường độ hoặc phân bố điểm ảnh, sau đó đưa vào mô hình. Loris Nanni (2017) \cite{nanni2017handcrafted} cho rằng \emph{``Việc thiết kế các tính năng thủ công thường liên quan đến việc cân bằng giữa độ chính xác và hiệu quả tính toán''}.
+Trong xử lý hình ảnh, đặc trưng là những thông tin tóm tắt để mô hình SR phân biệt giữa các lớp hoặc đối tượng. Có thể phân chia đặc trưng thành hai loại bao gồm thủ công dùng cho thống kê và học máy được dùng cho máy học/học sâu \cite{nanni2017handcrafted}. Trong thống kê cổ điển, đặc trưng thường được tính toán trực tiếp từ phân bố cường độ hoặc phân bố điểm ảnh, sau đó đưa vào mô hình. Loris Nanni (2017) \cite{nanni2017handcrafted} cho rằng \emph{``Việc thiết kế các tính năng thủ công thường liên quan đến việc cân bằng giữa độ chính xác và hiệu quả tính toán''}.
 
 Ở đây, hình ảnh là biểu diễn số hóa của thông tin thị giác, được cấu thành từ các điểm ảnh (pixel) theo ma trận hai chiều, trong đó mỗi điểm lưu giá trị cường độ hoặc màu sắc. Trong xử lý ảnh, hình ảnh được xem là một dạng tín hiệu hai chiều có thể phân tích, biến đổi và trích xuất thông tin. Quá trình trích xuất hình ảnh được ứng dụng rộng rãi trong các lĩnh vực như SR, phân loại hình ảnh, phát hiện vật thể, thị giác máy tính\index{thị giác máy tính (computer vision)}, chẩn đoán hình ảnh y tế, viễn thám và trong các mô hình học sâu nhằm tự động học biểu diễn từ dữ liệu hình ảnh thô.
 
@@ -3262,7 +3285,7 @@ Cách tiếp cận này duy trì thông tin màu sắc cho từng khối hình �
 		\end{subfigure}
 		\caption{Các hình ảnh được cắt từ tập dữ liệu Brodatz.}\label{fig:EX2_main_img}
 		\begin{minipage}{\textwidth}\fontsize{11pt}{14pt}\selectfont\it
-			Chú thích (a) Hình ảnh $D83$ và (b) Hình ảnh $D102$; (c) PDF trích xuất $1:10$, (d) PDF trích xuất $1:50$ và (e) PDF trích xuất $1:100$. Nguồn: Minh họa của tác giả.
+			Chú thích (a) Hình ảnh $D83$ và (b) Hình ảnh $D102$; (c) PDF trích xuất $1:10$ cho cả hai hình ảnh, (d) PDF trích xuất $1:50$  cho cả hai hình ảnh và (e) PDF trích xuất $1:100$ cho cả hai hình ảnh. Nguồn: Minh họa của tác giả.
 		\end{minipage}
 	\end{figure}
 	
@@ -3308,7 +3331,7 @@ Hình ảnh Landsat-8 ($512 \times 256$ pixel) bao phủ Đảo Yam cho thấy n
 
 
 
-Để so sánh công bằng giữa các thuật toán đề nghị và các phương pháp truyền thống khác, luận văn giới thiệu các thuật toán cơ sở bao gồm KCF \cite{nguyen2024new}, FCF theo CWD \cite{vovan2019cluster}, FCM theo $\mathcal{L}_1$ \cite{nguyentrang2017fuzzy} chuyên dùng để phân chùm các PDF. Bảng~\ref{tab:para} mô tả các tham số và cơ sở của phương pháp đề nghị.
+Để so sánh giữa các thuật toán đề nghị và các phương pháp truyền thống khác, luận văn giới thiệu các thuật toán cơ sở bao gồm KCF \cite{nguyen2024new}, FCF theo CWD \cite{vovan2019cluster}, FCM theo $\mathcal{L}_1$ \cite{nguyentrang2017fuzzy} chuyên dùng để phân chùm các PDF. Bảng~\ref{tab:para} mô tả các tham số và cơ sở của phương pháp đề nghị.
 
 \begin{table*}[h]
 	\centering\fontsize{11pt}{14pt}\selectfont
@@ -3355,8 +3378,8 @@ Cụ thể, IFCF thể hiện cấu trúc phân chùm ổn định, hai chùm đ
 
 Hơn nữa, để đánh giá tính xác thực của phân vùng, Bảng~\ref{tab:EX3_EVA} cho thấy IFCF đạt kết quả tốt, có khả năng chống nhiễu cao và duy trì hiệu suất tính toán ổn định. 
 Một mặt, FCF-CWD và FCF-$\mathcal{L}_1$ cho kết quả gần như giống hệt nhau về mặt thống kê trên mọi phép đo, cho thấy việc hiệu chỉnh khoảng cách không mang lại lợi ích đáng kể trong các môi trường dữ liệu mất cân bằng. Ngoài ra, KCF thể hiện sự suy giảm chất lượng rõ rệt tại $IR \ge 80$, khi $ARI$ giảm mạnh từ $1{,}0$ xuống $0{,}02$ và chỉ số $Dunn$ giảm xuống $0{,}00$. Điều này phản ánh sự tồn tại của một ngưỡng nhiễu tới hạn, vượt qua ngưỡng này các phương pháp trọng tâm cổ điển sẽ mất đi cấu trúc chùm.
-Bên cạnh đó, SUP đạt được giá trị $Silhouette$ bằng $1{,}0$ nhưng đồng thời tạo ra các giá trị $Dunn$ dao động mạnh, từ $6112$ tại $IR=20$ xuống $141$ tại $IR=80$, cho thấy tính đồng nhất nội bộ của chùm là tốt. Tuy nhiên, phương pháp này chỉ ổn định trong khoảng $4\div5$ lần lặp, trong khi thời gian chạy tăng tuyến tính (lớn hơn $49$,s tại $IR=100$), thể hiện sự không tương xứng giữa số lần lặp và hiệu quả tính toán thực tế.
-Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là hoạt động đồng thời trên cả năm tiêu chí $ARI=NMI=1{,}0$, chỉ số $Dunn$ khoảng $6{,}0$, chỉ số $Silhouette$ khoảng $0{,}99$, thời gian chạy nhỏ hơn $0{,}11$ giây và hội tụ trong $5\div10$ lần lặp trên các thiết lập cho trước. Qua đó, kết quả này khẳng định hơn khả năng chống mất cân bằng của thuật toán đề nghị.
+Bên cạnh đó, SUP đạt được giá trị $Silhouette$ bằng $1{,}0$ nhưng đồng thời tạo ra các giá trị $Dunn$ dao động mạnh, từ $6112$ tại $IR=20$ xuống $141$ tại $IR=80$, cho thấy tính đồng nhất nội bộ của chùm là tốt. Tuy nhiên, phương pháp này chỉ ổn định trong khoảng $4\div5$ lần lặp, trong khi thời gian chạy tăng tuyến tính (lớn hơn $49$s tại $IR=100$), thể hiện sự không tương xứng giữa số lần lặp và hiệu quả tính toán thực tế.
+Mặt khác, IFCF là phương pháp đầu tiên được chứng minh là hoạt động đồng thời trên cả năm tiêu chí $ARI=NMI=1{,}0$, chỉ số $Dunn$ khoảng $6{,}0$, chỉ số $Silhouette$ khoảng $0{,}99$, thời gian chạy nhỏ hơn $0{,}11$ giây và hội tụ trong $5\div10$ lần lặp trên các thiết lập cho trước. Qua đó, kết quả này góp phần khẳng định khả năng chống mất cân bằng của thuật toán đề nghị.
 
 
 \begin{table*}\fontsize{11pt}{14pt}\selectfont
@@ -3610,7 +3633,7 @@ Phương pháp dựa trên màu sắc (hoặc khối màu) không duy trì đư�
 
 \section*{1.\quad Kết luận}
 
-Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có nhiều nghiên cứu nên còn nhiều khe hẹp để phát triển cả lý thuyết và ứng dụng. Ứng dụng của nó cho dữ liệu hình ảnh hứa hẹn nhiều tiềm năng trong nâng cao hiệu quả. Luận văn này đã thực hiện được những vấn đề sau cho dữ liệu PDF:
+Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có nhiều nghiên cứu nên còn nhiều khả năng phát triển cả lý thuyết và ứng dụng. Ứng dụng của nó cho dữ liệu hình ảnh hứa hẹn nhiều tiềm năng trong nâng cao hiệu quả. Luận văn này đã thực hiện được những vấn đề sau cho dữ liệu PDF:
 
 \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
 	\item \textit{Về phân tích chùm}: Luận văn đã đề xuất 1 thuật toán phân tích chùm mờ cải tiến (IFCF) cho dữ liệu bị mất cân bằng. Thuật toán đề nghị đã được xem xét sự hội tụ, vấn đề tính toán và những khía cạnh liên quan đến áp dụng thực tế. Thuật toán phân tích chùm đề nghị được xem có tính tổng quát hơn so với các thuật toán hiện có.
@@ -3622,7 +3645,7 @@ Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có n
 
 \section*{2.\quad Định hướng nghiên cứu}
 
-\textit{$\circledast$ Về mặt lý thuyết}, các hướng phát triển tiếp theo được định hình nhằm mở rộng và hoàn thiện khung phương pháp luận cho bài toán SR với đối tượng PDF.
+\textit{$\bullet$ Về mặt lý thuyết}, các hướng phát triển tiếp theo được định hình nhằm mở rộng và hoàn thiện khung phương pháp luận cho bài toán SR với đối tượng PDF.
 
 \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]
 	\item {Phát triển các mô hình SR kết hợp} để đồng thời giải quyết hai hiệu ứng “đồng nhất” và “xi phông”. Thuật toán đề nghị IFCF trong luận văn đã góp phần giảm thiểu “hiệu ứng đồng nhất”. Tuy nhiên, các thuật toán phân chùm vẫn phải đối mặt với “hiệu ứng xi phông”\index{hiệu ứng xi-phông (siphon effect)}, trong đó các phần tử biên của lớp nhỏ có xu hướng bị kéo lệch về chùm lớn hơn.
@@ -3635,7 +3658,7 @@ Nhận dạng thống kê cho PDF là một chủ đề hấp dẫn, chưa có n
 
 
 
-\textit{$\circledast$ Trên phương diện ứng dụng}, các hướng mở rộng được định hướng nhằm tăng tính thực tiễn và khả năng triển khai của mô hình trong các lĩnh vực khác nhau.
+\textit{$\bullet$ Trên phương diện ứng dụng}, các hướng mở rộng được định hướng nhằm tăng tính thực tiễn và khả năng triển khai của mô hình trong các lĩnh vực khác nhau.
 \begin{enumerate}[label=(\roman*), leftmargin=2em, itemsep=1ex]	
 	\item Phát triển các kỹ thuật trích xuất đặc trưng tiên tiến hơn để biểu diễn các đặc tính hình ảnh phức tạp như kết cấu\index{đặc trưng kết cấu (texture feature)} và hình dạng\index{đặc trưng hình dạng (shape feature)} thành các PDF. Đồng thời, nên mở rộng việc trích xuất đặc trưng mật độ để xử lý dữ liệu hình ảnh đa kênh màu.
 	\item Xây dựng cơ chế xác định siêu tham số tối ưu cho các thuật toán phân chùm PDF. Song song đó, phát triển các công cụ giải thích-AI\index{giải thích-AI (XAI)} chuyên biệt cho các mô hình SR cho PDF nhằm tăng tính minh bạch và khả năng diễn giải, giúp người dùng hiểu rõ lý do mô hình phân loại một mẫu vào lớp thiểu số.
@@ -3780,7 +3803,7 @@ Phần này cung cấp lý thuyết và các thuật toán của luận văn.
 		\While{$\Vert {\bm\mu}^{(t+1)} - {\bm\mu}^{(t)} \Vert<\varepsilon$}
 		\State $t \gets t+1$
 		\State Cập nhật $\Theta^{(t+1)}$ bằng Công thức~\eqref{trongtamFCF}
-		\State Cập nhật ${\bm\mu}^{(t+1)}$ bằng Công thức~\eqref{pvFCF1} và \eqref{pvFCF2}
+		\State Cập nhật ${\bm\mu}^{(t+1)}$ bằng Công thức~\eqref{pvFCF1}
 		\EndWhile\label{euclidendwhile}
 		\State \textbf{return} ${\bm\mu}$ và $\Theta$.\Comment{Ma trận phân vùng và PDF đại diện}
 		\EndProcedure
@@ -4100,7 +4123,7 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 
 	\begin{table}[H]
 		\centering
-		\fontsize{11pt}{14pt}\selectfont
+		\fontsize{11pt}{11pt}\selectfont
 		\caption{Kết quả so sánh các khoảng cách theo chỉ số $ARI$ đối với Ví dụ~\ref{vdu:gauss1}}
 		\begin{tabular}{cccccccccc}
 			\toprule
@@ -4118,7 +4141,7 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 	
 	\begin{table}[H]
 		\centering
-		\fontsize{11pt}{14pt}\selectfont
+		\fontsize{11pt}{11pt}\selectfont
 		\caption{Kết quả so sánh các khoảng cách theo chỉ số $NMI$ đối với Ví dụ~\ref{vdu:gauss1}}
 		\begin{tabular}{cccccccccc}
 			\toprule
@@ -4154,7 +4177,7 @@ Ta có quá trình biến đổi ở mỗi vòng lặp đối với các trọng
 	
 	\begin{table}[H]
 		\centering
-		\fontsize{11pt}{14pt}\selectfont
+		\fontsize{11pt}{11pt}\selectfont
 		\caption{Kết quả so sánh các khoảng cách theo chỉ số Thời gian chạy đối với Ví dụ~\ref{vdu:gauss1}}
 		\begin{tabular}{cccccccccc}
 			\toprule
