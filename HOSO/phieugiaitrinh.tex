@@ -1,5 +1,6 @@
 \documentclass[a4paper,oneside]{article} % Tài liệu dạng sách, in một mặt trên giấy A4
 %\documentclass[13pt,a4paper]{extarticle}
+\usepackage{longtable} % đặt ở phần preamble
 
 % ====== GÓI CƠ BẢN ======
 \usepackage{scrextend}
@@ -72,22 +73,47 @@
 	\vspace{20pt}
 	Luận văn đã chỉnh sửa theo ý kiến đóng góp của Hội đồng như sau:
 	
-\begin{table}[H]\centering\footnotesize
-	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}p{0.5cm}p{7cm}p{7cm}@{\extracolsep\fill}}
+	\begin{longtable}{p{0.5cm}p{5cm}p{9cm}}
 		\toprule
-		\bf TT &\bf	Nội dung góp ý, đề nghị chỉnh sửa &\bf	Nội dung đã chỉnh sửa\\
-		      &\it (Ghi cụ thể nội dung cần chỉnh sửa, mục, trang$\ldots$) &\\
+		\bf TT & \bf Nội dung góp ý, đề nghị chỉnh sửa 
+		& \bf Nội dung đã chỉnh sửa \\
+		& \it (Ghi cụ thể nội dung cần chỉnh sửa, mục, trang...) & \\
 		\midrule
+		\endfirsthead
+		
+		\toprule
+		\bf TT & \bf Nội dung góp ý, đề nghị chỉnh sửa 
+		& \bf Nội dung đã chỉnh sửa \\
+		& \it (Tiếp theo) & \\
+		\midrule
+		\endhead
+		
+		\midrule
+		\endfoot
+		
+		\bottomrule
+		\endlastfoot
 				1 &Bỏ các dẫn nguồn hình ảnh và bảng học viên là tác giả&\\
 		2 &Chỉnh sửa lỗi đánh máy & Đã kiểm tra toàn luận văn và chỉnh sửa hoàn thiện.\\
-		3 & Thống nhất các ký hiệu &\\
-		\midrule 
-		4 & Định nghĩa độ nhạy và độ chính xác &\\
-		5 & Kết cấu Brodatz là gì, học viên hãy mô tả chi tiết dữ liệu và phương pháp giải quyết &\\
-		6 & Tại sao sử dụng một hình ảnh để nhận dạng mà không phải nhiều hình ảnh? &\\
+		3 & Thống nhất các ký hiệu &\\ 
+		4 & Định nghĩa độ nhạy và độ chính xác &  Trong bài toán phân loại mất cân bằng, các thước đo truyền thống như độ chính xác tổng thể thường gây sai lệch vì mô hình có thể dự đoán lớp đa số gần như mọi lúc mà vẫn đạt giá trị cao. Do đó, hai chỉ số quan trọng và ổn định hơn cần được sử dụng là \emph{độ nhạy} (sensitivity hoặc recall) và \emph{độ chính xác} (precision). Giả sử bài toán nhị phân có lớp dương là lớp quan tâm, ta ký hiệu số lượng dự đoán đúng dương là $\mathrm{TP}$, dự đoán sai dương là $\mathrm{FP}$ và bỏ sót dương là $\mathrm{FN}$.
+		
+		Độ nhạy đo lường khả năng của mô hình trong việc phát hiện đúng các mẫu thuộc lớp dương, được định nghĩa bởi
+		\[
+		\mathrm{Sensitivity}=\mathrm{Recall}
+		=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}}.
+		\]
+		Chỉ số này đặc biệt quan trọng khi chi phí bỏ sót mẫu dương là lớn, ví dụ trong phát hiện gian lận hoặc chẩn đoán bệnh hiếm. Giá trị độ nhạy cao cho thấy mô hình nhận diện được phần lớn các trường hợp cần quan tâm.
+		
+		Độ chính xác phản ánh mức độ tin cậy của các dự đoán dương, được cho bởi
+		\[
+		\mathrm{Precision}=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FP}}.
+		\]
+		Trong bối cảnh mất cân bằng, độ chính xác giúp đánh giá xem mô hình có tạo ra quá nhiều cảnh báo giả hay không. Khi kết hợp với độ nhạy, hai chỉ số này cung cấp cái nhìn toàn diện hơn về hiệu quả của mô hình trên lớp thiểu số. 
+		\\
+		5 & Kết cấu Brodatz là gì, học viên hãy mô tả chi tiết dữ liệu và phương pháp giải quyết & Hình ảnh kết cấu Brodatz là bộ hình ảnh các kết cấu vật liệu khác nhau được thu thập bởi Trygve Randen và được lưu trữ tại đường dẫn \url{https://www.ux.uis.no/~tranden/}. Các nghiên cứu trước đây sử dụng bộ hình ảnh kết cấu để nhận dạng và phân loại kết cấu, phân đoạn hình ảnh, và thiết kế ngân hàng bộ lọc. Đến năm 2017, nhóm tác giả Thao Nguyen-Trang sử dụng với mục tiêu phân tích chùm các hình ảnh qua việc cắt ngẫu nhiên và thêm nhiễu Gaussian. Luận văn đã  được bổ sung một đoạn giới thiệu cụ thể ở trang 66.\\
 		7 & Tóm tắt nội dung cần ngắn gọn hơn &  Tóm tắt nội dung được lượt bỏ từ dòng 1--13, trang iv. \\
-		\bottomrule
-	\end{tabular*}
-\end{table}
+\end{longtable}
+
 	
 \end{document}

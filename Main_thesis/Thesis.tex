@@ -395,7 +395,8 @@ Bài toán SR cho dữ liệu mất cân bằng với các phần tử rời r�
 \subsection{Các định nghĩa và tính chất cơ bản}
 Các PDF là khách thể nghiên cứu của một số nhà thống kê hiện đại \cite{Tai2010,billard2012symbolic,irpino2015basic}. Nó là một phần của dữ liệu đặc trưng\index{dữ liệu đặc trưng (symbolic data)} bao gồm hữu hạn các xác suất, khoảng và hàm mật độ xác suất \cite{billard2012symbolic}. Ở đây, luận văn chỉ hệ thống hóa những kiến thức có liên quan.
 
-\dng{[Biến ngẫu nhiên] Một biến ngẫu nhiên $X$ trong không gian xác suất $(\Omega\,;\mathcal{E}\,;\mathbb{P})$ là một hàm Borel đo được từ $\Omega$ đến $\mathbb{R}$, cụ thể $X\,:\,(\Omega\,;\mathcal{E})\to(\mathbb{R}\,;\mathcal{B}(\mathbb{R}))$.
+\dng{[Biến ngẫu nhiên] Một biến ngẫu nhiên $X$ trong không gian xác suất $(\Omega\,;\mathcal{E}\,;\mathbb{P})$ là một hàm Borel đo được từ $\Omega$ đến $\mathbb{R}$, cụ thể $X\,:\,(\Omega\,;\mathcal{E})\to(\mathbb{R}\,;\mathcal{B}(\mathbb{R}))$,
+	trong đó, $\Omega$ là không gian mẫu, $\mathcal{E}$ là $\sigma$-đại số trên $\Omega$ và $\mathbb{P}$ là hàm xác suất.
 }
 
 Tương tự, ta mở rộng cho biến ngẫu nhiên $d$-chiều cho vector ngẫu nhiên  ${\bm X}=(X_1\,;X_2\,;\ldots\,;X_d)$ trong $\mathbb{R}^d$, với mỗi thành phần $X_i$ là biến ngẫu nhiên trên $(\Omega\,;\mathcal{E}\,;\mathbb{P})$, nhận giá trị trong $\mathbb{R}$ với $i=1\,,2\,,\ldots\,,d$.
@@ -678,7 +679,7 @@ Các PDF Gauss-lệch nhận thêm một tham số thể hiện mức độ lệ
 	$$
 }
 
-	\dly{[Kỳ vọng và hiệp phương sai] Vector kỳ vọng và ma trận hiệp phương sai của vector ngẫu nhiên $\bm X$ có PDF-đều lần lượt là $$\mathbb{E}(\bm X) = \frac{\bm{l} + \bm{u}}{2} \text{ và } \mathrm{Cov}(\bm X) = \mathrm{diag}\left(\frac{(u_1 - l_1)^2}{12}\,; \ldots\,; \frac{(u_d - l_d)^2}{12}\right).$$
+	\dly{[Kỳ vọng và hiệp phương sai] Vector kỳ vọng và ma trận hiệp phương sai của vector ngẫu nhiên $\bm X$ có PDF-đều lần lượt là $$\mathbb{E}(\bm X) = \frac{\bm{l} + \bm{u}}{2} \text{ và } \mathrm{Cov}(\bm X) = \mathrm{diag}\left(\frac{(u_1 - l_1)^2}{12}\,; \cdots\,; \frac{(u_d - l_d)^2}{12}\right).$$
 }
 
 \subsection{Một số hàm mật độ xác suất bổ sung}
@@ -827,7 +828,7 @@ Phần này giới thiệu một số độ đo đánh giá sự tương tự c�
 	Theo Định nghĩa \ref{D}, khoảng cách giữa hai PDF thỏa mãn các tiên đề của mê-tríc. Trong lý thuyết thống kê và thông tin, một mê-tríc được gọi là \emph{khoảng cách} và nửa mê-tríc gọi là \emph{phân kỳ}. Thực tế, ta thường sử dụng $p=1$ hoặc $p=2$ cho các tính toán. Ta cũng có mối quan hệ giữa hai PDF đối với một PDF trọng tâm bất kỳ trong khoảng cách mê-tríc. 
 	
 		\bode{[Bất đẳng thức tam giác]\label{bode:bdttg}
-		Với mọi PDF $f_j, f_k \in c_i$ trong không gian khoảng cách mê-tríc và PDF trọng tâm chùm $\theta_i$, ta có bất đẳng thức tam giác $D(f_j, f_k) \leq D(f_j, \theta_i) + D(f_k, \theta_i).$
+		Với mọi PDF $f_j, f_k \in c_i$ trong không gian khoảng cách mê-tríc và PDF trọng tâm chùm $\theta_i$, ta có bất đẳng thức tam giác $$D(f_j, f_k) \leq D(f_j, \theta_i) + D(f_k, \theta_i).$$
 	}
 	
 		Tai Vo-Van (2019) \cite{vovan2019cluster} dựa trên khoảng cách $\mathcal L_p$ để giới thiệu độ rộng chùm.
@@ -1022,7 +1023,7 @@ Ngược lại, khoảng cách Wasserstein nhạy cảm với vị trí hình h�
 	$ với tập $\mathcal{F}$	được gọi là hạt nhân (hạch) giữa hai PDF $f_1(x)$ và $f_2(x)$ nếu nó thỏa mãn
 	\begin{enumerate}
 		\item $0 \leq K(f_1\,; f_2) \leq 1$;
-		\item $K(f_1\,; f_2) = K(f_2\;, f_1)$ với mọi $f_1\,, f_2 \in \mathcal{F}$;
+		\item $K(f_1\,; f_2) = K(f_2\;; f_1)$ với mọi $f_1\,, f_2 \in \mathcal{F}$;
 		\item với mọi tập hữu hạn $\{f_1\,; \ldots\,; f_n\} \subset \mathcal{F}$ và các hệ số $\alpha_1\,;\ldots\,;\alpha_n \in \mathbb{R}$, hàm hạt nhân là xác định dương, tức là
 		$
 		\sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j K(f_i\,; f_j) \geq 0.
@@ -1381,7 +1382,7 @@ Giả sử $\mathcal{F}$-PDF chưa được gán nhãn, mục tiêu của bài t
 
 Thuật toán phân tích chùm mờ cho phần tử rời rạc đã được chứng minh là tối ưu toàn cục bởi \cite{bezdek2013pattern, bezdek1980convergence, hathaway1988recent} qua định lý Zangwill \cite{zangwill1969nonlinear}. Đặc biệt, \cite{groll2005new} mới đây chứng minh sự hội tụ toàn cục qua thuật toán độ dốc\index{độ dốc (gradient method)}. Do đó, luận văn này chỉ giới thiệu Định lý~\ref{thanhlapMU_Theta} trình bày sự thành lập của ma trận phân vùng và PDF đại diện từ hàm mục tiêu\index{hàm mục tiêu (Objective function)} $J$.
 
-\dly{\label{thanhlapMU_Theta}Cho $\mathcal{F}$-PDF chứa $n>c$ các PDF và $m>1$. Xét $D^2_{ij} = D^2(\theta_i\,;f_j)$ với $ 1 \le j \le n$ và $1 \le i \le c$. Với mỗi $j$, xác định các tập $I_j = \{i\,|\,D^2_{ij} = 0\,; 1 \le i \le c\}$ và tập $I^c_j = \{1\,,2\,,ldots\,,c\} \setminus I_j$. Khi đó hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{Jf} có thể đạt cực tiểu toàn cục khi và chỉ khi
+\dly{\label{thanhlapMU_Theta}Cho $\mathcal{F}$-PDF chứa $n>c$ các PDF và $m>1$. Xét $D^2_{ij} = D^2(\theta_i\,;f_j)$ với $ 1 \le j \le n$ và $1 \le i \le c$. Với mỗi $j$, xác định các tập $I_j = \{i\,|\,D^2_{ij} = 0\,; 1 \le i \le c\}$ và tập $I^c_j = \{1\,,2\,,\ldots\,,c\} \setminus I_j$. Khi đó hàm mục tiêu\index{hàm mục tiêu (Objective function)} \eqref{Jf} có thể đạt cực tiểu toàn cục khi và chỉ khi
 \begin{align}
     &\theta^*_i(x) = \frac{\sum_{j=1}^n(\mu^*_{ij})^mf_j(x)}{\sum_{j=1}^n(\mu^*_{ij})^m} \text{ và}\label{trongtamFCF}\\
     &\begin{cases}\label{pvFCF1}
@@ -2595,7 +2596,7 @@ Các thuật toán phân chùm được triển khai với nhiều loại khoả
 Rõ ràng, khi $IR$ tăng từ $10\div 50$, hầu hết các chỉ số đánh giá như $ARI$, $NMI$, $Dunn$ và $Silhouette$ đều giảm đáng kể. Ở mức $IR = 10$, các phương pháp đạt giá trị rất cao, với $ARI = 0{,}93$ và $NMI = 0{,}86$, phản ánh khả năng tách chùm tốt và ổn định. Tuy nhiên, khi $IR \ge 30$, các chỉ số này nhanh chóng suy giảm gần về $0{,}00$, cho thấy mô hình bắt đầu suy yếu. Đồng thời, thời gian tính toán và số vòng lặp hội tụ tăng lên rõ rệt theo $IR$, thể hiện rằng bài toán trở nên phức tạp hơn khi mức mất cân bằng dữ liệu tăng cao.
 Ngoài ra, các khoảng cách $\mathcal{L}_2$, $D_{BC}$, $D^2_H$ và $D_{JS}$ cho kết quả gần tương đương nhau ở các mức $IR$ thấp. Tuy nhiên, khi $IR$ tăng, $D^2_H$ và $D_{JS}$ cho thấy tính ổn định cao hơn, duy trì giá trị $ARI$ và $NMI$ cao hơn so với $\mathcal{L}_2$ và đặc biệt là $W^2_2$. Ngược lại, khoảng cách $W^2_2$ thể hiện hiệu năng yếu hơn cả về chỉ số nội bộ lẫn chỉ số bên ngoài, đồng thời đòi hỏi chi phí tính toán cao hơn đáng kể.
 
-Phân tích thống kê sâu hơn bằng phép kiểm định Friedman\index{kiểm định Friedman (Friedman test)} ($\chi^2 = 14\div15$, $p < 0{,}02$) cho thấy sự khác biệt giữa các loại khoảng cách là có ý nghĩa thống kê. Kết quả này khẳng định rằng lựa chọn độ đo thích hợp có ảnh hưởng trực tiếp đến chất lượng phân tích chùm.
+Phân tích thống kê bằng phép kiểm định Friedman\index{kiểm định Friedman (Friedman test)} với mức ý nghĩa $\alpha = 0.05$, ta có kết quả $\chi^2 = 14\div15\,, p < 0{,}02$. Điều này cho thấy sự khác biệt giữa các loại khoảng cách là có ý nghĩa thống kê, khẳng định rằng lựa chọn độ đo thích hợp có ảnh hưởng trực tiếp đến chất lượng phân tích chùm.
 
 \begin{figure}[H]
 	\centering
@@ -3254,7 +3255,9 @@ Cách tiếp cận này duy trì thông tin màu sắc cho từng khối hình �
 
 
 \vdu{\label{vdu:anh1}
-	Luận văn mô phỏng một tập dữ liệu hình ảnh mất cân bằng và định nghĩa trước hai chùm là sự khác biệt màu sắc của hai hình ảnh kết cấu. Hai hình ảnh gốc (kích thước $200\times 200$ pixel với $256$ mức xám) có cường độ nền khác nhau, $D83$ và $D102$. Những ảnh này được lấy từ cơ sở dữ liệu Kết cấu Brodatz tại \url{https://multibandtexture.recherche.usherbrooke.ca/original_brodatz.html} và được cắt ngẫu nhiên và phân bổ đều với kích thước $64 \times 64$. Sau đó, các hình ảnh được ghép lại thành một tập dữ liệu mất cân bằng với $IR$ dao động từ $10$ đến $70$.
+	Luận văn mô phỏng một tập dữ liệu hình ảnh mất cân bằng và định nghĩa trước hai chùm là sự khác biệt màu sắc của hai hình ảnh kết cấu. Hai hình ảnh gốc (kích thước $200\times 200$ pixel với $256$ mức xám) có cường độ nền khác nhau, $D83$ và $D102$. Những ảnh này được lấy từ cơ sở dữ liệu Kết cấu Brodatz tại \url{https://multibandtexture.recherche.usherbrooke.ca/original_brodatz.html}. Nhờ tính đồng nhất, giàu chi tiết và dễ thao tác, bộ ảnh này nhanh chóng trở thành một trong những tập dữ liệu sớm nhất và phổ biến nhất trong nghiên cứu thị giác máy tính, đặc biệt trong các bài toán phân tích chùm, phân loại và nhận dạng kết cấu hình ảnh. Các hình ảnh được cắt ngẫu nhiên và phân bổ đều với kích thước $64 \times 64$. Sau đó, các hình ảnh được ghép lại thành một tập dữ liệu mất cân bằng với $IR$ dao động từ $10$ đến $70$.
+	
+	
 	
 	\begin{figure}[H]
 		\centering
